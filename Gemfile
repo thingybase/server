@@ -30,6 +30,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 # HAML templates yo
 gem 'haml-rails'
+# Authorization libraries
+gem 'omniauth'
+# Authorization logic
+gem 'pundit'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
