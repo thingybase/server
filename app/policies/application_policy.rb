@@ -15,7 +15,7 @@ class ApplicationPolicy
   end
 
   def create?
-    false
+    is_owner?
   end
 
   def new?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    is_owner?
   end
 
   def edit?
@@ -31,7 +31,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    is_owner?
   end
 
   def scope
@@ -47,7 +47,12 @@ class ApplicationPolicy
     end
 
     def resolve
-      scope
+      scope.where(user_id: @user)
     end
   end
+
+  private
+    def is_owner?
+      @user == @record.user
+    end
 end

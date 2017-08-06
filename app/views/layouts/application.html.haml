@@ -8,10 +8,14 @@
   %body
     %header
       %h1 Pagerline
-      -if logged_in?
-        %p
-          Logged in as
-          =current_user.email
+      %nav.primary-nav
+        -if logged_in?
+          .primary-nav--item
+            Logged in as
+            =current_user.email
+          .primary-nav--item
+            =link_to "Logout", session_path, method: :delete
+        -else
+          .primary-nav--item
+            =link_to "Login", new_session_path
     = yield
-    %footer
-      %p Pagerline is a company

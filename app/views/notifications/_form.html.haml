@@ -8,9 +8,9 @@
 
   .field
     = f.label :subject
-    = f.text_field :subject
+    = f.text_field :subject, autofocus: true
   .field
     = f.label :message
-    = f.text_field :message
+    = f.text_area :message
   .actions
     = f.submit 'Save'

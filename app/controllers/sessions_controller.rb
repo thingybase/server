@@ -2,12 +2,28 @@ class SessionsController < ApplicationController
   # TODO: Enable this when everything gets locked down.
   # skip_before_action :verify_authorized, only: :create
   # TODO: Really? This seems dangerous
-  skip_before_action :verify_authenticity_token, only: :create
+  skip_before_action :verify_authenticity_token, only: [:create, :destroy]
+  skip_before_action :authenticate_user, only: [:new, :create]
+  skip_after_action :verify_authorized
 
   def create
-    @user = User.find_or_create_from_auth_hash(auth_hash)
-    self.current_user = @user
-    redirect_to '/'
+    if user = User.find_or_create_from_auth_hash(auth_hash)
+      reset_session
+      self.current_user = user
+      redirect_to '/'
+    else
+      raise "Couldn't create user from auth hash"
+    end
+  end
+
+  def new
+    # TODO: Replace this with a real login or a bunch of buttons.
+    redirect_to "/auth/developer"
+  end
+
+  def destroy
+    reset_session
+    redirect_to root_url
   end
 
   protected

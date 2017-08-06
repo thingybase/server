@@ -1,10 +1,12 @@
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user
+  before_action :authorize_notificaton, only: [:show, :edit, :update, :destroy]
 
   # GET /notifications
   # GET /notifications.json
   def index
-    @notifications = Notification.all
+    @notifications = policy_scope(Notification)
   end
 
   # GET /notifications/1
@@ -72,5 +74,10 @@ class NotificationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def notification_params
       params.require(:notification).permit(:subject, :message, :user_id)
+    end
+
+    # Authorizse resource
+    def authorize_notificaton
+      authorize @notification
     end
 end
