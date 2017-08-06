@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %title Pagerline
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header
+      %h1 Pagerline
+      %p
+        Logged in as
+        =current_user.email
+    = yield
+    %footer
+      %p Pagerline is a company
