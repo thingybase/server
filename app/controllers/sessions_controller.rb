@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  # TODO: Enable this when everything gets locked down.
+  # skip_before_action :verify_authorized, only: :create
   # TODO: Really? This seems dangerous
   skip_before_action :verify_authenticity_token, only: :create
 

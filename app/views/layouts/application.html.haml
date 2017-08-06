@@ -8,9 +8,10 @@
   %body
     %header
       %h1 Pagerline
-      %p
-        Logged in as
-        =current_user.email
+      -if logged_in?
+        %p
+          Logged in as
+          =current_user.email
     = yield
     %footer
       %p Pagerline is a company
