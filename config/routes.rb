@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :teams
   resources :notifications
   resource :session
   post "/auth/:provider/callback", to: 'sessions#create'

@@ -1,4 +1,8 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :team do
+    name "MyString"
+user nil
+  end
+
   factory :user do
     name "John Doe"
     sequence :email do |n|
