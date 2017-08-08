@@ -34,6 +34,10 @@ gem 'haml-rails'
 gem 'omniauth'
 # Authorization logic
 gem 'pundit'
+# Form helper
+gem 'simple_form'
+# Use bootstrap for styling and grid
+gem 'twitter-bootstrap-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -1,23 +1,26 @@
-%h2 Listing notifications
-
-%table
+- model_class = Notification
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+%table.table.table-striped
   %thead
     %tr
-      %th Subject
-      %th Message
-      %th
-      %th
-      %th
-
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:subject)
+      %th= model_class.human_attribute_name(:message)
+      %th= model_class.human_attribute_name(:user_id)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @notifications.each do |notification|
       %tr
+        %td= link_to notification.id, notification_path(notification)
         %td= notification.subject
         %td= notification.message
-        %td= link_to 'Show', notification
-        %td= link_to 'Edit', edit_notification_path(notification)
-        %td= link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= notification.user_id
+        %td=l notification.created_at
+        %td
+          = link_to t('.show', :default => t("helpers.links.show")), notification_path(notification), :class => 'btn btn-default btn-xs'
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_notification_path(notification), :class => 'btn btn-default btn-xs'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), notification_path(notification), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
 
-%br
-
-= link_to 'New Notification', new_notification_path
+= link_to t('.new', :default => t("helpers.links.new")), new_notification_path, :class => 'btn btn-primary'

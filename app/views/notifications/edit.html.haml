@@ -1,7 +1,4 @@
-%h2 Editing notification
-
-= render 'form'
-
-= link_to 'Show', @notification
-\|
-= link_to 'Back', notifications_path
+- model_class = Notification
+.page-header
+  %h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize
+= render :partial => "form"

@@ -1,16 +1,9 @@
-= form_for @notification do |f|
-  - if @notification.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@notification.errors.count, "error")} prohibited this notification from being saved:"
-      %ul
-        - @notification.errors.full_messages.each do |message|
-          %li= message
-
-  .field
-    = f.label :subject
-    = f.text_field :subject, autofocus: true
-  .field
-    = f.label :message
-    = f.text_area :message
-  .actions
-    = f.submit 'Save'
+= simple_form_for @notification, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :subject
+  = f.error_span :subject
+  = f.input :message
+  = f.error_span :message
+  = f.input :user_id
+  = f.error_span :user_id
+  = f.button :submit, :class => 'btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), notifications_path, :class => 'btn btn-default'
