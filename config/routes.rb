@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   resources :teams
   resources :notifications
   resource :session

@@ -38,6 +38,8 @@ gem 'pundit'
 gem 'simple_form'
 # Use bootstrap for styling and grid
 gem 'twitter-bootstrap-rails'
+# Needed to work with bootstrap
+gem 'jquery-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
