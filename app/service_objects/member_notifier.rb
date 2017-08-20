@@ -1,0 +1,52 @@
+require "uri"
+
+class MemberNotifier
+  FROM_PHONE_NUMBER = '+13376602654'.freeze
+
+  def initialize(notification)
+    @notification = notification
+    @user = @notification.user
+  end
+
+  # Sends SMS and voice call to user.
+  def notify
+    send_sms
+    voice_call
+  end
+
+  # TODO: Move this into a dang service object
+  def sms_message
+    twilio = Twilio::REST::Client.new
+    twilio.api.account.messages.create(
+      from: FROM_PHONE_NUMBER,
+      to: @user.phone_number,
+      body: @notification.subject)
+  end
+
+  def voice_call
+    twilio = Twilio::REST::Client.new
+    twilio.api.account.calls.create(
+      from: FROM_PHONE_NUMBER,
+      to: @user.phone_number,
+      # url: 'http://demo.twilio.com/docs/voice.xml'
+      # TODO: Refactor this so its not a TwiMLet.
+      url: voice_menu_url("#{@notification.subject}. Press 0 to acknowledge, press 1 to pass", [
+        voice_message_url("Hooray! You're going to fix it!"),
+        voice_message_url("Lame, you can't fix it.")
+      ])
+    )
+  end
+
+  private
+    def voice_menu_url(message, options = [])
+      URI("http://twimlets.com/menu").tap do |url|
+        url.query = {"Message" => message, "Options" => options}.to_query
+      end
+    end
+
+    def voice_message_url(message)
+      URI("http://twimlets.com/message").tap do |url|
+        url.query = {"Message" => [message]}.to_query
+      end
+    end
+end
