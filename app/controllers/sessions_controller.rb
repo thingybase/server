@@ -17,8 +17,12 @@ class SessionsController < ApplicationController
   end
 
   def new
-    # TODO: Replace this with a real login or a bunch of buttons.
-    redirect_to "/auth/developer"
+    if Rails.env.production?
+      redirect_to "/auth/google_oauth2"
+    else
+      # TODO: Replace this with a real login or a bunch of buttons.
+      redirect_to "/auth/developer"
+    end
   end
 
   def destroy

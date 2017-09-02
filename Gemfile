@@ -32,6 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'haml-rails'
 # Authorization libraries
 gem 'omniauth'
+gem 'omniauth-google-oauth2'
 # Authorization logic
 gem 'pundit'
 # Form helper
