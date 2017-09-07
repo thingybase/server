@@ -4,19 +4,15 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:subject)
       %th= model_class.human_attribute_name(:message)
-      %th= model_class.human_attribute_name(:user_id)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @notifications.each do |notification|
       %tr
-        %td= link_to notification.id, notification_path(notification)
-        %td= notification.subject
+        %td= link_to notification.subject, notification
         %td= notification.message
-        %td= notification.user_id
         %td=l notification.created_at
         %td
           = link_to t('.show', :default => t("helpers.links.show")), notification_path(notification), :class => 'btn btn-default btn-xs'
