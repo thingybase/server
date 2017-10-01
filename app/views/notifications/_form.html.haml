@@ -3,7 +3,7 @@
   = f.error_span :subject
   = f.input :message
   = f.error_span :message
-  = f.input :user_id
+  = f.association :user
   = f.error_span :user_id
   = f.button :submit, :class => 'btn-primary'
   = link_to t('.cancel', :default => t("helpers.links.cancel")), notifications_path, :class => 'btn btn-default'

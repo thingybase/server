@@ -6,10 +6,6 @@
   %strong= model_class.human_attribute_name(:name) + ':'
   %br
   = @team.name
-%p
-  %strong= model_class.human_attribute_name(:user_id) + ':'
-  %br
-  = @team.user_id
 
 
 = link_to t('.back', :default => t("helpers.links.back")), teams_path, :class => 'btn btn-default'
