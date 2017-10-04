@@ -41,6 +41,8 @@ gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
 # Communicate with Twilio
 gem 'twilio-ruby', '~> 5.1.0'
+# Handle phone numbers as a propper data type (and normalize)
+gem 'phony_rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -150,6 +150,10 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     pg (0.21.0)
+    phony (2.15.48)
+    phony_rails (0.14.6)
+      activesupport (>= 3.0)
+      phony (> 2.15)
     public_suffix (3.0.0)
     puma (3.10.0)
     pundit (1.1.0)
@@ -278,6 +282,7 @@ DEPENDENCIES
   omniauth
   omniauth-google-oauth2
   pg
+  phony_rails
   puma (~> 3.7)
   pundit
   rails (~> 5.1.4)
