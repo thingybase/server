@@ -22,7 +22,7 @@ class MemberNotifier
       body: [message, "Rply ACK"].join(" "))
   end
 
-  def voice_call(message)
+  def voice_call(message, acknowledgement_url: )
     twilio = Twilio::REST::Client.new
     twilio.api.account.calls.create(
       from: FROM_PHONE_NUMBER,
@@ -30,7 +30,7 @@ class MemberNotifier
       # url: 'http://demo.twilio.com/docs/voice.xml'
       # TODO: Refactor this so its not a TwiMLet.
       url: voice_menu_url("#{message}. Press 0 to acknowledge, press 1 to pass", [
-        voice_message_url("Hooray! You're going to fix it!"),
+        acknowledgement_url,
         voice_message_url("Lame, you can't fix it.")
       ])
     )

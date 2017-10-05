@@ -43,6 +43,23 @@ class AcknowledgementsController < ApplicationController
     end
   end
 
+  # POST /acknowledgements
+  # POST /acknowledgements.json
+  def claim
+    @acknowledgement = Acknowledgement.from_claim(params[:claim])
+
+    # TODO: These should reply with a TwiML response ...
+    respond_to do |format|
+      if @acknowledgement.save
+        format.html { redirect_to @acknowledgement, notice: 'Acknowledgement was successfully created.' }
+        format.json { render :show, status: :created, location: @acknowledgement }
+      else
+        format.html { render :new }
+        format.json { render json: @acknowledgement.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PATCH/PUT /acknowledgements/1
   # PATCH/PUT /acknowledgements/1.json
   def update

@@ -43,9 +43,8 @@ gem 'jquery-rails'
 gem 'twilio-ruby', '~> 5.1.0'
 # Handle phone numbers as a propper data type (and normalize)
 gem 'phony_rails'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# For claims to create resources in a phone ack
+gem 'jwt'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
