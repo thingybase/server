@@ -1,0 +1,2 @@
+class AcknowledgementPolicy < ApplicationPolicy
+end

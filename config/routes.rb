@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :acknowledgements
   resources :members
   resources :users
   resources :teams

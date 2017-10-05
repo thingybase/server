@@ -1,0 +1,7 @@
+= simple_form_for @acknowledgement, :html => { :class => 'form-horizontal' } do |f|
+  = f.association :user
+  = f.error_span :user
+  = f.association :notification
+  = f.error_span :notification
+  = f.button :submit, :class => 'btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), acknowledgements_path, :class => 'btn btn-default'

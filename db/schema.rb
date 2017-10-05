@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171001222900) do
+ActiveRecord::Schema.define(version: 20171005052638) do
+
+  create_table "acknowledgements", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "notification_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notification_id"], name: "index_acknowledgements_on_notification_id"
+    t.index ["user_id"], name: "index_acknowledgements_on_user_id"
+  end
 
   create_table "members", force: :cascade do |t|
     t.integer "user_id"
