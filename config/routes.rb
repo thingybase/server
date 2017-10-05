@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :notifications
 
   resources :acknowledgements
-  post "/twilio/acknowledgements/claim/:claim", to: 'twilio_acknowledgements#create', as: :twilio_acknowledgement
+  post "/twilio/acknowledgements", to: 'twilio_acknowledgements#create', as: :twilio_acknowledgement
 
   resource :session
   post "/auth/:provider/callback", to: 'sessions#create'
