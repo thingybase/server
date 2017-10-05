@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :notifications
 
   resources :acknowledgements
-  post "/twilio/acknowledgements", to: 'twilio_acknowledgements#create', as: :twilio_acknowledgement
+  # TODO: Make this a POST and switch off TwiML
+  get "/twilio/acknowledgements", to: 'twilio_acknowledgements#create', as: :twilio_acknowledgement
 
   resource :session
   post "/auth/:provider/callback", to: 'sessions#create'
