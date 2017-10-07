@@ -8,7 +8,7 @@ class AcknowledgementsController < ApplicationController
   # GET /acknowledgements
   # GET /acknowledgements.json
   def index
-    @acknowledgements = policy_scope(Acknowledgement)
+    @acknowledgements = policy_scope(Acknowledgement).joins(:user, :notification)
   end
 
   # GET /acknowledgements/1

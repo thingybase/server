@@ -8,7 +8,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = policy_scope(Member)
+    @members = policy_scope(Member).joins(:user, :team)
   end
 
   # GET /members/1

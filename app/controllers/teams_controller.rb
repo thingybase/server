@@ -6,7 +6,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = policy_scope(Team)
+    @teams = policy_scope(Team).joins(:user)
   end
 
   # GET /teams/1
