@@ -2,7 +2,8 @@ class Acknowledgement < ApplicationRecord
   belongs_to :user
   belongs_to :notification
 
-  validates :user, presence: true, uniqueness: { scope: :notification }
+  validates :user, presence: true
+  validates_uniqueness_of :user_id, scope: :notification_id
   validates :notification, presence: true
 
   CLAIM_SECRET = 'my$ecretK3y'.freeze

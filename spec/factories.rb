@@ -1,18 +1,29 @@
-FactoryGirl.define do  factory :team do
-    name "MyString"
-user nil
-  end
-
+FactoryGirl.define do
   factory :user do
     name "John Doe"
-    sequence :email do |n|
-      "person#{n}@example.com"
-    end
+    sequence :email { |n| "person#{n}@example.com" }
+    phone_number "+15555555555"
+  end
+
+  factory :team do
+    name "The 'A' Team"
+    user
+  end
+
+  factory :members do
+    team
+    user
   end
 
   factory :notification do
     subject "Something happened"
     message "Better take a look at it and get to it. Got that?"
-    association :user
+    user
+    team
+  end
+
+  factory :acknowledgement do
+    user
+    notification
   end
 end

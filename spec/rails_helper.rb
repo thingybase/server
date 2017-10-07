@@ -56,4 +56,16 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 end
 
+# Factories, instead of fixtures.
 require 'config/factory_girl'
+
+# Pundit test helpers from https://github.com/chrisalley/pundit-matchers
+require 'pundit/matchers'
+
+# Make life easier for writing unit specs at https://github.com/thoughtbot/shoulda-matchers
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end

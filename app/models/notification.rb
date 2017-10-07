@@ -3,12 +3,14 @@ class Notification < ApplicationRecord
   belongs_to :team
 
   validates :subject, presence: true
-  validates :message, presence: true
+  validates :user, presence: true
+  validates :team, presence: true
 
   def name
     subject
   end
 
+  # TODO: Move this into a Job or SO
   def deliver
     team.users.each do |user|
       notifier = MemberNotifier.new(user.phone_number)
