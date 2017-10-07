@@ -10,7 +10,10 @@
   %strong= model_class.human_attribute_name(:notification_id) + ':'
   %br
   = @acknowledgement.notification.name
-
+%p
+  %strong= model_class.human_attribute_name(:created_at) + ':'
+  %br
+  = @acknowledgement.created_at
 
 = link_to t('.back', :default => t("helpers.links.back")), acknowledgements_path, :class => 'btn btn-default'
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_acknowledgement_path(@acknowledgement), :class => 'btn btn-default'
