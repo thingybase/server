@@ -5,13 +5,16 @@ class TwilioAcknowledgementsController < ApplicationController
 
   def create
     @acknowledgement = Acknowledgement.from_claim(params[:claim])
+    response = Twilio::TwiML::VoiceResponse.new
 
     # TODO: Make this respond via TwiML
     respond_to do |format|
       if @acknowledgement.save
-        format.json { render :show, status: :created, location: @acknowledgement }
+        response.say "You have successfully acknowledged this notification. Good bye."
+        format.xml { render body: response, status: :created, location: @acknowledgement }
       else
-        format.json { render json: @acknowledgement.errors, status: :unprocessable_entity }
+        response.say "Something wrong happened with Pagerline."
+        format.xml { render body: response, status: :unprocessable_entity}
       end
     end
   end
