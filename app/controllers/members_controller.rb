@@ -1,6 +1,8 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
+  # TODO: Authorize team
+  before_action :set_team, only: [:new]
   before_action :authorize_member, only: [:show, :edit, :update, :destroy]
 
   # GET /members
@@ -17,6 +19,7 @@ class MembersController < ApplicationController
   # GET /members/new
   def new
     @member = Member.new
+    @member.team = @team
   end
 
   # GET /members/1/edit
@@ -72,6 +75,11 @@ class MembersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
       params.require(:member).permit(:user_id, :team_id)
+    end
+
+    # Load team
+    def set_team
+      @team = Team.find(params[:team_id]) if params.key? :team_id
     end
 
     def authorize_member

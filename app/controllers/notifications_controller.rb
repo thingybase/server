@@ -1,6 +1,8 @@
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
+  before_action :set_team, only: [:new]
+  # TODO: Authorize team
   before_action :authorize_notificaton, only: [:show, :edit, :update, :destroy]
 
   # GET /notifications
@@ -17,6 +19,7 @@ class NotificationsController < ApplicationController
   # GET /notifications/new
   def new
     @notification = Notification.new
+    @notification.team = @team
   end
 
   # GET /notifications/1/edit
@@ -73,7 +76,12 @@ class NotificationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def notification_params
-      params.require(:notification).permit(:subject, :message)
+      params.require(:notification).permit(:subject, :message, :team_id)
+    end
+
+    # Load team
+    def set_team
+      @team = Team.find(params[:team_id]) if params.key? :team_id
     end
 
     # Authorizse resource
