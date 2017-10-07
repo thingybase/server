@@ -1,6 +1,4 @@
 = simple_form_for @acknowledgement, :html => { :class => 'form-horizontal' } do |f|
-  = f.association :user
-  = f.error_span :user
   = f.association :notification
   = f.error_span :notification
   = f.button :submit, :class => 'btn-primary'

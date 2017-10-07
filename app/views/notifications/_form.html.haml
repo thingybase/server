@@ -1,9 +1,7 @@
 = simple_form_for @notification, :html => { :class => 'form-horizontal' } do |f|
   = f.input :subject, autofocus: true
   = f.error_span :subject
-  = f.input :message, as: :text
+  = f.input :message, as: :text, input_html: { rows: 7 }
   = f.error_span :message
-  = f.association :user
-  = f.error_span :user_id
   = f.button :submit, :class => 'btn-primary'
   = link_to t('.cancel', :default => t("helpers.links.cancel")), notifications_path, :class => 'btn btn-default'

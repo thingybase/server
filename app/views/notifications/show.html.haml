@@ -13,7 +13,7 @@
 %p
   %strong= model_class.human_attribute_name(:user_id) + ':'
   %br
-  = @notification.user_id
+  = @notification.user.name
 
 
 = link_to t('.back', :default => t("helpers.links.back")), notifications_path, :class => 'btn btn-default'

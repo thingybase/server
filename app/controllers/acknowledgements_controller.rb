@@ -1,5 +1,6 @@
 class AcknowledgementsController < ApplicationController
   before_action :set_notification, only: [:new]
+  # TODO: Authorize notification
   before_action :set_acknowledgement, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
   before_action :authorize_acknowledgement, only: [:show, :edit, :update, :destroy]
@@ -97,7 +98,7 @@ class AcknowledgementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def acknowledgement_params
-      params.require(:acknowledgement).permit(:user_id, :notification_id)
+      params.require(:acknowledgement).permit(:notification_id)
     end
 
     def authorize_acknowledgement
