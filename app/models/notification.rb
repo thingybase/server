@@ -15,7 +15,7 @@ class Notification < ApplicationRecord
 
     ack = Acknowledgement.new user: user, notification: self
     ack_claim = ack.to_claim
-    ack_url = Pagerline::Application.routes.url_helpers.twilio_acknowledgement_url(claim: ack_claim)
+    ack_url = Pagerline::Application.routes.url_helpers.twilio_acknowledgement_url(claim: ack_claim, format: :xml)
     notifier.voice_call subject, acknowledgement_url: ack_url
   end
 end

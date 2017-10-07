@@ -14,7 +14,7 @@ class TwilioAcknowledgementsController < ApplicationController
         format.xml { render body: response, status: :created, location: @acknowledgement }
       else
         response.say "Something wrong happened with Pagerline."
-        format.xml { render body: response, status: :unprocessable_entity}
+        format.xml { render body: response, status: :unprocessable_entity }
       end
     end
   end
