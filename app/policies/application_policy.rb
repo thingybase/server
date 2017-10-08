@@ -15,7 +15,7 @@ class ApplicationPolicy
   end
 
   def create?
-    is_owner?
+    user.present?
   end
 
   def new?
