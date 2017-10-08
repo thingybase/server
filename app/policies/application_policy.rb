@@ -7,11 +7,11 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    user.present?
   end
 
   def show?
-    user && scope.where(:id => record.id).exists?
+    user.present? && scope.where(id: record.id).exists?
   end
 
   def create?
@@ -53,6 +53,6 @@ class ApplicationPolicy
 
   private
     def is_owner?
-      @user == @record.user
+      user.present? && user == record.user
     end
 end

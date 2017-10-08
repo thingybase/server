@@ -10,7 +10,7 @@ FactoryGirl.define do
     user
   end
 
-  factory :members do
+  factory :member do
     team
     user
   end
