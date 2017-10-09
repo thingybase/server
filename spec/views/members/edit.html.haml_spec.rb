@@ -8,7 +8,7 @@ RSpec.describe "members/edit", type: :view do
     ))
   end
 
-  it "renders the edit member form" do
+  xit "renders the edit member form" do
     render
 
     assert_select "form[action=?][method=?]", member_path(@member), "post" do

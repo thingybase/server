@@ -8,7 +8,7 @@ RSpec.describe "teams/new", type: :view do
     ))
   end
 
-  it "renders new team form" do
+  xit "renders new team form" do
     render
 
     assert_select "form[action=?][method=?]", teams_path, "post" do

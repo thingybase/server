@@ -16,7 +16,7 @@ RSpec.describe "notifications/index", type: :view do
     ])
   end
 
-  it "renders a list of notifications" do
+  xit "renders a list of notifications" do
     render
     assert_select "tr>td", :text => "Subject".to_s, :count => 2
     assert_select "tr>td", :text => "Message".to_s, :count => 2
