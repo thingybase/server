@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "acknowledgements/edit", type: :view do
   before(:each) do
-    @acknowledgement = assign(:acknowledgement, Acknowledgement.create!(
-      :user => nil,
-      :notification => nil
-    ))
+    @acknowledgement = assign(:acknowledgement, create(:acknowledgement))
   end
 
   it "renders the edit acknowledgement form" do
