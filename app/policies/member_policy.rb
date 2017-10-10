@@ -3,6 +3,10 @@ class MemberPolicy < ApplicationPolicy
     is_team_owner?
   end
 
+  def new?
+    user.present?
+  end
+
   def update?
     is_team_owner?
   end
@@ -16,19 +20,13 @@ class MemberPolicy < ApplicationPolicy
   end
 
   class Scope < Scope
-    # TODO: This is super-wonky because I don't create a `member` record
-    # for an owner. I should probably do that and then clean up this query.
-    # For now this works, but its pretty meh.
     def resolve
-      scope
-        .joins("LEFT JOIN teams ON teams.id = members.team_id")
-        .where("members.user_id = ? OR teams.user_id = ?", @user.id, @user.id)
-        .distinct
+      scope.where(team_id: user.teams)
     end
   end
 
   private
     def is_team_owner?
-      user.present? && user == record.team.user
+      user.present? && user == record.team&.user
     end
 end

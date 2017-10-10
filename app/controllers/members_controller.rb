@@ -1,9 +1,9 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
   # TODO: Authorize team
   before_action :set_team, only: [:new]
-  before_action :authorize_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_member, only: [:show, :edit, :destroy]
 
   # GET /members
   # GET /members.json
@@ -20,6 +20,7 @@ class MembersController < ApplicationController
   def new
     @member = Member.new
     @member.team = @team
+    authorize_member
   end
 
   # GET /members/1/edit
@@ -30,6 +31,7 @@ class MembersController < ApplicationController
   # POST /members.json
   def create
     @member = Member.new(member_params)
+    authorize_member
 
     respond_to do |format|
       if @member.save
@@ -45,8 +47,11 @@ class MembersController < ApplicationController
   # PATCH/PUT /members/1
   # PATCH/PUT /members/1.json
   def update
+    @member.assign_attributes(member_params)
+    authorize_member
+
     respond_to do |format|
-      if @member.update(member_params)
+      if @member.save
         format.html { redirect_to @member, notice: 'Member was successfully updated.' }
         format.json { render :show, status: :ok, location: @member }
       else

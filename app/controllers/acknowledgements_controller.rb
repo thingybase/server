@@ -1,9 +1,9 @@
 class AcknowledgementsController < ApplicationController
-  before_action :set_notification, only: [:new]
-  # TODO: Authorize notification
-  before_action :set_acknowledgement, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
-  before_action :authorize_acknowledgement, only: [:show, :edit, :update, :destroy]
+  # TODO: Authorize notification
+  before_action :set_notification, only: [:new]
+  before_action :set_acknowledgement, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_acknowledgement, only: [:show, :edit, :destroy]
 
   # GET /acknowledgements
   # GET /acknowledgements.json
@@ -21,6 +21,7 @@ class AcknowledgementsController < ApplicationController
     @acknowledgement = Acknowledgement.new
     @acknowledgement.notification = @notification
     @acknowledgement.user = current_user
+    authorize_acknowledgement
   end
 
   # GET /acknowledgements/1/edit
@@ -32,6 +33,7 @@ class AcknowledgementsController < ApplicationController
   def create
     @acknowledgement = Acknowledgement.new(acknowledgement_params)
     @acknowledgement.user = current_user
+    authorize_acknowledgement
 
     respond_to do |format|
       if @acknowledgement.save
@@ -64,8 +66,12 @@ class AcknowledgementsController < ApplicationController
   # PATCH/PUT /acknowledgements/1
   # PATCH/PUT /acknowledgements/1.json
   def update
+    @acknowledgement.assign_attributes(acknowledgement_params)
+    @acknowledgement.user = current_user
+    authorize_acknowledgement
+
     respond_to do |format|
-      if @acknowledgement.update(acknowledgement_params)
+      if @acknowledgement.save
         format.html { redirect_to @acknowledgement, notice: 'Acknowledgement was successfully updated.' }
         format.json { render :show, status: :ok, location: @acknowledgement }
       else

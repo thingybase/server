@@ -6,6 +6,13 @@ class User < ApplicationRecord
 
   has_many :notifications
 
+  def teams
+    Team
+      .joins("LEFT JOIN members ON teams.id = members.team_id")
+      .where("members.user_id = ? OR teams.user_id = ?", id, id)
+      .distinct
+  end
+
   # TODO: Move this into a service object.
   def self.find_or_create_from_auth_hash(auth_hash)
     find_or_create_by! email: auth_hash.info.email do |user|

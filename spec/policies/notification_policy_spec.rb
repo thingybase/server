@@ -29,6 +29,7 @@ describe NotificationPolicy do
 
   context 'a member to themselves' do
     let(:user) { notification.user }
+    before { create(:member, user: notification.user, team: notification.team) }
     it { is_expected.to permit_action(:edit) }
     it { is_expected.to permit_action(:update) }
     it { is_expected.to permit_action(:destroy) }
@@ -39,7 +40,8 @@ describe NotificationPolicy do
   end
 
   context 'a member to another member' do
-    let(:user) { create(:member, team: notification.team).user }
+    let(:user) { create(:user) }
+    before { create(:member, user: user, team: notification.team) }
     it { is_expected.to forbid_action(:edit) }
     it { is_expected.to forbid_action(:update) }
     it { is_expected.to forbid_action(:destroy) }
@@ -57,7 +59,7 @@ describe NotificationPolicy do
     it { is_expected.to forbid_action(:update) }
     it { is_expected.to forbid_action(:destroy) }
     it { is_expected.to forbid_action(:create) }
-    it { is_expected.to forbid_action(:new) }
     it { is_expected.to forbid_action(:index) }
+    it { is_expected.to permit_action(:new) }
   end
 end

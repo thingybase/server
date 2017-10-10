@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
-  before_action :authorize_team, only: [:show, :edit, :update, :destroy]
+  before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_team, only: [:show, :edit, :destroy]
 
   # GET /teams
   # GET /teams.json
@@ -16,9 +16,9 @@ class TeamsController < ApplicationController
 
   # GET /teams/new
   def new
-    @team = Team.new do |team|
-      team.user = current_user
-    end
+    @team = Team.new
+    @team.user = current_user
+    authorize_team
   end
 
   # GET /teams/1/edit
@@ -28,9 +28,9 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-    @team = Team.new(team_params) do |team|
-      team.user = current_user
-    end
+    @team = Team.new(team_params)
+    @team.user = current_user
+    authorize_team
 
     respond_to do |format|
       if @team.save
@@ -46,8 +46,11 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1
   # PATCH/PUT /teams/1.json
   def update
+    @team.assign_attributes(team_params)
+    authorize_team
+
     respond_to do |format|
-      if @team.update(team_params)
+      if @team.save
         format.html { redirect_to @team, notice: 'Team was successfully updated.' }
         format.json { render :show, status: :ok, location: @team }
       else

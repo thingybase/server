@@ -1,9 +1,9 @@
 class NotificationsController < ApplicationController
-  before_action :set_notification, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user
-  before_action :set_team, only: [:new]
   # TODO: Authorize team
-  before_action :authorize_notificaton, only: [:show, :edit, :update, :destroy]
+  before_action :set_team, only: [:new]
+  before_action :set_notification, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_notification, only: [:show, :edit, :destroy]
 
   # GET /notifications
   # GET /notifications.json
@@ -19,7 +19,9 @@ class NotificationsController < ApplicationController
   # GET /notifications/new
   def new
     @notification = Notification.new
+    @notification.user = current_user
     @notification.team = @team
+    authorize_notification
   end
 
   # GET /notifications/1/edit
@@ -31,6 +33,7 @@ class NotificationsController < ApplicationController
   def create
     @notification = Notification.new(notification_params)
     @notification.user = current_user
+    authorize_notification
 
     respond_to do |format|
       if @notification.save
@@ -47,8 +50,11 @@ class NotificationsController < ApplicationController
   # PATCH/PUT /notifications/1
   # PATCH/PUT /notifications/1.json
   def update
+    @notification.assign_attributes(notification_params)
+    authorize_notification
+
     respond_to do |format|
-      if @notification.update(notification_params)
+      if @notification.save
         format.html { redirect_to @notification, notice: 'Notification was successfully updated.' }
         format.json { render :show, status: :ok, location: @notification }
       else
@@ -85,7 +91,7 @@ class NotificationsController < ApplicationController
     end
 
     # Authorizse resource
-    def authorize_notificaton
+    def authorize_notification
       authorize @notification
     end
 end
