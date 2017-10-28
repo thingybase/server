@@ -10,8 +10,6 @@
         %ul.nav.navbar-nav
           %li= link_to "Notifications", notifications_path
           %li= link_to "Teams", teams_path
-          %li= link_to "Members", members_path
-          %li= link_to "Acknowledgements", acknowledgements_path
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
@@ -19,6 +17,9 @@
               %span.caret
             %ul.dropdown-menu
               %li= link_to "Settings", edit_user_path(current_user)
+              %li= link_to "Members", members_path
+              %li= link_to "Acknowledgements", acknowledgements_path
+              %li= link_to "Invitations", team_invitations_path
               %li= link_to "Sign out", session_path, method: :delete
     -else
       .navbar-collapse.collapse.navbar-responsive-collapse

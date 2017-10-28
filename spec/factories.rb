@@ -1,4 +1,13 @@
 FactoryGirl.define do
+  factory :team_invitation do
+    sequence :email { |n| "person#{n}@example.com" }
+    name "Bingo Charlie Alpha"
+    token { TeamInvitation.random_token }
+    expires_at "2017-10-17 23:02:07"
+    user
+    team
+  end
+
   factory :user do
     name "John Doe"
     sequence :email { |n| "person#{n}@example.com" }
