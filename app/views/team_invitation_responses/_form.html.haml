@@ -1,0 +1,8 @@
+= simple_form_for(@team_invitation_response) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :status, as: :radio_buttons, collection: TeamInvitationResponse::STATUSES
+
+  .form-actions
+    = f.button :submit, "Respond to invitation"

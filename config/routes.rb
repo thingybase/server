@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :team_invitations
+  resources :team_invitation_responses,
+    param: :token,
+    only: %w[edit update]
   resources :members
   resources :users
   resources :teams

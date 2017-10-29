@@ -17,6 +17,7 @@ class TeamInvitationsController < ApplicationController
   def new
     @team_invitation = TeamInvitation.new
     @team_invitation.user = current_user
+    @team_invitation.token = TeamInvitation.random_token
     authorize_team_invitation
   end
 
@@ -81,6 +82,6 @@ class TeamInvitationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_invitation_params
-      params.require(:team_invitation).permit(:email, :name, :token, :team_id, :user_id, :expires_at)
+      params.require(:team_invitation).permit(:email, :name, :token, :team_id, :expires_at)
     end
 end

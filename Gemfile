@@ -45,6 +45,8 @@ gem 'twilio-ruby', '~> 5.1.0'
 gem 'phony_rails'
 # For claims to create resources in a phone ack
 gem 'jwt'
+# Validate password and token strengths based on entropy.
+gem 'strong_password'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

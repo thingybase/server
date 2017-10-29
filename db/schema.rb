@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20171018060207) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_team_invitations_on_team_id"
-    t.index ["token"], name: "index_team_invitations_on_token"
+    t.index ["token"], name: "index_team_invitations_on_token", unique: true
     t.index ["user_id"], name: "index_team_invitations_on_user_id"
   end
 
