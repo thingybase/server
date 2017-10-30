@@ -19,7 +19,7 @@
   %br
   = @team_invitation.expires_at
 %p
-  %strong Link
+  %strong Invitation link:
   %br
   =link_to edit_team_invitation_response_url(@team_invitation.token), edit_team_invitation_response_url(@team_invitation.token)
 = link_to t('.back', :default => t("helpers.links.back")), team_invitations_path, :class => 'btn btn-default'

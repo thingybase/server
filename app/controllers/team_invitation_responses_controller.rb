@@ -1,7 +1,7 @@
 class TeamInvitationResponsesController < ApplicationController
+  skip_after_action :verify_authorized
   before_action :set_team_invitation
   before_action :set_team_invitation_response
-  skip_after_action :verify_authorized
 
   # GET /team_invitation_responses/1
   # GET /team_invitation_responses/1.json
@@ -16,7 +16,7 @@ class TeamInvitationResponsesController < ApplicationController
 
     respond_to do |format|
       if @team_invitation_response.save
-        format.html { redirect_to @team_invitation_response.invitation.team, notice: 'Team invitation response was successfully created.' }
+        format.html { redirect_to @team_invitation_response.invitation.team, notice: 'Team invitation response was successfully recorded.' }
         format.json { render :show, status: :created, location: @team_invitation_response.invitation.team }
       else
         format.html { render :edit }
