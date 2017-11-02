@@ -4,22 +4,18 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:email)
       %th= model_class.human_attribute_name(:name)
       %th= model_class.human_attribute_name(:team_id)
-      %th= model_class.human_attribute_name(:expires_at)
       %th= model_class.human_attribute_name(:user_id)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @team_invitations.each do |team_invitation|
       %tr
-        %td= link_to team_invitation.id, team_invitation_path(team_invitation)
-        %td= team_invitation.email
+        %td= link_to team_invitation.email, team_invitation_path(team_invitation)
         %td= team_invitation.name
         %td= team_invitation.team.name
-        %td= team_invitation.expires_at
         %td= team_invitation.user.name
         %td=l team_invitation.created_at
         %td

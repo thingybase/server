@@ -11,14 +11,6 @@
   %br
   = @user.email
 %p
-  %strong= model_class.human_attribute_name(:password_hash) + ':'
-  %br
-  = @user.password_hash
-%p
-  %strong= model_class.human_attribute_name(:alias) + ':'
-  %br
-  = @user.alias
-%p
   %strong= model_class.human_attribute_name(:phone_number) + ':'
   %br
   = @user.phone_number

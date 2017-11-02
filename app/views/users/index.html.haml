@@ -4,20 +4,16 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:name)
       %th= model_class.human_attribute_name(:email)
-      %th= model_class.human_attribute_name(:alias)
       %th= model_class.human_attribute_name(:phone_number)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @users.each do |user|
       %tr
-        %td= link_to user.id, user_path(user)
-        %td= user.name
+        %td= link_to user.name, user_path(user)
         %td= user.email
-        %td= user.alias
         %td= user.phone_number
         %td=l user.created_at
         %td

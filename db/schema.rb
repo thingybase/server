@@ -32,22 +32,21 @@ ActiveRecord::Schema.define(version: 20171018060207) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.string "subject"
+    t.string "subject", null: false
     t.string "message"
+    t.integer "team_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "team_id"
     t.index ["team_id"], name: "index_notifications_on_team_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "team_invitations", force: :cascade do |t|
+    t.string "token", null: false
     t.string "email", null: false
     t.string "name"
-    t.string "token", null: false
     t.integer "team_id"
-    t.datetime "expires_at"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -57,30 +56,19 @@ ActiveRecord::Schema.define(version: 20171018060207) do
   end
 
   create_table "teams", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
-  create_table "teams_users", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "team_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_teams_users_on_team_id"
-    t.index ["user_id"], name: "index_teams_users_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_hash"
-    t.string "alias"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "phone_number"
   end
 
 end

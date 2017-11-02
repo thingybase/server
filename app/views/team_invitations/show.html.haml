@@ -15,10 +15,6 @@
   %br
   = @team_invitation.team.name
 %p
-  %strong= model_class.human_attribute_name(:expires_at) + ':'
-  %br
-  = @team_invitation.expires_at
-%p
   %strong Invitation link:
   %br
   =link_to edit_team_invitation_response_url(@team_invitation.token), edit_team_invitation_response_url(@team_invitation.token)

@@ -1,6 +1,5 @@
 class TeamInvitation < ApplicationRecord
   TOKEN_SIZE = 16
-  INVITATION_TTL = 3.days
   MINIMUM_ENTROPY = 30
 
   belongs_to :team
@@ -14,22 +13,17 @@ class TeamInvitation < ApplicationRecord
   validates :team, presence: true
 
   before_validation :assign_random_token, on: :create
-  before_validation :assign_default_expiration, on: :create
-
-  def expired?
-    expires_at > Time.now
-  end
 
   def self.random_token
     SecureRandom.hex(TOKEN_SIZE)
   end
 
+  def response
+    @_response ||= TeamInvitationResponse.new(invitation: self)
+  end
+
   private
     def assign_random_token
       self.token ||= self.class.random_token
-    end
-
-    def assign_default_expiration
-      self.expires_at ||= INVITATION_TTL.from_now
     end
 end

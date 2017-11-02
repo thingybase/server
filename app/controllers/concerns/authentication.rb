@@ -29,6 +29,6 @@ module Authentication
     end
 
     def access_denied_url
-      session.fetch[:access_denied_url]
+      session[:access_denied_url]
     end
 end
