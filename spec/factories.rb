@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :team_invitation do
     sequence :email { |n| "person#{n}@example.com" }
     name "Bingo Charlie Alpha"

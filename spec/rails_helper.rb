@@ -57,7 +57,7 @@ RSpec.configure do |config|
 end
 
 # Factories, instead of fixtures.
-require 'config/factory_girl'
+require 'config/factory_bot'
 
 # Pundit test helpers from https://github.com/chrisalley/pundit-matchers
 require 'pundit/matchers'
