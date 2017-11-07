@@ -6,8 +6,8 @@ class Acknowledgement < ApplicationRecord
   validates_uniqueness_of :user_id, scope: :notification_id
   validates :notification, presence: true
 
-  CLAIM_SECRET = 'my$ecretK3y'.freeze
   CLAIM_ENCRYPTION_ALGORITH = 'HS256'.freeze
+  CLAIM_SECRET = Rails.application.secrets.fetch(:secret_key_base)
   CLAIM_TTL = 10.minutes
 
   # Encode the acknowledgement into a format that can be stuck in a URL for Twilio
