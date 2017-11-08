@@ -1,7 +1,7 @@
 class TeamInvitationResponsesController < ApplicationController
-  skip_after_action :verify_authorized
   before_action :set_team_invitation
   before_action :set_team_invitation_response
+  before_action :authorize_team_invitation_response, only: :edit
 
   # GET /team_invitation_responses/1
   # GET /team_invitation_responses/1.json
@@ -13,6 +13,7 @@ class TeamInvitationResponsesController < ApplicationController
   # POST /team_invitation_responses.json
   def update
     @team_invitation_response.assign_attributes(team_invitation_response_params)
+    authorize_team_invitation_response
 
     respond_to do |format|
       if @team_invitation_response.save
@@ -39,5 +40,9 @@ class TeamInvitationResponsesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_invitation_response_params
       params.require(:team_invitation_response).permit(:status)
+    end
+
+    def authorize_team_invitation_response
+      authorize @team_invitation_response
     end
 end
