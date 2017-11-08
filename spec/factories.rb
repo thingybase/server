@@ -1,20 +1,25 @@
+# Set phone numbers to be US only, for now ...
+Faker::Config.locale = 'en-US'
+
 FactoryBot.define do
   factory :team_invitation do
-    sequence :email { |n| "person#{n}@example.com" }
-    name "Bingo Charlie Alpha"
+    email { Faker::Internet.unique.email }
+    name { Faker::Name.name }
     token { TeamInvitation.random_token }
     user
     team
   end
 
   factory :user do
-    name "John Doe"
-    sequence :email { |n| "person#{n}@example.com" }
-    phone_number "+15555555555"
+    name { Faker::Name.name }
+    email { Faker::Internet.unique.email }
+    factory :user_with_phone_number do
+      phone_number { Faker::PhoneNumber.unique.cell_phone }
+    end
   end
 
   factory :team do
-    name "The 'A' Team"
+    name { Faker::Superhero.name }
     user
   end
 
@@ -24,8 +29,8 @@ FactoryBot.define do
   end
 
   factory :notification do
-    subject "Something happened"
-    message "Better take a look at it and get to it. Got that?"
+    subject { Faker::Hipster.sentence }
+    message { Faker::Hipster.paragraph }
     user
     team
   end
