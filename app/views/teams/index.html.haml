@@ -12,7 +12,7 @@
     - @teams.each do |team|
       %tr
         %td= link_to team.name, team_path(team)
-        %td= team.user.name
+        %td= link_to team.user.name, team.user
         %td=l team.created_at
         %td
           = link_to t('.show', :default => t("helpers.links.show")), team_path(team), :class => 'btn btn-default btn-xs'

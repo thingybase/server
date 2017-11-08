@@ -8,7 +8,7 @@ class NotificationsController < ApplicationController
   # GET /notifications
   # GET /notifications.json
   def index
-    @notifications = policy_scope(Notification)
+    @notifications = policy_scope(Notification).includes(:team)
   end
 
   # GET /notifications/1

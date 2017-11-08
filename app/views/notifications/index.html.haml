@@ -5,15 +5,15 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:subject)
-      %th= model_class.human_attribute_name(:message)
       %th= model_class.human_attribute_name(:created_at)
+      %th= Team.model_name.human.titleize
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @notifications.each do |notification|
       %tr
         %td= link_to notification.subject, notification
-        %td= notification.message
         %td=l notification.created_at
+        %td= link_to notification.team.name, notification.team
         %td
           = link_to t('.show', :default => t("helpers.links.show")), notification_path(notification), :class => 'btn btn-default btn-xs'
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_notification_path(notification), :class => 'btn btn-default btn-xs'
