@@ -1,8 +1,13 @@
 class User < ApplicationRecord
   validates :name, presence: true
-  validates :email, presence: true
+  validates :email,
+    presence: true,
+    uniqueness: true
   phony_normalize :phone_number, default_country_code: 'US'
-  validates :phone_number, phony_plausible: true
+  validates :phone_number,
+    phony_plausible: true,
+    uniqueness: true,
+    allow_nil: true
 
   has_many :notifications
 

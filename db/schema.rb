@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102080457) do
+ActiveRecord::Schema.define(version: 20171108074435) do
 
   create_table "acknowledgements", force: :cascade do |t|
     t.integer "user_id"
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 20171102080457) do
     t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["phone_number"], name: "index_users_on_phone_number", unique: true
   end
 
 end
