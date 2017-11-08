@@ -6,7 +6,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   private
-  def is_owner?
-    @user == @record
-  end
+    def is_owner?
+      @user == @record
+    end
 end
