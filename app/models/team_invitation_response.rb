@@ -1,4 +1,7 @@
-class TeamInvitationResponse
+# TODO: Refactor the controller to use the pk_id
+# to find the index and just use this as a verification
+# step of the token code.
+class TeamInvitationResponse < ApplicationModel
   include ActiveModel::Model
   attr_accessor :invitation, :status, :user
 
