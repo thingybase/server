@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :phone_number_verifications,
+    only: %w[edit update]
+  resources :phone_number_claims,
+    only: %w[index new create show destroy]
   resources :team_invitations
   resources :team_invitation_responses,
     param: :token,

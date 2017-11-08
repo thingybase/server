@@ -2,6 +2,12 @@
 Faker::Config.locale = 'en-US'
 
 FactoryBot.define do
+  factory :phone_number_claim do
+    phone_number { Faker::PhoneNumber.unique.cell_phone }
+    code { PhoneNumberClaim.random_code }
+    user
+  end
+
   factory :team_invitation do
     email { Faker::Internet.unique.email }
     name { Faker::Name.name }
