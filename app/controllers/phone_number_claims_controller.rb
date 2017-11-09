@@ -35,6 +35,8 @@ class PhoneNumberClaimsController < ApplicationController
 
     respond_to do |format|
       if @phone_number_claim.save
+        # TODO: Verify this happens via mock.
+        SendClaimCodeSmsJob.perform_later @phone_number_claim
         format.html { redirect_to [:edit, @phone_number_claim.verification], notice: 'Phone number claim was successfully created.' }
         format.json { render :show, status: :created, location: @phone_number_claim }
       else

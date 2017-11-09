@@ -9,19 +9,4 @@ class Notification < ApplicationRecord
   def name
     subject
   end
-
-  # TODO: Move this into a Job or SO
-  def deliver
-    team.users.each do |user|
-      notifier = MemberNotifier.new(user.phone_number)
-      url = Pagerline::Application.routes.url_helpers.new_acknowledgement_url(notification_id: id)
-      footer = "Ack @ #{url}"
-      notifier.sms_message "#{subject} | #{footer}"
-
-      ack = Acknowledgement.new user: user, notification: self
-      ack_claim = ack.to_claim
-      ack_url = Pagerline::Application.routes.url_helpers.twilio_acknowledgement_url(claim: ack_claim, format: :xml)
-      notifier.voice_call subject, acknowledgement_url: ack_url
-    end
-  end
 end

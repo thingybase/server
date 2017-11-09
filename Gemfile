@@ -40,7 +40,7 @@ gem 'twitter-bootstrap-rails'
 # Needed to work with bootstrap
 gem 'jquery-rails'
 # Communicate with Twilio
-gem 'twilio-ruby', '~> 5.1.0'
+gem 'twilio-ruby'
 # Handle phone numbers as a propper data type (and normalize)
 gem 'phony_rails'
 # For claims to create resources in a phone ack
