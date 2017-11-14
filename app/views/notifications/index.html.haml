@@ -12,7 +12,7 @@
     - @notifications.each do |notification|
       %tr
         %td= link_to notification.subject, notification
-        %td=l notification.created_at
+        %td= local_time notification.created_at
         %td= link_to notification.team.name, notification.team
         %td
           = link_to t('.show', :default => t("helpers.links.show")), notification_path(notification), :class => 'btn btn-default btn-xs'

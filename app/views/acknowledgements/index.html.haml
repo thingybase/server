@@ -13,7 +13,7 @@
       %tr
         %td= link_to acknowledgement.notification.name, acknowledgement_path(acknowledgement)
         %td= acknowledgement.user.name
-        %td=l acknowledgement.created_at
+        %td= local_time acknowledgement.created_at
         %td
           = link_to t('.show', :default => t("helpers.links.show")), acknowledgement_path(acknowledgement), :class => 'btn btn-default btn-xs'
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_acknowledgement_path(acknowledgement), :class => 'btn btn-default btn-xs'

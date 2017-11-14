@@ -17,7 +17,7 @@
         %td= team_invitation.name
         %td= team_invitation.team.name
         %td= team_invitation.user.name
-        %td=l team_invitation.created_at
+        %td= local_time team_invitation.created_at
         %td
           = link_to t('.show', :default => t("helpers.links.show")), team_invitation_path(team_invitation), :class => 'btn btn-default btn-xs'
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_team_invitation_path(team_invitation), :class => 'btn btn-default btn-xs'

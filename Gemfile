@@ -46,6 +46,8 @@ gem 'phony_rails'
 gem 'jwt'
 # Validate password and token strengths based on entropy.
 gem 'strong_password'
+# Display times locally
+gem 'local_time'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

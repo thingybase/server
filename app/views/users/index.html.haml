@@ -15,7 +15,7 @@
         %td= link_to user.name, user_path(user)
         %td= user.email
         %td= user.phone_number
-        %td=l user.created_at
+        %td= local_time user.created_at
         %td
           = link_to t('.show', :default => t("helpers.links.show")), user_path(user), :class => 'btn btn-default btn-xs'
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_user_path(user), :class => 'btn btn-default btn-xs'

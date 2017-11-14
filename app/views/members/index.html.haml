@@ -13,7 +13,7 @@
       %tr
         %td= link_to member.user.name, member_path(member)
         %td= member.team.name
-        %td=l member.created_at
+        %td= local_time member.created_at
         %td
           = link_to t('.show', :default => t("helpers.links.show")), member_path(member), :class => 'btn btn-default btn-xs'
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_member_path(member), :class => 'btn btn-default btn-xs'
