@@ -1,7 +1,4 @@
 =render_layout "body" do
-  =render partial: "nav_bar"
-  .container
-    .row
-      .col-lg-12
-        = bootstrap_flash
-        = yield
+  %header=render partial: "nav_bar"
+  .container= yield
+  %footer

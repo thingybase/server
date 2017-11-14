@@ -1,0 +1,111 @@
+$base-font-size: 12pt
+
+$white: #fff
+$black: #000
+$light-gray: #ddd
+$primary-color: #4A90E2
+$danger-color: red
+
+*, *:before, *:after
+  box-sizing: border-box
+
+body, html
+  font-size: $base-font-size
+  font-family: -apple-system, Helvetica, sans-serif
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+
+a
+  color: $primary-color
+table
+  width: 100%
+  border-collapse: collapse
+  margin-bottom: 1rem
+  th, td
+    padding: 0.5rem
+    border: none
+    border-spacing: 0
+  thead
+    tr
+      th
+        border-bottom: 1px solid $light-gray
+        text-align: left
+  tbody
+    tr
+      td
+        border-bottom: 1px solid $light-gray
+
+
+// Buttons
+a.btn, button, input[type="submit"], input[type="button"], input[type="reset"]
+  background: $white
+  color: $primary-color
+  border: 1px solid $primary-color
+  border-radius: 0.25rem
+  text-decoration: none
+  display: inline-block
+  white-space: pre
+  text-align: center
+  font-size: 1rem
+  padding: 0.5rem 0.75rem
+  &:hover
+    background: $primary-color
+    color: $white
+    box-shadow: 0px 0px 10px rgba($black, 0.1)
+  &.btn-danger
+    background: $danger-color
+    border: 1px solid $danger-color
+    color: $white
+  &.btn-primary
+    background: $primary-color
+    color: $white
+  &.btn-xs
+    font-size: 0.65rem
+    padding: 0.15rem 0.35rem 0.2rem
+
+// Text-like inputs
+input[type="text"], input[type="email"], input[type="tel"], textarea, select
+  font-size: 1rem
+  padding: 0.5rem
+  width: 100%
+
+// Form layout
+.simple_form
+  .input
+    margin-bottom: 1rem
+    label
+      display: block
+      margin: 0.75rem 0 0.25rem
+      font-weight: bold
+    &.field_with_errors
+      color: $danger-color
+
+.primary-nav
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  border-bottom: 1px solid $light-gray
+  &--left, &--right, &--center
+    display: flex
+    flex-direction: row
+    & > *
+      padding: 1.5rem
+  &--left
+    flex-grow: 1
+  &--right
+    flex-grow: 1
+  &--center
+    flex-direction: row
+    justify-content: center
+    flex-grow: 2
+  &--dropdown
+    &--items
+      display: none
+
+.container
+  max-width: 960px
+  margin-left: auto
+  margin-right: auto
+  padding-left: 1rem
+  padding-right: 1rem

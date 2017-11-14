@@ -1,5 +1,4 @@
 = simple_form_for @phone_number_claim, :html => { :class => 'form-horizontal' } do |f|
   = f.input :phone_number, autofocus: true
-  = f.error_span :phone_number
   = f.button :submit, :class => 'btn-primary'
   = link_to t('.cancel', :default => t("helpers.links.cancel")), phone_number_claims_path, :class => 'btn btn-default'

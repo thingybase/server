@@ -1,8 +1,5 @@
 = simple_form_for(@phone_number_verification) do |f|
   = f.error_notification
-
   = f.input :code, autofocus: true
-  = f.error_span :code
-
   = f.button :submit, :class => 'btn-primary'
   = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn btn-default'

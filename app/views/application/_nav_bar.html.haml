@@ -1,29 +1,26 @@
-.navbar.navbar-default.navbar-static-top
-  .container
-    %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
-      %span.icon-bar
-      %span.icon-bar
-      %span.icon-bar
-    = link_to "Pagerline", root_path, class: "navbar-brand"
-    -if logged_in?
-      .navbar-collapse.collapse.navbar-responsive-collapse
-        %ul.nav.navbar-nav
-          %li= link_to "Notifications", notifications_path
-          %li= link_to "Teams", teams_path
-        %ul.nav.navbar-nav.navbar-right
-          %li.dropdown
-            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-              Logged in as #{current_user.name}
-              %span.caret
-            %ul.dropdown-menu
-              %li= link_to "Settings", edit_user_path(current_user)
-              %li= link_to "Members", members_path
-              %li= link_to "Acknowledgements", acknowledgements_path
-              %li= link_to "Invitations", team_invitations_path
-              %li= link_to "Sign out", session_path, method: :delete
-    -else
-      .navbar-collapse.collapse.navbar-responsive-collapse
-        %ul.nav.navbar-nav
-        %ul.nav.navbar-nav.navbar-right
-          %li= link_to "Signup", teams_path
-          %li= link_to "Log in", teams_path
+.primary-nav
+  %nav.primary-nav--left
+    = active_link_to "Pagerline", root_path, class: "navbar-brand"
+  -if logged_in?
+    %nav.primary-nav--center
+      = active_link_to "Notifications", notifications_path
+      = active_link_to "Teams", teams_path
+    %nav.primary-nav--right
+      %span
+        Logged in as
+        = current_user.name
+      = active_link_to "Settings", edit_user_path(current_user)
+      -#
+        %span.primary-nav--dropdown
+          .primary-nav--dropdown--label
+            %span
+          .primary-nav--dropdown--items
+            = active_link_to "Members", members_path
+            = active_link_to "Acknowledgements", acknowledgements_path
+            = active_link_to "Invitations", team_invitations_path
+            = active_link_to "Sign out", session_path, method: :delete
+  -else
+    %nav.primary-nav--right
+    = active_link_to "Signup", teams_path
+    = active_link_to "Log in", teams_path
+
