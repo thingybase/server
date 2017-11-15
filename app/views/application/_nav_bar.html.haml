@@ -6,19 +6,11 @@
       = active_link_to "Notifications", notifications_path
       = active_link_to "Teams", teams_path
     %nav.primary-nav--right
-      %span
-        Logged in as
-        = current_user.name
       = active_link_to "Settings", edit_user_path(current_user)
-      -#
-        %span.primary-nav--dropdown
-          .primary-nav--dropdown--label
-            %span
-          .primary-nav--dropdown--items
-            = active_link_to "Members", members_path
-            = active_link_to "Acknowledgements", acknowledgements_path
-            = active_link_to "Invitations", team_invitations_path
-            = active_link_to "Sign out", session_path, method: :delete
+      = active_link_to "Members", members_path
+      = active_link_to "Acknowledgements", acknowledgements_path
+      = active_link_to "Invitations", team_invitations_path
+      = active_link_to "Sign out", session_path, method: :delete
   -else
     %nav.primary-nav--right
     = active_link_to "Signup", teams_path

@@ -1,6 +1,11 @@
+require "set"
+
 module ApplicationHelper
   def active_link_to(text, path, **opts)
-    opts[:class] = "active" if path == request.path
+    classes = Set.new(opts.fetch(:class, "").split)
+    classes << "menu-item"
+    classes << "active" if path == request.path
+    opts[:class] = classes.to_a.join(" ")
     link_to text, path, **opts
   end
 
