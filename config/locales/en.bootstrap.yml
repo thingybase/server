@@ -8,7 +8,7 @@ en:
     pages:
       pages: "Pages"
   helpers:
-    actions: "Actions"
+    actions: ""
     links:
       back: "Back"
       cancel: "Cancel"
@@ -17,6 +17,10 @@ en:
       new: "New"
       edit: "Edit"
       show: "Show"
+      ack: "Acknowledge"
+      add-member: "Invite member"
+      remove: "Remove"
+      notify: "Notify"
     titles:
       edit: "Edit %{model}"
       save: "Save %{model}"

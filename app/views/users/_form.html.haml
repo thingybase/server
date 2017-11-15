@@ -4,4 +4,4 @@
   = f.input :phone_number, disabled: true
   =link_to "#{@user.phone_number ? "Change" : "Add" } phone number", new_phone_number_claim_path
   = f.button :submit, :class => 'btn-primary'
-  = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn btn-default'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), :back, :class => 'btn btn-default'

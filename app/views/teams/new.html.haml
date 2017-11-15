@@ -2,3 +2,4 @@
 .page-header
   %h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize
 = render :partial => "form"
+= link_to t('.cancel', :default => t("helpers.links.cancel")), :back, :class => 'btn btn-default'

@@ -15,6 +15,6 @@
   %br
   = @acknowledgement.created_at
 
-= link_to t('.back', :default => t("helpers.links.back")), acknowledgements_path, :class => 'btn btn-default'
+= link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_acknowledgement_path(@acknowledgement), :class => 'btn btn-default'
 = link_to t('.destroy', :default => t("helpers.links.destroy")), acknowledgement_path(@acknowledgement), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

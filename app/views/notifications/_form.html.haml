@@ -3,4 +3,4 @@
   = f.input :subject, autofocus: true
   = f.input :message, as: :text, input_html: { rows: 7 }
   = f.button :submit, :class => 'btn-primary'
-  = link_to t('.cancel', :default => t("helpers.links.cancel")), notifications_path, :class => 'btn btn-default'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), :back, :class => 'btn btn-default'

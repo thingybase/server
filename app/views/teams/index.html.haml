@@ -5,18 +5,9 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:name)
-      %th Owner
-      %th= model_class.human_attribute_name(:created_at)
-      %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @teams.each do |team|
       %tr
         %td= link_to team.name, team_path(team)
-        %td= link_to team.user.name, team.user
-        %td= local_time team.created_at
-        %td
-          = link_to t('.show', :default => t("helpers.links.show")), team_path(team), :class => 'btn btn-default btn-xs'
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_team_path(team), :class => 'btn btn-default btn-xs'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), team_path(team), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
 
 = link_to t('.new', :default => t("helpers.links.new")), new_team_path, :class => 'btn btn-primary'
