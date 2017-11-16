@@ -1,9 +1,18 @@
 - model_class = Team
 .page-header
   %h1= @team.name
-  %p_
+  %h2
     =pluralize @team.members.count, "person"
-    on duty
+    on call
+  .members
+    -@team.members.each do |member|
+      .member
+        =image_tag "//via.placeholder.com/100x100", class: "member__image"
+        .member__name=member.user.name
+    .member
+      =image_tag "//via.placeholder.com/100x100", class: "member__image"
+      .member__name
+        =link_to "Invite members", new_team_invitation_path(team_id: @team.id)
   %h2 Notifications
   %table.table.table-striped
     %thead

@@ -34,7 +34,7 @@ class TeamInvitationsController < ApplicationController
 
     respond_to do |format|
       if @team_invitation.save!
-        format.html { redirect_to @team_invitation, notice: 'Team invitation was successfully created.' }
+        format.html { redirect_to edit_team_url(@team_invitation.team), notice: 'Team invitation was successfully created.' }
         format.json { render :show, status: :created, location: @team_invitation }
       else
         format.html { render :new }
