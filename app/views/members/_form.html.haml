@@ -2,4 +2,3 @@
   = f.association :user, include_blank: false
   = f.association :team, collection: policy_scope(Team), include_blank: false
   = f.button :submit, :class => 'btn-primary'
-  = link_to t('.cancel', :default => t("helpers.links.cancel")), :back, :class => 'btn btn-default'
