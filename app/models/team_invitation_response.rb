@@ -1,9 +1,6 @@
-# TODO: Refactor the controller to use the pk_id
-# to find the index and just use this as a verification
-# step of the token code.
 class TeamInvitationResponse < ApplicationModel
-  include ActiveModel::Model
-  attr_accessor :invitation, :status, :user
+  attr_accessor :invitation, :status, :user, :token
+  delegate :id, :user, :team, :persisted?, to: :invitation
 
   STATUSES = {
     "Accept" => "accept",
@@ -14,20 +11,22 @@ class TeamInvitationResponse < ApplicationModel
   validates :invitation, presence: true
   validates :status, presence: true,
     inclusion: { in: STATUSES.values, message: "%{value} is not a valid response" }
-
-  def to_param
-    invitation.token
-  end
-
-  def persisted?
-    invitation.persisted?
-  end
+  validate :matching_token
 
   def save
     transition_state if valid?
   end
 
+  def self.find(id)
+    invitation = TeamInvitation.find(id)
+    new invitation: invitation
+  end
+
   private
+    def matching_token
+      errors.add(:token) if token && token != invitation.token
+    end
+
     def transition_state
       if STATUSES.values.include?(status)
         self.send(status)

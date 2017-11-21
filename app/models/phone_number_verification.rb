@@ -1,10 +1,10 @@
 class PhoneNumberVerification < ApplicationModel
   attr_accessor :claim, :code
+  delegate :id, :user, :persisted?, to: :claim
+
   validates :code, presence: true
   validates :claim, presence: true
-
   validate :matching_code
-  delegate :id, :user, :persisted?, to: :claim
 
   def save
     assign_phone_number_to_user if valid?

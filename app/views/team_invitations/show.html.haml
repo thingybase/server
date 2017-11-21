@@ -17,7 +17,7 @@
 %p
   %strong Invitation link:
   %br
-  =link_to edit_team_invitation_response_url(@team_invitation.token), edit_team_invitation_response_url(@team_invitation.token)
+  =link_to edit_team_invitation_response_url(@team_invitation, token: @team_invitation.token), edit_team_invitation_response_url(@team_invitation, token: @team_invitation.token)
 = link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_team_invitation_path(@team_invitation), :class => 'btn btn-default'
 = link_to t('.destroy', :default => t("helpers.links.destroy")), team_invitation_path(@team_invitation), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     only: %w[index new create show destroy]
   resources :team_invitations
   resources :team_invitation_responses,
-    param: :token,
     only: %w[edit update]
   resources :members
   resources :users

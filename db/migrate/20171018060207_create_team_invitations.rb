@@ -9,6 +9,5 @@ class CreateTeamInvitations < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-    add_index :team_invitations, :token, unique: true
   end
 end
