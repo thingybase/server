@@ -1,0 +1,7 @@
+= simple_form_for @invitation_response, url: invitation_response_path(@invitation) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :token
+    = f.input :status, as: :radio_buttons, collection: InvitationResponse::STATUSES
+  .form-actions
+    = f.button :submit, "Respond to invitation"

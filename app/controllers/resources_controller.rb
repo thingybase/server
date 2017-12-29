@@ -2,9 +2,10 @@ class ResourcesController < ApplicationController
   before_action :authenticate_user
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
   before_action :authorize_resource, only: [:show, :edit, :destroy]
+  helper_method :resource_name
 
   def self.resource
-    raise NotImplementedError, "ResourcesController.resource must be an ActiveModel class"
+    raise NotImplementedError, "ResourcesController.resource must be an ActiveModel or ActiveRecord class"
   end
 
   def index
@@ -16,7 +17,7 @@ class ResourcesController < ApplicationController
 
   def new
     self.resource = self.class.resource.new
-    before_new
+    assign_attributes
     authorize_resource
   end
 
@@ -25,7 +26,7 @@ class ResourcesController < ApplicationController
 
   def create
     self.resource = self.class.resource.new(resource_params)
-    before_create
+    assign_attributes
     authorize_resource
 
     respond_to do |format|
@@ -41,7 +42,7 @@ class ResourcesController < ApplicationController
 
   def update
     resource.assign_attributes(resource_params)
-    before_update
+    assign_attributes
     authorize_resource
 
     respond_to do |format|
@@ -111,13 +112,10 @@ class ResourcesController < ApplicationController
       instance_variable_get("@#{resource_name.plural}")
     end
 
-    # TODO: Not a big fan of the names here. Rename these.
-    def before_new
+    # A hook that allows sub-classes to assign attributes to a model.
+    def assign_attributes
       resource.user = current_user if resource.respond_to? :user=
     end
-    # TODO: I don't know if chaining these to new is a good idea.
-    alias_method :before_create, :before_new
-    alias_method :before_update, :before_new
 
     # Redirect to this url after a resource is created
     def create_redirect_url
@@ -134,12 +132,16 @@ class ResourcesController < ApplicationController
       resource_name.plural.to_sym
     end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_resource
-      self.resource = self.class.resource.find(params[:id])
+    def resource_route_key
+      :id
     end
 
+    # Use callbacks to share common setup or constraints between actions.
+    def set_resource
+      self.resource = self.class.resource.find params[resource_route_key]
+    end
+
+  private
     # Never trust parameters from the scary internet, only allow the white list through.
     def resource_params
       params.require(resource_name.singular).permit(permitted_params)

@@ -5,4 +5,11 @@
 # the `Invitation` AR model; rather its an `InvitationResponse` model.
 class ApplicationModel
   include ActiveModel::Model
+
+  # Allows form helpers to properly generate resource URLs for
+  # these application models that can't be persisted because they're
+  # not in the database.
+  def persisted?
+    false
+  end
 end

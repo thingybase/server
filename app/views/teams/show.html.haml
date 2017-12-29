@@ -1,6 +1,5 @@
 - model_class = Team
 .page-header
-  %h1= @team.name
   %h2
     =pluralize @team.members.count, "person"
     on call
@@ -12,7 +11,7 @@
     .member
       =image_tag "//via.placeholder.com/100x100", class: "member__image"
       .member__name
-        =link_to "Invite members", new_team_invitation_path(team_id: @team.id)
+        =link_to "Invite members", new_invitation_path(@team)
   %h2 Notifications
   %table.table.table-striped
     %thead
@@ -30,6 +29,6 @@
               =link_to notification.acknowledgement.user.name, notification.acknowledgement
               =local_time_ago notification.acknowledgement.created_at
             -else
-              = link_to t('.ack', :default => t("helpers.links.ack")), new_acknowledgement_path(notification_id: notification.id), :class => 'btn btn-xs'
+              = link_to t('.ack', :default => t("helpers.links.ack")), new_notification_acknowledgement_path(notification), :class => 'btn btn-xs'
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_team_path(@team), :class => 'btn btn-default'
-= link_to t('.notify', :default => t("helpers.links.notify")), new_notification_path(team_id: @team), :class => 'btn btn-default'
+= link_to t('.notify', :default => t("helpers.links.notify")), new_team_notification_path(@team), :class => 'btn btn-default'

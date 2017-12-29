@@ -8,10 +8,10 @@ FactoryBot.define do
     user
   end
 
-  factory :team_invitation do
+  factory :invitation do
     email { Faker::Internet.unique.email }
     name { Faker::Name.name }
-    token { TeamInvitation.random_token }
+    token { Invitation.random_token }
     user
     team
   end

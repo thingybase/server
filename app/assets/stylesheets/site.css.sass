@@ -108,8 +108,12 @@ input[type="text"], input[type="email"], input[type="tel"], textarea, select
 .menu-item
   padding: 1rem
   white-space: nowrap
+  text-decoration: none
+a.menu-item
   &:hover
     background-color: $light-gray
+  &.active
+    border-bottom: 2px solid $primary-color
 .container
   max-width: 960px
   margin-left: auto

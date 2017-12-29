@@ -1,14 +1,14 @@
 class MemberPolicy < ApplicationPolicy
   def create?
-    is_team_owner?
+    false
   end
 
   def new?
-    user.present?
+    false
   end
 
   def update?
-    is_team_owner?
+    false
   end
 
   def destroy?

@@ -1,6 +1,6 @@
 class PhoneNumberVerification < ApplicationModel
   attr_accessor :claim, :code
-  delegate :id, :user, :persisted?, to: :claim
+  delegate :id, :user, to: :claim
 
   validates :code, presence: true
   validates :claim, presence: true
@@ -8,11 +8,6 @@ class PhoneNumberVerification < ApplicationModel
 
   def save
     assign_phone_number_to_user if valid?
-  end
-
-  def self.find(id)
-    claim = PhoneNumberClaim.find(id)
-    new claim: claim
   end
 
   private

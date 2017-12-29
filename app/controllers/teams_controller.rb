@@ -1,4 +1,6 @@
 class TeamsController < ResourcesController
+  layout "team", except: %i[index new]
+
   def self.resource
     Team
   end

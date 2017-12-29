@@ -2,21 +2,17 @@
   %header
     .primary-nav
       %nav.primary-nav--left
-        = active_link_to "Pagerline", root_path, class: "navbar-brand"
-      -if logged_in?
-        %nav.primary-nav--center
-          =@team.name
-          = active_link_to "Change", teams_path
-        %nav.primary-nav--right
-          = active_link_to "Settings", edit_user_path(current_user)
-          =# active_link_to "Members", members_path
-          =# active_link_to "Acknowledgements", acknowledgements_path
-          =# active_link_to "Invitations", team_invitations_path
-          = active_link_to "Sign out", session_path, method: :delete
-      -else
-        %nav.primary-nav--right
-        = active_link_to "Signup", teams_path
-        = active_link_to "Log in", teams_path
-
+        = active_link_to "Pagerline", teams_path, class: "navbar-brand"
+      %nav.primary-nav--center
+        .menu-item=@team.name
+        = active_link_to "Dashboard", @team
+        = active_link_to "Notifications", [@team, :notifications]
+        = active_link_to "Members", [@team, :members]
+      %nav.primary-nav--right
+        = active_link_to "Settings", edit_user_path(current_user)
+        =# active_link_to "Members", members_path
+        =# active_link_to "Acknowledgements", acknowledgements_path
+        =# active_link_to "Invitations", invitations_path
+        = active_link_to "Sign out", session_path, method: :delete
   .container= yield
   %footer

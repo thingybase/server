@@ -7,11 +7,19 @@ class PhoneNumberVerificationPolicy < ApplicationPolicy
     false
   end
 
-  def create?
+  def update?
     false
+  end
+
+  def create?
+    true
   end
 
   def destroy?
     false
+  end
+
+  def new?
+    true
   end
 end

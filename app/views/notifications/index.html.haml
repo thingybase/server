@@ -13,7 +13,7 @@
       %tr
         %td= link_to notification.subject, notification
         %td= local_time notification.created_at
-        %td= link_to notification.team.name, notification.team
+        %td= link_to notification.team.name, team_notifications_path(notification.team)
         %td
           = link_to t('.show', :default => t("helpers.links.show")), notification_path(notification), :class => 'btn btn-default btn-xs'
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_notification_path(notification), :class => 'btn btn-default btn-xs'

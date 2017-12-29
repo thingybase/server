@@ -21,6 +21,18 @@ ActiveRecord::Schema.define(version: 20171108074435) do
     t.index ["user_id"], name: "index_acknowledgements_on_user_id"
   end
 
+  create_table "invitations", force: :cascade do |t|
+    t.string "token", null: false
+    t.string "email", null: false
+    t.string "name"
+    t.integer "team_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_invitations_on_team_id"
+    t.index ["user_id"], name: "index_invitations_on_user_id"
+  end
+
   create_table "members", force: :cascade do |t|
     t.integer "user_id"
     t.integer "team_id"
@@ -49,19 +61,6 @@ ActiveRecord::Schema.define(version: 20171108074435) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_phone_number_claims_on_user_id"
-  end
-
-  create_table "team_invitations", force: :cascade do |t|
-    t.string "token", null: false
-    t.string "email", null: false
-    t.string "name"
-    t.integer "team_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_team_invitations_on_team_id"
-    t.index ["token"], name: "index_team_invitations_on_token", unique: true
-    t.index ["user_id"], name: "index_team_invitations_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|

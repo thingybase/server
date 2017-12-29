@@ -1,0 +1,8 @@
+%h1 Team invitation response
+
+%p
+  =@invitation.user.name
+  has invited you to join the
+  =@invitation.team.name
+  team
+= render 'form'

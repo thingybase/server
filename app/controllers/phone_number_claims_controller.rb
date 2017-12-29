@@ -8,6 +8,6 @@ class PhoneNumberClaimsController < ResourcesController
   end
 
   def create_redirect_url
-    [:edit, @phone_number_claim.verification]
+    new_phone_number_claim_verification_url(@phone_number_claim)
   end
 end

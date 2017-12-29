@@ -1,5 +1,0 @@
-= simple_form_for @team_invitation, :html => { :class => 'form-horizontal' } do |f|
-  = f.input :email, autofocus: true
-  = f.input :name
-  = f.association :team, collection: policy_scope(Team), include_blank: false
-  = f.button :submit, :class => 'btn-primary'
