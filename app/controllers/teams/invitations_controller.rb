@@ -18,10 +18,6 @@ module Teams
       [:email, :name, :token, :team_id]
     end
 
-    def create_redirect_url
-      invitation_url(@invitation)
-    end
-
     def assign_attributes
       @invitation.user = current_user
       @invitation.team ||= @team
