@@ -6,7 +6,7 @@ class Notification < ApplicationRecord
   validates :user, presence: true
   validates :team, presence: true
 
-  has_one :acknowledgement
+  has_one :acknowledgement, dependent: :destroy
 
   def name
     subject
