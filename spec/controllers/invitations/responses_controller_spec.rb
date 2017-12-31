@@ -23,7 +23,7 @@ require 'rails_helper'
 # removed from Rails core in Rails 5, but can be added back in via the
 # `rails-controller-testing` gem.
 
-RSpec.describe InvitationResponsesController, type: :controller do
+RSpec.describe Invitations::ResponsesController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # InvitationResponse. As you add validations to InvitationResponse, be sure to
