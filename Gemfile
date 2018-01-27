@@ -61,6 +61,7 @@ group :development, :test do
 end
 
 group :production do
+  # Database driver.
   gem 'pg'
 end
 
