@@ -140,7 +140,7 @@ GEM
     omniauth-oauth2 (1.5.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.2)
-    pg (1.0.0)
+    pg (0.21.0)
     phony (2.16.3)
     phony_rails (0.14.6)
       activesupport (>= 3.0)
@@ -275,7 +275,7 @@ DEPENDENCIES
   local_time
   omniauth
   omniauth-google-oauth2
-  pg
+  pg (~> 0.21.0)
   phony_rails
   puma (~> 3.7)
   pundit
@@ -292,6 +292,9 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+
+RUBY VERSION
+   ruby 2.5.0p0
 
 BUNDLED WITH
    1.16.1

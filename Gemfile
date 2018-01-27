@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby File.read(".ruby-version").chomp
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -48,7 +49,8 @@ gem 'strong_password'
 # Display times locally
 gem 'local_time'
 # Run Postgres in production
-gem 'pg'
+# TODO: Switch to 1.0.0 when Heroku figures out their compatability problems.
+gem 'pg', '~> 0.21.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
