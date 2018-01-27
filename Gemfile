@@ -47,6 +47,8 @@ gem 'jwt'
 gem 'strong_password'
 # Display times locally
 gem 'local_time'
+# Run Postgres in production
+gem 'pg'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -57,12 +59,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'faker'
   gem 'factory_bot_rails'
-  gem 'sqlite3'
-end
-
-group :production do
-  # Database driver.
-  gem 'pg'
+  # gem 'sqlite3'
 end
 
 group :development do
