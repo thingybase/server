@@ -1,7 +1,7 @@
 require "uri"
 
 class MemberNotifier
-  FROM_PHONE_NUMBER = '+13376602654'.freeze
+  FROM_PHONE_NUMBER = '+13372843122'.freeze
 
   def initialize(phone_number)
     @phone_number = phone_number
