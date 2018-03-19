@@ -84,6 +84,8 @@ RSpec.describe NotificationsController, type: :controller do
         post :create, params: {notification: valid_attributes}, session: valid_session
         expect(response).to redirect_to(Notification.last)
       end
+
+      it "enqueues notification job"
     end
 
     context "with invalid params" do

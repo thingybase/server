@@ -84,6 +84,8 @@ RSpec.describe PhoneNumberClaimsController, type: :controller do
         post :create, params: {phone_number_claim: valid_attributes}, session: valid_session
         expect(response).to redirect_to(PhoneNumberClaim.last)
       end
+
+      it "sends enqueues SendClaimCodeSmsJob job"
     end
 
     context "with invalid params" do
