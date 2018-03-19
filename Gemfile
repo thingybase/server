@@ -61,7 +61,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'faker'
   gem 'factory_bot_rails'
-  # gem 'sqlite3'
+  gem 'sqlite3'
 end
 
 group :development do

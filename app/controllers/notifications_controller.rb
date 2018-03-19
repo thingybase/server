@@ -1,6 +1,8 @@
 class NotificationsController < ResourcesController
   include TeamLayout
 
+  after_action :notify_members, only: :create
+
   def self.resource
     Notification
   end
@@ -17,4 +19,10 @@ class NotificationsController < ResourcesController
     self.resource.user = current_user
     self.resource.team ||= @team
   end
+
+  private
+    def notify_members
+      # TODO: Wire this up in a better place and test to make sure this happens.
+      SendNotificationJob.perform_later resource if resource.valid?
+    end
 end
