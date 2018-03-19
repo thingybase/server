@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108074435) do
+ActiveRecord::Schema.define(version: 20180319084232) do
 
   create_table "acknowledgements", force: :cascade do |t|
     t.integer "user_id"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20171108074435) do
     t.datetime "updated_at", null: false
     t.index ["notification_id"], name: "index_acknowledgements_on_notification_id"
     t.index ["user_id"], name: "index_acknowledgements_on_user_id"
+  end
+
+  create_table "api_tokens", force: :cascade do |t|
+    t.string "access_id"
+    t.string "access_key"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["access_id"], name: "index_api_tokens_on_access_id", unique: true
+    t.index ["user_id"], name: "index_api_tokens_on_user_id"
   end
 
   create_table "invitations", force: :cascade do |t|

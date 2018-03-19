@@ -10,6 +10,7 @@ class User < ApplicationRecord
     allow_nil: true
 
   has_many :notifications
+  has_many :api_tokens
 
   def teams
     Team
