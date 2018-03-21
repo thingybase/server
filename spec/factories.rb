@@ -2,9 +2,9 @@
 Faker::Config.locale = 'en-US'
 
 FactoryBot.define do
-  factory :api_token do
-    access_id ApiToken.generate_access_id
-    access_key ApiToken.generate_access_key
+  factory :api_key do
+    name { Faker::Name.name }
+    secret ApiKey.generate_secret
     user
   end
 

@@ -1,0 +1,33 @@
+.page-header
+  %h1=t '.title', :default => resource_class.model_name.human.titleize
+
+%p
+  %strong= resource_class.human_attribute_name(:name) + ':'
+  %br
+  =@api_key.name
+
+%p
+  %strong= resource_class.human_attribute_name(:token) + ':'
+  %br
+  Keep this token a secret. Its only to be used with applications that you trust.
+  %br
+  %pre.word-wrapped-block=@api_key.token
+
+%p
+  %strong= resource_class.human_attribute_name(:created_at) + ':'
+  %br
+  =@api_key.created_at
+
+%p
+  %strong= resource_class.human_attribute_name(:updated_at) + ':'
+  %br
+  =@api_key.updated_at
+
+%h2 curl request
+%p Example of using curl to request a list of teams
+%pre.word-wrapped-block
+  :plain
+    curl "#{teams_url(format: :json)}" -H "Authentication: apitoken #{@api_key.token}"
+
+= link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'
+= link_to t('.destroy', :default => t("helpers.links.destroy")), api_key_path(@api_key), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

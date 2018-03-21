@@ -16,7 +16,29 @@ module Authentication
     end
 
     def current_user
-      @current_user ||= User.find_by_id(session[:user_id])
+      # TODO: Use Warden so I can better deal with multiple strategies
+      @current_user ||= (user_from_session_id || user_from_api_token)
+    end
+
+    def user_from_session_id
+      return unless session.key? :user_id
+
+      User.find_by_id(session[:user_id])
+    end
+
+    def user_from_api_token
+      auth_header = request.headers["Authentication"]
+      return unless auth_header
+
+      kind, encoded_token = auth_header.split(" ")
+
+      case kind
+      when /apitoken/i
+        return unless encoded_token
+        ApiKey.find_and_authenticate(encoded_token)&.user
+      else
+        error "Invalid authentication type header. Must be 'Authentication: apitoken <token>'"
+      end
     end
 
     def authenticate_user

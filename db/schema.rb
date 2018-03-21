@@ -21,14 +21,13 @@ ActiveRecord::Schema.define(version: 20180319084232) do
     t.index ["user_id"], name: "index_acknowledgements_on_user_id"
   end
 
-  create_table "api_tokens", force: :cascade do |t|
-    t.string "access_id"
-    t.string "access_key"
+  create_table "api_keys", force: :cascade do |t|
+    t.string "name"
+    t.string "secret"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["access_id"], name: "index_api_tokens_on_access_id", unique: true
-    t.index ["user_id"], name: "index_api_tokens_on_user_id"
+    t.index ["user_id"], name: "index_api_keys_on_user_id"
   end
 
   create_table "invitations", force: :cascade do |t|

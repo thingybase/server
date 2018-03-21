@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     resource :response
   end
   resources :users
+  resources :api_keys, except: %i[edit update]
 
   # TODO: Make this a POST and switch off TwiML
   get "/twilio/acknowledgements", to: 'twilio_acknowledgements#create', as: :twilio_acknowledgement

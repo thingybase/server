@@ -2,7 +2,7 @@ class ResourcesController < ApplicationController
   before_action :authenticate_user
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
   before_action :authorize_resource, only: [:show, :edit, :destroy]
-  helper_method :resource_name
+  helper_method :resource_name, :resource_class
 
   def self.resource
     raise NotImplementedError, "ResourcesController.resource must be an ActiveModel or ActiveRecord class"
@@ -16,7 +16,7 @@ class ResourcesController < ApplicationController
   end
 
   def new
-    self.resource = self.class.resource.new
+    self.resource = resource_class.new
     assign_attributes
     authorize_resource
   end
@@ -25,7 +25,7 @@ class ResourcesController < ApplicationController
   end
 
   def create
-    self.resource = self.class.resource.new(resource_params)
+    self.resource = resource_class.new(resource_params)
     assign_attributes
     authorize_resource
 
@@ -68,7 +68,11 @@ class ResourcesController < ApplicationController
     # Gets the resource name of the ActiveRecord model for use by
     # instance methods in this controller.
     def resource_name
-      self.class.resource.model_name
+      resource_class.model_name
+    end
+
+    def resource_class
+      self.class.resource
     end
 
     # Permitted params the resource controller allows
@@ -82,7 +86,7 @@ class ResourcesController < ApplicationController
     end
 
     # `policy_scope` is defined by Pundit.
-    def policy_scope(scope = self.class.resource)
+    def policy_scope(scope = resource_class)
       super(scope)
     end
 
@@ -138,7 +142,7 @@ class ResourcesController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_resource
-      self.resource = self.class.resource.find params[resource_route_key]
+      self.resource = resource_class.find params[resource_route_key]
     end
 
   private
