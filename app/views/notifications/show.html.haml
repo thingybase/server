@@ -1,17 +1,16 @@
-- model_class = Notification
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.titleize
+  %h1=t '.title', :default => resource_class.model_name.human.titleize
 
 %p
-  %strong= model_class.human_attribute_name(:subject) + ':'
+  %strong= resource_class.human_attribute_name(:subject) + ':'
   %br
   = @notification.subject
 %p
-  %strong= model_class.human_attribute_name(:message) + ':'
+  %strong= resource_class.human_attribute_name(:message) + ':'
   %br
   = @notification.message
 %p
-  %strong= model_class.human_attribute_name(:user_id) + ':'
+  %strong= resource_class.human_attribute_name(:user_id) + ':'
   %br
   = @notification.user.name
 

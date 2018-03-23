@@ -1,16 +1,15 @@
-- model_class = User
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.titleize
+  %h1=t '.title', :default => resource_class.model_name.human.titleize
 
 %h2 Profile
 %p Information about you that your team members see.
 
 %p
-  %strong= model_class.human_attribute_name(:name) + ':'
+  %strong= resource_class.human_attribute_name(:name) + ':'
   %br
   = @user.name
 %p
-  %strong= model_class.human_attribute_name(:email) + ':'
+  %strong= resource_class.human_attribute_name(:email) + ':'
   %br
   = @user.email
 
@@ -19,7 +18,7 @@
 %h2 Phone number
 %p We only use this phone number to call or text you when your team gets a critical notification.
 %p
-  %strong= model_class.human_attribute_name(:phone_number) + ':'
+  %strong= resource_class.human_attribute_name(:phone_number) + ':'
   %br
   = @user.phone_number
 

@@ -1,17 +1,16 @@
-- model_class = Invitation
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.titleize
+  %h1=t '.title', :default => resource_class.model_name.human.titleize
 
 %p
-  %strong= model_class.human_attribute_name(:email) + ':'
+  %strong= resource_class.human_attribute_name(:email) + ':'
   %br
   = @invitation.email
 %p
-  %strong= model_class.human_attribute_name(:name) + ':'
+  %strong= resource_class.human_attribute_name(:name) + ':'
   %br
   = @invitation.name
 %p
-  %strong= model_class.human_attribute_name(:team_id) + ':'
+  %strong= resource_class.human_attribute_name(:team_id) + ':'
   %br
   = @invitation.team.name
 %p

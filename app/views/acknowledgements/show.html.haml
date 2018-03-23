@@ -1,17 +1,16 @@
-- model_class = Acknowledgement
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.titleize
+  %h1=t '.title', :default => resource_class.model_name.human.titleize
 
 %p
-  %strong= model_class.human_attribute_name(:user_id) + ':'
+  %strong= resource_class.human_attribute_name(:user_id) + ':'
   %br
   = @acknowledgement.user.name
 %p
-  %strong= model_class.human_attribute_name(:notification_id) + ':'
+  %strong= resource_class.human_attribute_name(:notification_id) + ':'
   %br
   = @acknowledgement.notification.name
 %p
-  %strong= model_class.human_attribute_name(:created_at) + ':'
+  %strong= resource_class.human_attribute_name(:created_at) + ':'
   %br
   = @acknowledgement.created_at
 

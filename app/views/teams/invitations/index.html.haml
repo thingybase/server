@@ -1,14 +1,13 @@
-- model_class = Invitation
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+  %h1=t '.title', :default => resource_class.model_name.human.pluralize.titleize
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:email)
-      %th= model_class.human_attribute_name(:name)
-      %th= model_class.human_attribute_name(:team_id)
-      %th= model_class.human_attribute_name(:user_id)
-      %th= model_class.human_attribute_name(:created_at)
+      %th= resource_class.human_attribute_name(:email)
+      %th= resource_class.human_attribute_name(:name)
+      %th= resource_class.human_attribute_name(:team_id)
+      %th= resource_class.human_attribute_name(:user_id)
+      %th= resource_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @invitations.each do |invitation|
