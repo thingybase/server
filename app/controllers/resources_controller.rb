@@ -148,7 +148,7 @@ class ResourcesController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def resource_params
-      params.require(resource_name.singular).permit(permitted_params)
+      params.permit(resource_name.singular).permit(permitted_params)
     end
 
     # Authorizse resource with Pundit.
