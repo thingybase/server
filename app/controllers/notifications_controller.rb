@@ -23,6 +23,6 @@ class NotificationsController < ResourcesController
   private
     def notify_members
       # TODO: Wire this up in a better place and test to make sure this happens.
-      SendNotificationJob.perform_later resource if resource.valid?
+      SendNotificationJob.perform_later @notification if @notification.valid?
     end
 end

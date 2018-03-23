@@ -19,7 +19,7 @@ class MemberNotifier
     twilio.api.account.messages.create(
       from: FROM_PHONE_NUMBER,
       to: @phone_number,
-      body: [message, "Rply ACK"].join(" "))
+      body: message)
   end
 
   def voice_call(message, acknowledgement_url: )

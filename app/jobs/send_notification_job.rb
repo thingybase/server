@@ -9,7 +9,7 @@ class SendNotificationJob < ApplicationJob
 
       logger.info "Sending SMS to user #{phone_number}"
       notifier = MemberNotifier.new(phone_number)
-      url = new_acknowledgement_url(notification_id: notification.id)
+      url = notification_url(notification)
       notifier.sms_message "Alert #{url} - #{notification.subject}"
 
       logger.info "Calling user #{phone_number}"
