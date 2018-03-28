@@ -1,9 +1,7 @@
-.page-header
-  %h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => resource_name.human.titleize
-  %p
-    Enter the code sent to #{phone_number @phone_number_claim.phone_number} to use the mobile device with Pagerline.
+%h1 Verify mobile phone number
+%p Enter the #{PhoneNumberClaim::CODE_LENGTH} digit code sent to #{phone_number @phone_number_claim.phone_number} to verify phone number.
 
 = simple_form_for @phone_number_verification, url: phone_number_claim_verification_path(@phone_number_claim) do |f|
   = f.error_notification
   = f.input :code, autofocus: true
-  = f.button :submit, :class => 'btn-primary'
+  = f.button :submit, "Finish", :class => 'btn-primary'

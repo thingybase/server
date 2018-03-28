@@ -8,6 +8,10 @@ module PhoneNumberClaims
       PhoneNumberClaim
     end
 
+    def create
+      super
+    end
+
     private
       def assign_attributes
         resource.claim = parent_resource

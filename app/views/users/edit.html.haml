@@ -1,8 +1,9 @@
-.page-header
-  %h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => resource_class.model_name.human.titleize
-= render :partial => "form"
+%h1 Edit profile
+%p Change how you appear to your team members and Pagerline.
+
+= render partial: "form"
 
 %h2 Danger zone
 %p Delete yourself, accounts, and everything else you own in Pagerline.
 
-= link_to t('.destroy', :default => t("helpers.links.destroy")), user_path(@user), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+= link_to t('.destroy', default: t("helpers.links.destroy")), user_path(@user), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger'

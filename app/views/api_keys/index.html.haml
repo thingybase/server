@@ -1,12 +1,15 @@
-.page-header
-  %h1=t '.title', :default => resource_class.model_name.human.pluralize.titleize
+%h1 API Keys
+%p Connect Pagerline to other applications and services with API keys.
+
 %table.table.table-striped
   %thead
     %tr
-      %th= resource_class.human_attribute_name(:access_id)
+      %th= resource_class.human_attribute_name(:name)
+      %th= resource_class.human_attribute_name(:created_at)
   %tbody
     - @api_keys.each do |api_key|
       %tr
         %td= link_to api_key.name, api_key_path(api_key)
+        %td= api_key.created_at
 
 = link_to t('.new', :default => t("helpers.links.new")), new_api_key_path, :class => 'btn btn-primary'

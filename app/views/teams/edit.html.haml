@@ -1,20 +1,23 @@
-.page-header
-  %h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => resource_class.model_name.human.titleize
-= render :partial => "form"
+%h1 Edit team
+
+= simple_form_for @team, html: { class: 'form-horizontal' } do |f|
+  = f.input :name, autofocus: true
+  = f.button :submit, "Save changes", class: 'btn-primary'
+
 %h2 Members
 %table.table.table-striped
   %thead
     %tr
       %th= User.human_attribute_name(:name)
       %th= Member.human_attribute_name(:created_at)
-      %th=t '.actions', :default => t("helpers.actions")
+      %th=t '.actions', default: t("helpers.actions")
   %tbody
     - @team.members.each do |member|
       %tr
         %td= link_to member.user.name, member
         %td= local_time member.created_at
         %td
-          = link_to t('.remove', :default => t("helpers.links.remove")), member_path(member), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+          = link_to t('.remove', default: t("helpers.links.remove")), member_path(member), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-xs btn-danger'
 -if @team.invitations.any?
   %h2 Invitations
   %table.table.table-striped
@@ -23,7 +26,7 @@
         %th= Invitation.human_attribute_name(:email)
         %th= Invitation.human_attribute_name(:name)
         %th= Invitation.human_attribute_name(:created_at)
-        %th=t '.actions', :default => t("helpers.actions")
+        %th=t '.actions', default: t("helpers.actions")
     %tbody
       - @team.invitations.each do |invitation|
         %tr
@@ -31,11 +34,11 @@
           %td= invitation.name
           %td= local_time invitation.created_at
           %td
-            = link_to t('.delete', :default => t("helpers.links.delete")), invitation_path(invitation), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+            = link_to t('.delete', default: t("helpers.links.delete")), invitation_path(invitation), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-xs btn-danger'
 
-= link_to t('.add-member', :default => t("helpers.links.add-member")), new_team_invitation_path(@team), :class => 'btn btn-default'
+= link_to t('.add-member', default: t("helpers.links.add-member")), new_team_invitation_path(@team), class: 'btn btn-default'
 
 %h2 Danger zone
 %p Deletes the team, notifications, acknowledgements, and memberships
-= link_to t('.destroy', :default => t("helpers.links.destroy")), team_path(@team), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+= link_to t('.destroy', default: t("helpers.links.destroy")), team_path(@team), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger'
 

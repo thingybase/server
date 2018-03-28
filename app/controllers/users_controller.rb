@@ -6,4 +6,10 @@ class UsersController < ResourcesController
   def permitted_params
     [:name, :email]
   end
+
+  protected
+
+  def resource_scope
+    policy_scope
+  end
 end

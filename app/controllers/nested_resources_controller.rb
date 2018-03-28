@@ -31,10 +31,12 @@ class NestedResourcesController < ResourcesController
     end
 
   private
-    # Optionally allow the resource params because nested resources usually
-    # allow a POST request with no params that create a resource.
     def resource_params
-      params.permit(resource_name.singular).permit(permitted_params)
+      # Optionally allow the resource params because nested resources usually
+      # allow a POST request with no params that create a resource.
+      if params.key? resource_name.singular
+        params.require(resource_name.singular).permit(permitted_params)
+      end
     end
 
     # Sets instance variable for templates to match the model name. For

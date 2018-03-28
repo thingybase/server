@@ -1,6 +1,6 @@
 module ResourceHelper
   def resource_field(name, resource: self.resource, &block)
-    block ||= Proc.new{ resource.send(name) }
+    block ||= Proc.new{ resource.send(name).to_s }
 
     render layout: "resource_helper/field",
       locals: { field: name, resource: resource }, &block

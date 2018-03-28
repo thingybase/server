@@ -1,3 +1,6 @@
-.page-header
-  %h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => resource_class.model_name.human.titleize
-= render :partial => "form"
+%h1 What is your phone number?
+%p This is the mobile phone number that we'll call and text to deliver your critical notifications. In the next step you'll enter an SMS verification code to verify the phone number belongs to you.
+
+= simple_form_for @phone_number_claim, html: { class: 'form-horizontal' } do |f|
+  = f.input :phone_number, autofocus: true
+  = f.button :submit, "Next →", class: 'btn-primary'

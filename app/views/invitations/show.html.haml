@@ -1,22 +1,12 @@
-.page-header
-  %h1=t '.title', :default => resource_class.model_name.human.titleize
+%h1 Invitation for #{resource.email}
 
-%p
-  %strong= resource_class.human_attribute_name(:email) + ':'
-  %br
-  = @invitation.email
-%p
-  %strong= resource_class.human_attribute_name(:name) + ':'
-  %br
-  = @invitation.name
-%p
-  %strong= resource_class.human_attribute_name(:team_id) + ':'
-  %br
+=resource_field :email
+=resource_field :name
+=resource_field :team_id do
   = @invitation.team.name
-%p
-  %strong Invitation link:
-  %br
+=resource_field :invitation_link do
   =link_to new_invitation_response_url(@invitation, token: @invitation.token), new_invitation_response_url(@invitation, token: @invitation.token)
-= link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'
-= link_to t('.edit', :default => t("helpers.links.edit")), edit_invitation_path(@invitation), :class => 'btn btn-default'
-= link_to t('.destroy', :default => t("helpers.links.destroy")), invitation_path(@invitation), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+
+= link_to t('.back', default: t("helpers.links.back")), :back, class: 'btn btn-default'
+= link_to t('.edit', default: t("helpers.links.edit")), edit_invitation_path(@invitation), class: 'btn btn-default'
+= link_to t('.destroy', default: t("helpers.links.destroy")), invitation_path(@invitation), method: "delete", data: { confirm: t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
