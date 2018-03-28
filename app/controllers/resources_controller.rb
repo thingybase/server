@@ -1,7 +1,7 @@
 class ResourcesController < ApplicationController
   before_action :authenticate_user
-  before_action :set_resource, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_resource, only: [:show, :edit, :destroy]
+  before_action :set_resource, if: :member_request?
+  before_action :authorize_resource, if: :member_request?
 
   helper_method :resource_name, :resource_class, :resource
 
@@ -66,6 +66,14 @@ class ResourcesController < ApplicationController
   end
 
   protected
+    def member_request?
+      params.key? :id
+    end
+
+    def collection_request?
+      !member_request?
+    end
+
     # Gets the resource name of the ActiveRecord model for use by
     # instance methods in this controller.
     def resource_name

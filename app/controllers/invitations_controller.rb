@@ -18,4 +18,10 @@ class InvitationsController < ResourcesController
     @invitation.team ||= @team
     @invitation.token ||= Invitation.random_token
   end
+
+  def email
+    InvitationMailer.team_invitation_email(@invitation).deliver_now
+    flash[:notice] = "Invitation sent to #{@invitation.email}"
+    redirect_to team_invitations_path(@invitation.team)
+  end
 end

@@ -23,6 +23,10 @@ class InvitationPolicy < ApplicationPolicy
     is_team_owner? && scope.where(id: record.id).exists?
   end
 
+  def email?
+    is_team_owner?
+  end
+
   class Scope < Scope
     def resolve
       scope.where(team_id: user.teams)

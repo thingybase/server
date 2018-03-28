@@ -1,0 +1,15 @@
+%p
+  #{@salutation},
+
+%p
+  #{@invitation.user.name} has invited you to the "#{@invitation.team.name}" Pagerline team.
+
+%p
+  You may accept or deny the invitation at #{link_to new_invitation_response_url(@invitation, token: @invitation.token), new_invitation_response_url(@invitation, token: @invitation.token)}.
+
+%p If you have any questions or concerns please reply to this email.
+
+%p
+  Best,
+  %br
+  The Pagerline team

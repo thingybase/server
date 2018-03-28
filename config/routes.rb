@@ -34,11 +34,17 @@ Rails.application.routes.draw do
     resources :members
     resources :invitations
   end
-  parent_resources :invitations do
-    # No ID ; should this really be an
-    # `interaction` resource? e.g.
-    # `interaction :acknowledgements`
-    resource :response
+
+  resources :invitations do
+    scope module: :invitations do
+      # No ID ; should this really be an
+      # `interaction` resource? e.g.
+      # `interaction :acknowledgements`
+      resource :response
+    end
+    member do
+      put :email
+    end
   end
   resources :users
   resources :api_keys, except: %i[edit update]
