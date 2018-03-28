@@ -2,7 +2,8 @@ class ResourcesController < ApplicationController
   before_action :authenticate_user
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
   before_action :authorize_resource, only: [:show, :edit, :destroy]
-  helper_method :resource_name, :resource_class
+
+  helper_method :resource_name, :resource_class, :resource
 
   def self.resource
     raise NotImplementedError, "ResourcesController.resource must be an ActiveModel or ActiveRecord class"
@@ -148,7 +149,7 @@ class ResourcesController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def resource_params
-      params.permit(resource_name.singular).permit(permitted_params)
+      params.require(resource_name.singular).permit(permitted_params)
     end
 
     # Authorizse resource with Pundit.

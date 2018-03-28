@@ -3,7 +3,7 @@ class Acknowledgement < ApplicationRecord
   belongs_to :notification
 
   validates :user, presence: true
-  validates_uniqueness_of :user_id, scope: :notification_id
+  # validates_uniqueness_of :user_id, scope: :notification_id
   validates :notification, presence: true
 
   CLAIM_ENCRYPTION_ALGORITH = 'HS256'.freeze

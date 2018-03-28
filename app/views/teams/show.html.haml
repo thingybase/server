@@ -17,7 +17,7 @@
       %tr
         %th= Notification.human_attribute_name(:subject)
         %th= Notification.human_attribute_name(:created_at)
-        %th Acknowledged by
+        %th Acknowledgement status
     %tbody
       - @team.notifications.each do |notification|
         %tr
@@ -25,9 +25,11 @@
           %td= local_time notification.created_at
           %td
             -if notification.acknowledgement
-              =link_to notification.acknowledgement.user.name, notification.acknowledgement
-              =local_time_ago notification.acknowledgement.created_at
+              =link_to notification.acknowledgement do
+                =local_time_ago notification.acknowledgement.created_at
+                by
+                =notification.acknowledgement.user.name
             -else
-              = link_to t('.ack', :default => t("helpers.links.ack")), new_notification_acknowledgement_path(notification), :class => 'btn btn-xs'
+              Not acknowledged
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_team_path(@team), :class => 'btn btn-default'
 = link_to t('.notify', :default => t("helpers.links.notify")), new_team_notification_path(@team), :class => 'btn btn-default'

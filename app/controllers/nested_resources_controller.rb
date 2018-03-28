@@ -31,6 +31,12 @@ class NestedResourcesController < ResourcesController
     end
 
   private
+    # Optionally allow the resource params because nested resources usually
+    # allow a POST request with no params that create a resource.
+    def resource_params
+      params.permit(resource_name.singular).permit(permitted_params)
+    end
+
     # Sets instance variable for templates to match the model name. For
     # example, `Team` model name would set the `@team` instance variable
     # for template access.
