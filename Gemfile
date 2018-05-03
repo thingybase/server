@@ -7,9 +7,9 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.5'
+gem 'rails', '~> 5.2.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -55,6 +55,8 @@ gem 'pg', '~> 0.21.0'
 gem 'strong_password'
 # Application error alerts
 gem 'rollbar'
+# Faster dev boot times
+gem 'bootsnap', '~> 1.3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -73,9 +75,8 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  # TODO: Spring crashes Twilio (of course) in dev, so just stop using this garbage.
-  # gem 'spring'
-  # gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
