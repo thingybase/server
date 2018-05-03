@@ -11,7 +11,7 @@ module Teams
     end
 
     def resource_scope
-      policy_scope.joins(:user)
+      policy_scope.joins(:user).where(team: @team)
     end
 
     def permitted_params
