@@ -2,38 +2,45 @@
   %h1 Thingybase
   %p.lead Keep track of your stuff
   %p=link_to "Sign up →", new_session_path, class: "btn btn-primary btn-lg", role: "button"
-  %p When something critical happens, who gets the call? Thingybase replaces manual pager rotations and phone trees with an automated system that calls, texts, and alerts people until they respond to an alert
+  %p What happens if you put a QR code on everything you own?
 .section
-  %h2 Incidents delivered to your phone
-  %h3 Get notified when things happen so you can respond
-  %p When something happens thingybase notifies people in your group, one after the other, until somebody acknowledges the situation.
-  =image_tag "incident.svg", style: "max-width: 100%;"
-.section
-  %h2 $5 per user
-  %h3 The first user is free
+  %h2 Plans & pricing
+  %h3 Free during beta testing!
   %p Try thingybase as long as you’d like to get alerts for personal or small projects. Upgrade when you’re ready to scale your account and add more users to a pager rotation.
   .plans-listing
     .plans-listing--plan
       =image_tag "solo.svg", style: "max-width: 100%;"
-      %h2 Solo
-      %p $0
+      %h2 Personal
+      %p 100 items
+      %p 1 user
+      %p.plans-listing--plan--price $0
+      %p.plans-listing--plan--beta-price Free during beta testing
       %p=link_to "Sign up", new_session_path, class: "btn btn-primary btn-lg", role: "button"
     .plans-listing--plan
       =image_tag "startup.svg", style: "max-width: 100%;"
-      %h2 Startup
-      %p $10
+      %h2 Family
+      %p Unlimited items
+      %p 5 users
+      %p.plans-listing--plan--price $49.99/year
+      %p.plans-listing--plan--beta-price Free during beta testing
       %p=link_to "Sign up", new_session_path, class: "btn btn-primary btn-lg", role: "button"
     .plans-listing--plan
       =image_tag "account.svg", style: "max-width: 100%;"
-      %h2 Account
-      %p $30
+      %h2 Business
+      %p Unlimited items
+      %p 25 users
+      %p.plans-listing--plan--price $99.99/year
+      %p.plans-listing--plan--beta-price Free during beta testing
       %p=link_to "Sign up", new_session_path, class: "btn btn-primary btn-lg", role: "button"
     .plans-listing--plan
       =image_tag "business.svg", style: "max-width: 100%;"
-      %h2 Bigtime
-      %p $65
+      %h2 Enterprise
+      %p Unlimited items
+      %p Unlimited users
+      %p.plans-listing--plan--price Contact for pricing
+      %p.plans-listing--plan--beta-price Free during beta testing
       %p=link_to "Sign up", new_session_path, class: "btn btn-primary btn-lg", role: "button"
 .section
   %h1 Try Thingybase for free
-  %p.lead Thingybase is a bat phone for critical events. When something happens and somebody has to answer
+  %p.lead Take it for a spin and see how Thingybase helps you get a handle on your stuff.
   %p=link_to "Sign up →", new_session_path, class: "btn btn-primary btn-lg", role: "button"
