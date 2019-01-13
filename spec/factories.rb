@@ -19,7 +19,7 @@ FactoryBot.define do
     name { Faker::Name.name }
     token { Invitation.random_token }
     user
-    team
+    account
   end
 
   factory :user do
@@ -30,13 +30,13 @@ FactoryBot.define do
     end
   end
 
-  factory :team do
+  factory :account do
     name { Faker::Superhero.name }
     user
   end
 
   factory :member do
-    team
+    account
     user
   end
 
@@ -44,7 +44,7 @@ FactoryBot.define do
     subject { Faker::Hipster.sentence }
     message { Faker::Hipster.paragraph }
     user
-    team
+    account
   end
 
   factory :acknowledgement do

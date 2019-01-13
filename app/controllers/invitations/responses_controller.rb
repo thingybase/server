@@ -21,7 +21,7 @@ module Invitations
 
     def create_redirect_url
       if @invitation_response.accepted?
-        @invitation_response.team
+        @invitation_response.account
       else
         user_url current_user
       end

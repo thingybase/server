@@ -1,0 +1,5 @@
+%h1 Create a new account
+%p Give the group a descriptive name, like "on-call support" or "afterhours staff", then you'll invite people to join the account who can receive notifications.
+= simple_form_for @account, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :name, autofocus: true
+  = f.button :submit, "Create account", :class => 'btn-primary'

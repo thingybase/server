@@ -2,7 +2,7 @@ class Invitation < ApplicationRecord
   TOKEN_SIZE = 16
   MINIMUM_ENTROPY = 30
 
-  belongs_to :team
+  belongs_to :account
   belongs_to :user
 
   validates :email, presence: true
@@ -10,7 +10,7 @@ class Invitation < ApplicationRecord
     uniqueness: true,
     password_strength: { min_entropy: MINIMUM_ENTROPY }
   validates :user, presence: true
-  validates :team, presence: true
+  validates :account, presence: true
 
   before_validation :assign_random_token, on: :create
 

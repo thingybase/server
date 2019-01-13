@@ -5,11 +5,11 @@ RSpec.describe "members/index", type: :view do
     assign(:members, [
       Member.create!(
         :user => nil,
-        :team => nil
+        :account => nil
       ),
       Member.create!(
         :user => nil,
-        :team => nil
+        :account => nil
       )
     ])
   end

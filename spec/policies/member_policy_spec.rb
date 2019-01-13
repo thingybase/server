@@ -3,8 +3,8 @@ require 'rails_helper'
 describe MemberPolicy do
   subject { described_class.new(user, member) }
 
-  let(:member) { create(:member, team: team) }
-  let(:team) { create(:team) }
+  let(:member) { create(:member, account: account) }
+  let(:account) { create(:account) }
 
   context 'a visitor' do
     let(:user) { nil }
@@ -17,8 +17,8 @@ describe MemberPolicy do
     it { is_expected.to forbid_action(:index) }
   end
 
-  context 'a team owner' do
-    let(:user) { team.user }
+  context 'a account owner' do
+    let(:user) { account.user }
     it { is_expected.to permit_action(:show) }
     it { is_expected.to permit_action(:edit) }
     it { is_expected.to permit_action(:update) }
@@ -41,7 +41,7 @@ describe MemberPolicy do
   end
 
   context 'a member to another member' do
-    let(:user) { create(:member, team: team).user }
+    let(:user) { create(:member, account: account).user }
     it { is_expected.to forbid_action(:edit) }
     it { is_expected.to forbid_action(:update) }
     it { is_expected.to forbid_action(:create) }

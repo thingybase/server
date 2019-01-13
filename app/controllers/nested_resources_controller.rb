@@ -40,14 +40,14 @@ class NestedResourcesController < ResourcesController
     end
 
     # Sets instance variable for templates to match the model name. For
-    # example, `Team` model name would set the `@team` instance variable
+    # example, `Account` model name would set the `@account` instance variable
     # for template access.
     def parent_resource=(value)
       instance_variable_set("@#{parent_resource_name.singular}", value)
     end
 
     # Gets instance variable for templates to match the model name. For
-    # example, `Team` model name would get the `@team` instance variable.
+    # example, `Account` model name would get the `@account` instance variable.
     def parent_resource
       instance_variable_get("@#{parent_resource_name.singular}")
     end

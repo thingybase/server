@@ -100,27 +100,27 @@ class ResourcesController < ApplicationController
     end
 
     # Sets instance variable for templates to match the model name. For
-    # example, `Team` model name would set the `@team` instance variable
+    # example, `Account` model name would set the `@account` instance variable
     # for template access.
     def resource=(value)
       instance_variable_set("@#{resource_name.singular}", value)
     end
 
     # Sets instance variable for templates to match the model name. For
-    # example, `Team` model name would set the `@teams` instance variable
+    # example, `Account` model name would set the `@accounts` instance variable
     # for template access.
     def resources=(value)
       instance_variable_set("@#{resource_name.plural}", value)
     end
 
     # Gets instance variable for templates to match the model name. For
-    # example, `Team` model name would get the `@team` instance variable.
+    # example, `Account` model name would get the `@account` instance variable.
     def resource
       instance_variable_get("@#{resource_name.singular}")
     end
 
     # Gets instance variable for templates to match the model name. For
-    # example, `Team` model name would get the `@teams` instance variable.
+    # example, `Account` model name would get the `@accounts` instance variable.
     def resources
       instance_variable_get("@#{resource_name.plural}")
     end

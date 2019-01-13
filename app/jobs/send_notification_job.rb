@@ -4,7 +4,7 @@ class SendNotificationJob < ApplicationJob
 
   def perform(notification)
     # TODO: Way too complex./ Move into classes n such.
-    notification.team.users.where.not(phone_number: true).each do |user|
+    notification.account.users.where.not(phone_number: true).each do |user|
       phone_number = user.phone_number
 
       logger.info "Sending SMS to user #{phone_number}"

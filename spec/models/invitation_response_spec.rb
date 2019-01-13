@@ -19,8 +19,8 @@ RSpec.describe InvitationResponse, type: :model do
       it "destroys invitation" do
         expect{subject.save}.to change{Invitation.count}.by(-1)
       end
-      it "creates member on team" do
-        expect{subject.save}.to change{invitation.team.members.where(user: user).count}.by(1)
+      it "creates member on account" do
+        expect{subject.save}.to change{invitation.account.members.where(user: user).count}.by(1)
       end
     end
     context "decline" do

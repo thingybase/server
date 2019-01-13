@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     # `interaction :acknowledgements`
     resource :verification
   end
-  parent_resources :teams do
+  parent_resources :accounts do
     resources :notifications
     resources :members
     resources :invitations

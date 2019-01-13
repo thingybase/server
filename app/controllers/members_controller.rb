@@ -1,5 +1,5 @@
 class MembersController < ResourcesController
-  include TeamLayout
+  include AccountLayout
 
   def self.resource
     Member
@@ -10,14 +10,14 @@ class MembersController < ResourcesController
   end
 
   def permitted_params
-    [:user_id, :team_id]
+    [:user_id, :account_id]
   end
 
   def assign_attributes
-    self.resource.team = @team
+    self.resource.account = @account
   end
 
   def destroy_redirect_url
-    team_members_url @team
+    account_members_url @account
   end
 end

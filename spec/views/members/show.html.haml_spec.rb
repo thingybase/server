@@ -4,7 +4,7 @@ RSpec.describe "members/show", type: :view do
   before(:each) do
     @member = assign(:member, Member.create!(
       :user => nil,
-      :team => nil
+      :account => nil
     ))
   end
 

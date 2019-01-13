@@ -1,6 +1,6 @@
 class InvitationResponse < ApplicationModel
   attr_accessor :invitation, :status, :user, :token
-  delegate :id, :team, to: :invitation
+  delegate :id, :account, to: :invitation
 
   STATUSES = {
     "Accept" => "accept",
@@ -35,8 +35,8 @@ class InvitationResponse < ApplicationModel
     end
 
     def accept
-      Team.transaction do
-        invitation.team.members.find_or_create_by! user: user
+      Account.transaction do
+        invitation.account.members.find_or_create_by! user: user
         invitation.destroy
       end
     end

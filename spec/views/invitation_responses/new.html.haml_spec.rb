@@ -4,7 +4,7 @@ RSpec.describe "invitation_responses/new", type: :view do
   before(:each) do
     assign(:invitation_response, InvitationResponse.new(
       :user => "",
-      :team => ""
+      :account => ""
     ))
   end
 
@@ -15,7 +15,7 @@ RSpec.describe "invitation_responses/new", type: :view do
 
       assert_select "input[name=?]", "invitation_response[user]"
 
-      assert_select "input[name=?]", "invitation_response[team]"
+      assert_select "input[name=?]", "invitation_response[account]"
     end
   end
 end

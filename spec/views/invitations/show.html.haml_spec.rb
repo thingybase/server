@@ -6,7 +6,7 @@ RSpec.describe "invitations/show", type: :view do
       :email => "Email",
       :name => "Name",
       :token => "Token",
-      :team => nil,
+      :account => nil,
       :user => nil
     ))
   end

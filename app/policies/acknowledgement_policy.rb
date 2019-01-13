@@ -4,15 +4,15 @@ class AcknowledgementPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present? && is_team_member?
+    user.present? && is_account_member?
   end
 
   def update?
-    is_owner? || is_team_owner?
+    is_owner? || is_account_owner?
   end
 
   def destroy?
-    is_owner? || is_team_owner?
+    is_owner? || is_account_owner?
   end
 
   def index?
@@ -21,16 +21,16 @@ class AcknowledgementPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.joins(:notification).where(notifications: {team_id: user.teams})
+      scope.joins(:notification).where(notifications: {account_id: user.accounts})
     end
   end
 
   private
-    def is_team_member?
-      user.teams.where(id: record.notification.team).exists?
+    def is_account_member?
+      user.accounts.where(id: record.notification.account).exists?
     end
 
-    def is_team_owner?
-      user.present? && user == record.notification.team.user
+    def is_account_owner?
+      user.present? && user == record.notification.account.user
     end
 end

@@ -5,11 +5,11 @@ RSpec.describe "invitation_responses/index", type: :view do
     assign(:invitation_responses, [
       InvitationResponse.create!(
         :user => "",
-        :team => ""
+        :account => ""
       ),
       InvitationResponse.create!(
         :user => "",
-        :team => ""
+        :account => ""
       )
     ])
   end

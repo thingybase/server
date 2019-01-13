@@ -1,7 +1,7 @@
 %h1 Settings for #{resource.name}
 
 %h2 Profile
-%p How you appear to your team members and Thingybase.
+%p How you appear to your account members and Thingybase.
 
 %p
   %strong= resource_class.human_attribute_name(:name) + ':'
@@ -15,7 +15,7 @@
 = link_to "Edit profile", edit_user_path(@user), :class => 'btn btn-default'
 
 %h2 Phone number
-%p We only use this phone number to call or text you when your team gets a critical notification.
+%p We only use this phone number to call or text you when your account gets a critical notification.
 %p
   %strong= resource_class.human_attribute_name(:phone_number) + ':'
   %br

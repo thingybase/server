@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Invitation, type: :model do
   subject { build(:invitation) }
-  it { is_expected.to belong_to(:team) }
+  it { is_expected.to belong_to(:account) }
   it { is_expected.to belong_to(:user) }
-  it { is_expected.to validate_presence_of(:team) }
+  it { is_expected.to validate_presence_of(:account) }
   it { is_expected.to validate_presence_of(:user) }
   it { is_expected.to validate_presence_of(:email) }
   describe "#token" do

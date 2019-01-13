@@ -1,10 +1,10 @@
 class Notification < ApplicationRecord
   belongs_to :user
-  belongs_to :team
+  belongs_to :account
 
   validates :subject, presence: true
   validates :user, presence: true
-  validates :team, presence: true
+  validates :account, presence: true
 
   has_one :acknowledgement, dependent: :destroy
 

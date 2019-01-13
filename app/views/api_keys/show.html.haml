@@ -11,7 +11,7 @@
 = link_to t('.destroy', default: t("helpers.links.destroy")), api_key_path(@api_key), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger'
 
 %h2 curl request
-%p Example of using curl to request a list of teams
+%p Example of using curl to request a list of accounts
 %pre.word-wrapped-block
   :plain
-    curl "#{teams_url(format: :json)}" -H "Authentication: apitoken #{@api_key.token}"
+    curl "#{accounts_url(format: :json)}" -H "Authentication: apitoken #{@api_key.token}"

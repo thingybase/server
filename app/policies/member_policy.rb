@@ -12,7 +12,7 @@ class MemberPolicy < ApplicationPolicy
   end
 
   def destroy?
-    is_owner? || is_team_owner?
+    is_owner? || is_account_owner?
   end
 
   def index?
@@ -21,12 +21,12 @@ class MemberPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.where(team_id: user.teams)
+      scope.where(account_id: user.accounts)
     end
   end
 
   private
-    def is_team_owner?
-      user.present? && user == record.team&.user
+    def is_account_owner?
+      user.present? && user == record.account&.user
     end
 end

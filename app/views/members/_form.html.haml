@@ -1,4 +1,4 @@
 = simple_form_for @member, :html => { :class => 'form-horizontal' } do |f|
   = f.association :user, include_blank: false
-  = f.association :team, collection: policy_scope(Team), include_blank: false
+  = f.association :account, collection: policy_scope(Account), include_blank: false
   = f.button :submit, :class => 'btn-primary'

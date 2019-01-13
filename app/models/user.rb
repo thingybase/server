@@ -12,10 +12,10 @@ class User < ApplicationRecord
   has_many :notifications
   has_many :api_keys
 
-  def teams
-    Team
-      .joins("LEFT JOIN members ON teams.id = members.team_id")
-      .where("members.user_id = ? OR teams.user_id = ?", id, id)
+  def accounts
+    Account
+      .joins("LEFT JOIN members ON accounts.id = members.account_id")
+      .where("members.user_id = ? OR accounts.user_id = ?", id, id)
       .distinct
   end
 

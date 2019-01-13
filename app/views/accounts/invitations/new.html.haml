@@ -1,0 +1,7 @@
+%h1 Invite person to #{@account.name}
+%p We'll send an email with an invitation link and instructions on joining this account. If they accept the invitation they will be able to view and receive notifications on this account.
+
+= simple_form_for [@account, @invitation], :html => { :class => 'form-horizontal' } do |f|
+  = f.input :email, autofocus: true
+  = f.input :name
+  = f.button :submit, "Preview invitation →", :class => 'btn-primary'

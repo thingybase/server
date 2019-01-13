@@ -1,5 +1,5 @@
 class InvitationsController < ResourcesController
-  include TeamLayout
+  include AccountLayout
 
   def self.resource
     Invitation
@@ -10,18 +10,18 @@ class InvitationsController < ResourcesController
   end
 
   def permitted_params
-    [:email, :name, :token, :team_id]
+    [:email, :name, :token, :account_id]
   end
 
   def assign_attributes
     @invitation.user = current_user
-    @invitation.team ||= @team
+    @invitation.account ||= @account
     @invitation.token ||= Invitation.random_token
   end
 
   def email
-    InvitationMailer.team_invitation_email(@invitation).deliver_now
+    InvitationMailer.account_invitation_email(@invitation).deliver_now
     flash[:notice] = "Invitation sent to #{@invitation.email}"
-    redirect_to team_invitations_path(@invitation.team)
+    redirect_to account_invitations_path(@invitation.account)
   end
 end

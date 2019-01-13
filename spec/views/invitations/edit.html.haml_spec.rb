@@ -6,7 +6,7 @@ RSpec.describe "invitations/edit", type: :view do
       :email => "MyString",
       :name => "MyString",
       :token => "MyString",
-      :team => nil,
+      :account => nil,
       :user => nil
     ))
   end
@@ -22,7 +22,7 @@ RSpec.describe "invitations/edit", type: :view do
 
       assert_select "input[name=?]", "invitation[token]"
 
-      assert_select "input[name=?]", "invitation[team_id]"
+      assert_select "input[name=?]", "invitation[account_id]"
 
       assert_select "input[name=?]", "invitation[user_id]"
     end

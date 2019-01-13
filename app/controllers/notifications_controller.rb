@@ -1,5 +1,5 @@
 class NotificationsController < ResourcesController
-  include TeamLayout
+  include AccountLayout
 
   after_action :notify_members, only: :create
 
@@ -8,16 +8,16 @@ class NotificationsController < ResourcesController
   end
 
   def resource_scope
-    policy_scope.includes(:team)
+    policy_scope.includes(:account)
   end
 
   def permitted_params
-    [:subject, :message, :team_id]
+    [:subject, :message, :account_id]
   end
 
   def assign_attributes
     self.resource.user = current_user
-    self.resource.team ||= @team
+    self.resource.account ||= @account
   end
 
   private

@@ -4,14 +4,14 @@
   %thead
     %tr
       %th= resource_class.human_attribute_name(:user_id)
-      %th= resource_class.human_attribute_name(:team_id)
+      %th= resource_class.human_attribute_name(:account_id)
       %th= resource_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @members.each do |member|
       %tr
         %td= link_to member.user.name, member_path(member)
-        %td= member.team.name
+        %td= member.account.name
         %td= local_time member.created_at
         %td
           = link_to t('.show', :default => t("helpers.links.show")), member_path(member), :class => 'btn btn-default btn-xs'

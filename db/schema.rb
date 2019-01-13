@@ -34,32 +34,32 @@ ActiveRecord::Schema.define(version: 20180319084232) do
     t.string "token", null: false
     t.string "email", null: false
     t.string "name"
-    t.integer "team_id"
+    t.integer "account_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_invitations_on_team_id"
+    t.index ["account_id"], name: "index_invitations_on_account_id"
     t.index ["user_id"], name: "index_invitations_on_user_id"
   end
 
   create_table "members", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "team_id"
+    t.integer "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_members_on_team_id"
-    t.index ["user_id", "team_id"], name: "index_members_on_user_id_and_team_id", unique: true
+    t.index ["account_id"], name: "index_members_on_account_id"
+    t.index ["user_id", "account_id"], name: "index_members_on_user_id_and_account_id", unique: true
     t.index ["user_id"], name: "index_members_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
     t.string "subject", null: false
     t.string "message"
-    t.integer "team_id"
+    t.integer "account_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_notifications_on_team_id"
+    t.index ["account_id"], name: "index_notifications_on_account_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
@@ -72,12 +72,12 @@ ActiveRecord::Schema.define(version: 20180319084232) do
     t.index ["user_id"], name: "index_phone_number_claims_on_user_id"
   end
 
-  create_table "teams", force: :cascade do |t|
+  create_table "accounts", force: :cascade do |t|
     t.string "name", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_teams_on_user_id"
+    t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

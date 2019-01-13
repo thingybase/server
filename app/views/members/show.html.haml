@@ -6,9 +6,9 @@
   %br
   = @member.user.name
 %p
-  %strong= resource_class.human_attribute_name(:team_id) + ':'
+  %strong= resource_class.human_attribute_name(:account_id) + ':'
   %br
-  = @member.team.name
+  = @member.account.name
 
 
 = link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn btn-default'

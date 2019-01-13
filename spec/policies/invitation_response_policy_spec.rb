@@ -16,7 +16,7 @@ describe InvitationResponsePolicy do
   end
 
   context 'an owner' do
-    let(:user) { invitation.team.user }
+    let(:user) { invitation.account.user }
     it { is_expected.to forbid_action(:show) }
     it { is_expected.to forbid_action(:create) }
     it { is_expected.to forbid_action(:new) }
@@ -28,7 +28,7 @@ describe InvitationResponsePolicy do
   end
 
   context 'a member' do
-    let(:user) { create(:member, team: invitation.team).user }
+    let(:user) { create(:member, account: invitation.account).user }
     it { is_expected.to forbid_action(:show) }
     it { is_expected.to forbid_action(:create) }
     it { is_expected.to forbid_action(:new) }

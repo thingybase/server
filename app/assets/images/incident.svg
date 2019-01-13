@@ -54,7 +54,7 @@
                 <path d="M16.4761074,132 L235.5,132" id="Line" stroke="#4A90E2" stroke-width="2" stroke-linecap="square"></path>
                 <path d="M15.4761074,360 L234.5,360" id="Line" stroke="#4A90E2" stroke-width="2" stroke-linecap="square"></path>
             </g>
-            <g id="team" transform="translate(453.000000, 103.000000)">
+            <g id="account" transform="translate(453.000000, 103.000000)">
                 <ellipse id="Oval" stroke="#979797" fill="#D8D8D8" cx="198.903659" cy="75.9473684" rx="24.9036589" ry="24.8911579"></ellipse>
                 <ellipse id="Oval" stroke="#979797" fill="#D8D8D8" cx="51.9036589" cy="211.891158" rx="24.9036589" ry="24.8911579"></ellipse>
                 <ellipse id="Oval" stroke="#979797" fill="#D8D8D8" cx="126.903659" cy="161.891158" rx="24.9036589" ry="24.8911579"></ellipse>

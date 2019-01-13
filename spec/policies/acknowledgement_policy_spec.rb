@@ -16,8 +16,8 @@ describe AcknowledgementPolicy do
     it { is_expected.to forbid_action(:index) }
   end
 
-  context 'a team owner' do
-    let(:user) { acknowledgement.notification.team.user }
+  context 'a account owner' do
+    let(:user) { acknowledgement.notification.account.user }
     it { is_expected.to permit_action(:show) }
     it { is_expected.to permit_action(:edit) }
     it { is_expected.to permit_action(:update) }
@@ -29,7 +29,7 @@ describe AcknowledgementPolicy do
 
   context 'a member to themselves' do
     let(:user) { acknowledgement.user }
-    before { create(:member, user: user, team: acknowledgement.notification.team)}
+    before { create(:member, user: user, account: acknowledgement.notification.account)}
     it { is_expected.to permit_action(:edit) }
     it { is_expected.to permit_action(:update) }
     it { is_expected.to permit_action(:destroy) }
@@ -40,7 +40,7 @@ describe AcknowledgementPolicy do
   end
 
   context 'a member to another member' do
-    let(:user) { create(:member, team: acknowledgement.notification.team).user }
+    let(:user) { create(:member, account: acknowledgement.notification.account).user }
     it { is_expected.to forbid_action(:edit) }
     it { is_expected.to forbid_action(:update) }
     it { is_expected.to forbid_action(:destroy) }

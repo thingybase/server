@@ -1,40 +1,40 @@
 class InvitationPolicy < ApplicationPolicy
   def index?
-    is_team_owner?
+    is_account_owner?
   end
 
   def new?
-    Team.where(user_id: user).exists?
+    Account.where(user_id: user).exists?
   end
 
   def create?
-    is_team_owner?
+    is_account_owner?
   end
 
   def update?
-    is_team_owner?
+    is_account_owner?
   end
 
   def destroy?
-    is_team_owner?
+    is_account_owner?
   end
 
   def show?
-    is_team_owner? && scope.where(id: record.id).exists?
+    is_account_owner? && scope.where(id: record.id).exists?
   end
 
   def email?
-    is_team_owner?
+    is_account_owner?
   end
 
   class Scope < Scope
     def resolve
-      scope.where(team_id: user.teams)
+      scope.where(account_id: user.accounts)
     end
   end
 
   private
-    def is_team_owner?
-      user.present? && user == record.team.user
+    def is_account_owner?
+      user.present? && user == record.account.user
     end
 end

@@ -1,7 +1,0 @@
-%h1 Invite person to #{@team.name}
-%p We'll send an email with an invitation link and instructions on joining this team. If they accept the invitation they will be able to view and receive notifications on this team.
-
-= simple_form_for [@team, @invitation], :html => { :class => 'form-horizontal' } do |f|
-  = f.input :email, autofocus: true
-  = f.input :name
-  = f.button :submit, "Preview invitation →", :class => 'btn-primary'

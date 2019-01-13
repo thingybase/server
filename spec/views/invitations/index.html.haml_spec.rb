@@ -7,14 +7,14 @@ RSpec.describe "invitations/index", type: :view do
         :email => "Email",
         :name => "Name",
         :token => "Token",
-        :team => nil,
+        :account => nil,
         :user => nil
       ),
       Invitation.create!(
         :email => "Email",
         :name => "Name",
         :token => "Token",
-        :team => nil,
+        :account => nil,
         :user => nil
       )
     ])

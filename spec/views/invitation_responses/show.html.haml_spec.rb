@@ -4,7 +4,7 @@ RSpec.describe "invitation_responses/show", type: :view do
   before(:each) do
     @invitation_response = assign(:invitation_response, InvitationResponse.create!(
       :user => "",
-      :team => ""
+      :account => ""
     ))
   end
 
