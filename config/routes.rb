@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :accounts do
     resources :members
     resources :invitations
+    resources :labels
   end
   resources :invitations do
     scope module: :invitations do

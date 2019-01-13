@@ -9,12 +9,18 @@ $danger-color: red
 *, *:before, *:after
   box-sizing: border-box
 
-body, html
+@import url('https://rsms.me/inter/inter-ui.css')
+
+body, html, input
+  font-family: 'Inter UI var alt', -apple-system, Helvetica, sans-serif
   font-size: $base-font-size
-  font-family: -apple-system, Helvetica, sans-serif
   padding: 0
   margin: 0
   box-sizing: border-box
+
+@supports (font-variation-settings: normal)
+  body, html, input
+    font-family: 'Inter UI var alt', -apple-system, Helvetica, sans-serif
 
 a
   color: $primary-color
