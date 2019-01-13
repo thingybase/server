@@ -13,28 +13,18 @@ def shallow
 end
 
 Rails.application.routes.draw do
-  resources :acknowledgements
   resources :members
-  parent_resources :notifications do
-    # Should I allow multiple-acks? I don't see why not.
-    # TODO: Cover shallow controllers like this; or not. I'm
-    # not sure if I need this.
-    shallow do
-      resources :acknowledgements
-    end
-  end
+  resources :labels
   parent_resources :phone_number_claims do
     # No ID ; should this really be an
     # `interaction` resource? e.g.
     # `interaction :acknowledgements`
     resource :verification
   end
-  parent_resources :accounts do
-    resources :notifications
+  resources :accounts do
     resources :members
     resources :invitations
   end
-
   resources :invitations do
     scope module: :invitations do
       # No ID ; should this really be an
@@ -48,9 +38,6 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :api_keys, except: %i[edit update]
-
-  # TODO: Make this a POST and switch off TwiML
-  get "/twilio/acknowledgements", to: 'twilio_acknowledgements#create', as: :twilio_acknowledgement
 
   resource :session
   post "/auth/:provider/callback", to: 'sessions#create'

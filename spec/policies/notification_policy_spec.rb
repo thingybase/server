@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe NotificationPolicy do
-  subject { described_class.new(user, notification) }
+describe LabelPolicy do
+  subject { described_class.new(user, label) }
 
-  let(:notification) { create(:notification) }
+  let(:label) { create(:label) }
 
   context 'a visitor' do
     let(:user) { nil }
@@ -17,7 +17,7 @@ describe NotificationPolicy do
   end
 
   context 'a account owner' do
-    let(:user) { notification.account.user }
+    let(:user) { label.account.user }
     it { is_expected.to permit_action(:show) }
     it { is_expected.to permit_action(:edit) }
     it { is_expected.to permit_action(:update) }
@@ -28,8 +28,8 @@ describe NotificationPolicy do
   end
 
   context 'a member to themselves' do
-    let(:user) { notification.user }
-    before { create(:member, user: notification.user, account: notification.account) }
+    let(:user) { label.user }
+    before { create(:member, user: label.user, account: label.account) }
     it { is_expected.to permit_action(:edit) }
     it { is_expected.to permit_action(:update) }
     it { is_expected.to permit_action(:destroy) }
@@ -41,7 +41,7 @@ describe NotificationPolicy do
 
   context 'a member to another member' do
     let(:user) { create(:user) }
-    before { create(:member, user: user, account: notification.account) }
+    before { create(:member, user: user, account: label.account) }
     it { is_expected.to forbid_action(:edit) }
     it { is_expected.to forbid_action(:update) }
     it { is_expected.to forbid_action(:destroy) }

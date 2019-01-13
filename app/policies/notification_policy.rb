@@ -1,4 +1,4 @@
-class NotificationPolicy < ApplicationPolicy
+class LabelPolicy < ApplicationPolicy
   def new?
     user.present?
   end

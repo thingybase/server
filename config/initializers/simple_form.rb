@@ -72,14 +72,14 @@ SimpleForm.setup do |config|
   # Use :to_sentence to list all errors for each field.
   # config.error_method = :first
 
-  # Default tag used for error notification helper.
+  # Default tag used for error label helper.
   config.error_notification_tag = :div
 
-  # CSS class to add for error notification helper.
-  config.error_notification_class = 'error_notification'
+  # CSS class to add for error label helper.
+  config.error_notification_class = 'error_label'
 
-  # ID to add for error notification helper.
-  # config.error_notification_id = nil
+  # ID to add for error label helper.
+  # config.error_label_id = nil
 
   # Series of attempts to detect a default label method for collection.
   # config.collection_label_methods = [ :to_label, :name, :title, :to_s ]

@@ -6,7 +6,6 @@
       %nav.primary-nav--center
         .menu-item=@account.name
         = active_link_to "Dashboard", @account
-        = active_link_to "Notifications", [@account, :notifications]
         = active_link_to "Members", [@account, :members]
       %nav.primary-nav--right
         = active_link_to "Settings", user_path(current_user)

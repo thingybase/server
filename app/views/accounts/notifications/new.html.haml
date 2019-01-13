@@ -1,5 +1,5 @@
-%h1 New notification
-= simple_form_for @notification, :html => { :class => 'form-horizontal' } do |f|
+%h1 New label
+= simple_form_for @label, :html => { :class => 'form-horizontal' } do |f|
   = f.association :account, as: :hidden
   = f.input :subject, autofocus: true
   = f.input :message, as: :text, input_html: { rows: 7 }

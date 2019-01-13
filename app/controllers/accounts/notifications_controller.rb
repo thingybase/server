@@ -1,9 +1,9 @@
 module Accounts
-  class NotificationsController < NestedResourcesController
+  class LabelsController < NestedResourcesController
     layout "account"
 
     def self.resource
-      Notification
+      Label
     end
 
     def self.parent_resource

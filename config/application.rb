@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module Server
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.1
+    config.load_defaults 5.2
 
     routes.default_url_options = { host: 'localhost', port: 5000 }
 
@@ -17,5 +17,9 @@ module Server
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    config.generators do |g|
+      g.orm :active_record, primary_key_type: :uuid
+    end
   end
 end

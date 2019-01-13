@@ -21,16 +21,16 @@ class AcknowledgementPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.joins(:notification).where(notifications: {account_id: user.accounts})
+      scope.joins(:label).where(labels: {account_id: user.accounts})
     end
   end
 
   private
     def is_account_member?
-      user.accounts.where(id: record.notification.account).exists?
+      user.accounts.where(id: record.label.account).exists?
     end
 
     def is_account_owner?
-      user.present? && user == record.notification.account.user
+      user.present? && user == record.label.account.user
     end
 end

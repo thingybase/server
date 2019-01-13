@@ -1,0 +1,23 @@
+%h2 Listing labels
+
+%table
+  %thead
+    %tr
+      %th Text
+      %th
+      %th
+      %th
+      %th
+
+  %tbody
+    - @labels.each do |label|
+      %tr
+        %td= label.text
+        %td= link_to 'Show', label
+        %td= link_to 'Edit', edit_label_path(label)
+        %td= link_to 'Print', label_path(label, format: :pdf)
+        %td= link_to 'Destroy', label, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Label', new_label_path

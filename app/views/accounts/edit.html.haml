@@ -39,6 +39,6 @@
 = link_to t('.add-member', default: t("helpers.links.add-member")), new_account_invitation_path(@account), class: 'btn btn-default'
 
 %h2 Danger zone
-%p Deletes the account, notifications, acknowledgements, and memberships
+%p Deletes the account, labels, memberships ... everything!
 = link_to t('.destroy', default: t("helpers.links.destroy")), account_path(@account), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger'
 

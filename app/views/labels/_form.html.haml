@@ -1,0 +1,13 @@
+= form_for @label do |f|
+  - if @label.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@label.errors.count, "error")} prohibited this label from being saved:"
+      %ul
+        - @label.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :text
+    = f.text_field :text
+  .actions
+    = f.submit 'Save'

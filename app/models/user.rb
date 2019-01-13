@@ -9,7 +9,7 @@ class User < ApplicationRecord
     uniqueness: true,
     allow_nil: true
 
-  has_many :notifications
+  has_many :labels
   has_many :api_keys
 
   def accounts

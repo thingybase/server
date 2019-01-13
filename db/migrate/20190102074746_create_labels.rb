@@ -1,9 +1,9 @@
-class CreateMembers < ActiveRecord::Migration[5.2]
+class CreateLabels < ActiveRecord::Migration[5.2]
   def change
-    create_table :members, id: :uuid do |t|
+    create_table :labels, id: :uuid do |t|
+      t.string :text
       t.references :user, foreign_key: true, type: :uuid
       t.references :account, foreign_key: true, type: :uuid
-      t.index [:user_id, :account_id], unique: true
 
       t.timestamps
     end

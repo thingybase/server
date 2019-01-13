@@ -11,25 +11,16 @@
       =image_tag "//via.placeholder.com/100x100", class: "member__image"
       .member__name
         =link_to "Invite members", new_account_invitation_path(@account)
-  %h2 Notifications
+  %h2 Labels
   %table.table.table-striped
     %thead
       %tr
-        %th= Notification.human_attribute_name(:subject)
-        %th= Notification.human_attribute_name(:created_at)
-        %th Acknowledgement status
+        %th= Label.human_attribute_name(:text)
+        %th= Label.human_attribute_name(:created_at)
     %tbody
-      - @account.notifications.each do |notification|
+      - @account.labels.each do |label|
         %tr
-          %td= link_to notification.subject, notification
-          %td= local_time notification.created_at
-          %td
-            -if notification.acknowledgement
-              =link_to notification.acknowledgement do
-                =local_time_ago notification.acknowledgement.created_at
-                by
-                =notification.acknowledgement.user.name
-            -else
-              Not acknowledged
+          %td= link_to label.text, label
+          %td= local_time label.created_at
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_account_path(@account), :class => 'btn btn-default'
-= link_to t('.notify', :default => t("helpers.links.notify")), new_account_notification_path(@account), :class => 'btn btn-default'
+= link_to t('.notify', :default => t("helpers.links.notify")), new_label_path(@account), :class => 'btn btn-default'

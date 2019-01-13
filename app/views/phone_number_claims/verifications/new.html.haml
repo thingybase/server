@@ -2,6 +2,6 @@
 %p Enter the #{PhoneNumberClaim::CODE_LENGTH} digit code sent to #{phone_number @phone_number_claim.phone_number} to verify phone number.
 
 = simple_form_for @phone_number_verification, url: phone_number_claim_verification_path(@phone_number_claim) do |f|
-  = f.error_notification
+  = f.error_label
   = f.input :code, autofocus: true
   = f.button :submit, "Finish", :class => 'btn-primary'

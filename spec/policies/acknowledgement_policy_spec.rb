@@ -17,7 +17,7 @@ describe AcknowledgementPolicy do
   end
 
   context 'a account owner' do
-    let(:user) { acknowledgement.notification.account.user }
+    let(:user) { acknowledgement.label.account.user }
     it { is_expected.to permit_action(:show) }
     it { is_expected.to permit_action(:edit) }
     it { is_expected.to permit_action(:update) }
@@ -29,7 +29,7 @@ describe AcknowledgementPolicy do
 
   context 'a member to themselves' do
     let(:user) { acknowledgement.user }
-    before { create(:member, user: user, account: acknowledgement.notification.account)}
+    before { create(:member, user: user, account: acknowledgement.label.account)}
     it { is_expected.to permit_action(:edit) }
     it { is_expected.to permit_action(:update) }
     it { is_expected.to permit_action(:destroy) }
@@ -40,7 +40,7 @@ describe AcknowledgementPolicy do
   end
 
   context 'a member to another member' do
-    let(:user) { create(:member, account: acknowledgement.notification.account).user }
+    let(:user) { create(:member, account: acknowledgement.label.account).user }
     it { is_expected.to forbid_action(:edit) }
     it { is_expected.to forbid_action(:update) }
     it { is_expected.to forbid_action(:destroy) }

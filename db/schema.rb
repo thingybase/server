@@ -10,41 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319084232) do
+ActiveRecord::Schema.define(version: 2019_01_02_074746) do
 
-  create_table "acknowledgements", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "notification_id"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
+  enable_extension "plpgsql"
+
+  create_table "accounts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.uuid "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["notification_id"], name: "index_acknowledgements_on_notification_id"
-    t.index ["user_id"], name: "index_acknowledgements_on_user_id"
+    t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
-  create_table "api_keys", force: :cascade do |t|
+  create_table "api_keys", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "secret"
-    t.integer "user_id"
+    t.uuid "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_api_keys_on_user_id"
   end
 
-  create_table "invitations", force: :cascade do |t|
+  create_table "invitations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "token", null: false
     t.string "email", null: false
     t.string "name"
-    t.integer "account_id"
-    t.integer "user_id"
+    t.uuid "account_id"
+    t.uuid "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_invitations_on_account_id"
     t.index ["user_id"], name: "index_invitations_on_user_id"
   end
 
-  create_table "members", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "account_id"
+  create_table "labels", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "text"
+    t.uuid "user_id"
+    t.uuid "account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_labels_on_account_id"
+    t.index ["user_id"], name: "index_labels_on_user_id"
+  end
+
+  create_table "members", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
+    t.uuid "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_members_on_account_id"
@@ -52,35 +65,16 @@ ActiveRecord::Schema.define(version: 20180319084232) do
     t.index ["user_id"], name: "index_members_on_user_id"
   end
 
-  create_table "notifications", force: :cascade do |t|
-    t.string "subject", null: false
-    t.string "message"
-    t.integer "account_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_notifications_on_account_id"
-    t.index ["user_id"], name: "index_notifications_on_user_id"
-  end
-
-  create_table "phone_number_claims", force: :cascade do |t|
+  create_table "phone_number_claims", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "phone_number", null: false
     t.string "code", null: false
-    t.integer "user_id"
+    t.uuid "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_phone_number_claims_on_user_id"
   end
 
-  create_table "accounts", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_accounts_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.string "phone_number"
@@ -90,4 +84,13 @@ ActiveRecord::Schema.define(version: 20180319084232) do
     t.index ["phone_number"], name: "index_users_on_phone_number", unique: true
   end
 
+  add_foreign_key "accounts", "users"
+  add_foreign_key "api_keys", "users"
+  add_foreign_key "invitations", "accounts"
+  add_foreign_key "invitations", "users"
+  add_foreign_key "labels", "accounts"
+  add_foreign_key "labels", "users"
+  add_foreign_key "members", "accounts"
+  add_foreign_key "members", "users"
+  add_foreign_key "phone_number_claims", "users"
 end

@@ -1,0 +1,17 @@
+%p#notice= notice
+
+%p
+  %b Text:
+  = @label.text
+%p
+  %b Created at:
+  = @label.created_at
+%p
+  %b Updated at:
+  = @label.updated_at
+
+= link_to 'Edit', edit_label_path(@label)
+\|
+= link_to 'Print', label_path(@label, format: :pdf)
+\|
+= link_to 'Back', labels_path

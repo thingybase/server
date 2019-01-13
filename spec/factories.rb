@@ -40,7 +40,7 @@ FactoryBot.define do
     user
   end
 
-  factory :notification do
+  factory :label do
     subject { Faker::Hipster.sentence }
     message { Faker::Hipster.paragraph }
     user
@@ -49,6 +49,6 @@ FactoryBot.define do
 
   factory :acknowledgement do
     user
-    notification
+    label
   end
 end
