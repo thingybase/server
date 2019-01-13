@@ -1,6 +1,6 @@
 class SendNotificationJob < ApplicationJob
   queue_as :default
-  include Pagerline::Application.routes.url_helpers
+  include Server::Application.routes.url_helpers
 
   def perform(notification)
     # TODO: Way too complex./ Move into classes n such.

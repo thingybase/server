@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  routes.default_url_options = { host: 'www.pagerline.com' }
+  routes.default_url_options = { host: 'www.thingybase.com' }
 
   config.action_mailer.smtp_settings = {
     address:         ENV['SMTP_SERVER'],
@@ -72,7 +72,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "pagerline_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "thingybase_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
 

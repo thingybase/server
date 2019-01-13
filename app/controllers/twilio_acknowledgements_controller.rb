@@ -13,7 +13,7 @@ class TwilioAcknowledgementsController < ApplicationController
         response.say "You have successfully acknowledged this notification. Good bye."
         format.xml { render body: response, status: :created, location: @acknowledgement }
       else
-        response.say "Something wrong happened with Pagerline."
+        response.say "Something wrong happened with Thingybase."
         format.xml { render body: response, status: :unprocessable_entity }
       end
     end

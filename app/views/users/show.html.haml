@@ -1,7 +1,7 @@
 %h1 Settings for #{resource.name}
 
 %h2 Profile
-%p How you appear to your team members and Pagerline.
+%p How you appear to your team members and Thingybase.
 
 %p
   %strong= resource_class.human_attribute_name(:name) + ':'
@@ -24,5 +24,5 @@
 = link_to "#{@user.phone_number ? "Change" : "Add" } phone number", new_phone_number_claim_path, class: "btn btn-default"
 
 %h2 API Tokens
-%p Connect Pagerline to other applications and services with API keys.
+%p Connect Thingybase to other applications and services with API keys.
 =link_to "Manage API keys", api_keys_path, :class => 'btn btn-default'
