@@ -23,4 +23,4 @@
           %td= link_to label.text, label
           %td= local_time label.created_at
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_account_path(@account), :class => 'btn btn-default'
-= link_to t('.notify', :default => t("helpers.links.notify")), new_label_path(@account), :class => 'btn btn-default'
+= link_to t('.create', :default => t("helpers.links.create")), new_label_path(@account), :class => 'btn btn-default'

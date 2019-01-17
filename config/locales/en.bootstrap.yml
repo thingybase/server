@@ -20,7 +20,6 @@ en:
       ack: "Acknowledge"
       add-member: "Invite member"
       remove: "Remove"
-      notify: "Notify"
     titles:
       edit: "Edit %{model}"
       save: "Save %{model}"
