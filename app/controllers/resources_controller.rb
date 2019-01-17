@@ -34,6 +34,7 @@ class ResourcesController < ApplicationController
       if resource.save
         format.html { redirect_to create_redirect_url, notice: "#{resource_name} was successfully created." }
         format.json { render :show, status: :created, location: resource }
+        create_success_formats format
       else
         format.html { render :new }
         format.json { render json: resource.errors, status: :unprocessable_entity }
@@ -152,6 +153,10 @@ class ResourcesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_resource
       self.resource = resource_class.find params[resource_route_key]
+    end
+
+    # Additional formats can be specified for successful response creations
+    def create_success_formats(format)
     end
 
   private

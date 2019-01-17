@@ -5,23 +5,6 @@ class LabelsController < ResourcesController
     Label
   end
 
-  def resource_scope
-    policy_scope.joins(:user)
-  end
-
-  def permitted_params
-    [:user_id, :account_id, :text]
-  end
-
-  def assign_attributes
-    self.resource.account ||= @account
-    self.resource.user = current_user
-  end
-
-  def destroy_redirect_url
-    account_labels_url @account
-  end
-
   def show
     respond_to do |format|
       format.html
@@ -33,6 +16,28 @@ class LabelsController < ResourcesController
       end
     end
   end
+
+  protected
+    def resource_scope
+      policy_scope.joins(:user)
+    end
+
+    def permitted_params
+      [:user_id, :account_id, :text]
+    end
+
+    def assign_attributes
+      self.resource.account ||= @account
+      self.resource.user = current_user
+    end
+
+    def destroy_redirect_url
+      account_labels_url @account
+    end
+
+    def create_success_formats(format)
+      format.pdf { redirect_to resource, format: :pdf }
+    end
 
   private
     def label_generator
