@@ -9,6 +9,12 @@
 %p
   %b Updated at:
   = @label.updated_at
+%p
+  %b Account:
+  = @label.account.name
+%p
+  %b Creator:
+  = @label.user.name
 
 = link_to 'Edit', edit_label_path(@label)
 \|

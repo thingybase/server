@@ -1,13 +1,4 @@
-= form_for @label do |f|
-  - if @label.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@label.errors.count, "error")} prohibited this label from being saved:"
-      %ul
-        - @label.errors.full_messages.each do |message|
-          %li= message
-
-  .field
-    = f.label :text
-    = f.text_field :text
-  .actions
-    = f.submit 'Save'
+= simple_form_for @label, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :text, autofocus: true
+  = f.association :account, collection: policy_scope(Account), include_blank: false
+  = f.button :submit, :class => 'btn-primary'

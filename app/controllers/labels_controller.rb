@@ -10,11 +10,11 @@ class LabelsController < ResourcesController
   end
 
   def permitted_params
-    [:user_id, :account_id]
+    [:user_id, :account_id, :text]
   end
 
   def assign_attributes
-    self.resource.account = @account
+    self.resource.account ||= @account
     self.resource.user = current_user
   end
 
