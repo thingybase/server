@@ -1,7 +1,7 @@
 .page-header
   %h2
     =pluralize @account.members.count, "person"
-    on call
+    in account
   .members
     -@account.members.each do |member|
       .member

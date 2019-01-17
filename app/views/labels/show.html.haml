@@ -1,20 +1,14 @@
 %p#notice= notice
 
-%p
-  %b Text:
-  = @label.text
-%p
-  %b Created at:
-  = @label.created_at
-%p
-  %b Updated at:
-  = @label.updated_at
-%p
-  %b Account:
-  = @label.account.name
-%p
-  %b Creator:
-  = @label.user.name
+%h1 Label
+
+=resource_field :text
+=resource_field :created_at
+=resource_field :updated_at
+=resource_field :account do
+  = resource.account.name
+=resource_field :user do
+  =resource.user.name
 
 = link_to 'Edit', edit_label_path(@label)
 \|
