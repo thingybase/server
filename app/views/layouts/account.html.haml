@@ -7,7 +7,7 @@
         = active_link_to "Labels", [@account, :labels]
         = active_link_to "Members", [@account, :members]
       %nav.primary-nav--right
-        = active_link_to "Settings", user_path(current_user)
+        = active_link_to "Profile", user_path(current_user)
         = active_link_to "Sign out", session_path, method: :delete
   .container= yield
   %footer

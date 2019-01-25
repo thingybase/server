@@ -7,7 +7,7 @@
         %nav.primary-nav--center
         %nav.primary-nav--right
           = active_link_to "Accounts", accounts_path
-          = active_link_to "Settings", user_path(current_user)
+          = active_link_to "Profile", user_path(current_user)
           = active_link_to "Sign out", session_path, method: :delete
       -else
         %nav.primary-nav--right
