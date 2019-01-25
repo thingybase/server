@@ -5,12 +5,9 @@
         = active_link_to "Thingybase", root_path, class: "navbar-brand"
       -if logged_in?
         %nav.primary-nav--center
-          = active_link_to "Accounts", accounts_path
-          = active_link_to "Labels", labels_path
         %nav.primary-nav--right
+          = active_link_to "Accounts", accounts_path
           = active_link_to "Settings", user_path(current_user)
-          =# active_link_to "Members", members_path
-          =# active_link_to "Invitations", invitations_path
           = active_link_to "Sign out", session_path, method: :delete
       -else
         %nav.primary-nav--right

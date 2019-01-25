@@ -2,10 +2,8 @@
   %header
     .primary-nav
       %nav.primary-nav--left
-        = active_link_to "Thingybase", accounts_path, class: "navbar-brand"
+        = active_link_to @account.name, accounts_path, class: "navbar-brand"
       %nav.primary-nav--center
-        .menu-item=@account.name
-        = active_link_to "Dashboard", @account
         = active_link_to "Labels", [@account, :labels]
         = active_link_to "Members", [@account, :members]
       %nav.primary-nav--right
