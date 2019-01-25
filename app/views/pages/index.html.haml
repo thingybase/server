@@ -1,12 +1,11 @@
 .section
   %h1 Thingybase
   %p.lead Keep track of your stuff
-  %p=link_to "Sign up →", new_session_path, class: "btn btn-primary btn-lg", role: "button"
-  %p What happens if you put a QR code on everything you own?
+  %p=link_to "Get started →", new_session_path, class: "btn btn-primary btn-lg", role: "button"
 .section
   %h2 Plans & pricing
   %h3 Free during beta testing!
-  %p Try thingybase as long as you’d like to get alerts for personal or small projects. Upgrade when you’re ready to scale your account and add more users to a pager rotation.
+  %p Try thingybase as long as you’d like for a few items, then upgrade when you’re ready to scale your account and keep track of more stuff.
   .plans-listing
     .plans-listing--plan
       =image_tag "solo.svg", style: "max-width: 100%;"
@@ -40,7 +39,6 @@
       %p.plans-listing--plan--price Contact for pricing
       %p.plans-listing--plan--beta-price Free during beta testing
       %p=link_to "Sign up", new_session_path, class: "btn btn-primary btn-lg", role: "button"
-.section
-  %h1 Try Thingybase for free
+  %h2 Not sure yet? Thingybase for free
   %p.lead Take it for a spin and see how Thingybase helps you get a handle on your stuff.
   %p=link_to "Sign up →", new_session_path, class: "btn btn-primary btn-lg", role: "button"
