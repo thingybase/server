@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     # `interaction :acknowledgements`
     resource :verification
   end
-  resources :accounts do
+  parent_resources :accounts do
     resources :members
     resources :invitations
     resources :labels
