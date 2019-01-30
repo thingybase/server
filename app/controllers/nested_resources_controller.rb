@@ -1,13 +1,13 @@
 class NestedResourcesController < ResourcesController
   before_action :set_parent_resource
 
-  def index
-    self.resources = nested_resource_scope
-  end
-
   protected
     def self.parent_resource
       raise NotImplementedError, "ShallowResourcesController.parent_resource must be an ActiveModel or ActiveRecord class"
+    end
+
+    def set_resources
+      self.resources = nested_resource_scope
     end
 
     # Use callbacks to share common setup or constraints between actions.

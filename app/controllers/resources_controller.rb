@@ -2,6 +2,7 @@ class ResourcesController < ApplicationController
   before_action :authenticate_user
   before_action :set_resource, if: :member_request?
   before_action :authorize_resource, if: :member_request?
+  before_action :set_resources, only: :index
 
   helper_method :resource_name, :resource_class, :resource
 
@@ -10,7 +11,6 @@ class ResourcesController < ApplicationController
   end
 
   def index
-    self.resources = resource_scope
   end
 
   def show
@@ -153,6 +153,10 @@ class ResourcesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_resource
       self.resource = resource_class.find params[resource_route_key]
+    end
+
+    def set_resources
+      self.resources = resource_scope
     end
 
     # Additional formats can be specified for successful response creations
