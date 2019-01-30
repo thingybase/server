@@ -1,5 +1,6 @@
 class NestedResourcesController < ResourcesController
   before_action :set_parent_resource
+  before_action :set_resources, only: :index
 
   protected
     def self.parent_resource

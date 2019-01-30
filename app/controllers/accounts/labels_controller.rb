@@ -10,6 +10,13 @@ module Accounts
       Account
     end
 
+    def index
+      respond_to do |format|
+        format.html
+        format.json { render template: "labels/index" }
+      end
+    end
+
     def resource_scope
       policy_scope.includes(:account)
     end
