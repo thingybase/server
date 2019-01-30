@@ -1,6 +1,8 @@
 module Authentication
   extend ActiveSupport::Concern
 
+  AUTHENTICATION_HEADER_KEY = "Authentication".freeze
+
   included do
     before_action :authenticate_user
     helper_method :current_user, :logged_in?
@@ -27,17 +29,17 @@ module Authentication
     end
 
     def user_from_api_token
-      auth_header = request.headers["Authentication"]
-      return unless auth_header
+      token = authentication_header
+      return unless token
 
-      kind, encoded_token = auth_header.split(" ")
+      kind, encoded_token = token.split(" ")
 
       case kind
       when /apitoken/i
         return unless encoded_token
         ApiKey.find_and_authenticate(encoded_token)&.user
       else
-        error "Invalid authentication type header. Must be 'Authentication: apitoken <token>'"
+        error "Invalid authentication type header. Must be '#{AUTHENTICATION_HEADER_KEY}: apitoken <token>'"
       end
     end
 
@@ -52,5 +54,13 @@ module Authentication
 
     def access_denied_url
       session[:access_denied_url]
+    end
+
+    def has_authentication_header?
+      request.headers.key? AUTHENTICATION_HEADER_KEY
+    end
+
+    def authentication_header
+      request.headers[AUTHENTICATION_HEADER_KEY]
     end
 end

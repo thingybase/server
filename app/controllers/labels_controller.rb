@@ -23,7 +23,7 @@ class LabelsController < ResourcesController
     end
 
     def permitted_params
-      [:user_id, :account_id, :text]
+      [:user_id, :account_id, :text, :uuid]
     end
 
     def assign_attributes

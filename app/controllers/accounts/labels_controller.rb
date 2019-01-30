@@ -22,7 +22,7 @@ module Accounts
     end
 
     def permitted_params
-      [:subject, :message, :account_id]
+      [:subject, :message, :account_id, :uuid]
     end
 
     def assign_attributes
