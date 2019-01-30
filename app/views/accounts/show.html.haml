@@ -20,3 +20,9 @@
   =pluralize @account.members.count, "invitations"
   %p
     =link_to "View invitations", account_invitations_path(@account)
+
+%h2 Account settings
+%p
+  =link_to "Change settings", edit_account_path(@account)
+%p
+  =link_to "Switch accounts", accounts_path
