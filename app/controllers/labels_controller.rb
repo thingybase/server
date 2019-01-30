@@ -39,6 +39,10 @@ class LabelsController < ResourcesController
       format.pdf { redirect_to resource, format: :pdf }
     end
 
+    def resource_key
+      :uuid
+    end
+
   private
     def label_generator
       LabelGenerator.new text: resource.text, url: url_for(resource)

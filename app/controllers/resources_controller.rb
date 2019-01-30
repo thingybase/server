@@ -146,13 +146,22 @@ class ResourcesController < ApplicationController
       resource_name.plural.to_sym
     end
 
-    def resource_route_key
+    # Key rails routing uses to find resource. Rails resources defaults to the `:id` value.
+    def resource_id_param
+      :id
+    end
+
+    # Key used to find the resource via ActiveRecord. Typically this is the primary key of the record,
+    # but it would be a different field if you don't want to expose users to primary keys.
+    def resource_key
       :id
     end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_resource
-      self.resource = resource_class.find params[resource_route_key]
+      query = {}
+      query[resource_key] = params[resource_id_param]
+      self.resource = resource_class.find_by! **query
     end
 
     def set_resources

@@ -2,7 +2,7 @@
   %header
     .primary-nav
       %nav.primary-nav--left
-        = active_link_to @account.name, accounts_path, class: "navbar-brand"
+        = active_link_to @account.name, account_path(@account), class: "navbar-brand"
       %nav.primary-nav--center
         = active_link_to "Labels", [@account, :labels]
         = active_link_to "People", [@account, :members]

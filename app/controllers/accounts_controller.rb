@@ -17,11 +17,4 @@ class AccountsController < ResourcesController
   def resource_scope
     policy_scope.joins(:user)
   end
-
-  def show
-    respond_to do |format|
-      format.html { redirect_to account_labels_url(@account) }
-      format.json
-    end
-  end
 end

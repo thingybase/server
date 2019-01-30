@@ -1,0 +1,22 @@
+%h1=@account.name
+%h2 Labels
+%p
+  You have a total of
+  =pluralize @account.labels.count, "label"
+  in your account.
+%p
+  =link_to "View labels", account_labels_path(@account)
+
+%h2 People
+%p
+  You have
+  =pluralize @account.members.count, "people"
+  in your account.
+%p
+  =link_to "Manage people", account_members_path(@account)
+
+-unless @account.invitations.count.zero?
+  You have pending
+  =pluralize @account.members.count, "invitations"
+  %p
+    =link_to "View invitations", account_invitations_path(@account)

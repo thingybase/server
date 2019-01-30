@@ -16,48 +16,50 @@ ActiveRecord::Schema.define(version: 2019_01_02_074746) do
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "accounts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "accounts", force: :cascade do |t|
     t.string "name", null: false
-    t.uuid "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
-  create_table "api_keys", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "api_keys", force: :cascade do |t|
     t.string "name"
     t.string "secret"
-    t.uuid "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_api_keys_on_user_id"
   end
 
-  create_table "invitations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "invitations", force: :cascade do |t|
     t.string "token", null: false
     t.string "email", null: false
     t.string "name"
-    t.uuid "account_id"
-    t.uuid "user_id"
+    t.bigint "account_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_invitations_on_account_id"
     t.index ["user_id"], name: "index_invitations_on_user_id"
   end
 
-  create_table "labels", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "labels", force: :cascade do |t|
     t.string "text"
-    t.uuid "user_id"
-    t.uuid "account_id"
+    t.uuid "uuid", null: false
+    t.bigint "user_id"
+    t.bigint "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_labels_on_account_id"
     t.index ["user_id"], name: "index_labels_on_user_id"
+    t.index ["uuid"], name: "index_labels_on_uuid", unique: true
   end
 
-  create_table "members", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "user_id"
-    t.uuid "account_id"
+  create_table "members", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_members_on_account_id"
@@ -65,16 +67,16 @@ ActiveRecord::Schema.define(version: 2019_01_02_074746) do
     t.index ["user_id"], name: "index_members_on_user_id"
   end
 
-  create_table "phone_number_claims", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "phone_number_claims", force: :cascade do |t|
     t.string "phone_number", null: false
     t.string "code", null: false
-    t.uuid "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_phone_number_claims_on_user_id"
   end
 
-  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.string "phone_number"

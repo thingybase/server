@@ -13,7 +13,7 @@ class NestedResourcesController < ResourcesController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_parent_resource
-      self.parent_resource = self.class.parent_resource.find params[parent_resource_route_key]
+      self.parent_resource = self.class.parent_resource.find params[parent_resource_id_param]
     end
 
     # If we're deep, we want to show only members that are scoped
@@ -27,7 +27,7 @@ class NestedResourcesController < ResourcesController
     # Assumes the route key is the foreign key, which is usually the case.
     # This can be overridden if its not the case or the `nested_resource_scope`
     # can be over-ridden.
-    def parent_resource_route_key
+    def parent_resource_id_param
       parent_resource_foreign_key
     end
 
