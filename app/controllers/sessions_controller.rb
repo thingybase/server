@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def create
     if user = User.find_or_create_from_auth_hash(auth_hash)
-      redirect_url = access_denied_url || account_redirect_url(user)
+      redirect_url = access_denied_url || launch_accounts_url
       reset_session # Prevents session fixation attacks
       self.current_user = user
       redirect_to redirect_url
@@ -34,16 +34,5 @@ class SessionsController < ApplicationController
   protected
     def auth_hash
       request.env['omniauth.auth']
-    end
-
-    def account_redirect_url(user)
-      case user.accounts.count
-      when 0
-        new_account_url
-      when 1
-        account_url(user.accounts.first)
-      else
-        accounts_url
-      end
     end
 end

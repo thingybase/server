@@ -6,6 +6,21 @@ class AccountsController < ResourcesController
     Account
   end
 
+  def launch
+    authorize Account, :index?
+
+    redirect_url = case policy_scope.count
+      when 0
+        new_account_url
+      when 1
+        account_url policy_scope.first
+      else
+        accounts_url
+      end
+
+    redirect_to redirect_url
+  end
+
   def add_current_user_to_members
     @account.members.create!(user: current_user) if @account.valid?
   end

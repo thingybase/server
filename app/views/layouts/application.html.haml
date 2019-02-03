@@ -11,7 +11,7 @@
           = active_link_to "Sign out", session_path, method: :delete
       -else
         %nav.primary-nav--right
-        = active_link_to "Signup", accounts_path
-        = active_link_to "Log in", accounts_path
+        = active_link_to "Signup", new_session_path
+        = active_link_to "Log in", launch_accounts_path
   .container= yield
   %footer

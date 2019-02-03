@@ -21,10 +21,15 @@ Rails.application.routes.draw do
     # `interaction :acknowledgements`
     resource :verification
   end
-  parent_resources :accounts do
-    resources :members
-    resources :invitations
-    resources :labels
+  resources :accounts do
+    scope module: :accounts do
+      resources :members
+      resources :invitations
+      resources :labels
+    end
+    collection do
+      get :launch
+    end
   end
   resources :invitations do
     scope module: :invitations do
