@@ -3,8 +3,8 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= resource_class.human_attribute_name(:user_id)
-      %th= resource_class.human_attribute_name(:created_at)
+      %th Name
+      %th Became member at
   %tbody
     - @members.each do |member|
       %tr

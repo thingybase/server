@@ -10,10 +10,6 @@ module Accounts
       Account
     end
 
-    def resource_scope
-      policy_scope.joins(:user).where(account: @account)
-    end
-
     def permitted_params
       [:user_id, :account_id]
     end
