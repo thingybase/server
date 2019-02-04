@@ -13,6 +13,7 @@ def shallow
 end
 
 Rails.application.routes.draw do
+  resources :items
   resources :members
   resources :labels
   parent_resources :phone_number_claims do
@@ -26,6 +27,8 @@ Rails.application.routes.draw do
       resources :members
       resources :invitations
       resources :labels
+      resources :items
+      resources :containers
     end
     collection do
       get :launch

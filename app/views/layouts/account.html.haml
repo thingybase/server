@@ -4,8 +4,9 @@
       %nav.primary-nav--left
         = active_link_to @account.name, account_path(@account), class: "navbar-brand"
       %nav.primary-nav--center
+        = active_link_to "Items", [@account, :items]
+        = active_link_to "Organization", [@account, :containers]
         = active_link_to "Labels", [@account, :labels]
-        = active_link_to "Members", [@account, :members]
       %nav.primary-nav--right
         = active_link_to "Profile", user_path(current_user)
         = active_link_to "Sign out", session_path, method: :delete

@@ -1,0 +1,4 @@
+= simple_form_for @item, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :name, autofocus: true
+  = f.association :account, collection: policy_scope(Account), include_blank: false
+  = f.button :submit, :class => 'btn-primary'

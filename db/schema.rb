@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_02_074746) do
+ActiveRecord::Schema.define(version: 2019_02_04_024610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 2019_01_02_074746) do
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_invitations_on_account_id"
     t.index ["user_id"], name: "index_invitations_on_user_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.uuid "uuid"
+    t.bigint "account_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_items_on_account_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "labels", force: :cascade do |t|
@@ -90,6 +101,8 @@ ActiveRecord::Schema.define(version: 2019_01_02_074746) do
   add_foreign_key "api_keys", "users"
   add_foreign_key "invitations", "accounts"
   add_foreign_key "invitations", "users"
+  add_foreign_key "items", "accounts"
+  add_foreign_key "items", "users"
   add_foreign_key "labels", "accounts"
   add_foreign_key "labels", "users"
   add_foreign_key "members", "accounts"
