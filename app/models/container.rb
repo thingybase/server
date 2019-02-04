@@ -1,4 +1,6 @@
-class Item < ApplicationRecord
+class Container < ApplicationRecord
+  has_closure_tree
+
   include UUID
 
   belongs_to :account

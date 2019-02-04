@@ -4,7 +4,7 @@ class ResourcesController < ApplicationController
   before_action :authorize_resource, if: :member_request?
   before_action :set_resources, only: :index
 
-  helper_method :resource_name, :resource_class, :resource
+  helper_method :resource_name, :resource_class, :resource, :resources
 
   def self.resource
     raise NotImplementedError, "ResourcesController.resource must be an ActiveModel or ActiveRecord class"
@@ -78,7 +78,11 @@ class ResourcesController < ApplicationController
     # Gets the resource name of the ActiveRecord model for use by
     # instance methods in this controller.
     def resource_name
-      resource_class.model_name
+      resource_class.model_name.singular
+    end
+
+    def resources_name
+      resource_class.model_name.plural
     end
 
     def resource_class
@@ -104,26 +108,26 @@ class ResourcesController < ApplicationController
     # example, `Account` model name would set the `@account` instance variable
     # for template access.
     def resource=(value)
-      instance_variable_set("@#{resource_name.singular}", value)
+      instance_variable_set("@#{resource_name}", value)
     end
 
     # Sets instance variable for templates to match the model name. For
     # example, `Account` model name would set the `@accounts` instance variable
     # for template access.
     def resources=(value)
-      instance_variable_set("@#{resource_name.plural}", value)
+      instance_variable_set("@#{resources_name}", value)
     end
 
     # Gets instance variable for templates to match the model name. For
     # example, `Account` model name would get the `@account` instance variable.
     def resource
-      instance_variable_get("@#{resource_name.singular}")
+      instance_variable_get("@#{resource_name}")
     end
 
     # Gets instance variable for templates to match the model name. For
     # example, `Account` model name would get the `@accounts` instance variable.
     def resources
-      instance_variable_get("@#{resource_name.plural}")
+      instance_variable_get("@#{resources_name}")
     end
 
     # A hook that allows sub-classes to assign attributes to a model.
@@ -143,7 +147,7 @@ class ResourcesController < ApplicationController
 
     # Redirect to this url after a resource is destroyed
     def destroy_redirect_url
-      resource_name.plural.to_sym
+      resources_name.to_sym
     end
 
     # Key rails routing uses to find resource. Rails resources defaults to the `:id` value.
@@ -175,7 +179,7 @@ class ResourcesController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def resource_params
-      params.require(resource_name.singular).permit(permitted_params)
+      params.require(resource_name).permit(permitted_params)
     end
 
     # Authorizse resource with Pundit.

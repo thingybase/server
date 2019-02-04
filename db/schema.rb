@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_04_024610) do
+ActiveRecord::Schema.define(version: 2019_02_04_052133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -33,6 +33,28 @@ ActiveRecord::Schema.define(version: 2019_02_04_024610) do
     t.index ["user_id"], name: "index_api_keys_on_user_id"
   end
 
+  create_table "container_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id", null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations", null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "container_anc_desc_idx", unique: true
+    t.index ["descendant_id"], name: "container_desc_idx"
+  end
+
+  create_table "containers", force: :cascade do |t|
+    t.string "name", null: false
+    t.uuid "uuid", null: false
+    t.bigint "account_id"
+    t.bigint "user_id"
+    t.bigint "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_containers_on_account_id"
+    t.index ["parent_id"], name: "index_containers_on_parent_id"
+    t.index ["user_id"], name: "index_containers_on_user_id"
+    t.index ["uuid"], name: "index_containers_on_uuid", unique: true
+  end
+
   create_table "invitations", force: :cascade do |t|
     t.string "token", null: false
     t.string "email", null: false
@@ -46,14 +68,15 @@ ActiveRecord::Schema.define(version: 2019_02_04_024610) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.uuid "uuid"
+    t.string "name", null: false
+    t.uuid "uuid", null: false
     t.bigint "account_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_items_on_account_id"
     t.index ["user_id"], name: "index_items_on_user_id"
+    t.index ["uuid"], name: "index_items_on_uuid", unique: true
   end
 
   create_table "labels", force: :cascade do |t|
@@ -99,6 +122,9 @@ ActiveRecord::Schema.define(version: 2019_02_04_024610) do
 
   add_foreign_key "accounts", "users"
   add_foreign_key "api_keys", "users"
+  add_foreign_key "containers", "accounts"
+  add_foreign_key "containers", "containers", column: "parent_id"
+  add_foreign_key "containers", "users"
   add_foreign_key "invitations", "accounts"
   add_foreign_key "invitations", "users"
   add_foreign_key "items", "accounts"

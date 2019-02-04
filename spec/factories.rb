@@ -2,6 +2,13 @@
 Faker::Config.locale = 'en-US'
 
 FactoryBot.define do
+  factory :container do
+    name "MyString"
+    uuid ""
+    account nil
+    user nil
+    parent nil
+  end
   factory :item do
     name "MyString"
     uuid ""

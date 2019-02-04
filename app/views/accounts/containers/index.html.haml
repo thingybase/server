@@ -1,0 +1,13 @@
+.page-header
+  %h1=t '.title', :default => resource_class.model_name.human.pluralize.titleize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= resource_class.human_attribute_name(:name)
+      %th= resource_class.human_attribute_name(:created_at)
+  %tbody
+    - resources.each do |container|
+      %tr
+        %td= link_to container.name, container
+        %td= local_time container.created_at
+= link_to t('.new', :default => t("helpers.links.new")), new_account_container_path(@account), :class => 'btn btn-primary'

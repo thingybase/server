@@ -13,7 +13,9 @@ class NestedResourcesController < ResourcesController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_parent_resource
-      self.parent_resource = self.class.parent_resource.find params[parent_resource_id_param]
+      query = {}
+      query[parent_resource_key] = params[parent_resource_id_param]
+      self.parent_resource = self.class.parent_resource.find_by! **query
     end
 
     # If we're deep, we want to show only members that are scoped
@@ -31,12 +33,18 @@ class NestedResourcesController < ResourcesController
       parent_resource_foreign_key
     end
 
+    # Key used to find the parent resource via ActiveRecord. Typically this is the primary key of the record,
+    # but it would be a different field if you don't want to expose users to primary keys.
+    def parent_resource_key
+      :id
+    end
+
   private
     def resource_params
       # Optionally allow the resource params because nested resources usually
       # allow a POST request with no params that create a resource.
-      if params.key? resource_name.singular
-        params.require(resource_name.singular).permit(permitted_params)
+      if params.key? resource_name
+        params.require(resource_name).permit(permitted_params)
       end
     end
 
@@ -44,22 +52,22 @@ class NestedResourcesController < ResourcesController
     # example, `Account` model name would set the `@account` instance variable
     # for template access.
     def parent_resource=(value)
-      instance_variable_set("@#{parent_resource_name.singular}", value)
+      instance_variable_set("@#{parent_resource_name}", value)
     end
 
     # Gets instance variable for templates to match the model name. For
     # example, `Account` model name would get the `@account` instance variable.
     def parent_resource
-      instance_variable_get("@#{parent_resource_name.singular}")
+      instance_variable_get("@#{parent_resource_name}")
     end
 
     # Gets the resource name of the ActiveRecord model for use by
     # instance methods in this controller.
     def parent_resource_name
-      self.class.parent_resource.model_name
+      self.class.parent_resource.model_name.singular
     end
 
     def parent_resource_foreign_key
-      "#{parent_resource_name.singular}_id".to_sym
+      "#{parent_resource_name}_id".to_sym
     end
 end

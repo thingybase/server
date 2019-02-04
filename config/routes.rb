@@ -13,6 +13,11 @@ def shallow
 end
 
 Rails.application.routes.draw do
+  resources :containers do
+    scope module: :containers do
+      resources :children, only: %i[index new]
+    end
+  end
   resources :items
   resources :members
   resources :labels

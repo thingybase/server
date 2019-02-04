@@ -1,0 +1,2 @@
+class ContainerPolicy < ItemPolicy
+end

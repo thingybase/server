@@ -63,6 +63,9 @@ gem "prawn", "~> 2.2"
 gem "prawn-qrcode", "~> 0.3.0"
 gem "qrcode", "~> 0.0.1"
 
+# Hierarchial record organization in ActiveRecord
+gem "closure_tree", "~> 7.0"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
