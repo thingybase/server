@@ -2,16 +2,24 @@
 
 %h1=resource.name
 
-=resource_field :name
-=resource_field :uuid
-=resource_field :created_at
-=resource_field :updated_at
-=resource_field :account do
-  = resource.account.name
-=resource_field :user do
-  =resource.user.name
+-@container.ancestors.reverse.each do |container|
+  =link_to container.name, container
+  \/
+=resource.name
 
-= link_to "View containers", container_children_path(@container), :class => 'btn btn-default'
+%h2 Containers
+%table.table.table-striped
+  %thead
+    %tr
+      %th= resource_class.human_attribute_name(:name)
+      %th= resource_class.human_attribute_name(:created_at)
+  %tbody
+    - @container.children.each do |container|
+      %tr
+        %td= link_to container.name, container
+        %td= local_time container.created_at
+
 = link_to "Add container", new_container_child_path(@container), :class => 'btn btn-default'
+
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_container_path(@container), :class => 'btn btn-default'
 = link_to t('.destroy', :default => t("helpers.links.destroy")), container_path(@container), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
