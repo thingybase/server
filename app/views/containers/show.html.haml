@@ -19,6 +19,18 @@
         %td= link_to container.name, container
         %td= local_time container.created_at
 
+%h2 Items
+%table.table.table-striped
+  %thead
+    %tr
+      %th= Item.human_attribute_name(:name)
+      %th= Item.human_attribute_name(:created_at)
+  %tbody
+    - @container.items.each do |item|
+      %tr
+        %td= link_to item.name, item
+        %td= local_time item.created_at
+
 = link_to "Add container", new_container_child_path(@container), :class => 'btn btn-default'
 
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_container_path(@container), :class => 'btn btn-default'

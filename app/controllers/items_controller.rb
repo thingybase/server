@@ -6,7 +6,7 @@ class ItemsController < ResourcesController
   end
 
   def permitted_params
-    [:name, :account_id, :uuid]
+    [:name, :account_id, :uuid, :container_id]
   end
 
   def resource_key

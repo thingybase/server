@@ -5,6 +5,7 @@ class Container < ApplicationRecord
 
   belongs_to :account
   belongs_to :user
+  has_many :items
 
   validates :name, presence: true
   validates :account, presence: true
