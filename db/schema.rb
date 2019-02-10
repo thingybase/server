@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_07_083145) do
+ActiveRecord::Schema.define(version: 2019_02_10_073553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2019_02_07_083145) do
 
   create_table "containers", force: :cascade do |t|
     t.string "name", null: false
-    t.uuid "uuid", null: false
     t.bigint "account_id"
     t.bigint "user_id"
     t.bigint "parent_id"
@@ -52,7 +51,6 @@ ActiveRecord::Schema.define(version: 2019_02_07_083145) do
     t.index ["account_id"], name: "index_containers_on_account_id"
     t.index ["parent_id"], name: "index_containers_on_parent_id"
     t.index ["user_id"], name: "index_containers_on_user_id"
-    t.index ["uuid"], name: "index_containers_on_uuid", unique: true
   end
 
   create_table "invitations", force: :cascade do |t|
@@ -69,7 +67,6 @@ ActiveRecord::Schema.define(version: 2019_02_07_083145) do
 
   create_table "items", force: :cascade do |t|
     t.string "name", null: false
-    t.uuid "uuid", null: false
     t.bigint "account_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -78,7 +75,6 @@ ActiveRecord::Schema.define(version: 2019_02_07_083145) do
     t.index ["account_id"], name: "index_items_on_account_id"
     t.index ["container_id"], name: "index_items_on_container_id"
     t.index ["user_id"], name: "index_items_on_user_id"
-    t.index ["uuid"], name: "index_items_on_uuid", unique: true
   end
 
   create_table "labels", force: :cascade do |t|
@@ -88,7 +84,10 @@ ActiveRecord::Schema.define(version: 2019_02_07_083145) do
     t.bigint "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "labelable_type"
+    t.bigint "labelable_id"
     t.index ["account_id"], name: "index_labels_on_account_id"
+    t.index ["labelable_type", "labelable_id"], name: "index_labels_on_labelable_type_and_labelable_id"
     t.index ["user_id"], name: "index_labels_on_user_id"
     t.index ["uuid"], name: "index_labels_on_uuid", unique: true
   end

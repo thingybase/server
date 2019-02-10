@@ -6,10 +6,6 @@ class ContainersController < ResourcesController
   end
 
   def permitted_params
-    [:name, :account_id, :uuid, :parent_id]
-  end
-
-  def resource_key
-    :uuid
+    [:name, :account_id, :parent_id]
   end
 end

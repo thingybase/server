@@ -15,7 +15,7 @@ module Accounts
     end
 
     def permitted_params
-      [:name, :account_id, :uuid]
+      [:name, :account_id]
     end
 
     def assign_attributes

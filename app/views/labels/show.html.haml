@@ -10,6 +10,9 @@
   = resource.account.name
 =resource_field :user do
   =resource.user.name
+-if labelable = resource.labelable
+  =resource_field :labelable do
+    =link_to labelable.name, labelable
 
 = link_to t('.print', :default => t("helpers.links.print")), label_path(@label, format: :pdf), :class => 'btn btn-default'
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_label_path(@label), :class => 'btn btn-default'

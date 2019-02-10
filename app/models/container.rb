@@ -1,11 +1,10 @@
 class Container < ApplicationRecord
   has_closure_tree
 
-  include UUID
-
   belongs_to :account
   belongs_to :user
   has_many :items
+  has_one :label, as: :labelable
 
   validates :name, presence: true
   validates :account, presence: true

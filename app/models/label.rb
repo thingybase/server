@@ -3,6 +3,7 @@ class Label < ApplicationRecord
 
   belongs_to :user
   belongs_to :account
+  belongs_to :labelable, polymorphic: true
 
   validates :user, presence: true
   validates :account, presence: true
