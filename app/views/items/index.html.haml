@@ -4,6 +4,7 @@
   %thead
     %tr
       %th= resource_class.human_attribute_name(:name)
+      %th= resource_class.human_attribute_name(:container)
       %th= resource_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
@@ -11,6 +12,9 @@
       %tr
         %td= link_to item.name, item
         %td= local_time item.created_at
+        %td
+          -if container = item.container
+            = link_to container.name, container
         %td
           = link_to t('.show', :default => t("helpers.links.show")), item, :class => 'btn btn-default btn-xs'
           = link_to t('.print', :default => t("helpers.links.print")), item_path(item, format: :pdf), :class => 'btn btn-default btn-xs'

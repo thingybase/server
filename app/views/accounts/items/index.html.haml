@@ -4,10 +4,14 @@
   %thead
     %tr
       %th= resource_class.human_attribute_name(:name)
+      %th= resource_class.human_attribute_name(:container)
       %th= resource_class.human_attribute_name(:created_at)
   %tbody
     - @items.each do |item|
       %tr
         %td= link_to item.name, item
+        %td
+          -if container = item.container
+            = link_to container.name, container
         %td= local_time item.created_at
 = link_to t('.new', :default => t("helpers.links.new")), new_account_item_path(@account), :class => 'btn btn-primary'

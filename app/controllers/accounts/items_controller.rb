@@ -11,7 +11,7 @@ module Accounts
     end
 
     def resource_scope
-      policy_scope.includes(:account)
+      policy_scope.includes(:account, :container)
     end
 
     def permitted_params
