@@ -1,5 +1,5 @@
 = simple_form_for @label, :html => { :class => 'form-horizontal' } do |f|
   = f.input :text, autofocus: true
   = f.association :account, collection: policy_scope(Account), include_blank: false
-  = f.association :labelable, collection: policy_scope(Item), include_blank: true
+  = f.polymorphic_select :labelable_global_id, [ policy_scope(Item), policy_scope(Container) ], label_method: :name
   = f.button :submit, :class => 'btn-primary'
