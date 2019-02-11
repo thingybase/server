@@ -1,6 +1,6 @@
-.page-header
-  %h1=t '.title', :default => resource_class.model_name.human.pluralize.titleize
-%table.table.table-striped
+%h1.title=t '.title', :default => resource_class.model_name.human.pluralize.titleize
+%h2.subtitle Quickly print labels and organize them later
+%table.table.is-fullwidth.is-striped
   %thead
     %tr
       %th= resource_class.human_attribute_name(:text)
@@ -10,4 +10,4 @@
       %tr
         %td= link_to label.text, label
         %td= local_time label.created_at
-= link_to t('.new', :default => t("helpers.links.new")), new_account_label_path(@account), :class => 'btn btn-primary'
+= link_to t('.new', :default => t("helpers.links.new")), new_account_label_path(@account), :class => 'button is-primary'

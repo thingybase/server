@@ -1,4 +1,4 @@
-%h1 Edit profile
+%h1.title Edit profile
 %p Change how you appear to your account members and Thingybase.
 
 = render partial: "form"
@@ -6,4 +6,4 @@
 %h2 Danger zone
 %p Delete yourself, accounts, and everything else you own in Thingybase.
 
-= link_to t('.destroy', default: t("helpers.links.destroy")), user_path(@user), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger'
+= link_to t('.destroy', default: t("helpers.links.destroy")), user_path(@user), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-danger'

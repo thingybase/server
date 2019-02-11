@@ -1,18 +1,15 @@
 %p#notice= notice
 
-%h1=resource.name
+%h1.title=resource.name
 
-.breadcrumbs
-  -@container.ancestors.reverse.each do |container|
-    =link_to container.name, container
-    \/
-  =resource.name
+.breadcrumb(aria-label="breadcrumbs")
+  %ul
+    %li=link_to @account.name, account_containers_path(@account)
+    -@container.ancestors.reverse.each do |container|
+      %li=link_to container.name, container
+    %li.is-active=link_to resource.name, resource, 'aria-current': "page"
 
-= link_to t('.edit', :default => t("helpers.links.edit")), edit_container_path(@container), :class => 'btn btn-default'
-= link_to t('.destroy', :default => t("helpers.links.destroy")), container_path(@container), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
-
-%h2 Containers
-%table.table.table-striped
+%table.table.is-fullwidth.is-striped
   %thead
     %tr
       %th= resource_class.human_attribute_name(:name)
@@ -22,29 +19,21 @@
       %tr
         %td= link_to container.name, container
         %td= local_time container.created_at
-
-= link_to "Add container", new_container_child_path(@container), :class => 'btn btn-default'
-
-%h2 Items
-%table.table.table-striped
-  %thead
-    %tr
-      %th= Item.human_attribute_name(:name)
-      %th= Item.human_attribute_name(:created_at)
   %tbody
     - @container.items.each do |item|
       %tr
         %td= link_to item.name, item
         %td= local_time item.created_at
 
-= link_to "Add item", new_container_item_path(@container), :class => 'btn btn-default'
-
-%h2 Label
+= link_to "Add container", new_container_child_path(@container), :class => 'button is-default'
+= link_to "Add item", new_container_item_path(@container), :class => 'button is-default'
+= link_to t('.edit', :default => t("helpers.links.edit")), edit_container_path(@container), :class => 'button is-default'
+= link_to t('.destroy', :default => t("helpers.links.destroy")), container_path(@container), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'button is-danger'
 -if label = resource.label
-  = link_to "View label", label, class: 'btn'
+  = link_to "View label", label, class: 'button'
 -else
   = simple_form_for resource.build_label(text: resource.name, account: @account) do |f|
     = f.input :text, as: :hidden
     = f.input :account_id, as: :hidden
     = f.input :labelable_global_id, as: :hidden
-    = f.button :submit, :class => 'btn-primary'
+    = f.button :submit, :class => 'is-primary'

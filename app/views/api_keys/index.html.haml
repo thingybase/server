@@ -1,7 +1,7 @@
-%h1 API Keys
+%h1.title API Keys
 %p Connect Thingybase to other applications and services with API keys.
 
-%table.table.table-striped
+%table.table.is-fullwidth.is-striped
   %thead
     %tr
       %th= resource_class.human_attribute_name(:name)
@@ -12,4 +12,4 @@
         %td= link_to api_key.name, api_key_path(api_key)
         %td= api_key.created_at
 
-= link_to t('.new', :default => t("helpers.links.new")), new_api_key_path, :class => 'btn btn-primary'
+= link_to t('.new', :default => t("helpers.links.new")), new_api_key_path, :class => 'button is-primary'

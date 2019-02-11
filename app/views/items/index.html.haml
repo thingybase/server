@@ -1,6 +1,6 @@
 .page-header
-  %h1=t '.title', :default => resource_class.model_name.human.pluralize.titleize
-%table.table.table-striped
+  %h1.title=t '.title', :default => resource_class.model_name.human.pluralize.titleize
+%table.table.is-fullwidth.is-striped
   %thead
     %tr
       %th= resource_class.human_attribute_name(:name)
@@ -16,9 +16,9 @@
           -if container = item.container
             = link_to container.name, container
         %td
-          = link_to t('.show', :default => t("helpers.links.show")), item, :class => 'btn btn-default btn-xs'
-          = link_to t('.print', :default => t("helpers.links.print")), item_path(item, format: :pdf), :class => 'btn btn-default btn-xs'
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_item_path(item), :class => 'btn btn-default btn-xs'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), item_path(item), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+          = link_to t('.show', :default => t("helpers.links.show")), item, :class => 'button is-default is-xs'
+          = link_to t('.print', :default => t("helpers.links.print")), item_path(item, format: :pdf), :class => 'button is-default is-xs'
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_item_path(item), :class => 'button is-default is-xs'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), item_path(item), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'button is-xs is-danger'
 
-= link_to t('.new', :default => t("helpers.links.new")), new_item_path, :class => 'btn btn-primary'
+= link_to t('.new', :default => t("helpers.links.new")), new_item_path, :class => 'button is-primary'

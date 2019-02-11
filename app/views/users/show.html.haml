@@ -1,4 +1,4 @@
-%h1 Settings for #{resource.name}
+%h1.title Settings for #{resource.name}
 
 %h2 Profile
 %p How you appear to your account members and Thingybase.
@@ -12,7 +12,7 @@
   %br
   = @user.email
 
-= link_to "Edit profile", edit_user_path(@user), :class => 'btn btn-default'
+= link_to "Edit profile", edit_user_path(@user), :class => 'button is-default'
 
 %h2 Phone number
 %p We only use this phone number to call or text you when your account gets a critical label.
@@ -21,8 +21,8 @@
   %br
   = @user.phone_number
 
-= link_to "#{@user.phone_number ? "Change" : "Add" } phone number", new_phone_number_claim_path, class: "btn btn-default"
+= link_to "#{@user.phone_number ? "Change" : "Add" } phone number", new_phone_number_claim_path, class: "button is-default"
 
 %h2 API Keys
 %p Connect Thingybase to other applications and services with API keys.
-=link_to "Manage API keys", api_keys_path, :class => 'btn btn-default'
+=link_to "Manage API keys", api_keys_path, :class => 'button is-default'

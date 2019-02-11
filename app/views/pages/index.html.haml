@@ -1,7 +1,7 @@
 .section
-  %h1 Thingybase
+  %h1.title Thingybase
   %p.lead Keep track of your stuff
-  %p=link_to "Get started →", launch_accounts_path, class: "btn btn-primary btn-lg", role: "button"
+  %p=link_to "Get started →", launch_accounts_path, class: "button is-primary is-lg", role: "button"
 .section
   %h2 Plans & pricing
   %h3 Free during beta testing!
@@ -14,7 +14,7 @@
       %p 1 user
       %p.plans-listing--plan--price $0
       %p.plans-listing--plan--beta-price Free during beta testing
-      %p=link_to "Sign up", new_session_path, class: "btn btn-primary btn-lg", role: "button"
+      %p=link_to "Sign up", new_session_path, class: "button is-primary is-lg", role: "button"
     .plans-listing--plan
       =image_tag "startup.svg", style: "max-width: 100%;"
       %h2 Family
@@ -22,7 +22,7 @@
       %p 5 users
       %p.plans-listing--plan--price $49.99/year
       %p.plans-listing--plan--beta-price Free during beta testing
-      %p=link_to "Sign up", new_session_path, class: "btn btn-primary btn-lg", role: "button"
+      %p=link_to "Sign up", new_session_path, class: "button is-primary is-lg", role: "button"
     .plans-listing--plan
       =image_tag "account.svg", style: "max-width: 100%;"
       %h2 Business
@@ -30,7 +30,7 @@
       %p 25 users
       %p.plans-listing--plan--price $99.99/year
       %p.plans-listing--plan--beta-price Free during beta testing
-      %p=link_to "Sign up", new_session_path, class: "btn btn-primary btn-lg", role: "button"
+      %p=link_to "Sign up", new_session_path, class: "button is-primary is-lg", role: "button"
     .plans-listing--plan
       =image_tag "business.svg", style: "max-width: 100%;"
       %h2 Enterprise
@@ -38,7 +38,7 @@
       %p Unlimited users
       %p.plans-listing--plan--price Contact for pricing
       %p.plans-listing--plan--beta-price Free during beta testing
-      %p=link_to "Sign up", new_session_path, class: "btn btn-primary btn-lg", role: "button"
+      %p=link_to "Sign up", new_session_path, class: "button is-primary is-lg", role: "button"
   %h2 Not sure yet? Thingybase for free
   %p.lead Take it for a spin and see how Thingybase helps you get a handle on your stuff.
-  %p=link_to "Sign up →", new_session_path, class: "btn btn-primary btn-lg", role: "button"
+  %p=link_to "Sign up →", new_session_path, class: "button is-primary is-lg", role: "button"

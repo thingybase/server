@@ -96,3 +96,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rails_polymorphic_select', github: 'brunopascoa/rails_polymorphic_select'
+
+gem "bulma-rails", "~> 0.7.4"

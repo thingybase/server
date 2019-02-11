@@ -1,6 +1,6 @@
 %p#notice= notice
 
-%h1=resource.name
+%h1.title=resource.name
 
 =resource_field :name
 =resource_field :created_at
@@ -11,14 +11,14 @@
 =resource_field :user do
   =resource.user.name
 
-= link_to t('.edit', default: t("helpers.links.edit")), edit_item_path(@item), class: 'btn btn-default'
-= link_to t('.destroy', default: t("helpers.links.destroy")), item_path(@item), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger'
+= link_to t('.edit', default: t("helpers.links.edit")), edit_item_path(@item), class: 'button is-default'
+= link_to t('.destroy', default: t("helpers.links.destroy")), item_path(@item), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-danger'
 
 -if label = resource.label
-  = link_to "View label", label, class: 'btn'
+  = link_to "View label", label, class: 'button'
 -else
   = simple_form_for resource.build_label(text: resource.name, account: @account) do |f|
     = f.input :text, as: :hidden
     = f.input :account_id, as: :hidden
     = f.input :labelable_global_id, as: :hidden
-    = f.button :submit, :class => 'btn-primary'
+    = f.button :submit, :class => 'is-primary'

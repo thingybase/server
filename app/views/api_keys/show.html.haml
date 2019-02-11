@@ -1,4 +1,4 @@
-%h1 API Token
+%h1.title API Token
 
 =resource_field :name
 =resource_field :created_at
@@ -7,8 +7,8 @@
   Keep this token a secret. Its only to be used with applications that you trust.
   %pre.word-wrapped-block=@api_key.token
 
-= link_to t('.back', default: t("helpers.links.back")), :back, class: 'btn btn-default'
-= link_to t('.destroy', default: t("helpers.links.destroy")), api_key_path(@api_key), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger'
+= link_to t('.back', default: t("helpers.links.back")), :back, class: 'button is-default'
+= link_to t('.destroy', default: t("helpers.links.destroy")), api_key_path(@api_key), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-danger'
 
 %h2 curl request
 %p Example of using curl to request a list of accounts
