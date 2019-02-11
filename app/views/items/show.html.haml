@@ -17,9 +17,8 @@
 -if label = resource.label
   = link_to "View label", label, class: 'btn'
 -else
-  = simple_form_for resource.build_label(text: resource.name, account: @account), :html => { :class => 'form-horizontal' } do |f|
+  = simple_form_for resource.build_label(text: resource.name, account: @account) do |f|
     = f.input :text, as: :hidden
     = f.input :account_id, as: :hidden
-    = f.input :labelable_id, as: :hidden
-    = f.input :labelable_type, as: :hidden
+    = f.input :labelable_global_id, as: :hidden
     = f.button :submit, :class => 'btn-primary'

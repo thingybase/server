@@ -37,13 +37,14 @@
         %td= link_to item.name, item
         %td= local_time item.created_at
 
+= link_to "Add item", new_container_item_path(@container), :class => 'btn btn-default'
+
 %h2 Label
 -if label = resource.label
   = link_to "View label", label, class: 'btn'
 -else
-  = simple_form_for resource.build_label(text: resource.name, account: @account), :html => { :class => 'form-horizontal' } do |f|
+  = simple_form_for resource.build_label(text: resource.name, account: @account) do |f|
     = f.input :text, as: :hidden
     = f.input :account_id, as: :hidden
-    = f.input :labelable_id, as: :hidden
-    = f.input :labelable_type, as: :hidden
+    = f.input :labelable_global_id, as: :hidden
     = f.button :submit, :class => 'btn-primary'

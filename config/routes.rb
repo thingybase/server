@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :containers do
     scope module: :containers do
       resources :children, only: %i[index new]
+      resources :items, only: %i[new]
     end
   end
   resources :items
