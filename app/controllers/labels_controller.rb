@@ -12,7 +12,7 @@ class LabelsController < ResourcesController
         send_data label_generator.render_pdf,
           disposition: "inline",
           type: "application/pdf",
-          filename: "label-#{@label.id}.pdf"
+          filename: "label-#{@label.uuid}.pdf"
       end
     end
   end

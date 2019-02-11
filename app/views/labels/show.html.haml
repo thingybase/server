@@ -3,16 +3,16 @@
 %h1=resource.text
 
 =resource_field :text
-=resource_field :uuid
-=resource_field :created_at
-=resource_field :updated_at
-=resource_field :user do
-  =resource.user.name
 =resource_field :labelable do
   -if labelable = resource.labelable
     =link_to labelable.name, labelable
   -else
     Unlinked
+=resource_field :uuid
+=resource_field :created_at
+=resource_field :updated_at
+=resource_field :user do
+  =resource.user.name
 
 = link_to t('.print', :default => t("helpers.links.print")), label_path(@label, format: :pdf), :class => 'btn btn-default'
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_label_path(@label), :class => 'btn btn-default'
