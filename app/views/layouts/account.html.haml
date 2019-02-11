@@ -3,12 +3,17 @@
     %nav.navbar.is-fixed-top(role="navigation" aria-label="main navigation")
       .navbar-brand
         = active_link_to @account.name, account_path(@account), class: "navbar-item"
-      .navbar-start
-        = active_link_to "Items", [@account, :items], class: "navbar-item"
-        = active_link_to "Organization", [@account, :containers], class: "navbar-item"
-        = active_link_to "Labels", [@account, :labels], class: "navbar-item"
-      .navbar-end
-        = active_link_to "Profile", user_path(current_user), class: "navbar-item"
-        = active_link_to "Sign out", session_path, method: :delete, class: "navbar-item"
+        %a.navbar-burger.burger(aria-expanded="false" aria-label="menu" data-target="navbar-account-navigation" role="button")
+          %span(aria-hidden="true")
+          %span(aria-hidden="true")
+          %span(aria-hidden="true")
+      .navbar-menu#navbar-account-navigation
+        .navbar-start
+          = active_link_to "Items", [@account, :items], class: "navbar-item"
+          = active_link_to "Organization", [@account, :containers], class: "navbar-item"
+          = active_link_to "Labels", [@account, :labels], class: "navbar-item"
+        .navbar-end
+          = active_link_to "Profile", user_path(current_user), class: "navbar-item"
+          = active_link_to "Sign out", session_path, method: :delete, class: "navbar-item"
   .container.is-fluid= yield
   %footer

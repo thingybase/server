@@ -6,8 +6,8 @@
   %h2 Plans & pricing
   %h3 Free during beta testing!
   %p Try thingybase as long as you’d like for a few items, then upgrade when you’re ready to scale your account and keep track of more stuff.
-  .plans-listing
-    .plans-listing--plan
+  .columns.plans-listing
+    .column.plans-listing--plan
       =image_tag "solo.svg", style: "max-width: 100%;"
       %h2 Personal
       %p 100 items
@@ -15,7 +15,7 @@
       %p.plans-listing--plan--price $0
       %p.plans-listing--plan--beta-price Free during beta testing
       %p=link_to "Sign up", new_session_path, class: "button is-primary is-lg", role: "button"
-    .plans-listing--plan
+    .column.plans-listing--plan
       =image_tag "startup.svg", style: "max-width: 100%;"
       %h2 Family
       %p Unlimited items
@@ -23,7 +23,7 @@
       %p.plans-listing--plan--price $49.99/year
       %p.plans-listing--plan--beta-price Free during beta testing
       %p=link_to "Sign up", new_session_path, class: "button is-primary is-lg", role: "button"
-    .plans-listing--plan
+    .column.plans-listing--plan
       =image_tag "account.svg", style: "max-width: 100%;"
       %h2 Business
       %p Unlimited items
@@ -31,7 +31,7 @@
       %p.plans-listing--plan--price $99.99/year
       %p.plans-listing--plan--beta-price Free during beta testing
       %p=link_to "Sign up", new_session_path, class: "button is-primary is-lg", role: "button"
-    .plans-listing--plan
+    .column.plans-listing--plan
       =image_tag "business.svg", style: "max-width: 100%;"
       %h2 Enterprise
       %p Unlimited items

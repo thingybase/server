@@ -29,6 +29,7 @@
 = link_to "Add item", new_container_item_path(@container), :class => 'button is-default'
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_container_path(@container), :class => 'button is-default'
 = link_to t('.destroy', :default => t("helpers.links.destroy")), container_path(@container), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'button is-danger'
+
 -if label = resource.label
   = link_to "View label", label, class: 'button'
 -else
