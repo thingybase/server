@@ -21,7 +21,12 @@ Rails.application.routes.draw do
   end
   resources :items
   resources :members
-  resources :labels
+  resources :labels do
+    scope module: :labels do
+      resources :items, only: %i[create]
+      resources :containers, only: %i[create]
+    end
+  end
   parent_resources :phone_number_claims do
     # No ID ; should this really be an
     # `interaction` resource? e.g.

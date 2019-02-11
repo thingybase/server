@@ -1,0 +1,2 @@
+module Labels::ItemsHelper
+end

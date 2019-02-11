@@ -3,4 +3,8 @@
   = f.association :account, as: :hidden
   =f.input :labelable do
     = f.polymorphic_select :labelable_global_id, [ policy_scope(Item), policy_scope(Container) ], label_method: :name, include_blank: true
+    %div
+      =link_to "Link to new item", label_items_path(resource), method: :post, class: "btn"
+      =link_to "Link to new container", label_containers_path(resource), method: :post, class: "btn"
+
   = f.button :submit, :class => 'btn-primary'
