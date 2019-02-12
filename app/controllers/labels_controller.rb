@@ -9,10 +9,22 @@ class LabelsController < ResourcesController
     respond_to do |format|
       format.html
       format.pdf do
-        send_data label_generator.render_pdf,
+        send_data label_generator(resource).render_pdf,
           disposition: "inline",
           type: "application/pdf",
           filename: "label-#{@label.to_param}.pdf"
+      end
+    end
+  end
+
+  def index
+    respond_to do |format|
+      format.html
+      format.pdf do
+        send_data label_generator(resources).render_pdf,
+          disposition: "inline",
+          type: "application/pdf",
+          filename: "labels.pdf"
       end
     end
   end
@@ -46,11 +58,15 @@ class LabelsController < ResourcesController
     end
 
   private
-    def label_generator
-      LabelGenerator.new.tap { |l| l.add_label text: resource.text, url: label_uuid_redirector_url(resource) }
+    def label_generator(resources)
+      LabelGenerator.new.tap do |generator|
+        Array(resources).each do |r|
+          generator.add_label text: r.text, url: label_uuid_redirector_url(r)
+        end
+      end
     end
 
     def label_uuid_redirector_url(label)
-      label_url resource.uuid
+      label_url label.uuid
     end
 end
