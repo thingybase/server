@@ -1,30 +1,39 @@
 %h1.title=@account.name
 %h2.subtitle Everything at a glance
 
-%h2 Labels
-%p
-  You have a total of
-  =pluralize @account.labels.count, "label"
-  in your account.
-%p
-  =link_to "View labels", account_labels_path(@account)
+.columns
+  .column
+    %h3.title.is-5 Items
+    %p.subtitle.is-6 All the things you want to track
+    %p
+      You have a total of
+      =pluralize @account.items.count, "item"
+      in your account.
+    %p=link_to "View items", account_items_path(@account)
 
-%h2 Members
-%p
-  You have
-  =pluralize @account.members.count, "people"
-  in your account.
-%p
-  =link_to "Manage people", account_members_path(@account)
+  .column
+    %h3.title.is-5 Containers
+    %p.subtitle.is-6 Find items easier by organizing them into containers
+    %p
+      You have a total of
+      =pluralize @account.containers.count, "container"
+      in your account.
+    %p=link_to "View containers", account_containers_path(@account)
 
--unless @account.invitations.count.zero?
-  You have pending
-  =pluralize @account.members.count, "invitations"
-  %p
-    =link_to "View invitations", account_invitations_path(@account)
 
-%h2 Account settings
-%p
-  =link_to "Change settings", edit_account_path(@account)
-%p
-  =link_to "Switch accounts", accounts_path
+  .column
+    %h3.title.is-5 Labels
+    %p.subtitle.is-6 Quickly print labels and organize them later
+    %p
+      You have a total of
+      =pluralize @account.labels.count, "label"
+      in your account.
+    %p=link_to "View labels", account_labels_path(@account)
+
+
+  .column
+    %h3.title.is-5 Account settings
+    %p.subtitle.is-6 Manage users and settings
+    %p=link_to "Change settings", edit_account_path(@account)
+    %p=link_to "Manage people", account_members_path(@account)
+    %p=link_to "Switch accounts", accounts_path
