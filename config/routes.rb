@@ -13,6 +13,8 @@ def shallow
 end
 
 Rails.application.routes.draw do
+  get 'labels/:uuid', to: 'labels#redirect', uuid: /[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/i
+
   resources :containers do
     scope module: :containers do
       resources :children, only: %i[index new]

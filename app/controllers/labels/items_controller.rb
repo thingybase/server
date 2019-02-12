@@ -20,9 +20,5 @@ module Labels
       self.resource.label ||= parent_resource
       self.resource.name ||= parent_resource.text
     end
-
-    def parent_resource_key
-      :uuid
-    end
   end
 end

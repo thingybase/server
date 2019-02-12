@@ -12,9 +12,15 @@ class LabelsController < ResourcesController
         send_data label_generator.render_pdf,
           disposition: "inline",
           type: "application/pdf",
-          filename: "label-#{@label.uuid}.pdf"
+          filename: "label-#{@label.to_param}.pdf"
       end
     end
+  end
+
+  def redirect
+    @label = resource_scope.find_by! uuid: params[:uuid]
+    authorize @label, :show?
+    redirect_to @label.labelable
   end
 
   protected
@@ -39,12 +45,12 @@ class LabelsController < ResourcesController
       format.pdf { redirect_to resource, format: :pdf }
     end
 
-    def resource_key
-      :uuid
-    end
-
   private
     def label_generator
-      LabelGenerator.new text: resource.text, url: url_for(resource)
+      LabelGenerator.new text: resource.text, url: label_uuid_redirector_url(resource)
+    end
+
+    def label_uuid_redirector_url(label)
+      label_url resource.uuid
     end
 end
