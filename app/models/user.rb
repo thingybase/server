@@ -2,7 +2,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email,
     presence: true,
-    uniqueness: true
+    uniqueness: true,
+    format: { with: URI::MailTo::EMAIL_REGEXP }
   phony_normalize :phone_number, default_country_code: 'US'
   validates :phone_number,
     phony_plausible: true,

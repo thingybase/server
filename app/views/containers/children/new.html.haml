@@ -1,5 +1,5 @@
 %h1.title New container
-= simple_form_for @container, :html => { :class => 'form-horizontal' } do |f|
+= simple_form_for @container do |f|
   = f.input :name, autofocus: true
   = f.association :account, as: :hidden
   = f.association :parent, as: :hidden

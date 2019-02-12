@@ -1,20 +1,21 @@
 =render_layout "body" do
   %header
     %nav.navbar.is-fixed-top(role="navigation" aria-label="main navigation")
-      .navbar-brand
-        = active_link_to "Thingybase", root_path, class: "navbar-item"
-        %a.navbar-burger.burger(aria-expanded="false" aria-label="menu" data-target="navbar-application-navigation" role="button")
-          %span(aria-hidden="true")
-          %span(aria-hidden="true")
-          %span(aria-hidden="true")
-      .navbar-menu#navbar-application-navigation
-        -if logged_in?
-          .navbar-end
-            = active_link_to "Accounts", accounts_path, class: "navbar-item"
-            = active_link_to "Profile", user_path(current_user), class: "navbar-item"
-            = active_link_to "Sign out", session_path, method: :delete, class: "navbar-item"
-        -else
-          .navbar-end
-            = active_link_to "Signup", new_session_path, class: "navbar-item"
-            = active_link_to "Log in", launch_accounts_path, class: "navbar-item"
-  .container.is-fluid= yield
+      .container
+        .navbar-brand
+          = active_link_to "Thingybase", root_path, class: "navbar-item"
+          %a.navbar-burger.burger(aria-expanded="false" aria-label="menu" data-target="navbar-application-navigation" role="button")
+            %span(aria-hidden="true")
+            %span(aria-hidden="true")
+            %span(aria-hidden="true")
+        .navbar-menu#navbar-application-navigation
+          -if logged_in?
+            .navbar-end
+              = active_link_to "Accounts", accounts_path, class: "navbar-item"
+              = active_link_to "Profile", user_path(current_user), class: "navbar-item"
+              = active_link_to "Sign out", session_path, method: :delete, class: "navbar-item"
+          -else
+            .navbar-end
+              = active_link_to "Signup", new_session_path, class: "navbar-item"
+              = active_link_to "Log in", launch_accounts_path, class: "navbar-item"
+  .container= yield

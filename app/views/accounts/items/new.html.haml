@@ -1,5 +1,5 @@
 %h1.title New item
-= simple_form_for @item, :html => { :class => 'form-horizontal' } do |f|
+= simple_form_for @item do |f|
   = f.input :name, autofocus: true
   = f.association :account, as: :hidden
   = f.button :submit, :class => 'is-primary'

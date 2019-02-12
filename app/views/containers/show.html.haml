@@ -19,7 +19,6 @@
       %tr
         %td= link_to container.name, container
         %td= local_time container.created_at
-  %tbody
     - @container.items.each do |item|
       %tr
         %td= link_to item.name, item
