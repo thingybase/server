@@ -7,20 +7,25 @@
       %li=link_to container.name, container
     %li.is-active=link_to resource.name, resource, 'aria-current': "page"
 
-%table.table.is-fullwidth.is-striped
-  %thead
-    %tr
-      %th= resource_class.human_attribute_name(:name)
-      %th= resource_class.human_attribute_name(:created_at)
-  %tbody
-    - @container.children.each do |container|
-      %tr
-        %td= link_to container.name, container
-        %td= local_time container.created_at
-    - @container.items.each do |item|
-      %tr
-        %td= link_to item.name, item
-        %td= local_time item.created_at
+.list-card
+  - @container.children.each do |container|
+    .list-card--item
+      .list-card--item--title=link_to container.name, container
+      .list-card--item--details
+        .list-card--item--detail
+          Created at
+          =local_time container.created_at
+  - @container.items.each do |item|
+    .list-card--item
+      .list-card--item--title=link_to item.name, item
+      .list-card--item--details
+        .list-card--item--detail
+          Created at
+          =local_time item.created_at
+        -if container = item.container
+          .list-card--item--detail
+            In
+            = link_to container.name, container
 
 = link_to "Add container", new_container_child_path(@container), :class => 'button is-default'
 = link_to "Add item", new_container_item_path(@container), :class => 'button is-default'

@@ -1,13 +1,14 @@
 %h1.title=t '.title', :default => resource_class.model_name.human.pluralize.titleize
 %h2.subtitle Find items easier by organizing them into containers
-%table.table.is-fullwidth.is-striped
-  %thead
-    %tr
-      %th= resource_class.human_attribute_name(:name)
-      %th= resource_class.human_attribute_name(:created_at)
-  %tbody
-    - resources.each do |container|
-      %tr
-        %td= link_to container.name, container
-        %td= local_time container.created_at
+
+
+.list-card
+  - @containers.each do |container|
+    .list-card--item
+      .list-card--item--title=link_to container.name, container
+      .list-card--item--details
+        .list-card--item--detail
+          Created at
+          =local_time container.created_at
+
 = link_to t('.new', :default => t("helpers.links.new")), new_account_container_path(@account), :class => 'button is-primary'

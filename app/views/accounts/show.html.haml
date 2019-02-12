@@ -20,7 +20,6 @@
       in your account.
     %p=link_to "View containers", account_containers_path(@account)
 
-
   .column
     %h3.title.is-5 Labels
     %p.subtitle.is-6 Quickly print labels and organize them later
@@ -29,7 +28,6 @@
       =pluralize @account.labels.count, "label"
       in your account.
     %p=link_to "View labels", account_labels_path(@account)
-
 
   .column
     %h3.title.is-5 Account settings

@@ -1,5 +1,5 @@
 %h1.title New container
 = simple_form_for @container do |f|
-  = f.input :name, autofocus: true
+  = f.input :name, autofocus: true, hint: "Make it the name of a room, shelf, box, or something you put an item in"
   = f.association :account, as: :hidden
-  = f.button :submit, :class => 'is-primary'
+  = f.button :submit, class: 'is-primary'

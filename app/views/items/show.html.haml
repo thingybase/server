@@ -1,12 +1,16 @@
 %h1.title=resource.name
 
-=resource_field :name
+-if container = resource.container
+  .breadcrumb(aria-label="breadcrumbs")
+    %ul
+      %li=link_to @account.name, account_containers_path(@account)
+      -container.self_and_ancestors.reverse.each do |container|
+        %li=link_to container.name, container
+      %li.is-active=link_to resource.name, resource, 'aria-current': "page"
+
 =resource_field :created_at
 =resource_field :updated_at
--if resource.container
-  =resource_field :container do
-    =link_to resource.container&.name, resource.container
-=resource_field :user do
+=resource_field :created_by do
   =resource.user.name
 
 = link_to t('.edit', default: t("helpers.links.edit")), edit_item_path(@item), class: 'button is-default'

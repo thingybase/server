@@ -1,5 +1,15 @@
 %h1.title=t '.title', :default => resource_class.model_name.human.pluralize.titleize
 %h2.subtitle Quickly print labels and organize them later
+
+.list-card
+  - @labels.each do |label|
+    .list-card--item
+      .list-card--item--title=link_to label.text, label
+      .list-card--item--details
+        .list-card--item--detail
+          Created at
+          =local_time label.created_at
+
 %table.table.is-fullwidth.is-striped
   %thead
     %tr

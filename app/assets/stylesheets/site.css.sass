@@ -17,3 +17,16 @@ $danger-color: red
   word-wrap: break-word
   padding: 1rem
   background-color: $light-gray
+
+.list-card
+  &--item
+    padding: 1rem 0
+    &--title
+      font-weight: bold
+    &--detail
+      display: inline
+      & + &:before
+        content: " · "
+    &--details
+    & + &
+      border-top: 1px solid #eee
