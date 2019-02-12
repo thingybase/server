@@ -1,14 +1,13 @@
 %h1.title=t '.title', :default => resource_class.model_name.human.pluralize.titleize
 %h2.subtitle Find items easier by organizing them into containers
 
-
 .list-card
   - @containers.each do |container|
     .list-card--item
       .list-card--item--title=link_to container.name, container
       .list-card--item--details
         .list-card--item--detail
-          Created at
-          =local_time container.created_at
+          Created
+          =local_time_ago container.created_at
 
 = link_to t('.new', :default => t("helpers.links.new")), new_account_container_path(@account), :class => 'button is-primary'

@@ -17,7 +17,7 @@
 = link_to t('.destroy', default: t("helpers.links.destroy")), item_path(@item), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-danger'
 
 -if label = resource.label
-  = link_to "View label", label, class: 'button'
+  = link_to "View label", label_path(label, format: :pdf), class: 'button'
 -else
   = simple_form_for resource.build_label(text: resource.name, account: @account) do |f|
     = f.input :text, as: :hidden

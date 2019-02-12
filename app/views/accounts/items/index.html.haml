@@ -7,8 +7,8 @@
       .list-card--item--title=link_to item.name, item
       .list-card--item--details
         .list-card--item--detail
-          Created at
-          =local_time item.created_at
+          Created
+          =local_time_ago item.created_at
         -if container = item.container
           .list-card--item--detail
             In

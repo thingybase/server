@@ -7,17 +7,7 @@
       .list-card--item--title=link_to label.text, label
       .list-card--item--details
         .list-card--item--detail
-          Created at
-          =local_time label.created_at
+          Created
+          =local_time_ago label.created_at
 
-%table.table.is-fullwidth.is-striped
-  %thead
-    %tr
-      %th= resource_class.human_attribute_name(:text)
-      %th= resource_class.human_attribute_name(:created_at)
-  %tbody
-    - @labels.each do |label|
-      %tr
-        %td= link_to label.text, label
-        %td= local_time label.created_at
 = link_to t('.new', :default => t("helpers.links.new")), new_account_label_path(@account), :class => 'button is-primary'

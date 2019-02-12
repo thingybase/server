@@ -12,20 +12,18 @@
     .list-card--item
       .list-card--item--title=link_to container.name, container
       .list-card--item--details
+        .list-card--item--detail Container
         .list-card--item--detail
-          Created at
-          =local_time container.created_at
+          Created
+          =local_time_ago container.created_at
   - @container.items.each do |item|
     .list-card--item
       .list-card--item--title=link_to item.name, item
       .list-card--item--details
+        .list-card--item--detail Item
         .list-card--item--detail
-          Created at
-          =local_time item.created_at
-        -if container = item.container
-          .list-card--item--detail
-            In
-            = link_to container.name, container
+          Created
+          =local_time_ago item.created_at
 
 = link_to "Add container", new_container_child_path(@container), :class => 'button is-default'
 = link_to "Add item", new_container_item_path(@container), :class => 'button is-default'
@@ -33,7 +31,7 @@
 = link_to t('.destroy', :default => t("helpers.links.destroy")), container_path(@container), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'button is-danger'
 
 -if label = resource.label
-  = link_to "View label", label, class: 'button'
+  = link_to "View label", label_path(label, format: :pdf), class: 'button'
 -else
   = simple_form_for resource.build_label(text: resource.name, account: @account) do |f|
     = f.input :text, as: :hidden
