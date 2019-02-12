@@ -47,7 +47,7 @@ class LabelsController < ResourcesController
 
   private
     def label_generator
-      LabelGenerator.new text: resource.text, url: label_uuid_redirector_url(resource)
+      LabelGenerator.new.tap { |l| l.add_label text: resource.text, url: label_uuid_redirector_url(resource) }
     end
 
     def label_uuid_redirector_url(label)
