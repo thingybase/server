@@ -5,6 +5,14 @@ GIT
     rails_polymorphic_select (0.1.1)
       rails (~> 5.2)
 
+GIT
+  remote: https://github.com/jabbrwcky/prawn-qrcode.git
+  revision: f03ffbcdcc181003656696018930c45c179a02f2
+  specs:
+    prawn-qrcode (0.3.0)
+      prawn (>= 1)
+      rqrcode (>= 0.4.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -172,9 +180,6 @@ GEM
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
       ttfunk (~> 1.5)
-    prawn-qrcode (0.3.0)
-      prawn (>= 1)
-      rqrcode (>= 0.4.1)
     public_suffix (3.0.2)
     puma (3.11.4)
     pundit (1.1.0)
@@ -326,7 +331,7 @@ DEPENDENCIES
   pg (~> 0.21.0)
   phony_rails
   prawn (~> 2.2)
-  prawn-qrcode (~> 0.3.0)
+  prawn-qrcode (~> 0.3.0)!
   puma (~> 3.11)
   pundit
   pundit-matchers (~> 1.3.1)

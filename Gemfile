@@ -60,7 +60,8 @@ gem 'bootsnap', '~> 1.3.0'
 
 # Generate's PDFs, mostly for labels
 gem "prawn", "~> 2.2"
-gem "prawn-qrcode", "~> 0.3.0"
+# Remove Github reference when https://github.com/jabbrwcky/prawn-qrcode/pull/16 is released into a gem.
+gem "prawn-qrcode", "~> 0.3.0", github: "jabbrwcky/prawn-qrcode"
 gem "qrcode", "~> 0.0.1"
 
 # Hierarchial record organization in ActiveRecord

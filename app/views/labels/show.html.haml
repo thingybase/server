@@ -1,15 +1,18 @@
 %h1.title=resource.text
 
 =resource_field :text
-=resource_field :labelable do
+=resource_field :item_or_container do
   -if labelable = resource.labelable
     =link_to labelable.name, labelable
   -else
     Not linked to item or container
-=resource_field :uuid
-=resource_field :created_at
-=resource_field :updated_at
-=resource_field :user do
+=resource_field :label_link do
+  =link_to label_uuid_redirector_url(resource)
+=resource_field :created_at do
+  =local_time resource.created_at
+=resource_field :updated_at do
+  =local_time resource.updated_at
+=resource_field :created_by do
   =resource.user.name
 
 = link_to t('.print', :default => t("helpers.links.print")), label_path(@label, format: :pdf), :class => 'button is-default'

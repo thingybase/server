@@ -1,5 +1,6 @@
 class LabelsController < ResourcesController
   include AccountLayout
+  include LabelsHelper
 
   def self.resource
     Label
@@ -64,9 +65,5 @@ class LabelsController < ResourcesController
           generator.add_label text: r.text, url: label_uuid_redirector_url(r)
         end
       end
-    end
-
-    def label_uuid_redirector_url(label)
-      label_url label.uuid
     end
 end

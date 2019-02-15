@@ -15,7 +15,7 @@
 
 = link_to t('.edit', default: t("helpers.links.edit")), edit_item_path(@item), class: 'button is-default'
 -if label = resource.label
-  = link_to "View label", label_path(label, format: :pdf), class: 'button'
+  = link_to "View label", label_path(label), class: 'button'
 -else
   = simple_form_for resource.build_label(text: resource.name, account: @account), format: :pdf do |f|
     = f.input :text, as: :hidden

@@ -3,12 +3,12 @@ require 'prawn/qrcode'
 include Prawn::Measurements
 
 class LabelGenerator
-  attr_accessor :labels, :margin, :height, :width
+  attr_accessor :labels, :margin
 
   # Basic data structure for creating labels, used internally by LabelGenerator.
   # This should stay agnostic to ActiveRecord implementation of Label model so that
   # its more portablw.
-  Label = Struct.new(:text, :url)
+  Label = Struct.new(:text, :url, :lines)
 
   # Used to validate and normialize HTTP urls.
   DEFAULT_URL_SCHEME = 'http:////'.freeze
@@ -16,16 +16,20 @@ class LabelGenerator
   # Dimensions of Dymo address labels
   DEFAULT_HEIGHT = mm2pt(22)
   DEFAULT_WIDTH = mm2pt(62)
+  DEFAULT_QR_CODE_SIZE = mm2pt(22)
+  # Font sizes
+  TITLE_FONT_SIZE = 24
+  DETAIL_FONT_SIZE = 8
+  DEFAULT_MARGIN = 5
+  DEFAULT_GUTTER_SIZE = 5
 
-  def initialize(labels: [], width: DEFAULT_WIDTH, height: DEFAULT_HEIGHT)
+  def initialize(labels: [], margin: DEFAULT_MARGIN)
     self.labels = labels
-    self.width = width
-    self.height = height
-    self.margin = 0
+    self.margin = margin
   end
 
-  def add_label(text:, url:)
-    labels.append Label.new(text, url)
+  def add_label(text:, url:, lines: nil)
+    labels.append Label.new(text, url, lines)
   end
 
   def render_pdf
@@ -34,23 +38,47 @@ class LabelGenerator
 
   private
     def pdf
-      qrcode_size = height
-      qrcode_offset = width - qrcode_size
-      margin = 5
+      sheets do |pdf, label|
+        # Title text
+        if label.lines&.any?
+          pdf.grid([0,0], [2,3]).bounding_box do
+              # pdf.stroke_bounds
+              pdf.text_box label.text,
+                size: TITLE_FONT_SIZE,
+                align: :left,
+                overflow: :shrink_to_fit,
+                style: :bold,
+                valign: :top
+          end
 
-      document do |pdf|
-        labels.each.with_index(1) do |label, page_count|
-          pdf.bounding_box [margin, height - margin], width: qrcode_offset - margin, height: height - (margin * 2) do
+          # Details
+          pdf.grid([3,0], [5,3]).bounding_box do
             # pdf.stroke_bounds
-            pdf.text_box label.text, align: :left, valign: :center, overflow: :shrink_to_fit,
-              size: 24, style: :bold
+            pdf.text_box label.lines.join("\n"),
+              size: DETAIL_FONT_SIZE,
+              align: :left,
+              overflow: :shrink_to_fit,
+              valign: :bottom
           end
-          pdf.bounding_box [qrcode_offset, qrcode_size], width: qrcode_size, height: qrcode_size do
+        else
+          pdf.grid([0,0], [5,3]).bounding_box do
+              # pdf.stroke_bounds
+              pdf.text_box label.text,
+                size: TITLE_FONT_SIZE,
+                align: :left,
+                overflow: :shrink_to_fit,
+                style: :bold,
+                valign: :center
+          end
+        end
+
+        # QR Code
+        pdf.grid([0,4], [5,5]).bounding_box do
             # pdf.stroke_bounds
-            # TODO: Fix bug here; `margin: 0` didn't work, so I hacked everything else up.
-            pdf.print_qr_code well_formed_url(label.url), extent: qrcode_size, stroke: false
-          end
-          pdf.start_new_page if page_count < labels.count
+            pdf.print_qr_code well_formed_url(label.url),
+              extent: pdf.bounds.width,
+              margin: 0,
+              stroke: true
         end
       end
     end
@@ -59,7 +87,15 @@ class LabelGenerator
       URI(DEFAULT_URL_SCHEME).merge(url).to_s
     end
 
-    def document(&block)
-      Prawn::Document::new page_size: [width, height], margin: 0, &block
+    # We dynamically change the height of a sheet dependong on how much content is on it because
+    # we're printing from a roll of tape.
+    def sheets(&block)
+      pdf = Prawn::Document::new skip_page_creation: true
+      pdf.define_grid(columns: 6, rows: 6, gutter: DEFAULT_MARGIN)
+      labels.each do |label|
+        pdf.start_new_page size: [DEFAULT_WIDTH, DEFAULT_HEIGHT], margin: DEFAULT_MARGIN
+        block.call pdf, label
+      end
+      pdf
     end
 end
