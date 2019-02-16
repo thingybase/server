@@ -10,8 +10,8 @@
             %span(aria-hidden="true")
         .navbar-menu#navbar-account-navigation
           .navbar-start
-            = active_link_to "Items", [@account, :items], class: "navbar-item"
             = active_link_to "Organization", [@account, :containers], class: "navbar-item"
+            = active_link_to "Items", [@account, :items], class: "navbar-item"
             = active_link_to "Labels", [@account, :labels], class: "navbar-item"
           .navbar-end
             = active_link_to "Profile", user_path(current_user), class: "navbar-item"
