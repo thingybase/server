@@ -41,7 +41,7 @@ class LabelGenerator
       sheets do |pdf, label|
         # Title text
         if label.lines&.any?
-          pdf.grid([0,0], [2,3]).bounding_box do
+          pdf.grid([0,0], [3,3]).bounding_box do
               # pdf.stroke_bounds
               pdf.text_box label.text,
                 size: TITLE_FONT_SIZE,
@@ -52,7 +52,7 @@ class LabelGenerator
           end
 
           # Details
-          pdf.grid([3,0], [5,3]).bounding_box do
+          pdf.grid([4,0], [5,3]).bounding_box do
             # pdf.stroke_bounds
             pdf.text_box label.lines.join("\n"),
               size: DETAIL_FONT_SIZE,

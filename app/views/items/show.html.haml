@@ -8,8 +8,10 @@
         %li=link_to container.name, container
       %li.is-active=link_to resource.name, resource, 'aria-current': "page"
 
-=resource_field :created_at
-=resource_field :updated_at
+=resource_field :created_at do
+  =local_time resource.created_at
+=resource_field :updated_at do
+  =local_time resource.updated_at
 =resource_field :created_by do
   =resource.user.name
 
@@ -17,9 +19,5 @@
 -if label = resource.label
   = link_to "View label", label_path(label), class: 'button'
 -else
-  = simple_form_for resource.build_label(text: resource.name, account: @account), format: :pdf do |f|
-    = f.input :text, as: :hidden
-    = f.input :account_id, as: :hidden
-    = f.input :labelable_global_id, as: :hidden
-    = f.button :submit, :class => 'is-primary'
+  = link_to "Create label", item_labels_path(resource), class: 'button', method: :post
 = link_to t('.destroy', default: t("helpers.links.destroy")), item_path(@item), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-text'

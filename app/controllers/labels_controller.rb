@@ -62,7 +62,10 @@ class LabelsController < ResourcesController
     def label_generator(resources)
       LabelGenerator.new.tap do |generator|
         Array(resources).each do |r|
-          generator.add_label text: r.text, url: label_uuid_redirector_url(r)
+          generator.add_label text: r.text, url: label_uuid_redirector_url(r), lines: [
+            "Created #{r.created_at.to_date.to_s(:long)}",
+            r.uuid
+          ]
         end
       end
     end

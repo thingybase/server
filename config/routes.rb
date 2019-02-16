@@ -21,9 +21,14 @@ Rails.application.routes.draw do
     scope module: :containers do
       resources :children, only: %i[index new]
       resources :items, only: %i[new]
+      resources :labels, only: %i[create]
     end
   end
-  resources :items
+  resources :items do
+    scope module: :items do
+      resources :labels, only: %i[create]
+    end
+  end
   resources :members
   resources :labels do
     scope module: :labels do
