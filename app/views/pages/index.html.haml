@@ -1,15 +1,17 @@
+.section.hero
+  .hero-body
+    .container
+      %h1.title.is-1 Thingybase
+      %h2.subtitle.is-4 Keep track of your stuff
+      %p=link_to "Get started →", launch_accounts_path, class: "button is-primary is-medium", role: "button"
 .section
-  %h1.title Thingybase
-  %p.lead Keep track of your stuff
-  %p=link_to "Get started →", launch_accounts_path, class: "button is-primary is-lg", role: "button"
-.section
-  %h2 Plans & pricing
-  %h3 Free during beta testing!
+  %h2.title Plans & pricing
+  %h3.subtitle Free during beta testing!
   %p Try thingybase as long as you’d like for a few items, then upgrade when you’re ready to scale your account and keep track of more stuff.
   .columns.plans-listing
     .column.plans-listing--plan
       =image_tag "solo.svg", style: "max-width: 100%;"
-      %h2 Personal
+      %h2.title.is-6 Personal
       %p 100 items
       %p 1 user
       %p.plans-listing--plan--price $0
@@ -17,7 +19,7 @@
       %p=link_to "Sign up", new_session_path, class: "button is-primary is-lg", role: "button"
     .column.plans-listing--plan
       =image_tag "startup.svg", style: "max-width: 100%;"
-      %h2 Family
+      %h2.title.is-6 Family
       %p Unlimited items
       %p 5 users
       %p.plans-listing--plan--price $49.99/year
@@ -25,7 +27,7 @@
       %p=link_to "Sign up", new_session_path, class: "button is-primary is-lg", role: "button"
     .column.plans-listing--plan
       =image_tag "account.svg", style: "max-width: 100%;"
-      %h2 Business
+      %h2.title.is-6 Business
       %p Unlimited items
       %p 25 users
       %p.plans-listing--plan--price $99.99/year
@@ -33,12 +35,13 @@
       %p=link_to "Sign up", new_session_path, class: "button is-primary is-lg", role: "button"
     .column.plans-listing--plan
       =image_tag "business.svg", style: "max-width: 100%;"
-      %h2 Enterprise
+      %h2.title.is-6 Enterprise
       %p Unlimited items
       %p Unlimited users
       %p.plans-listing--plan--price Contact for pricing
       %p.plans-listing--plan--beta-price Free during beta testing
       %p=link_to "Sign up", new_session_path, class: "button is-primary is-lg", role: "button"
-  %h2 Not sure yet? Thingybase for free
-  %p.lead Take it for a spin and see how Thingybase helps you get a handle on your stuff.
+.section
+  %h2.title Not sure yet? Thingybase for free
+  %h3.subtitle Take it for a spin and see how Thingybase helps you get a handle on your stuff.
   %p=link_to "Sign up →", new_session_path, class: "button is-primary is-lg", role: "button"
