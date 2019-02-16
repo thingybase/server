@@ -1,6 +1,9 @@
 %h1.title=t '.title', :default => resource_class.model_name.human.pluralize.titleize
 %h2.subtitle Quickly print labels and organize them later
 
+.buttons
+  = link_to "Add label", new_account_label_path(@account), :class => 'button is-primary'
+
 .list-card
   - @labels.each do |label|
     .list-card--item
@@ -9,5 +12,3 @@
         .list-card--item--detail
           Created
           =local_time_ago label.created_at
-
-= link_to t('.new', :default => t("helpers.links.new")), new_account_label_path(@account), :class => 'button is-primary'
