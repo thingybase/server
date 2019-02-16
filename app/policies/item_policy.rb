@@ -19,6 +19,10 @@ class ItemPolicy < ApplicationPolicy
     show?
   end
 
+  def duplicate?
+    create?
+  end
+
   class Scope < Scope
     def resolve
       scope.where(account_id: user.accounts)

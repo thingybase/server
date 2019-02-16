@@ -25,6 +25,9 @@ Rails.application.routes.draw do
     end
   end
   resources :items do
+    member do
+      post :duplicate
+    end
     scope module: :items do
       resources :labels, only: %i[create]
     end

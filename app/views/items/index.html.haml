@@ -1,19 +1,16 @@
 %h1.title=t '.title', :default => resource_class.model_name.human.pluralize.titleize
-%table.table.is-fullwidth.is-striped
-  %thead
-    %tr
-      %th= resource_class.human_attribute_name(:name)
-      %th= resource_class.human_attribute_name(:created_at)
-      %th=t '.actions', :default => t("helpers.actions")
-  %tbody
-    - @items.each do |item|
-      %tr
-        %td= link_to item.name, item
-        %td= local_time item.created_at
-        %td
-          = link_to t('.show', :default => t("helpers.links.show")), item, :class => 'button is-default is-xs'
-          = link_to t('.print', :default => t("helpers.links.print")), item_path(item, format: :pdf), :class => 'button is-default is-xs'
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_item_path(item), :class => 'button is-default is-xs'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), item_path(item), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'button is-xs is-danger'
 
-= link_to t('.new', :default => t("helpers.links.new")), new_item_path, :class => 'button is-primary'
+= link_to "Add item", new_item_path, class: 'button is-primary'
+
+.list-card
+  - @items.each do |item|
+    .list-card--item
+      .list-card--item--title=link_to item.name, item
+      .list-card--item--details
+        .list-card--item--detail
+          Created
+          =local_time_ago item.created_at
+        -if container = item.container
+          .list-card--item--detail
+            In
+            = link_to container.name, container
