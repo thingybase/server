@@ -2,4 +2,5 @@
   = f.input :name, autofocus: true
   = f.association :account, collection: policy_scope(Account), include_blank: false
   = f.association :container, collection: account_policy_scope(Container), include_blank: true
-  = f.button :submit, :class => 'is-primary'
+  = f.input :created_at, as: :string, hint: %[Dates and times like "Jan 1", "last week", "an hour from now" all work]
+  = f.button :submit, class: 'is-primary'

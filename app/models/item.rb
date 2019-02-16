@@ -7,4 +7,8 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :account, presence: true
   validates :user, presence: true
+
+  def created_at=(value)
+    write_attribute :created_at, Chronic.parse(value)
+  end
 end
