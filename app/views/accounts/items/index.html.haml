@@ -1,6 +1,9 @@
 %h1.title=t '.title', :default => resource_class.model_name.human.pluralize.titleize
 %h2.subtitle All the things you want to track
 
+.buttons
+  = link_to "Add item", new_account_item_path(@account), :class => 'button is-primary'
+
 .list-card
   - @items.each do |item|
     .list-card--item
@@ -14,4 +17,3 @@
             In
             = link_to container.name, container
 
-= link_to t('.new', :default => t("helpers.links.new")), new_account_item_path(@account), :class => 'button is-primary'

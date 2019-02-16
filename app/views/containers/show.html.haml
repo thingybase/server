@@ -7,6 +7,11 @@
       %li=link_to container.name, container
     %li.is-active=link_to resource.name, resource, 'aria-current': "page"
 
+.buttons.has-addons
+  = link_to "Add item", new_container_item_path(@container), :class => 'button is-primary'
+  = link_to "Add container", new_container_child_path(@container), :class => 'button is-primary'
+
+
 .list-card
   - @container.children.each do |container|
     .list-card--item
@@ -25,9 +30,7 @@
           Created
           =local_time_ago item.created_at
 
-.toolbar
-  = link_to "Add item", new_container_item_path(@container), :class => 'button is-default'
-  = link_to "Add container", new_container_child_path(@container), :class => 'button is-default'
+.buttons
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_container_path(@container), :class => 'button is-default'
   -if label = resource.label
     = link_to "View label", label_path(label, format: :pdf), class: 'button'
