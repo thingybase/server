@@ -19,5 +19,5 @@
 -if label = resource.label
   = link_to "View label", label_path(label), class: 'button'
 -else
-  = link_to "Create label", item_labels_path(resource), class: 'button', method: :post
+  = link_to "Print label", item_labels_path(resource), class: 'button', method: :post
 = link_to t('.destroy', default: t("helpers.links.destroy")), item_path(@item), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-text'

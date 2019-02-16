@@ -14,6 +14,10 @@ module Items
       [:text, :account_id, :container_id]
     end
 
+    def create_redirect_url
+      label_url(@label, format: :pdf)
+    end
+
     def assign_attributes
       self.resource.user = current_user
       self.resource.account ||= parent_resource.account
