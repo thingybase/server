@@ -68,7 +68,7 @@ class ResourcesController < ApplicationController
 
   protected
     def member_request?
-      params.key? :id
+      params.key? resource_id_param
     end
 
     def collection_request?
@@ -157,14 +157,14 @@ class ResourcesController < ApplicationController
 
     # Key used to find the resource via ActiveRecord. Typically this is the primary key of the record,
     # but it would be a different field if you don't want to expose users to primary keys.
-    def resource_key
+    def active_record_id
       :id
     end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_resource
       query = {}
-      query[resource_key] = params[resource_id_param]
+      query[active_record_id] = params[resource_id_param]
       self.resource = resource_class.find_by! **query
     end
 
@@ -176,14 +176,14 @@ class ResourcesController < ApplicationController
     def create_success_formats(format)
     end
 
+    # Authorizse resource with Pundit.
+    def authorize_resource(*args)
+      authorize resource, *args
+    end
+
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def resource_params
       params.require(resource_name).permit(permitted_params)
-    end
-
-    # Authorizse resource with Pundit.
-    def authorize_resource
-      authorize resource
     end
 end

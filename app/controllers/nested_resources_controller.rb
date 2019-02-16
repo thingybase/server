@@ -14,7 +14,7 @@ class NestedResourcesController < ResourcesController
     # Use callbacks to share common setup or constraints between actions.
     def set_parent_resource
       query = {}
-      query[parent_resource_key] = params[parent_resource_id_param]
+      query[parent_active_record_id] = params[parent_resource_id_param]
       self.parent_resource = self.class.parent_resource.find_by! **query
     end
 
@@ -35,7 +35,7 @@ class NestedResourcesController < ResourcesController
 
     # Key used to find the parent resource via ActiveRecord. Typically this is the primary key of the record,
     # but it would be a different field if you don't want to expose users to primary keys.
-    def parent_resource_key
+    def parent_active_record_id
       :id
     end
 
