@@ -4,7 +4,9 @@
   %ul
     %li=link_to @account.name, account_containers_path(@account)
     -@container.ancestors.reverse.each do |container|
-      %li=link_to container.name, container
+      %li.is-hidden-mobile=link_to container.name, container
+    -if parent = @container.parent
+      %li.is-hidden-tablet-only.is-hidden-desktop-only.is-hidden-widescreen-only=link_to '..', parent
     %li.is-active=link_to resource.name, resource, 'aria-current': "page"
 
 .buttons.has-addons
