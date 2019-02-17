@@ -7,7 +7,7 @@ SimpleForm.setup do |config|
   # whole input.
 
   # DRY up settings for Bulma form helpers
-  def self.bulma_wrapper(name, config)
+  def bulma_wrapper(name, config)
     config.wrappers name, class: "field", hint_class: "help", error_class: "is-danger" do |b|
       b.use :html5
       b.use :placeholder
@@ -17,29 +17,28 @@ SimpleForm.setup do |config|
       b.optional :min_max
       b.optional :readonly
 
+      b.use :label, class: "label"
+
       yield b
+
+      b.use :full_error, wrap_with: { tag: :p, class: "help is-danger" }
+      b.use :hint, wrap_with: { tag: :p, class: "help" }
     end
   end
 
   bulma_wrapper :default, config do |b|
-    b.use :label, class: "label"
     b.wrapper tag: :div, class: "control" do |component|
       component.use :input, class: "input", error_class: "is-danger"
     end
-    b.use :full_error, wrap_with: { tag: :p, class: "help is-danger" }
-    b.use :hint, wrap_with: { tag: :p, class: "help" }
   end
 
   # Selects require a wrapper class around the control.
   bulma_wrapper :select, config do |b|
-    b.use :label, class: "label"
     b.wrapper tag: :div, class: "select" do |s|
       s.wrapper tag: :div, class: "control" do |c|
         c.use :input, class: "input", error_class: "is-danger"
       end
     end
-    b.use :full_error, wrap_with: { tag: :p, class: "help is-danger" }
-    b.use :hint, wrap_with: { tag: :p, class: "help" }
   end
 
   # Custom wrappers for input types. This should be a hash containing an input
