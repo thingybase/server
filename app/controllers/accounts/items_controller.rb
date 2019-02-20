@@ -11,7 +11,9 @@ module Accounts
     end
 
     def resource_scope
-      policy_scope.includes(:account, :container)
+      scope = policy_scope.includes(:account, :container)
+      scope = scope.search_by_name(params[:search]) if params.key? :search
+      scope
     end
 
     def permitted_params

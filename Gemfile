@@ -101,3 +101,5 @@ gem 'rails_polymorphic_select', github: 'brunopascoa/rails_polymorphic_select'
 gem "bulma-rails", "~> 0.7.4"
 
 gem "chronic", "~> 0.10.2"
+
+gem "pg_search", "~> 2.1"
