@@ -3,6 +3,12 @@
 
 .buttons
   = link_to "Add item", new_account_item_path(@account), :class => 'button is-primary'
+  = form_tag url_for, method: :get do
+    .field.has-addons
+      .control
+        = text_field_tag :search, params[:search], class: "input", placeholder: "Search", autofocus: params[:search].present?
+      .control
+        = submit_tag "Search", class: "button"
 
 .list-card
   - @items.each do |item|
@@ -16,4 +22,3 @@
           .list-card--item--detail
             In
             = link_to container.name, container
-

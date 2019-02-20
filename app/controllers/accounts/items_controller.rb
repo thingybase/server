@@ -12,7 +12,7 @@ module Accounts
 
     def resource_scope
       scope = policy_scope.includes(:account, :container)
-      scope = scope.search_by_name(params[:search]) if params.key? :search
+      scope = scope.search_by_name(params[:search]) if params[:search].present?
       scope
     end
 
