@@ -1,13 +1,6 @@
 %h1.title=resource.name
 
--if container = resource.container
-  .breadcrumb(aria-label="breadcrumbs")
-    %ul
-      %li=link_to @account.name, account_containers_path(@account)
-      -container.self_and_ancestors.reverse.each do |container|
-        %li.is-hidden-mobile=link_to container.name, container
-      %li.is-hidden-tablet-only.is-hidden-desktop-only.is-hidden-widescreen-only=link_to '..', container
-      %li.is-active=link_to resource.name, resource, 'aria-current': "page"
+=breadcrumb item_breadcrumbs
 
 =resource_field :created_at do
   =local_time resource.created_at
