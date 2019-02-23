@@ -3,6 +3,7 @@ module BreadcrumbHelper
 
   def breadcrumb(links = [], text: nil)
     return if links.empty?
+
     root, *links, active = links
     render partial: "helpers/breadcrumb_helper/breadcrumb", locals: { root: root, links: links, active: active }
   end
@@ -22,12 +23,15 @@ module BreadcrumbHelper
   end
 
   def label_breadcrumbs(label=resource)
+    return [] unless label.labelable
+
     links = case label.labelable
     when Item
       item_breadcrumbs(label.labelable)
     when Container
       container_breadcrumbs(label.labelable)
     end
+
     links.append Link.new("Label", label)
   end
 end
