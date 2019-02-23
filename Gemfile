@@ -35,9 +35,6 @@ gem 'omniauth-google-oauth2'
 gem 'pundit'
 # Form helper
 gem 'simple_form'
-# Use jQuery with rails
-# TODO: Can I remove this and use rails-ujs?
-gem 'jquery-rails'
 # Communicate with Twilio
 gem 'twilio-ruby'
 # Handle phone numbers as a propper data type (and normalize)
