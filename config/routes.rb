@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     resource :verification
   end
   resources :accounts do
+    get :search, to: "accounts/searches#index"
     scope module: :accounts do
       resources :members
       resources :invitations

@@ -1,0 +1,2 @@
+module Accounts::SearchesHelper
+end

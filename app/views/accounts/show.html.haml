@@ -10,6 +10,7 @@
       =pluralize @account.containers.count, "container"
       in your account.
     %p=link_to "View containers", account_containers_path(@account)
+    %p=link_to "Search", account_search_path(@account)
 
   .column
     %h3.title.is-5 Items
