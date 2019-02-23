@@ -1,6 +1,9 @@
 %h1.title=@account.name
 %h2.subtitle Everything at a glance
 
+.buttons
+  =search_field autofocus: true, url: account_search_path(@account)
+
 .columns
   .column
     %h3.title.is-5 Organization
@@ -19,11 +22,6 @@
       =pluralize @account.items.count, "item"
       in your account.
     %p=link_to "View items", account_items_path(@account)
-
-  .column
-    %h3.title.is-5 Search
-    %p.subtitle.is-6 Find items and see where they're located
-    %p=link_to "Search", account_search_path(@account)
 
   .column
     %h3.title.is-5 Labels
