@@ -1,6 +1,11 @@
 module BreadcrumbHelper
   Link = Struct.new(:text, :url)
 
+  def breadcrumb(links = [], text: nil)
+    return if links.empty?
+    root, *links, active = links
+    render partial: "helpers/breadcrumb_helper/breadcrumb", locals: { root: root, links: links, active: active }
+  end
 
   def container_breadcrumbs(container=resource)
     container.ancestors.map{ |c| Link.new(c.name, c) }
@@ -24,11 +29,5 @@ module BreadcrumbHelper
       container_breadcrumbs(label.labelable)
     end
     links.append Link.new("Label", label)
-  end
-
-  def breadcrumb(links = [], text: nil)
-    return if links.empty?
-    root, *links, active = links
-    render partial: "helpers/breadcrumb_helper/breadcrumb", locals: { root: root, links: links, active: active }
   end
 end
