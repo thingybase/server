@@ -20,7 +20,7 @@ class LabelGenerator
   # Font sizes
   TITLE_FONT_SIZE = 24
   DETAIL_FONT_SIZE = 8
-  DEFAULT_MARGIN = 5
+  DEFAULT_MARGIN = 6
   DEFAULT_GUTTER_SIZE = 5
 
   def initialize(labels: [], margin: DEFAULT_MARGIN)
