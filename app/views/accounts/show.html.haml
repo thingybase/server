@@ -4,13 +4,12 @@
 .columns
   .column
     %h3.title.is-5 Organization
-    %p.subtitle.is-6 Find items easier by organizing them into rooms, shelves, and containers
+    %p.subtitle.is-6 Organize stuff into rooms, shelves, and containers so you can find it all later
     %p
       You have a total of
       =pluralize @account.containers.count, "container"
       in your account.
     %p=link_to "View containers", account_containers_path(@account)
-    %p=link_to "Search", account_search_path(@account)
 
   .column
     %h3.title.is-5 Items
@@ -20,6 +19,11 @@
       =pluralize @account.items.count, "item"
       in your account.
     %p=link_to "View items", account_items_path(@account)
+
+  .column
+    %h3.title.is-5 Search
+    %p.subtitle.is-6 Find items and see where they're located
+    %p=link_to "Search", account_search_path(@account)
 
   .column
     %h3.title.is-5 Labels
