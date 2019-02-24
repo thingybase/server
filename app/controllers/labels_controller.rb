@@ -60,12 +60,19 @@ class LabelsController < ResourcesController
 
   private
     def label_generator(resources)
-      LabelGenerator.new.tap do |generator|
+      label_layout = case params[:size]
+      when "large"
+        LabelGenerator::LARGE_LAYOUT
+      else
+        LabelGenerator::SMALL_LAYOUT
+      end
+
+      LabelGenerator.new(layout: label_layout).tap do |generator|
         Array(resources).each do |r|
-          lines = []
-          lines << "Created #{r.labelable.created_at.to_date.to_s(:long)}" if r.labelable
-          lines << r.uuid
-          generator.add_label text: r.text, url: label_uuid_redirector_url(r), lines: lines
+          generator.add_label text: r.text, url: label_uuid_redirector_url(r) do |label|
+            label.lines << "Created #{r.labelable.created_at.to_date.to_s(:long)}" if r.labelable
+            label.lines << r.uuid
+          end
         end
       end
     end

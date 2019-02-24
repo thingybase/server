@@ -3,33 +3,46 @@ require 'prawn/qrcode'
 include Prawn::Measurements
 
 class LabelGenerator
-  attr_accessor :labels, :margin
+  attr_accessor :labels, :layout
 
   # Basic data structure for creating labels, used internally by LabelGenerator.
   # This should stay agnostic to ActiveRecord implementation of Label model so that
   # its more portablw.
-  Label = Struct.new(:text, :url, :lines)
+  Label = Struct.new(:text, :url, :lines,
+    keyword_init: true)
 
   # Used to validate and normialize HTTP urls.
   DEFAULT_URL_SCHEME = 'http:////'.freeze
 
-  # Dimensions of Dymo address labels
-  DEFAULT_HEIGHT = mm2pt(22)
-  DEFAULT_WIDTH = mm2pt(62)
-  DEFAULT_QR_CODE_SIZE = mm2pt(22)
-  # Font sizes
-  TITLE_FONT_SIZE = 24
-  DETAIL_FONT_SIZE = 8
-  DEFAULT_MARGIN = 6
-  DEFAULT_GUTTER_SIZE = 5
+  # Controls spacing, margins, and page dimensions of label.
+  Layout = Struct.new(:height, :width, :title_font_size, :detail_font_size, :margin,
+    keyword_init: true)
 
-  def initialize(labels: [], margin: DEFAULT_MARGIN)
+  # Dimensions of Dymo address labels on a roll
+  LARGE_LAYOUT = Layout.new(
+    height: mm2pt(62),
+    width: mm2pt(175),
+    title_font_size: 68,
+    detail_font_size: 22,
+    margin: 16)
+
+  # Dimensions of Dymo address labels on a roll
+  SMALL_LAYOUT = Layout.new(
+    height: mm2pt(22),
+    width: mm2pt(62),
+    title_font_size: 24,
+    detail_font_size: 8,
+    margin: 5)
+
+  def initialize(labels: [], layout: LARGE_LAYOUT)
     self.labels = labels
-    self.margin = margin
+    self.layout = layout
   end
 
-  def add_label(text:, url:, lines: nil)
-    labels.append Label.new(text, url, lines)
+  def add_label(text:, url:, lines: [])
+    label = Label.new(text: text, url: url, lines: lines)
+    yield label if block_given?
+    labels.append label
   end
 
   def render_pdf
@@ -44,7 +57,7 @@ class LabelGenerator
           pdf.grid([0,0], [3,3]).bounding_box do
               # pdf.stroke_bounds
               pdf.text_box label.text,
-                size: TITLE_FONT_SIZE,
+                size: layout.title_font_size,
                 align: :left,
                 overflow: :shrink_to_fit,
                 style: :bold,
@@ -55,7 +68,7 @@ class LabelGenerator
           pdf.grid([4,0], [5,3]).bounding_box do
             # pdf.stroke_bounds
             pdf.text_box label.lines.join("\n"),
-              size: DETAIL_FONT_SIZE,
+              size: layout.detail_font_size,
               align: :left,
               overflow: :shrink_to_fit,
               valign: :bottom
@@ -64,7 +77,7 @@ class LabelGenerator
           pdf.grid([0,0], [5,3]).bounding_box do
               # pdf.stroke_bounds
               pdf.text_box label.text,
-                size: TITLE_FONT_SIZE,
+                size: layout.title_font_size,
                 align: :left,
                 overflow: :shrink_to_fit,
                 style: :bold,
@@ -91,9 +104,9 @@ class LabelGenerator
     # we're printing from a roll of tape.
     def sheets(&block)
       pdf = Prawn::Document::new skip_page_creation: true
-      pdf.define_grid(columns: 6, rows: 6, gutter: DEFAULT_MARGIN)
+      pdf.define_grid(columns: 6, rows: 6, gutter: layout.margin)
       labels.each do |label|
-        pdf.start_new_page size: [DEFAULT_WIDTH, DEFAULT_HEIGHT], margin: DEFAULT_MARGIN
+        pdf.start_new_page size: [layout.width, layout.height], margin: layout.margin
         block.call pdf, label
       end
       pdf
