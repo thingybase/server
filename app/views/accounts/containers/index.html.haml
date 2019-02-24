@@ -1,7 +1,9 @@
 %h1.title Organize
 %h2.subtitle Find items easier by organizing them into rooms, shelves, and other containers
-.toolbar
+
+.buttons
   = link_to "Add container", new_account_container_path(@account), :class => 'button is-primary'
+  =search_field autofocus: true, url: account_search_path(@account)
 
 .list-card
   - @containers.each do |container|
