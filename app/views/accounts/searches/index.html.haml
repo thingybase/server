@@ -1,6 +1,9 @@
 %h1.title Search
 %h2.subtitle Find your stuff
 
+-if container = @search.container
+  =breadcrumb container_breadcrumbs(container)
+
 =search_field autofocus: true
 
 .list-card
