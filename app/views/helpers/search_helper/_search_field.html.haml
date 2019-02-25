@@ -2,5 +2,6 @@
   .field.has-addons
     .control
       = text_field_tag :search, value, class: "input", placeholder: "Search", autofocus: autofocus
+      = hidden_field_tag :container_id, container_id if container_id
     .control
       = submit_tag "Search", class: "button"

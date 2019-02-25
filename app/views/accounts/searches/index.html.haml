@@ -3,16 +3,14 @@
 
 =search_field autofocus: true
 
--if @search.phrase.blank?
-  .list-card
+.list-card
+  -if @search.phrase.blank?
     .list-card--item
       .list-card--title Enter a search phrase
--elsif @search.empty?
-  .list-card
+  -elsif @search.empty?
     .list-card--item
       .list-card--title Could not find anything matching "<%= @search.phrase %>".
--else
-  .list-card
+  -else
     - @search.containers.each do |container|
       .list-card--item
         .list-card--item--title=link_to container.name, container
@@ -25,7 +23,6 @@
             .list-card--item--detail
               In
               = link_to container.name, container
-
     - @search.items.each do |item|
       .list-card--item
         .list-card--item--title=link_to item.name, item
@@ -38,3 +35,9 @@
             .list-card--item--detail
               In
               = link_to container.name, container
+    - if @search.container
+      .list-card--item
+        .list-card--title
+          Searching in "<%= @search.container.name %>".
+          =link_to "Expand search", account_search_path(@account, search: @search.phrase)
+          to everything.
