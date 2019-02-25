@@ -23,4 +23,3 @@ document.addEventListener('turbolinks:load', () => {
   }
 
 });
-Copy
