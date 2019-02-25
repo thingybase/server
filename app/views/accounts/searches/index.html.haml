@@ -9,7 +9,13 @@
       .list-card--title Enter a search phrase
   -elsif @search.empty?
     .list-card--item
-      .list-card--title Could not find anything matching "<%= @search.phrase %>".
+      .list-card--title
+        - if @search.container
+          Could not find anything matching "<%= @search.phrase %>" in "<%= @search.container.name %>".
+          =link_to "Expand search", account_search_path(@account, search: @search.phrase)
+          to everything.
+        -else
+          Could not find anything matching "<%= @search.phrase %>".
   -else
     - @search.containers.each do |container|
       .list-card--item
@@ -38,6 +44,6 @@
     - if @search.container
       .list-card--item
         .list-card--title
-          Searching in "<%= @search.container.name %>".
+          Didn't find what you were looking for?
           =link_to "Expand search", account_search_path(@account, search: @search.phrase)
-          to everything.
+          outside of "<%= @search.container.name %>" to everything.
