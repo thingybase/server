@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   after_action :verify_authorized, except: [:index]
   after_action :verify_policy_scoped, only: :index
+  after_action :extend_session_expiration
 
   protect_from_forgery with: :exception, unless: :has_authentication_header?
   protect_from_forgery with: :null_session, if: :has_authentication_header?
@@ -33,5 +34,10 @@ class ApplicationController < ActionController::Base
       else
         "access"
       end
+    end
+
+    # Keeps the cookie session alive until 30 days after the last users activity.
+    def extend_session_expiration
+      session[:expires_at] = session.options[:expire_after].from_now
     end
 end
