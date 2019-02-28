@@ -1,12 +1,12 @@
 class Container < ApplicationRecord
-  has_closure_tree
+  has_closure_tree dependent: :destroy
 
   include PgSearch
   pg_search_scope :search_by_name, against: :name
 
   belongs_to :account
   belongs_to :user
-  has_many :items
+  has_many :items, dependent: :destroy
   has_one :label, as: :labelable
 
   validates :name, presence: true
