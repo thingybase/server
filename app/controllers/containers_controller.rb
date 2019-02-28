@@ -9,7 +9,7 @@ class ContainersController < ResourcesController
     if parent = @container.parent
       parent
     else
-      account_container_url(@container.account)
+      account_containers_url(@container.account)
     end
   end
 
