@@ -1,6 +1,8 @@
 class ItemsController < ResourcesController
   include AccountLayout
 
+  include AffirmationHelper
+
   def self.resource
     Item
   end
@@ -10,6 +12,7 @@ class ItemsController < ResourcesController
 
     respond_to do |format|
       if resource.save
+        affirm "Successfully duplicated #{@item.name}"
         format.html { redirect_to create_redirect_url, notice: "#{resource_name} was successfully created." }
         format.json { render :show, status: :created, location: resource }
         create_success_formats format
