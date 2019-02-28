@@ -1,6 +1,4 @@
 class ResourcesController < ApplicationController
-  include AffirmationHelper
-
   before_action :authenticate_user
   before_action :set_resource, if: :member_request?
   before_action :authorize_resource, if: :member_request?
@@ -62,15 +60,10 @@ class ResourcesController < ApplicationController
 
   def destroy
     resource.destroy
-    affirm_destroy
     respond_to do |format|
-      format.html { redirect_to destroy_redirect_url, notice: "#{resource_name} was successfully destroyed." }
+      format.html { redirect_to destroy_redirect_url, notice: "#{resource_name} was successfully deleted." }
       format.json { head :no_content }
     end
-  end
-
-  def affirm_destroy
-    affirm "Deleted #{resource_name}"
   end
 
   protected

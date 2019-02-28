@@ -10,8 +10,7 @@ class ItemsController < ResourcesController
 
     respond_to do |format|
       if resource.save
-        affirm "Duplicated item"
-        format.html { redirect_to create_redirect_url, notice: "#{resource_name} was successfully created." }
+        format.html { redirect_to create_redirect_url, notice: "#{resource_name} was successfully duplicated." }
         format.json { render :show, status: :created, location: resource }
         create_success_formats format
       else
