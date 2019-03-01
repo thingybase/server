@@ -1,6 +1,6 @@
 class Search
   include ActiveModel::Validations
-  attr_accessor :phrase, :container
+  attr_accessor :phrase, :container, :created_at
   validates :phrase, presence: true
 
   def initialize(phrase: nil, items: Item, containers: Container, container: nil)
@@ -8,6 +8,7 @@ class Search
     @container_scope = containers
     @phrase = phrase
     @container = container
+    @created_at = Time.now.utc
   end
 
   def items
