@@ -32,7 +32,7 @@ class ResourcesController < ApplicationController
 
     respond_to do |format|
       if resource.save
-        format.html { redirect_to create_redirect_url, notice: "#{resource_name} was successfully created." }
+        format.html { redirect_to create_redirect_url, notice: create_notice }
         format.json { render :show, status: :created, location: resource }
         create_success_formats format
       else
@@ -49,7 +49,7 @@ class ResourcesController < ApplicationController
 
     respond_to do |format|
       if resource.save
-        format.html { redirect_to update_redirect_url, notice: "#{resource_name} was successfully updated." }
+        format.html { redirect_to update_redirect_url, notice: update_notice }
         format.json { render :show, status: :ok, location: resource }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class ResourcesController < ApplicationController
   def destroy
     resource.destroy
     respond_to do |format|
-      format.html { redirect_to destroy_redirect_url, notice: "#{resource_name} was successfully deleted." }
+      format.html { redirect_to destroy_redirect_url, notice: destroy_notice }
       format.json { head :no_content }
     end
   end
@@ -179,6 +179,21 @@ class ResourcesController < ApplicationController
     # Authorizse resource with Pundit.
     def authorize_resource(*args)
       authorize resource, *args
+    end
+
+    # `flash[:notice]` message when a resource is successfully created
+    def create_notice
+      "#{resource_name.capitalize} created"
+    end
+
+    # `flash[:notice]` message when a resource is successfully updated
+    def update_notice
+      "#{resource_name.capitalize} updated"
+    end
+
+    # `flash[:notice]` message when a resource is successfully deleted
+    def destroy_notice
+      "#{resource_name.capitalize} deleted"
     end
 
   private
