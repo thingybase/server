@@ -10,4 +10,38 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :account, presence: true
   validates :user, presence: true
+  validate :shelf_life_begin_less_than_end?
+
+  def shelf_life_begin
+    shelf_life&.begin
+  end
+
+  def shelf_life_begin=(date)
+    return if date.blank?
+    self.shelf_life = (parse_date(date) || today)..shelf_life_end
+  end
+
+  def shelf_life_end
+    shelf_life&.end
+  end
+
+  def shelf_life_end=(date)
+    return if date.blank?
+    self.shelf_life = (shelf_life_begin || today)..parse_date(date)
+  end
+
+  private
+    def shelf_life_begin_less_than_end?
+      if shelf_life_begin > shelf_life_end
+        errors.add(:shelf_life_begin, "must be less than shelf life end")
+      end
+    end
+
+    def parse_date(date)
+      Chronic.parse(date, context: :past)&.utc
+    end
+
+    def today
+      Time.now.utc.to_date
+    end
 end

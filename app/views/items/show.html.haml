@@ -8,6 +8,12 @@
   =local_time resource.updated_at
 =resource_field :created_by do
   =resource.user.name
+-if resource.shelf_life_begin
+  =resource_field :shelf_life_begin do
+    =local_date resource.shelf_life_begin
+-if resource.shelf_life_end
+  =resource_field :shelf_life_end do
+    =local_date resource.shelf_life_end
 
 .buttons
   = link_to t('.edit', default: t("helpers.links.edit")), edit_item_path(@item), class: 'button is-default'
