@@ -32,6 +32,8 @@ class Item < ApplicationRecord
 
   private
     def shelf_life_begin_less_than_end?
+      return if shelf_life.nil?
+
       if shelf_life_begin > shelf_life_end
         errors.add(:shelf_life_begin, "must be less than shelf life end")
       end
