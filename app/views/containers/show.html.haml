@@ -10,22 +10,8 @@
 =search_field autofocus: true, url: account_search_path(@account), container: resource
 
 .list-card
-  - @container.children.each do |container|
-    .list-card--item
-      .list-card--item--title=link_to container.name, container
-      .list-card--item--details
-        .list-card--item--detail Container
-        .list-card--item--detail
-          Created
-          =local_time_ago container.created_at
-  - @container.items.each do |item|
-    .list-card--item
-      .list-card--item--title=link_to item.name, item
-      .list-card--item--details
-        .list-card--item--detail Item
-        .list-card--item--detail
-          Created
-          =local_time_ago item.created_at
+  =render partial: "containers/list-card--item", collection: @container.children, as: :container
+  =render partial: "items/list-card--item", collection: @container.items, as: :item
 
 .buttons
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_container_path(@container), :class => 'button is-default'

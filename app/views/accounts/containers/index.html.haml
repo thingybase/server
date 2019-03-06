@@ -6,10 +6,4 @@
   =search_field autofocus: true, url: account_search_path(@account)
 
 .list-card
-  - @containers.each do |container|
-    .list-card--item
-      .list-card--item--title=link_to container.name, container
-      .list-card--item--details
-        .list-card--item--detail
-          Created
-          =local_time_ago container.created_at
+  =render partial: "containers/list-card--item", collection: @containers, as: :container

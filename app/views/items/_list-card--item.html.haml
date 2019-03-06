@@ -1,0 +1,11 @@
+.list-card--item
+  .list-card--item--title=link_to item.name, item
+  .list-card--item--details
+    .list-card--item--detail Item
+    .list-card--item--detail
+      Created
+      =local_time_ago item.created_at
+    -if item.shelf_life_end
+      .list-card--item--detail
+        Expires
+        =local_time_ago item.shelf_life_end
