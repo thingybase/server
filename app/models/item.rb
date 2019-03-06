@@ -40,7 +40,12 @@ class Item < ApplicationRecord
     end
 
     def parse_date(date)
-      Chronic.parse(date, context: :past)&.utc
+      case date
+      when String
+        Chronic.parse(date, context: :past)&.utc
+      else
+        date
+      end
     end
 
     def today
