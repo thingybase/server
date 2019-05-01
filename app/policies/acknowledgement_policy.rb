@@ -24,13 +24,4 @@ class AcknowledgementPolicy < ApplicationPolicy
       scope.joins(:label).where(labels: {account_id: user.accounts})
     end
   end
-
-  private
-    def is_account_member?
-      user.accounts.where(id: record.label.account).exists?
-    end
-
-    def is_account_owner?
-      user.present? && user == record.label.account.user
-    end
 end

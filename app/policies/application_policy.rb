@@ -55,4 +55,12 @@ class ApplicationPolicy
     def is_owner?
       user.present? && user == record.user
     end
+
+    def is_account_owner?
+      user.present? && user == record.account.user
+    end
+
+    def is_account_member?
+      user.present? && user.accounts.where(id: record.account).exists?
+    end
 end
