@@ -4,15 +4,15 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present? && is_account_member?
+    is_account_member?
   end
 
   def update?
-    is_owner? || is_account_owner?
+    is_account_member?
   end
 
   def destroy?
-    is_owner? || is_account_owner?
+    is_account_member?
   end
 
   def index?
@@ -35,6 +35,6 @@ class ItemPolicy < ApplicationPolicy
     end
 
     def is_account_member?
-      user.accounts.where(id: record.account).exists?
+      user.present? && user.accounts.where(id: record.account).exists?
     end
 end
