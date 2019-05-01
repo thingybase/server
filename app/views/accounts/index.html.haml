@@ -7,7 +7,7 @@
   %tbody
     - @accounts.each do |account|
       %tr
-        %td= link_to account.name, account_path(account)
+        %td= link_to account.name, account_containers_path(account)
 
 .buttons
   = link_to "Add account", new_account_path, :class => 'button'
