@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :children, only: %i[index new]
       resources :items, only: %i[new]
       resources :labels, only: %i[create]
+      resources :factories, only: %i[index new create]
     end
     member do
       get :add
