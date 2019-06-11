@@ -1,8 +1,8 @@
-%h1.title=t '.title', :default => resource_class.model_name.human.pluralize.titleize
+%h1.title=t '.title', default: resource_class.model_name.human.pluralize.titleize
 %h2.subtitle All the things you want to track
 
 .buttons
-  = link_to "Add item", new_account_item_path(@account), :class => 'button is-primary'
+  = link_to "Add item", new_account_item_path(@account), class: 'button is-primary'
   = search_field
 
 .list-card

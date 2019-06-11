@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "phone_number_verifications/new", type: :view do
   before(:each) do
     assign(:phone_number_verification, PhoneNumberVerification.new(
-      :code => "MyString"
+      code: "MyString"
     ))
   end
 

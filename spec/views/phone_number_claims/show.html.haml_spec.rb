@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe "phone_number_claims/show", type: :view do
   before(:each) do
     @phone_number_claim = assign(:phone_number_claim, PhoneNumberClaim.create!(
-      :phone_number => "Phone Number",
-      :code => "Code",
-      :user => nil
+      phone_number: "Phone Number",
+      code: "Code",
+      user: nil
     ))
   end
 

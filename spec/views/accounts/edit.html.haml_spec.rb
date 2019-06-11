@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "accounts/edit", type: :view do
   before(:each) do
     @account = assign(:account, Account.create!(
-      :name => "MyString",
-      :user => nil
+      name: "MyString",
+      user: nil
     ))
   end
 

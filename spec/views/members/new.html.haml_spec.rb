@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "members/new", type: :view do
   before(:each) do
     assign(:member, Member.new(
-      :user => nil,
-      :account => nil
+      user: nil,
+      account: nil
     ))
   end
 

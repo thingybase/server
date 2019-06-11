@@ -1,5 +1,5 @@
 .page-header
-  %h1.title=t '.title', :default => resource_class.model_name.human.pluralize.titleize
+  %h1.title=t '.title', default: resource_class.model_name.human.pluralize.titleize
 %table.table.is-fullwidth.is-striped
   %thead
     %tr
@@ -10,4 +10,4 @@
       %tr
         %td= link_to member.user.name, member_path(member)
         %td= local_time member.created_at
-= link_to t('.new', :default => t("helpers.links.new")), new_account_invitation_path(@account), :class => 'button is-primary'
+= link_to t('.new', default: t("helpers.links.new")), new_account_invitation_path(@account), class: 'button is-primary'

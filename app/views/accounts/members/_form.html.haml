@@ -1,4 +1,4 @@
 = simple_form_for @member do |f|
   = f.association :user, include_blank: false
   = f.association :account, as: :hidden
-  = f.button :submit, :class => 'is-primary'
+  = f.button :submit, class: 'is-primary'

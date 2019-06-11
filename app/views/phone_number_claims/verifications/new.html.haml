@@ -3,4 +3,4 @@
 
 = simple_form_for @phone_number_verification, url: phone_number_claim_verification_path(@phone_number_claim) do |f|
   = f.input :code, autofocus: true
-  = f.button :submit, "Finish", :class => 'is-primary'
+  = f.button :submit, "Finish", class: 'is-primary'

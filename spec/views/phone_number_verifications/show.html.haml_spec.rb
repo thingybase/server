@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "phone_number_verifications/show", type: :view do
   before(:each) do
     @phone_number_verification = assign(:phone_number_verification, PhoneNumberVerification.create!(
-      :code => "Code"
+      code: "Code"
     ))
   end
 

@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "invitation_responses/new", type: :view do
   before(:each) do
     assign(:invitation_response, InvitationResponse.new(
-      :user => "",
-      :account => ""
+      user: "",
+      account: ""
     ))
   end
 

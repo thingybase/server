@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe "invitations/new", type: :view do
   before(:each) do
     assign(:invitation, Invitation.new(
-      :email => "MyString",
-      :name => "MyString",
-      :token => "MyString",
-      :account => nil,
-      :user => nil
+      email: "MyString",
+      name: "MyString",
+      token: "MyString",
+      account: nil,
+      user: nil
     ))
   end
 

@@ -1,2 +1,2 @@
-%h1.title=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => resource_class.model_name.human.titleize
-= render :partial => "form"
+%h1.title=t '.title', default: [:'helpers.titles.new', 'New %{model}'], model: resource_class.model_name.human.titleize
+= render partial: "form"

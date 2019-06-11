@@ -1,4 +1,4 @@
-%h1.title=t '.title', :default => resource_class.model_name.human.pluralize.titleize
+%h1.title=t '.title', default: resource_class.model_name.human.pluralize.titleize
 %table.table.is-fullwidth.is-striped
   %thead
     %tr
@@ -6,7 +6,7 @@
       %th= resource_class.human_attribute_name(:email)
       %th= resource_class.human_attribute_name(:phone_number)
       %th= resource_class.human_attribute_name(:created_at)
-      %th=t '.actions', :default => t("helpers.actions")
+      %th=t '.actions', default: t("helpers.actions")
   %tbody
     - @users.each do |user|
       %tr
@@ -15,8 +15,8 @@
         %td= user.phone_number
         %td= local_time user.created_at
         %td
-          = link_to t('.show', :default => t("helpers.links.show")), user_path(user), :class => 'button is-default is-xs'
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_user_path(user), :class => 'button is-default is-xs'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), user_path(user), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'button is-xs is-danger'
+          = link_to t('.show', default: t("helpers.links.show")), user_path(user), class: 'button is-default is-xs'
+          = link_to t('.edit', default: t("helpers.links.edit")), edit_user_path(user), class: 'button is-default is-xs'
+          = link_to t('.destroy', default: t("helpers.links.destroy")), user_path(user), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-xs is-danger'
 
-= link_to t('.new', :default => t("helpers.links.new")), new_user_path, :class => 'button is-primary'
+= link_to t('.new', default: t("helpers.links.new")), new_user_path, class: 'button is-primary'

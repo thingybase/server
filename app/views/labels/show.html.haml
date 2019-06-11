@@ -18,7 +18,7 @@
   =resource.user.name
 
 .buttons
-  = link_to t('.edit', :default => t("helpers.links.edit")), edit_label_path(@label), :class => 'button'
-  = link_to "Print label", label_path(@label, format: :pdf), :class => 'button'
-  = link_to "Print jumbo label", label_path(@label, format: :pdf, size: :large), :class => 'button is-text'
-  = link_to t('.destroy', :default => t("helpers.links.destroy")), label_path(@label), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'button is-text'
+  = link_to t('.edit', default: t("helpers.links.edit")), edit_label_path(@label), class: 'button'
+  = link_to "Print label", label_path(@label, format: :pdf), class: 'button'
+  = link_to "Print jumbo label", label_path(@label, format: :pdf, size: :large), class: 'button is-text'
+  = link_to t('.destroy', default: t("helpers.links.destroy")), label_path(@label), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-text'

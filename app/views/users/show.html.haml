@@ -14,7 +14,7 @@
       %br
       = @user.email
 
-    = link_to "Edit profile", edit_user_path(@user), :class => 'button is-default'
+    = link_to "Edit profile", edit_user_path(@user), class: 'button is-default'
   .column
     %h3.title.is-5 Phone number
     %p.subtitle.is-6 Used for verification & notifications
@@ -32,4 +32,4 @@
     %h3.title.is-5 API Keys
     %p.subtitle.is-6 Connect to other apps
     %p Connect Thingybase to other applications and services with API keys.
-    =link_to "Manage API keys", api_keys_path, :class => 'button is-default'
+    =link_to "Manage API keys", api_keys_path, class: 'button is-default'

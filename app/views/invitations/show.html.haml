@@ -8,4 +8,4 @@
   %iframe.email-preview{srcdoc: InvitationMailer.account_invitation_email(@invitation).body}
 
 = link_to t('.edit', default: t("helpers.links.edit")), edit_invitation_path(@invitation), class: 'button is-default'
-= link_to "Send invitation", email_invitation_path(@invitation), method: :put, :class => 'button is-default'
+= link_to "Send invitation", email_invitation_path(@invitation), method: :put, class: 'button is-default'

@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "members/edit", type: :view do
   before(:each) do
     @member = assign(:member, Member.create!(
-      :user => nil,
-      :account => nil
+      user: nil,
+      account: nil
     ))
   end
 
