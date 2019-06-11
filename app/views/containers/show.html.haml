@@ -2,12 +2,9 @@
 
 =breadcrumb container_breadcrumbs
 
-.field.has-addons
-  .control
-    = link_to "Add item", new_container_item_path(@container), :class => 'button is-primary'
-  .control
-    = link_to "Add container", new_container_child_path(@container), :class => 'button is-primary'
-=search_field autofocus: true, url: account_search_path(@account), container: resource
+.buttons
+  = link_to "+ Add", add_container_path(@container), :class => 'button is-primary'
+  =search_field autofocus: true, url: account_search_path(@account)
 
 .list-card
   =render partial: "containers/list-card--item", collection: @container.children, as: :container

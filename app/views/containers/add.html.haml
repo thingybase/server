@@ -1,0 +1,14 @@
+%h1.title What do you want to add?
+%h2.subtitle Choose the type of item or container to add
+
+=breadcrumb container_breadcrumbs
+
+.list-card
+  .list-card--item
+    .list-card--item--title= link_to "Add item", new_container_item_path(@container)
+    .list-card--item--details
+      .list-card--item--detail Anything like a collectable, food, perishable, or item
+  .list-card--item
+    .list-card--item--title= link_to "Add container", new_container_child_path(@container)
+    .list-card--item--details
+      .list-card--item--detail Organize items by putting them in containers

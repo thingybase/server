@@ -23,6 +23,9 @@ Rails.application.routes.draw do
       resources :items, only: %i[new]
       resources :labels, only: %i[create]
     end
+    member do
+      get :add
+    end
   end
   resources :items do
     member do
