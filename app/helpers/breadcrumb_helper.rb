@@ -10,8 +10,9 @@ module BreadcrumbHelper
 
   def container_breadcrumbs(container=resource)
     container.ancestors.map{ |c| Link.new(c.name, c) }
-      .append(Link.new(container.name, container))
-      .prepend(Link.new(@account.name, account_containers_path(@account)))
+      .prepend(Link.new(container.name, container))
+      .append(Link.new(@account.name, account_containers_path(@account)))
+      .reverse
   end
 
   def item_breadcrumbs(item=resource)
