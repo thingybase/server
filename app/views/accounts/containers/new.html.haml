@@ -1,4 +1,4 @@
-%h1.title New container
+%h1.title Add container
 = simple_form_for @container do |f|
   = f.input :name, autofocus: true, hint: "Make it the name of a room, shelf, box, or something you put an item in"
   = f.association :account, as: :hidden
