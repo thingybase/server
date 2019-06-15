@@ -1,6 +1,6 @@
 = simple_form_for @invitation do |f|
   = f.input :email, autofocus: true
   = f.input :name
-  = f.association :account, collection: policy_scope(Account), include_blank: false
+  = f.association :account, as: :hidden
   .buttons
     = f.button :submit, class: 'is-primary'
