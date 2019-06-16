@@ -48,8 +48,6 @@ gem 'local_time'
 # Run Postgres in production
 # TODO: Switch to 1.0.0 when Heroku figures out their compatability problems.
 gem 'pg', '~> 1.1.0'
-# Validate password entropy for strong passwords and secrets
-gem 'strong_password'
 # Application error alerts
 gem 'rollbar'
 # Faster dev boot times
