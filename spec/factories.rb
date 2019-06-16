@@ -3,21 +3,20 @@ Faker::Config.locale = 'en-US'
 
 FactoryBot.define do
   factory :container do
-    name "MyString"
-    account nil
-    user nil
-    parent nil
+    name { Faker::Name.name }
+    account
+    user
   end
 
   factory :item do
-    name "MyString"
-    account nil
-    user nil
+    name { Faker::Name.name }
+    account
+    user
   end
 
   factory :api_key do
     name { Faker::Name.name }
-    secret ApiKey.generate_secret
+    secret { ApiKey.generate_secret }
     user
   end
 

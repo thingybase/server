@@ -7,9 +7,9 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.0.0.rc'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -73,7 +73,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'faker'
   gem 'factory_bot_rails'
-  gem 'sqlite3'
 end
 
 group :development do
@@ -93,7 +92,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'rails_polymorphic_select', github: 'brunopascoa/rails_polymorphic_select'
+gem 'rails_polymorphic_select', github: 'bradgessler/rails_polymorphic_select'
 
 gem "bulma-rails", "~> 0.7.4"
 
