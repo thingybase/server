@@ -1,7 +1,10 @@
 module NoticeHelper
-  def notice_message
+  def notice_message(**html_options)
     if message = flash[:notice]
-      render partial: "helpers/notice_helper/message", locals: { body: message }
+      render partial: "helpers/notice_helper/message", locals: {
+        body: message,
+        html_options: html_options
+      }
     end
   end
 end

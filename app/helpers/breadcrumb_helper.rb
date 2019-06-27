@@ -1,7 +1,7 @@
 module BreadcrumbHelper
   Link = Struct.new(:text, :url)
 
-  def breadcrumb(links = [], text: nil)
+  def breadcrumb(links = [])
     return if links.empty?
 
     root, *links, active = links

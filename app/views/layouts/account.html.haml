@@ -17,7 +17,7 @@
           .navbar-end
             = active_link_to "Profile", user_path(current_user), class: "navbar-item"
             = active_link_to "Sign out", session_path, method: :delete, class: "navbar-item"
-  .container
-    = notice_message
-    = yield
-  %footer
+  %section.section
+    .container= notice_message class: "has-bottom-margin"
+    .container= yield
+  %footer.section
