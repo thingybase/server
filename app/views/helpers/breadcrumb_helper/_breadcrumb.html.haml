@@ -4,5 +4,5 @@
     -links.each do |link|
       %li.is-hidden-mobile=link_to link.text, link.url
     -if link = links.last
-      %li.is-hidden-tablet-only.is-hidden-desktop-only.is-hidden-widescreen-only=link_to '..', link.url
+      %li.is-hidden-tablet=link_to '..', link.url
     %li.is-active=link_to active.text, active.url
