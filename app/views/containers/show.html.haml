@@ -3,8 +3,10 @@
 
 .buttons
   = link_to "+ Add", add_container_path(@container), class: 'button is-primary'
-  =search_field autofocus: true, url: account_search_path(@account)
-
+  .is-hidden-mobile
+    =search_field autofocus: true, url: account_search_path(@account)
+  .is-hidden-tablet
+    =link_to "Search", account_search_path(@account), class: "button"
 .list-card
   =render partial: "containers/list-card--item", collection: @container.children, as: :container
   =render partial: "items/list-card--item", collection: @container.items, as: :item
