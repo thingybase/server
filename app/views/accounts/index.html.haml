@@ -1,13 +1,8 @@
-%h1.title=t '.title', default: resource_class.model_name.human.pluralize.titleize
+%h1.title Switch accounts
+%h2.subtitle Change into a different account or create a new account
 
-%table.table.is-fullwidth.is-striped
-  %thead
-    %tr
-      %th= resource_class.human_attribute_name(:name)
-  %tbody
-    - @accounts.each do |account|
-      %tr
-        %td= link_to account.name, account_containers_path(account)
+.list-card
+  =render partial: "accounts/list-card--item", collection: @accounts, as: :account
 
 .buttons
-  = link_to "Add account", new_account_path, class: 'button'
+  = link_to "+ Create new account", new_account_path, class: 'button'
