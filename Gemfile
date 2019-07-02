@@ -97,3 +97,5 @@ gem "bulma-rails", "~> 0.7.0"
 gem "chronic", "~> 0.10.2"
 
 gem "pg_search", "~> 2.1"
+
+gem "webpacker", "~> 4.0"
