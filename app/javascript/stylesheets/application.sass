@@ -1,0 +1,55 @@
+@import "~bulma/bulma.sass"
+@import "~bulma-prefers-dark/bulma-prefers-dark.sass"
+
+// @import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+@import url('https://rsms.me/inter/inter-ui.css')
+
+// Set your brand colors
+// $purple: #8A4D76;
+// $pink: #FA7C91;
+// $brown: #757763;
+// $beige-light: #D0D1CD;
+// $beige-lighter: #EFF0EB;
+
+// Update Bulma's global variables
+$family-sans-serif: 'Inter UI var alt', -apple-system, Helvetica, sans-serif
+// $family-sans-serif: "Nunito", sans-serif
+// $grey-dark: $brown;
+// $grey-light: $beige-light;
+// $primary: $purple;
+// $link: $pink;
+
+// Update some of Bulma's component variables
+// $control-border-width: 1px;
+// $input-background-color: $beige-lighter;
+// $input-border-color: transparent;
+// $input-shadow: none;
+
+.email-preview
+  width: 100%
+  min-height: 13rem
+  border: 1px solid $grey-light
+
+.word-wrapped-block
+  word-wrap: break-word
+  padding: 1rem
+  background-color: $grey-light
+
+.list-card
+  &--item
+    padding: 1rem 0
+    &--title
+      font-weight: bold
+    &--detail
+      display: inline
+      & + &:before
+        content: " · "
+    &--details
+    & + &
+      border-top: 1px solid
+      border-color: $grey-lighter
+      @media (prefers-color-scheme: dark)
+        border-color: $grey-darker
+
+.has-bottom-margin
+  margin-bottom: 1rem

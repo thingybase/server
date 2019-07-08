@@ -2,7 +2,12 @@
   "name": "thingybase",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^4.0.7"
+    "@rails/webpacker": "^4.0.7",
+    "bulma": "^0.7.5",
+    "bulma-prefers-dark": "^0.1.0-beta.0",
+    "local-time": "^2.1.0",
+    "rails-ujs": "^5.2.3",
+    "turbolinks": "^5.2.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.7.2"

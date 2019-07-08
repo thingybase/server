@@ -15,4 +15,15 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
+import "../stylesheets/application.sass"
+
+import "../javascripts/bulma.js"
+
+import Rails from "rails-ujs"
+Rails.start()
+
+import TurboLinks from "turbolinks"
+TurboLinks.start()
+
+import LocalTime from "local-time"
+LocalTime.start()

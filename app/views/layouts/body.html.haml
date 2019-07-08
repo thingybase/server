@@ -8,10 +8,8 @@
     %meta(name="apple-mobile-web-app-capable" content="yes")
     %meta(name="apple-mobile-web-app-status-bar-style" content="black-translucent")
     = csrf_meta_tags
-    = stylesheet_link_tag "application", media: "all"
-    = javascript_include_tag "application"
-    = javascript_pack_tag "application"
     = stylesheet_pack_tag "application"
+    = javascript_pack_tag "application"
     = render partial: "partials/tags/google_analytics"
     = render partial: "partials/tags/hotjar"
   %body
