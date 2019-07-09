@@ -17,8 +17,9 @@ class Item < ApplicationRecord
   end
 
   def shelf_life_begin=(date)
+    date = parse_date(date)
     return if date.blank?
-    self.shelf_life = (parse_date(date) || today)..shelf_life_end
+    self.shelf_life = (date || today)..shelf_life_end
   end
 
   def shelf_life_end
@@ -26,8 +27,9 @@ class Item < ApplicationRecord
   end
 
   def shelf_life_end=(date)
+    date = parse_date(date)
     return if date.blank?
-    self.shelf_life = (shelf_life_begin || today)..parse_date(date)
+    self.shelf_life = (shelf_life_begin || today)..date
   end
 
   private
