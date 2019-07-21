@@ -1,18 +1,9 @@
 =render_layout "body" do
-  %header
-    %nav.navbar.is-fixed-top(role="navigation" aria-label="main navigation")
-      .container
-        .navbar-brand
-          %a.navbar-burger.burger(aria-expanded="false" aria-label="menu" data-target="navbar-account-navigation" role="button")
-            %span(aria-hidden="true")
-            %span(aria-hidden="true")
-            %span(aria-hidden="true")
-        .navbar-menu#navbar-account-navigation
-          .navbar-start
-          .navbar-end
-            = active_link_to "Account", account_path(@account), class: "navbar-item"
-            = active_link_to "Sign out", session_path, method: :delete, class: "navbar-item"
   %section.section
     .container= notice_message class: "has-bottom-margin"
     .container= yield
-  %footer.section
+  %footer.section.has-text-centered
+    .container
+      .columns
+        .column
+          = link_to "Manage #{@account.name} account", account_path(@account)

@@ -35,3 +35,4 @@
     %p=link_to "Personal settings", user_path(current_user)
     %p=link_to "Account settings", edit_account_path(@account)
     %p=link_to "Switch accounts", accounts_path
+    %p=link_to "Sign out", session_path, method: :delete
