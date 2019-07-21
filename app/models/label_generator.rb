@@ -104,10 +104,20 @@ class LabelGenerator
     # we're printing from a roll of tape.
     def sheets(&block)
       pdf = Prawn::Document::new skip_page_creation: true
+      pdf.font_families.update(
+        "Inter" => {
+          :bold        => Rails.root.join("app/assets/fonts/inter/ttf/Inter-Bold.ttf"),
+          :italic      => Rails.root.join("app/assets/fonts/inter/ttf/Inter-Italic.ttf"),
+          :bold_italic => Rails.root.join("app/assets/fonts/inter/ttf/Inter-BoldItalic.ttf"),
+          :normal      => Rails.root.join("app/assets/fonts/inter/ttf/Inter-Regular.ttf")
+        }
+      )
       pdf.define_grid(columns: 6, rows: 6, gutter: layout.margin)
       labels.each do |label|
         pdf.start_new_page size: [layout.width, layout.height], margin: layout.margin
-        block.call pdf, label
+        pdf.font "Inter" do
+          block.call pdf, label
+        end
       end
       pdf
     end
