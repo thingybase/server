@@ -1,8 +1,5 @@
 %h1.title=@account.name
-%h2.subtitle Everything at a glance
-
-.buttons
-  =search_field autofocus: true, url: account_search_path(@account)
+%h2.subtitle Settings, configuration, and more for your account
 
 .columns
   .column
@@ -33,8 +30,8 @@
     %p=link_to "View labels", account_labels_path(@account)
 
   .column
-    %h3.title.is-5 Account settings
+    %h3.title.is-5 Settings
     %p.subtitle.is-6 Manage users and settings
-    %p=link_to "Change settings", edit_account_path(@account)
-    %p=link_to "Manage people", account_members_path(@account)
+    %p=link_to "Personal settings", user_path(current_user)
+    %p=link_to "Account settings", edit_account_path(@account)
     %p=link_to "Switch accounts", accounts_path
