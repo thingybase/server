@@ -1,38 +1,41 @@
 %h1.title=@account.name
 %h2.subtitle Settings, configuration, and more for your account
 
-.columns
-  .column
-    %h3.title.is-5 Organization
-    %p.subtitle.is-6 Organize stuff into rooms, shelves, and containers so you can find it all later
-    %p
-      You have a total of
-      =pluralize @account.containers.count, "container"
-      in your account.
-    %p=link_to "View containers", account_containers_path(@account)
-
-  .column
-    %h3.title.is-5 Items
-    %p.subtitle.is-6 All the things you want to track
-    %p
-      You have a total of
-      =pluralize @account.items.count, "item"
-      in your account.
-    %p=link_to "View items", account_items_path(@account)
-
-  .column
-    %h3.title.is-5 Labels
-    %p.subtitle.is-6 Quickly print labels and organize them later
-    %p
-      You have a total of
-      =pluralize @account.labels.count, "label"
-      in your account.
-    %p=link_to "View labels", account_labels_path(@account)
-
-  .column
-    %h3.title.is-5 Settings
-    %p.subtitle.is-6 Manage users and settings
-    %p=link_to "Personal settings", user_path(current_user)
-    %p=link_to "Account settings", edit_account_path(@account)
-    %p=link_to "Switch accounts", accounts_path
-    %p=link_to "Sign out", session_path, method: :delete
+.tile.is-ancestor
+  .tile.is-vertical.is-8
+    .tile.is-parent
+      .tile.box.is-child.box
+        %h3.title.is-5 Organization
+        %p.subtitle.is-6 Organize stuff into rooms, shelves, and containers so you can find it all later
+        %p
+          You have a total of
+          =pluralize @account.containers.count, "container"
+          in your account.
+        %p=link_to "View containers", account_containers_path(@account)
+    .tile
+      .tile.is-parent
+        .tile.is-child.box
+          %h3.title.is-5 Items
+          %p.subtitle.is-6 All the things you want to track
+          %p
+            You have a total of
+            =pluralize @account.items.count, "item"
+            in your account.
+          %p=link_to "View items", account_items_path(@account)
+      .tile.is-parent
+        .tile.is-child.box
+          %h3.title.is-5 Labels
+          %p.subtitle.is-6 Quickly print labels and organize them later
+          %p
+            You have a total of
+            =pluralize @account.labels.count, "label"
+            in your account.
+          %p=link_to "View labels", account_labels_path(@account)
+  .tile.is-parent
+    .tile.is-child.box
+      %h3.title.is-5 Settings
+      %p.subtitle.is-6 Configure your profile and accounts
+      %p=link_to "Personal settings", user_path(current_user)
+      %p=link_to "Account settings", edit_account_path(@account)
+      %p=link_to "Switch accounts", accounts_path
+      %p=link_to "Sign out", session_path, method: :delete
