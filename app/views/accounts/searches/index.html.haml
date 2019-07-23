@@ -1,5 +1,5 @@
-%h1.title Search
-%h2.subtitle Find your stuff
+%h1.title Search #{@account.name}
+%h2.subtitle Find items, containers, and other things
 
 -if container = @search.container
   =breadcrumb container_breadcrumbs(container)
@@ -14,11 +14,11 @@
     .list-card--item
       .list-card--title
         - if @search.container
-          Could not find anything matching "<%= @search.phrase %>" in "<%= @search.container.name %>".
+          Could not find anything matching "#{@search.phrase}" in "#{@search.container.name}".
           =link_to "Expand search", account_search_path(@account, search: @search.phrase)
           to everything.
         -else
-          Could not find anything matching "<%= @search.phrase %>".
+          Could not find anything matching "#{@search.phrase}" in #{@account.name}.
   -else
     - @search.containers.each do |container|
       .list-card--item
