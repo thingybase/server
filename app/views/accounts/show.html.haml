@@ -1,10 +1,29 @@
 %h1.title=@account.name
 %h2.subtitle Settings, configuration, and more for your account
 
+.notification.is-primary
+  .level.has-text-centered.is-uppercase
+    .level-item
+      %div
+        .header="Container".pluralize(@account.containers.count)
+        .title=@account.containers.count
+    .level-item
+      %div
+        .header="Item".pluralize(@account.items.count)
+        .title=@account.items.count
+    .level-item
+      %div
+        .header="Label".pluralize(@account.labels.count)
+        .title=@account.labels.count
+    .level-item
+      %div
+        .header="Team member".pluralize(@account.members.count)
+        .title=@account.members.count
+
 .tile.is-ancestor
   .tile.is-vertical.is-8
     .tile.is-parent
-      .tile.box.is-child.box
+      .tile.is-child.notification
         %h3.title.is-5 Organization
         %p.subtitle.is-6 Organize stuff into rooms, shelves, and containers so you can find it all later
         %p
@@ -14,7 +33,7 @@
         %p=link_to "View containers", account_containers_path(@account)
     .tile
       .tile.is-parent
-        .tile.is-child.box
+        .tile.is-child.notification
           %h3.title.is-5 Items
           %p.subtitle.is-6 All the things you want to track
           %p
@@ -23,7 +42,7 @@
             in your account.
           %p=link_to "View items", account_items_path(@account)
       .tile.is-parent
-        .tile.is-child.box
+        .tile.is-child.notification
           %h3.title.is-5 Labels
           %p.subtitle.is-6 Quickly print labels and organize them later
           %p
@@ -31,8 +50,9 @@
             =pluralize @account.labels.count, "label"
             in your account.
           %p=link_to "View labels", account_labels_path(@account)
+
   .tile.is-parent
-    .tile.is-child.box
+    .tile.is-child.notification
       %h3.title.is-5 Settings
       %p.subtitle.is-6 Configure your profile and accounts
       %p=link_to "Personal settings", user_path(current_user)
