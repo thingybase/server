@@ -6,6 +6,10 @@ class AccountsController < ResourcesController
     Account
   end
 
+  def show
+    render layout: "application"
+  end
+
   def launch
     authorize Account, :index?
 
