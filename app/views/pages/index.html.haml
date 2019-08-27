@@ -1,9 +1,34 @@
 =render_layout "body" do
-  %section.hero.is-fullheight-with-navbar.is-bold
+  %section.hero.is-fullheight.is-bold
     .hero-body
       .container
-        .columns
-          .column
         %h1.title.is-2 Thingybase
         %h2.subtitle.is-5 Organize and keep track of your stuff
         =link_to "Get started →", launch_accounts_path, class: "button is-primary is-medium", role: "button"
+
+  %section.hero.is-large(style="background-image: url(https://bradgessler.s3.amazonaws.com/z5KjRArIU1Fpo0DfC0Ze.jpg); background-size: cover; background-blend-mode: multiply; background-color: #333;")
+    .hero-body
+      .container
+        %h2.title A search engine for your stuff
+        %h3.subtitle Enter a few keywords and instantly search through all your stuff, whether you're at home or on the go.
+
+  %section.hero.is-medium.is-info
+    .hero-body
+      .container
+        %h2.title Organize privately & securely with your family
+        %h3.subtitle Your stuff is your business
+        %p Securely invite people to your account so they can help keep organized and search if they need to find something. Next time somebody asks, "where are the printer ink cartridges", they can search in Thingybase.
+
+  %section.hero.is-large
+    .hero-body
+      .container
+        %h2.title It's like X-ray vision
+        %h3.subtitle Scan labels on boxes, shelves, and closets with your phone and see what's inside
+        %p Print X-ray vision labels, then scan them with your phone later so you can see what's in a box or order more of a thing.
+
+  %section.hero.is-medium.is-primary
+    .hero-body
+      .container
+        %h2.title Start organizing your stuff
+        %h3.subtitle Setup takes just a few minutes for a lifetime of benefit
+        =link_to "Sign up →", launch_accounts_path, class: "button is-inverted is-primary", role: "button"
