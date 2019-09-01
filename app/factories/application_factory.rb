@@ -7,11 +7,15 @@ class ApplicationFactory
   validates :user, presence: true
 
   protected
-    def build_container(**attrs, &block)
-      Container.new(account: account, user: user, **attrs, &block)
+    def container(name, **attrs, &block)
+      generate Container, name: name, **attrs, &block
     end
 
-    def build_item(**attrs, &block)
-      Item.new(account: account, user: user, **attrs, &block)
+    def item(name, **attrs, &block)
+      generate Item, name: name, **attrs, &block
+    end
+
+    def generate(klass, **attrs, &block)
+      klass.new(account: account, user: user, **attrs, &block)
     end
 end

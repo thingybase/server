@@ -8,15 +8,29 @@ class HouseFactory < ApplicationFactory
   end
 
   def build
-    build_container(name: "House") do |house|
-      house.children << build_container(name: "Kitchen")
-      house.children << build_container(name: "Garage") do |garage|
-        garage.children << build_container(name: "Shelf") do |shelf|
-          3.times do |n|
-            shelf.children << build_container(name: "Shelf #{n}")
-          end
+    container("House") do |house|
+      ["Master bedroom", "Bedroom 1", "Bedroom 2"].each do |room_name|
+        house.children << container(room_name) do |room|
+          room.children << container("Closet")
         end
+      end
+      house.children << container("Garage") do |garage|
+        garage.children << generate(ShelfFactory).build
+      end
+      house.children << container("Basement") do |basement|
+        basement.children << generate(ShelfFactory).build
+      end
+      house.children << container("Kitchen") do |kitchen|
+        kitchen.children << container("Pantry")
+        kitchen.children << container("Refridgerator")
       end
     end
   end
+
+  # def save_children!
+  #   build.children.each do |c|
+  #     c.parent = nil
+  #     c.save!
+  #   end
+  # end
 end
