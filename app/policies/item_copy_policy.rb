@@ -1,0 +1,2 @@
+class ItemCopyPolicy < ItemPolicy
+end

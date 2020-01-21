@@ -24,4 +24,4 @@
   -else
     = link_to "Print label", item_labels_path(resource), class: 'button', method: :post
   = link_to t('.destroy', default: t("helpers.links.destroy")), item_path(@item), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-text'
-  = link_to "Duplicate", duplicate_item_path(@item), method: :post, class: 'button is-text'
+  = link_to "Copy", new_item_copy_path(@item), class: 'button is-text'

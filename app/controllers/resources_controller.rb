@@ -17,7 +17,7 @@ class ResourcesController < ApplicationController
   end
 
   def new
-    self.resource = resource_class.new
+    set_new_resource
     assign_attributes
     authorize_resource
   end
@@ -166,6 +166,11 @@ class ResourcesController < ApplicationController
       query = {}
       query[active_record_id] = params[resource_id_param]
       self.resource = resource_class.find_by! **query
+    end
+
+    # Initializes a model for the `new` action.
+    def set_new_resource
+      self.resource = resource_class.new
     end
 
     def set_resources
