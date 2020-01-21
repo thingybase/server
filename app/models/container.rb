@@ -1,7 +1,7 @@
 class Container < ApplicationRecord
   has_closure_tree dependent: :destroy
 
-  include PgSearch
+  include PgSearch::Model
   pg_search_scope :search_by_name, against: :name
 
   belongs_to :account
