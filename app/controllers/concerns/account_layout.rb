@@ -8,7 +8,11 @@ module AccountLayout
 
   protected
     def set_account
-      @account = find_account_by_param || find_account_by_resource || find_account_by_resource_param
+      @account = find_account
+    end
+
+    def find_account
+      find_account_by_param || find_account_by_resource || find_account_by_resource_param
     end
 
   private
