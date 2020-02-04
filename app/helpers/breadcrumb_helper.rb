@@ -11,7 +11,7 @@ module BreadcrumbHelper
   def container_breadcrumbs(container=resource)
     container.ancestors.map{ |c| Link.new(c.name, c) }
       .prepend(Link.new(container.name, container))
-      .append(Link.new(@account.name, account_containers_path(@account)))
+      .append(Link.new(container.account.name, account_containers_path(container.account)))
       .reverse
   end
 
