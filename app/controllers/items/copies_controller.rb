@@ -5,8 +5,6 @@ module Items
     include AccountLayout
     include ActionView::Helpers::TextHelper
 
-    skip_before_action :set_account, only: :create
-
     def self.parent_resource
       Item
     end
@@ -16,6 +14,10 @@ module Items
     end
 
     protected
+      def find_account
+        parent_resource.account
+      end
+
       def set_new_resource
         self.resource = ItemCopy.new item: parent_resource
       end
