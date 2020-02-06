@@ -12,4 +12,10 @@ class ApplicationModel
   def persisted?
     false
   end
+
+  # Idiomatic transacition blocks for models that manipulate
+  # database backed records.
+  class << self
+    delegate :transaction, to: :'ActiveRecord::Base'
+  end
 end

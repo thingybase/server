@@ -2,10 +2,6 @@ class Batch < ApplicationModel
   attr_accessor :action, :user, :account, :container
   attr_writer :account_id, :items_attributes, :containers_attributes
 
-  class << self
-    delegate :transaction, to: :'ActiveRecord::Base'
-  end
-
   def items
     model_selections(item_scope, selected_items_ids).to_a
   end
