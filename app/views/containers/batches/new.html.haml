@@ -1,0 +1,25 @@
+%h1.title Select multiple items & containers
+.subtitle=breadcrumb container_breadcrumbs(@container)
+
+=form_for [:container, @batch] do |f|
+  =f.hidden_field :account_id
+  .buttons
+    =f.button "Print labels", value: "label", name: "batch[action]", class: "button"
+    =f.button "Delete", value: "delete", name: "batch[action]", class: "button", data: { confirm: "Are you sure?" }
+  .list-card
+    =f.fields_for :items, @batch.items do |s|
+      .list-card--item
+        =s.label :selected, class: "list-card--item" do
+          .list-card--item--title=s.object.name
+          .list-card--item--details
+            .list-card--item--detail=s.check_box :selected, class: "checkbox"
+            .list-card--item--detail=s.object.model.model_name
+            .list-card--item--detail=local_time_ago s.object.model.created_at
+    =f.fields_for :containers, @batch.containers do |s|
+      .list-card--item
+        =s.label :selected, class: "list-card--item" do
+          .list-card--item--title=s.object.name
+          .list-card--item--details
+            .list-card--item--detail=s.check_box :selected, class: "checkbox"
+            .list-card--item--detail=s.object.model.model_name
+            .list-card--item--detail=local_time_ago s.object.model.created_at

@@ -1,0 +1,2 @@
+class BatchPolicy < ItemPolicy
+end
