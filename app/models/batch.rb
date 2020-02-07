@@ -2,6 +2,8 @@ class Batch < ApplicationModel
   attr_accessor :action, :user, :account, :container
   attr_writer :account_id, :items_attributes, :containers_attributes
 
+  validate :items_selected
+
   def items
     model_selections(item_scope, selected_items_ids).to_a
   end
@@ -55,10 +57,14 @@ class Batch < ApplicationModel
   end
 
   def save
-    true
+    valid?
   end
 
   private
+    def items_selected
+      errors[:base] << "No items or containers are selected" if selected_selections.empty?
+    end
+
     def model_selections(scope, selected_ids)
       Enumerator.new do |y|
         scope.each do |model|

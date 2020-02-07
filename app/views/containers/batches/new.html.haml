@@ -6,9 +6,13 @@
   .buttons
     =f.button "Print labels", value: "label", name: "batch[action]", class: "button"
     =f.button "Delete", value: "delete", name: "batch[action]", class: "button is-text", data: { confirm: "Are you sure?" }
+  -if f.object.errors[:base].any?
+    .message.is-danger
+      .message-body=f.object.errors[:base].to_sentence
   .list-card
-    =f.fields_for :containers, @batch.containers do |s|
+    =f.fields_for :containers, @batch.containers, include_id: false do |s|
       =s.label :selected, class: "list-card--selection" do
+        =s.hidden_field :id
         =s.check_box :selected, class: "checkbox list-card--selection--checkbox"
         .list-card--item
           -with s.object.model do |container|
@@ -18,8 +22,9 @@
               .list-card--item--detail
                 Created
                 =local_time_ago container.created_at
-    =f.fields_for :items, @batch.items do |s|
+    =f.fields_for :items, @batch.items, include_id: false do |s|
       =s.label :selected, class: "list-card--selection" do
+        =s.hidden_field :id
         =s.check_box :selected, class: "checkbox list-card--selection--checkbox"
         .list-card--item
           - with s.object.model do |item|

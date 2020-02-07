@@ -47,6 +47,11 @@ $family-sans-serif: 'Inter var alt', -apple-system, Helvetica, sans-serif
         color: $black
         @media (prefers-color-scheme: dark)
           color: $white
+    & + &
+      border-top: 1px solid
+      border-color: $grey-lighter
+      @media (prefers-color-scheme: dark)
+        border-color: $grey-darker
   &--item
     padding: 1rem 0
     &--title
