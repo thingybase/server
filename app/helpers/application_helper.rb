@@ -20,4 +20,9 @@ module ApplicationHelper
   def account_policy_scope(klass)
     policy_scope(klass).where(account: @account)
   end
+
+  # Useful for contextualizing variables in HAML
+  def with(object, &block)
+    block.call object
+  end
 end

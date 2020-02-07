@@ -36,6 +36,17 @@ $family-sans-serif: 'Inter var alt', -apple-system, Helvetica, sans-serif
 
 .list-card
   margin-bottom: 1rem
+  &--selection
+    user-select: none
+    display: flex
+    flex-direction: columns
+    align-items: center
+    &--checkbox
+      margin-right: 1rem
+      &:checked + .list-card--item
+        color: $black
+        @media (prefers-color-scheme: dark)
+          color: $white
   &--item
     padding: 1rem 0
     &--title

@@ -1,4 +1,4 @@
-%h1.title Select items & containers
+%h1.title Selecting items
 .subtitle=breadcrumb container_breadcrumbs(@container)
 
 =form_for [:container, @batch] do |f|
@@ -7,19 +7,29 @@
     =f.button "Print labels", value: "label", name: "batch[action]", class: "button"
     =f.button "Delete", value: "delete", name: "batch[action]", class: "button is-text", data: { confirm: "Are you sure?" }
   .list-card
-    =f.fields_for :items, @batch.items do |s|
-      .list-card--item
-        =s.label :selected, class: "list-card--item" do
-          .list-card--item--title=s.object.name
-          .list-card--item--details
-            .list-card--item--detail=s.check_box :selected, class: "checkbox"
-            .list-card--item--detail=s.object.model.model_name
-            .list-card--item--detail=local_time_ago s.object.model.created_at
     =f.fields_for :containers, @batch.containers do |s|
-      .list-card--item
-        =s.label :selected, class: "list-card--item" do
-          .list-card--item--title=s.object.name
-          .list-card--item--details
-            .list-card--item--detail=s.check_box :selected, class: "checkbox"
-            .list-card--item--detail=s.object.model.model_name
-            .list-card--item--detail=local_time_ago s.object.model.created_at
+      =s.label :selected, class: "list-card--selection" do
+        =s.check_box :selected, class: "checkbox list-card--selection--checkbox"
+        .list-card--item
+          -with s.object.model do |container|
+            .list-card--item--title=container.name
+            .list-card--item--details
+              .list-card--item--detail Container
+              .list-card--item--detail
+                Created
+                =local_time_ago container.created_at
+    =f.fields_for :items, @batch.items do |s|
+      =s.label :selected, class: "list-card--selection" do
+        =s.check_box :selected, class: "checkbox list-card--selection--checkbox"
+        .list-card--item
+          - with s.object.model do |item|
+            .list-card--item--title=item.name
+            .list-card--item--details
+              .list-card--item--detail Item
+              .list-card--item--detail
+                Created
+                =local_time_ago item.created_at
+              -if item.shelf_life_end
+                .list-card--item--detail
+                  =item_expiration_tense item
+                  =local_time_ago item.shelf_life_end
