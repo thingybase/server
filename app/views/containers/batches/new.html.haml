@@ -1,11 +1,11 @@
-%h1.title Select multiple items & containers
+%h1.title Select items & containers
 .subtitle=breadcrumb container_breadcrumbs(@container)
 
 =form_for [:container, @batch] do |f|
   =f.hidden_field :account_id
   .buttons
     =f.button "Print labels", value: "label", name: "batch[action]", class: "button"
-    =f.button "Delete", value: "delete", name: "batch[action]", class: "button", data: { confirm: "Are you sure?" }
+    =f.button "Delete", value: "delete", name: "batch[action]", class: "button is-text", data: { confirm: "Are you sure?" }
   .list-card
     =f.fields_for :items, @batch.items do |s|
       .list-card--item

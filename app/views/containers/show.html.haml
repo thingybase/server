@@ -3,6 +3,7 @@
 
 .buttons
   = link_to "+ Add", add_container_path(@container), class: 'button is-primary'
+  = link_to "Select...", new_container_batch_path(@container), class: 'button'
   .is-hidden-mobile
     =search_field autofocus: true, url: account_search_path(@account)
   .is-hidden-tablet
@@ -12,7 +13,6 @@
   =render partial: "items/list-card--item", collection: @container.items, as: :item
 
 .buttons
-  = link_to "Select...", new_container_batch_path(@container), class: 'button'
   = link_to t('.edit', default: t("helpers.links.edit")), edit_container_path(@container), class: 'button is-default'
   -if label = resource.label
     = link_to "View label", label_path(label), class: 'button'
