@@ -33,7 +33,11 @@ class LabelsController < ResourcesController
   def redirect
     @label = resource_scope.find_by! uuid: params[:uuid]
     authorize @label, :show?
-    redirect_to @label.labelable
+    if labelable = @label.labelable
+      redirect_to labelable
+    else
+      render :gone, status: :gone
+    end
   end
 
   protected
