@@ -22,7 +22,7 @@ module ApplicationHelper
   end
 
   # Useful for contextualizing variables in HAML
-  def with(object, &block)
-    block.call object
+  def with(*object, &block)
+    block.call(*object)
   end
 end

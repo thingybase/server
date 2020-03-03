@@ -1,5 +1,4 @@
-%h1.title=resource.name
-.subtitle=breadcrumb item_breadcrumbs
+= title resource.name, subtitle: breadcrumb(item_breadcrumbs)
 
 =resource_field :created_at do
   =local_time resource.created_at
