@@ -45,11 +45,11 @@ class Batch < ApplicationModel
   end
 
   def container_scope
-    container.children
+    container.children.order(:name)
   end
 
   def item_scope
-    container.items
+    container.items.order(:name)
   end
 
   def account_id

@@ -8,8 +8,8 @@
   .is-hidden-tablet
     =link_to "Search", account_search_path(@account), class: "button"
 .list-card
-  =render partial: "containers/list-card--item", collection: @container.children, as: :container
-  =render partial: "items/list-card--item", collection: @container.items, as: :item
+  =render partial: "containers/list-card--item", collection: @container.children.order(:name), as: :container
+  =render partial: "items/list-card--item", collection: @container.items.order(:name), as: :item
 
 .buttons
   = link_to t('.edit', default: t("helpers.links.edit")), edit_container_path(@container), class: 'button is-default'
