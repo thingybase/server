@@ -22,8 +22,13 @@ module Items
         self.resource = ItemCopy.new item: parent_resource
       end
 
+      # Send the person to the item if there's only one copy created
       def create_redirect_url
-        resource.item&.container || resource.item
+        if resource.number_of_copies.to_i > 1 and resource.item.container
+          resource.item.container
+        else
+          resource.item
+        end
       end
 
       def create_notice
