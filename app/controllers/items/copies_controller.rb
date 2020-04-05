@@ -27,7 +27,7 @@ module Items
         if resource.number_of_copies.to_i > 1 and resource.item.container
           resource.item.container
         else
-          resource.item
+          resource.copies.first
         end
       end
 
