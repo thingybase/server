@@ -1,0 +1,6 @@
+%h1.title Enter your email address
+%h2.subtitle Lets get started by trying to find your an account
+
+= simple_form_for @user_resolution, url: user_resolution_url do |f|
+  = f.input :email, autofocus: true, hint: "We'll only use it to find your account or send you a code to create a new one if its your first time here"
+  = f.button :submit, "Continue →", class: 'is-primary'

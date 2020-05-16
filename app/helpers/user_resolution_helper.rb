@@ -1,0 +1,2 @@
+module UserResolutionHelper
+end

@@ -4,9 +4,13 @@ module Authentication
   AUTHENTICATION_HEADER_KEY = "Authentication".freeze
 
   included do
-    before_action :authenticate_user
     helper_method :current_user, :logged_in?
   end
+
+  protected
+    def authenticate_user
+      deny_access unless current_user
+    end
 
   private
     def logged_in?
@@ -41,10 +45,6 @@ module Authentication
       else
         error "Invalid authentication type header. Must be '#{AUTHENTICATION_HEADER_KEY}: apitoken <token>'"
       end
-    end
-
-    def authenticate_user
-      deny_access unless current_user
     end
 
     def deny_access

@@ -1,0 +1,20 @@
+%h1.title Enter verification code
+%h2.subtitle
+  Look for a
+  %strong 6 digit code
+  in the inbox or spam folder for
+  %strong=@email_code_verification.email
+
+= simple_form_for @email_code_verification, url: email_code_verification_url do |f|
+  = f.input :code, autofocus: true, hint: "You have a few minutes to enter the code before it expires", pattern: '[0-9]*'
+  = f.button :submit, "Continue →", class: 'is-primary'
+
+%hr
+
+%p
+  Launch
+  =link_to "Gmail", "https://gmail.com/", target: "_blank"
+  \|
+  =link_to "Outlook", "https://outlook.live.com/", target: "_blank"
+  \|
+  =link_to "Yahoo Mail", "https://mail.yahoo.com/", target: "_blank"

@@ -83,7 +83,10 @@ Rails.application.routes.draw do
       put :email
     end
   end
+
   resources :users
+  resource :user_resolution, only: %i[create new]
+  resource :email_code_verification, only: %i[create new]
   resources :api_keys, except: %i[edit update]
 
   resource :session

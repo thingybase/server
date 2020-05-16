@@ -6,11 +6,20 @@
 class ApplicationModel
   include ActiveModel::Model
 
+  def initialize(*args, **kwargs)
+    super(*args, **kwargs)
+    assign_default_values
+  end
+
   # Allows form helpers to properly generate resource URLs for
   # these application models that can't be persisted because they're
   # not in the database.
   def persisted?
     false
+  end
+
+  # Called when a model is instanciated.
+  def assign_default_values
   end
 
   # Idiomatic transacition blocks for models that manipulate

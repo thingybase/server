@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
       redirect_to "/auth/google_oauth2"
     else
       # TODO: Replace this with a real login or a bunch of buttons.
-      redirect_to "/auth/developer"
+      redirect_to new_user_resolution_url
     end
   end
 
