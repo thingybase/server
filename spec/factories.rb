@@ -2,6 +2,10 @@
 Faker::Config.locale = 'en-US'
 
 FactoryBot.define do
+  factory :user_resolution do
+    email { Faker::Internet.unique.email }
+  end
+
   factory :email_code_verification do
     email { Faker::Internet.unique.email }
   end
