@@ -28,6 +28,6 @@ module ApplicationHelper
 
   # Wrap whatever form helpers are needed to get the job done.
   def application_form(model, turbolinks_form: true, **kwargs, &block)
-    simple_form_for model, turbolinks_form: true, **kwargs, &block
+    simple_form_for model, turbolinks_form: turbolinks_form, **kwargs, &block
   end
 end

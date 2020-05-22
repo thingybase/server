@@ -13,7 +13,7 @@ class EmailCodeVerificationsController < ApplicationController
       redirect_to_signup_or_account @email_code_verification.email
     elsif @email_code_verification.has_exceeded_verification_attempts?
       redirect_to_new_user_resolution notice: "The code was invalidated after a few tries to keep it safe. Enter an email to get a new code."
-    elsif @email_code_verification.exceeded_time_to_live?
+    elsif @email_code_verification.has_expired?
       redirect_to_new_user_resolution notice: "The code was expired after a few minutes to keep it safe. Enter an email to get a new code."
     else
       # Update the session state so we can track remaining attempts to verify
@@ -32,7 +32,7 @@ class EmailCodeVerificationsController < ApplicationController
         redirect_to launch_accounts_url
       else
         # Now set an authentic email for the next view.
-        session[:authentic_email] = @email_code_verification.email
+        session[:authentic_email] = email
         redirect_to new_signup_url
       end
     end
