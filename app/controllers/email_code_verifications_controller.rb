@@ -18,7 +18,7 @@ class EmailCodeVerificationsController < ApplicationController
     else
       # Update the session state so we can track remaining attempts to verify
       session[:email_code_verification] = @email_code_verification.serializeable_session_hash
-      render "new", status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 

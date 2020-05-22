@@ -24,7 +24,7 @@ class UserResolutionsController < ApplicationController
         redirect_to new_email_code_verification_url
       # end
     else
-      render "new", status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
