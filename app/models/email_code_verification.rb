@@ -41,11 +41,11 @@ class EmailCodeVerification < ApplicationModel
     self.code_hash = BCrypt::Password.create(code)
   end
 
-  def exceeded_verification_attempts?
+  def has_exceeded_verification_attempts?
     MAXIMUM_VERIFICATION_ATTEMPTS < verification_attempts
   end
 
-  def exceeded_time_to_live?
+  def has_expired?
     Time.now > expires_at
   end
 
@@ -63,6 +63,10 @@ class EmailCodeVerification < ApplicationModel
     SecureRandom.random_number MAXIMUM_RANDOM_NUMBER
   end
 
+  def has_authentic_code?
+    BCrypt::Password.new(code_hash) == code.to_i
+  end
+
   private
     def assign_default_values
       self.expires_at ||= TIME_TO_LIVE.from_now
@@ -70,11 +74,13 @@ class EmailCodeVerification < ApplicationModel
     end
 
     def code_authenticity
+      return if code_hash.nil?
+
       self.verification_attempts += 1
-      errors.add(:code, "is not valid") if BCrypt::Password.new(code_hash) != code.to_i
+      errors.add(:code, "is not valid") unless has_authentic_code?
     end
 
     def code_expiration
-      not exceeded_time_to_live?
+      errors.add(:code, "has expired") if has_expired?
     end
 end

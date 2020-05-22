@@ -54,10 +54,16 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # For time tests
+  config.include ActiveSupport::Testing::TimeHelpers
 end
 
 # Factories, instead of fixtures.
 require 'config/factory_bot'
+
+# Configure BCrypt
+require 'config/bcrypt'
 
 # Pundit test helpers from https://github.com/chrisalley/pundit-matchers
 require 'pundit/matchers'

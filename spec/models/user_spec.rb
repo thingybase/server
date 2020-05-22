@@ -5,7 +5,8 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_presence_of(:name) }
   describe "#email" do
     it { is_expected.to validate_presence_of(:email) }
-    it { is_expected.to validate_uniqueness_of(:email) }
+    it { is_expected.to allow_value("dog@cat.com").for(:email) }
+    it { is_expected.not_to allow_value("dog").for(:email) }
   end
   describe "#phone_number" do
     it { is_expected.to validate_uniqueness_of(:phone_number) }

@@ -11,7 +11,7 @@ class EmailCodeVerificationsController < ApplicationController
 
     if @email_code_verification.valid?
       redirect_to_signup_or_account @email_code_verification.email
-    elsif @email_code_verification.exceeded_verification_attempts?
+    elsif @email_code_verification.has_exceeded_verification_attempts?
       redirect_to_new_user_resolution notice: "The code was invalidated after a few tries to keep it safe. Enter an email to get a new code."
     elsif @email_code_verification.exceeded_time_to_live?
       redirect_to_new_user_resolution notice: "The code was expired after a few minutes to keep it safe. Enter an email to get a new code."
