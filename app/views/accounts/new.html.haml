@@ -1,5 +1,6 @@
 %h1.title Create a new account
-%p Give the group a descriptive name, like "home" or "business", then you'll invite people to join the account who can make labels.
-= simple_form_for @account do |f|
+%h2.subtitle Give it a name, like "Home" or "Business", so its easy to remember.
+
+= application_form @account do |f|
   = f.input :name, autofocus: true
   = f.button :submit, "Create account", class: 'is-primary'

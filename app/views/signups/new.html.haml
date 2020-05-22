@@ -1,0 +1,6 @@
+%h1.title Welcome!
+%h2.subtitle Looks like its your first time here
+
+= application_form @user, url: signup_url do |f|
+  = f.input :name, autofocus: true, hint: "People you add to your account will see you by this name."
+  = f.button :submit, "Continue →", class: 'is-primary'

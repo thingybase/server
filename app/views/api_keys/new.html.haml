@@ -1,5 +1,5 @@
 %h1.title Create new API key
 %p You'll use this API key to integrate with other applications. Make sure you give it a memorable name so you'll remember where you're using it.
-= simple_form_for @api_key, html: { class: 'form-horizontal' } do |f|
+= application_form @api_key, html: { class: 'form-horizontal' } do |f|
   = f.input :name, autofocus: true
   = f.button :submit, "Create API key →", class: 'is-primary'

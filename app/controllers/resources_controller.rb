@@ -36,7 +36,7 @@ class ResourcesController < ApplicationController
         format.json { render :show, status: :created, location: resource }
         create_success_formats format
       else
-        format.html { render :new }
+        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: resource.errors, status: :unprocessable_entity }
       end
     end
@@ -52,7 +52,7 @@ class ResourcesController < ApplicationController
         format.html { redirect_to update_redirect_url, notice: update_notice }
         format.json { render :show, status: :ok, location: resource }
       else
-        format.html { render :edit }
+        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: resource.errors, status: :unprocessable_entity }
       end
     end

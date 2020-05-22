@@ -1,6 +1,6 @@
 = title "Add container", subtitle: "More items and containers may be added to this container after it is created"
 
-= simple_form_for @container do |f|
+= application_form @container do |f|
   = f.input :name, autofocus: true, hint: "Make it the name of a room, shelf, box, or something you put an item in"
   = f.association :account, as: :hidden
   = f.button :submit, "Add container", class: 'is-primary'

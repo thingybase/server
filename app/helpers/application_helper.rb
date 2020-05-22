@@ -25,4 +25,9 @@ module ApplicationHelper
   def with(*object, &block)
     block.call(*object)
   end
+
+  # Wrap whatever form helpers are needed to get the job done.
+  def application_form(model, turbolinks_form: true, **kwargs, &block)
+    simple_form_for model, turbolinks_form: true, **kwargs, &block
+  end
 end

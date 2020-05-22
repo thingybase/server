@@ -17,13 +17,10 @@
 
 import "../stylesheets/application.sass"
 
+require("@rails/ujs").start()
+require("turbolinks").start()
+require("@rails/activestorage").start()
+require("local-time").start()
+
 import "../javascripts/bulma.js"
-
-import Rails from "rails-ujs"
-Rails.start()
-
-import TurboLinks from "turbolinks"
-TurboLinks.start()
-
-import LocalTime from "local-time"
-LocalTime.start()
+import "../javascripts/turbolinks-form-core.js"

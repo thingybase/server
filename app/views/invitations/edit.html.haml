@@ -1,6 +1,6 @@
 %h1.title Edit #{resource_name}
 
-= simple_form_for @invitation do |f|
+= application_form @invitation do |f|
   = f.input :email, autofocus: true
   = f.input :name
   = f.association :account, as: :hidden

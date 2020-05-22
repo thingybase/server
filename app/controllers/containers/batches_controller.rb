@@ -53,7 +53,7 @@ module Containers
         dispatch_batch_action resource.action
       else
         respond_to do |format|
-          format.html { render :new }
+          format.html { render :new, status: :unprocessable_entity }
           format.json { render json: resource.errors, status: :unprocessable_entity }
         end
       end

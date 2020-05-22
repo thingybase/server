@@ -1,5 +1,5 @@
 %h1.title==Add container to #{@container.parent.name}
-= simple_form_for @container do |f|
+= application_form @container do |f|
   = f.input :name, autofocus: true
   = f.association :account, as: :hidden
   = f.association :parent, as: :hidden

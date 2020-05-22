@@ -1,6 +1,6 @@
-%h1.title Enter your email address
-%h2.subtitle Lets get started by trying to find your an account
+%h1.title Enter an email address
+%h2.subtitle We'll send you an authentication code that you can use to login to your account or create a new one if its your first time here.
 
-= simple_form_for @user_resolution, url: user_resolution_url do |f|
-  = f.input :email, autofocus: true, hint: "We'll only use it to find your account or send you a code to create a new one if its your first time here"
+= application_form @user_resolution, url: user_resolution_url do |f|
+  = f.input :email, autofocus: true, hint: "We will only use the email entered here to send a verification code"
   = f.button :submit, "Continue →", class: 'is-primary'

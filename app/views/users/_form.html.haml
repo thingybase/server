@@ -1,4 +1,4 @@
-= simple_form_for @user do |f|
+= application_form @user do |f|
   = f.input :name, autofocus: true
   = f.input :email
   = f.button :submit, "Save changes", class: 'is-primary'

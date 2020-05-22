@@ -5,6 +5,7 @@
 # the `Invitation` AR model; rather its an `InvitationResponse` model.
 class ApplicationModel
   include ActiveModel::Model
+  extend ActiveModel::Naming
 
   def initialize(*args, **kwargs)
     super(*args, **kwargs)

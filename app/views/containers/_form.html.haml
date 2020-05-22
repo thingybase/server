@@ -1,4 +1,4 @@
-= simple_form_for resource do |f|
+= application_form resource do |f|
   = f.input :name, autofocus: true
   = f.association :parent, label: "Contained in", collection: container_select_values(account_policy_scope(Container)), include_blank: true
   = f.association :account, as: :hidden

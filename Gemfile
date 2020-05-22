@@ -99,3 +99,5 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
+
+gem "turbolinks-form", "~> 0.1.4"

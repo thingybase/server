@@ -1,4 +1,4 @@
-= simple_form_for @item do |f|
+= application_form @item do |f|
   = f.input :name, autofocus: true
   = f.association :account, as: :hidden
   = f.association :container, label: "Contained in", collection: container_select_values(account_policy_scope(Container)), include_blank: true
