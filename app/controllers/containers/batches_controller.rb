@@ -20,6 +20,7 @@ module Containers
     end
 
     def delete
+      selected_models_count = @batch.selected_models.count
       Batch.transaction do
         @batch.selected_models.each do |model|
           authorize model, :destroy?
@@ -27,7 +28,7 @@ module Containers
         end
       end
 
-      flash[:notice] = "Deleted  #{pluralize resource.selected_selections.count, "thing"}"
+      flash[:notice] = "Deleted  #{pluralize selected_models_count, "thing"}"
       respond_to do |format|
         format.html { redirect_to parent_resource }
         format.json { render :show, status: :created, location: resource }
