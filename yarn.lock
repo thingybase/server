@@ -1573,10 +1573,10 @@ bulma-prefers-dark@^0.1.0-beta.0:
   resolved "https://registry.npmjs.org/bulma-prefers-dark/-/bulma-prefers-dark-0.1.0-beta.0.tgz#646350738ed00ac66d0f84ec6821a677aa1a66c5"
   integrity sha512-EeDW8pQrkYEOXo2l3WykfghbUzi8jlQWGI+Cu2HwmXwQHMcoGF6yiKYCNShttN+8z3atq8fLWh3B7pqXUV4fBA==
 
-bulma@^0.8.2:
-  version "0.8.2"
-  resolved "https://registry.npmjs.org/bulma/-/bulma-0.8.2.tgz#5d928f16ed4a84549c2873f95c92c38c69c631a7"
-  integrity sha512-vMM/ijYSxX+Sm+nD7Lmc1UgWDy2JcL2nTKqwgEqXuOMU+IGALbXd5MLt/BcjBAPLIx36TtzhzBcSnOP974gcqA==
+bulma@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.npmjs.org/bulma/-/bulma-0.9.0.tgz#948c5445a49e9d7546f0826cb3820d17178a814f"
+  integrity sha512-rV75CJkubNUroAt0qCRkjznZLoaXq/ctfMXsMvKSL84UetbSyx5REl96e8GoQ04G4Tkw0XF3STECffTOQrbzOQ==
 
 bytes@3.0.0:
   version "3.0.0"
