@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_060938) do
+ActiveRecord::Schema.define(version: 2020_06_10_061323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -63,6 +63,14 @@ ActiveRecord::Schema.define(version: 2020_06_10_060938) do
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_invitations_on_account_id"
     t.index ["user_id"], name: "index_invitations_on_user_id"
+  end
+
+  create_table "item_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id", null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations", null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "item_anc_desc_idx", unique: true
+    t.index ["descendant_id"], name: "item_desc_idx"
   end
 
   create_table "items", force: :cascade do |t|

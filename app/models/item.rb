@@ -4,6 +4,8 @@ class Item < ApplicationRecord
 
   pg_search_scope :search_by_name, against: :name
 
+  has_closure_tree dependent: :destroy
+
   belongs_to :account
   belongs_to :user
   belongs_to :container, optional: true
