@@ -12,11 +12,12 @@ module Accounts
 
     private
       def resource_scope
-        if params[:search].present?
+        scope = if params[:search].present?
           scope.search_by_name(params[:search])
         else
           policy_scope.roots.includes(:account)
         end
+        scope.order(:name)
       end
 
       def permitted_params

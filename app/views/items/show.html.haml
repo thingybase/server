@@ -1,27 +1,28 @@
 = title resource.name, subtitle: breadcrumb(item_breadcrumbs)
 
-.box
-  =resource_field :created_at do
-    =local_time resource.created_at
-  =resource_field :updated_at do
-    =local_time resource.updated_at
-  =resource_field :created_by do
-    =resource.user.name
-  -if resource.shelf_life_begin
-    =resource_field :shelf_life_begin do
-      =local_date resource.shelf_life_begin
-  -if resource.shelf_life_end
-    =resource_field :shelf_life_end do
-      =local_date resource.shelf_life_end
+=resource_field :created_at do
+  =local_time resource.created_at
+=resource_field :updated_at do
+  =local_time resource.updated_at
+=resource_field :created_by do
+  =resource.user.name
+-if resource.shelf_life_begin
+  =resource_field :shelf_life_begin do
+    =local_date resource.shelf_life_begin
+-if resource.shelf_life_end
+  =resource_field :shelf_life_end do
+    =local_date resource.shelf_life_end
 
-  .buttons.has-top-margin
-    = link_to t('.edit', default: t("helpers.links.edit")), edit_item_path(@item), class: 'button is-default'
-    -if label = resource.label
-      = link_to "View label", label_path(label), class: 'button'
-    -else
-      = link_to "Print label", item_labels_path(resource), class: 'button', method: :post
-    = link_to t('.destroy', default: t("helpers.links.destroy")), item_path(@item), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-text'
-    = link_to "Copy", new_item_copy_path(@item), class: 'button is-text'
+.buttons.has-top-margin
+  = link_to t('.edit', default: t("helpers.links.edit")), edit_item_path(@item), class: 'button is-default'
+  -if label = resource.label
+    = link_to "View label", label_path(label), class: 'button'
+  -else
+    = link_to "Print label", item_labels_path(resource), class: 'button', method: :post
+  = link_to t('.destroy', default: t("helpers.links.destroy")), item_path(@item), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-text'
+  = link_to "Copy", new_item_copy_path(@item), class: 'button is-text'
+
+%hr
 
 %h3.subtitle Items
 

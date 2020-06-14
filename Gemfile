@@ -62,8 +62,6 @@ gem "qrcode", "~> 0.0.1"
 gem "closure_tree", "~> 7.0"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-# Many models in one select
-gem 'rails_polymorphic_select', github: 'bradgessler/rails_polymorphic_select'
 # CSS framework
 gem "bulma-rails", "~> 0.7.0"
 # Parse natrual language date and time strings

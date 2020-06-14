@@ -33,8 +33,8 @@ class LabelsController < ResourcesController
   def redirect
     @label = resource_scope.find_by! uuid: params[:uuid]
     authorize @label, :show?
-    if labelable = @label.labelable
-      redirect_to labelable
+    if item = @label.item
+      redirect_to item
     else
       render :gone, status: :gone
     end
@@ -46,7 +46,7 @@ class LabelsController < ResourcesController
     end
 
     def permitted_params
-      [:user_id, :account_id, :text, :uuid, :labelable_global_id]
+      [:user_id, :account_id, :text, :uuid, :item_id]
     end
 
     def assign_attributes
@@ -74,7 +74,7 @@ class LabelsController < ResourcesController
       LabelGenerator.new(layout: label_layout).tap do |generator|
         Array(resources).each do |r|
           generator.add_label text: r.text, url: label_uuid_redirector_url(r) do |label|
-            label.lines << "Created #{r.labelable.created_at.to_date.to_s(:long)}" if r.labelable
+            label.lines << "Created #{r.item.created_at.to_date.to_s(:long)}" if r.item
             label.lines << r.uuid
           end
         end

@@ -1,11 +1,11 @@
 class Item < ApplicationRecord
-  include Labelable
   include PgSearch::Model
 
   pg_search_scope :search_by_name, against: :name
 
   has_closure_tree dependent: :destroy
 
+  has_one :label
   belongs_to :account
   belongs_to :user
 
@@ -13,6 +13,10 @@ class Item < ApplicationRecord
   validates :account, presence: true
   validates :user, presence: true
   validate :shelf_life_begin_less_than_end?
+
+  def find_or_create_label(text: name)
+    label || create_label!(user: user, account: account, text: text)
+  end
 
   def shelf_life_begin
     shelf_life&.begin

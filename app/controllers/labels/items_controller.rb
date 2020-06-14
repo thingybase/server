@@ -11,7 +11,7 @@ module Labels
     end
 
     def permitted_params
-      [:name, :account_id, :labelable_global]
+      [:name, :account_id, :item_global]
     end
 
     def assign_attributes

@@ -10,12 +10,6 @@ FactoryBot.define do
     email { Faker::Internet.unique.email }
   end
 
-  factory :container do
-    name { Faker::Name.name }
-    account
-    user
-  end
-
   factory :item do
     name { Faker::Name.name }
     account

@@ -19,10 +19,10 @@ module Items
     end
 
     def assign_attributes
-      self.resource.user = current_user
-      self.resource.account ||= parent_resource.account
-      self.resource.labelable ||= parent_resource
-      self.resource.text ||= parent_resource.name
+      resource.user = current_user
+      resource.account ||= parent_resource.account
+      resource.item ||= parent_resource
+      resource.text ||= parent_resource.name
     end
   end
 end

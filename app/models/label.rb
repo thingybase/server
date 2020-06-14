@@ -4,7 +4,7 @@ class Label < ApplicationRecord
 
   belongs_to :user
   belongs_to :account
-  belongs_to :labelable, polymorphic: true, optional: true
+  belongs_to :item, optional: true
 
   validates :user, presence: true
   validates :account, presence: true

@@ -20,8 +20,8 @@ RSpec.describe ItemCopy, type: :model do
         it "has same account" do
           expect(subject.account).to eql(item.account)
         end
-        it "has same container" do
-          expect(subject.container).to eql(item.container)
+        it "has same parent" do
+          expect(subject.parent).to eql(item.parent)
         end
       end
     end

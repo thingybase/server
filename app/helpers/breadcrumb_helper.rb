@@ -16,8 +16,8 @@ module BreadcrumbHelper
   end
 
   def label_breadcrumbs(label=resource)
-    return [] unless label.labelable
-    links = item_breadcrumbs(label.labelable)
+    return [] unless label.item
+    links = item_breadcrumbs(label.item)
     links.append Link.new("Label", label)
   end
 end

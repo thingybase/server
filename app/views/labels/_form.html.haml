@@ -1,8 +1,7 @@
 = application_form @label do |f|
   = f.input :text, autofocus: true
   = f.association :account, as: :hidden
-  =f.input :labelable, wrapper: :select do
-    = f.polymorphic_select :labelable_global_id, [ policy_scope(Item) ], label_method: :name, include_blank: true
+  = f.association :item, collection: item_select_values(account_policy_scope(Item)), include_blank: true
   .buttons
     = f.button :submit, class: 'is-primary'
     =link_to "Link to new item", label_items_path(resource), method: :post, class: "button"

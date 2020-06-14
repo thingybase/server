@@ -2,8 +2,8 @@
 
 =resource_field :text
 =resource_field :item do
-  -if labelable = resource.labelable
-    =link_to labelable.name, labelable
+  -if item = resource.item
+    =link_to item.name, item
   -else
     Not linked to item
 =resource_field :label_link do
