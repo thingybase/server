@@ -8,7 +8,6 @@ class Item < ApplicationRecord
 
   belongs_to :account
   belongs_to :user
-  belongs_to :container, optional: true
 
   validates :name, presence: true
   validates :account, presence: true

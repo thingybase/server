@@ -6,14 +6,14 @@ class ItemsController < ResourcesController
   end
 
   def destroy_redirect_url
-    if container = @item.container
-      container
-    else
-      items_url
-    end
+    @item.parent || items_url
+  end
+
+  def create_redirect_url
+    @item.parent || @item
   end
 
   def permitted_params
-    [:name, :account_id, :container_id, :shelf_life_begin, :shelf_life_end]
+    [:name, :account_id, :parent_id, :shelf_life_begin, :shelf_life_end]
   end
 end

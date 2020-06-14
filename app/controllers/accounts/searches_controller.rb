@@ -4,14 +4,11 @@ class Accounts::SearchesController < ApplicationController
   before_action :authenticate_user
 
   def index
-    containers = policy_scope(Container).includes(:parent)
-    items = policy_scope(Item).includes(:container)
+    items = policy_scope(@account.items)
 
     @search = Search.new(
       phrase: params[:search],
-      items: items,
-      containers: containers,
-      container: containers.find_by_id(params[:container_id])
+      items: items
     )
   end
 end

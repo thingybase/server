@@ -1,6 +1,0 @@
-%h1.title==Add container to #{@container.parent.name}
-= application_form @container do |f|
-  = f.input :name, autofocus: true
-  = f.association :account, as: :hidden
-  = f.association :parent, as: :hidden
-  = f.button :submit, "Add container", class: 'is-primary'

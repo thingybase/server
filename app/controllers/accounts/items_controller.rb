@@ -12,7 +12,11 @@ module Accounts
 
     private
       def resource_scope
-        search_scope policy_scope.includes(:account, :container)
+        if params[:search].present?
+          scope.search_by_name(params[:search])
+        else
+          policy_scope.roots.includes(:account)
+        end
       end
 
       def permitted_params
@@ -22,10 +26,6 @@ module Accounts
       def assign_attributes
         self.resource.user = current_user
         self.resource.account ||= @account
-      end
-
-      def search_scope(scope)
-        params[:search].present? ? scope.search_by_name(params[:search]) : scope
       end
   end
 end

@@ -1,4 +1,4 @@
-module Containers
+module Items
   class BatchesController < NestedResourcesController
     include AccountLayout
     include ActionView::Helpers::TextHelper
@@ -10,13 +10,12 @@ module Containers
     end
 
     def self.parent_resource
-      Container
+      Item
     end
 
     def new
       super
-      @items = authorize parent_resource.items
-      @containers = authorize parent_resource.children
+      @items = authorize parent_resource.children
     end
 
     def delete
@@ -77,22 +76,18 @@ module Containers
               :id,
               :selected
             ]
-          },
-          { containers_attributes: [
-              :id, :selected
-            ]
           }
         ]
       end
 
       def create_redirect_url
-        [:container, @batch]
+        [:item, @batch]
       end
 
       def assign_attributes
         self.resource.user = current_user
         self.resource.account ||= parent_resource.account
-        self.resource.container ||= parent_resource
+        self.resource.scope ||= parent_resource.children
       end
 
       def find_account

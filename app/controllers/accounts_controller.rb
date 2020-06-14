@@ -17,7 +17,7 @@ class AccountsController < ResourcesController
       when 0
         new_account_url
       when 1
-        account_containers_url policy_scope.first
+        account_items_url policy_scope.first
       else
         accounts_url
       end

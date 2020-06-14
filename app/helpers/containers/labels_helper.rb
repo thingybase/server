@@ -1,2 +1,0 @@
-module Containers::LabelsHelper
-end

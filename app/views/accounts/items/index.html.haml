@@ -16,7 +16,7 @@
         .list-card--item--detail
           Created
           =local_time_ago item.created_at
-        -if container = item.container
+        -if parent = item.parent
           .list-card--item--detail
             In
-            = link_to container.name, container
+            = link_to parent.name, parent

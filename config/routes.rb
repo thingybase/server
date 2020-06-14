@@ -25,22 +25,13 @@ Rails.application.routes.draw do
   get 'labels/:uuid', to: 'labels#redirect',
     uuid: /[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/i
 
-  resources :containers do
-    scope module: :containers do
-      resources :children, only: %i[index new]
-      resources :items, only: %i[new]
-      resources :labels, only: %i[create]
-      resources :batches, only: %i[new create]
-    end
-    member do
-      get :add
-    end
-  end
-
   resources :items do
+    get :search, to: "items/searches#index"
     scope module: :items do
+      resources :children, only: %i[index new]
       resources :labels, only: %i[create]
       resources :copies, only: %i[create new]
+      resources :batches, only: %i[new create]
     end
   end
   resources :members
@@ -49,7 +40,6 @@ Rails.application.routes.draw do
   resources :labels do
     scope module: :labels do
       resources :items, only: %i[create]
-      resources :containers, only: %i[create]
     end
   end
 
@@ -65,8 +55,11 @@ Rails.application.routes.draw do
       resources :members
       resources :invitations
       resources :labels
-      resources :items
-      resources :containers
+      resources :items do
+        collection do
+          get :tree
+        end
+      end
     end
     collection do
       get :launch

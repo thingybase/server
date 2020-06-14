@@ -1,13 +1,13 @@
-module Containers
+module Items
   class ChildrenController < NestedResourcesController
     include AccountLayout
 
     def self.resource
-      Container
+      Item
     end
 
     def self.parent_resource
-      Container
+      Item
     end
 
     def permitted_params
@@ -15,11 +15,11 @@ module Containers
     end
 
     def parent_resource_name
-      "container_parent"
+      "item_parent"
     end
 
     def parent_resource_id_param
-      "container_id"
+      "item_id"
     end
 
     def nested_resource_scope

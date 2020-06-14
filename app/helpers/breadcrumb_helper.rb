@@ -8,31 +8,16 @@ module BreadcrumbHelper
     render partial: "helpers/breadcrumb_helper/breadcrumb", locals: { root: root, links: links, active: active }
   end
 
-  def container_breadcrumbs(container=resource)
-    container.ancestors.map{ |c| Link.new(c.name, c) }
-      .prepend(Link.new(container.name, container))
-      .append(Link.new(container.account.name, account_containers_path(container.account)))
-      .reverse
-  end
-
   def item_breadcrumbs(item=resource)
-    if item.container
-      container_breadcrumbs(item.container).append Link.new(item.name, item)
-    else
-      []
-    end
+    item.ancestors.map{ |c| Link.new(c.name, c) }
+      .prepend(Link.new(item.name, item))
+      .append(Link.new(item.account.name, account_items_path(item.account)))
+      .reverse
   end
 
   def label_breadcrumbs(label=resource)
     return [] unless label.labelable
-
-    links = case label.labelable
-    when Item
-      item_breadcrumbs(label.labelable)
-    when Container
-      container_breadcrumbs(label.labelable)
-    end
-
+    links = item_breadcrumbs(label.labelable)
     links.append Link.new("Label", label)
   end
 end

@@ -4,10 +4,6 @@
   .level.has-text-centered.is-uppercase
     .level-item
       %div
-        .header="Container".pluralize(@account.containers.count)
-        .title=@account.containers.count
-    .level-item
-      %div
         .header="Item".pluralize(@account.items.count)
         .title=@account.items.count
     .level-item
@@ -23,27 +19,28 @@
   .tile.is-vertical.is-8
     .tile.is-parent
       .tile.is-child.notification
-        %h3.title.is-5 Organization
-        %p.subtitle.is-6 Organize stuff into rooms, shelves, and containers so you can find it all later
+        %h3.title.is-4 Items
+        %p.subtitle.is-5 Organize stuff into rooms, shelves, and containers so you can find it all later
         %p
           You have a total of
-          =pluralize @account.containers.count, "container"
+          =pluralize @account.items.count, "item"
           in your account.
-        %p=link_to "View containers", account_containers_path(@account)
+        %p=link_to "View items", account_items_path(@account)
     .tile
       .tile.is-parent
         .tile.is-child.notification
-          %h3.title.is-5 Items
-          %p.subtitle.is-6 All the things you want to track
+          %h3.title.is-4 People
+          %p.subtitle.is-5 Organize better with a team
           %p
             You have a total of
-            =pluralize @account.items.count, "item"
+            =pluralize @account.members.count, "member"
             in your account.
-          %p=link_to "View items", account_items_path(@account)
+          %p=link_to "View people", account_members_path(@account)
+          %p=link_to "View pending invitations", account_invitations_path(@account)
       .tile.is-parent
         .tile.is-child.notification
-          %h3.title.is-5 Labels
-          %p.subtitle.is-6 Quickly print labels and organize them later
+          %h3.title.is-4 Labels
+          %p.subtitle.is-5 Quickly print labels and organize them later
           %p
             You have a total of
             =pluralize @account.labels.count, "label"

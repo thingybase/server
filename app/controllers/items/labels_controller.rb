@@ -11,7 +11,7 @@ module Items
     end
 
     def permitted_params
-      [:text, :account_id, :container_id]
+      [:text, :account_id, :item_id]
     end
 
     def create_redirect_url

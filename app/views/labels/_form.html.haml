@@ -2,8 +2,7 @@
   = f.input :text, autofocus: true
   = f.association :account, as: :hidden
   =f.input :labelable, wrapper: :select do
-    = f.polymorphic_select :labelable_global_id, [ policy_scope(Item), policy_scope(Container) ], label_method: :name, include_blank: true
+    = f.polymorphic_select :labelable_global_id, [ policy_scope(Item) ], label_method: :name, include_blank: true
   .buttons
     = f.button :submit, class: 'is-primary'
     =link_to "Link to new item", label_items_path(resource), method: :post, class: "button"
-    =link_to "Link to new container", label_containers_path(resource), method: :post, class: "button"

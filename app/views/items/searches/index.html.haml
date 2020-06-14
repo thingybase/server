@@ -1,5 +1,4 @@
-%h1.title Search #{@account.name}
-%h2.subtitle Find items, containers, and other things
+= title "Search #{resource.name}", subtitle: breadcrumb(item_breadcrumbs)
 
 =search_field autofocus: true
 
@@ -10,16 +9,18 @@
   -elsif @search.empty?
     .list-card--item
       .list-card--title
-        Could not find anything matching "#{@search.phrase}" in #{@account.name}.
+        Could not find anything matching "#{@search.phrase}" in #{resource.name}.
+        =link_to "Search entire account", account_search_path(@account, search: @search.phrase)
   -else
     - @search.items.each do |item|
       .list-card--item
         .list-card--item--title=link_to item.name, item
         .list-card--item--details
+          .list-card--item--detail Item
           .list-card--item--detail
             Created
             =local_time_ago item.created_at
-          -if parent = item.parent
-            .list-card--item--detail
-              In
-              = link_to parent.name, parent
+        -if parent = item.parent
+          .list-card--item--detail
+            In
+            = link_to parent.name, parent

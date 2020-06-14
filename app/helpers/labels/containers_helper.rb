@@ -1,2 +1,0 @@
-module Labels::ContainersHelper
-end

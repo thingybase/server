@@ -24,8 +24,8 @@ module Items
 
       # Send the person to the item if there's only one copy created
       def create_redirect_url
-        if resource.number_of_copies.to_i > 1 and resource.item.container
-          resource.item.container
+        if resource.number_of_copies.to_i > 1 and resource.item.parent
+          resource.item.parent
         else
           resource.copies.first
         end

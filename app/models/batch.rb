@@ -1,6 +1,6 @@
 class Batch < ApplicationModel
-  attr_accessor :action, :user, :account, :container
-  attr_writer :account_id, :items_attributes, :containers_attributes
+  attr_accessor :action, :user, :account, :scope
+  attr_writer :account_id, :items_attributes
 
   validate :items_selected
 
@@ -20,36 +20,16 @@ class Batch < ApplicationModel
     selected_items.map(&:model)
   end
 
-  def containers
-    model_selections(container_scope, selected_containers_ids).to_a
-  end
-
-  def selected_containers_ids
-    selected_attributes(@containers_attributes)
-  end
-
-  def selected_containers
-    containers.select(&:selected)
-  end
-
-  def selected_containers_models
-    selected_containers.map(&:model)
-  end
-
   def selected_selections
-    selected_containers + selected_items
+    selected_items
   end
 
   def selected_models
     selected_selections.map(&:model)
   end
 
-  def container_scope
-    container.children.order(:name)
-  end
-
   def item_scope
-    container.items.order(:name)
+    scope.order(:name)
   end
 
   def account_id
@@ -62,7 +42,7 @@ class Batch < ApplicationModel
 
   private
     def items_selected
-      errors[:base] << "No items or containers are selected" if selected_selections.empty?
+      errors[:base] << "No items are selected" if selected_selections.empty?
     end
 
     def model_selections(scope, selected_ids)
