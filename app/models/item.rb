@@ -37,6 +37,10 @@ class Item < ApplicationRecord
     def method_missing(meth, *args)
       @association.send(meth, *args)
     end
+
+    def respond_to?(meth)
+      @association.respond_to?(meth)
+    end
   end
 
   def children
