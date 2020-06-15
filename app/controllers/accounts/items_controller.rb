@@ -17,7 +17,7 @@ module Accounts
         else
           policy_scope.roots.includes(:account)
         end
-        scope.order(:name)
+        scope.container_then_item
       end
 
       def permitted_params

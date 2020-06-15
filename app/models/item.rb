@@ -75,6 +75,10 @@ class Item < ApplicationRecord
     where(container: true)
   end
 
+  def self.container_then_item
+    order("container DESC").order(:name)
+  end
+
   private
     def shelf_life_begin_less_than_end?
       return if shelf_life.nil?
