@@ -10,13 +10,8 @@
 
 .list-card
   - @items.each do |item|
-    .list-card--item
-      .list-card--item--title=link_to item.name, item
-      .list-card--item--details
+    =render_item_list_card item do
+      -if parent = item.parent
         .list-card--item--detail
-          Created
-          =local_time_ago item.created_at
-        -if parent = item.parent
-          .list-card--item--detail
-            In
-            = link_to parent.name, parent
+          In
+          = link_to parent.name, parent

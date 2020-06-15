@@ -29,7 +29,7 @@ class Batch < ApplicationModel
   end
 
   def item_scope
-    scope.order(:name)
+    scope.order("container DESC, name")
   end
 
   def account_id

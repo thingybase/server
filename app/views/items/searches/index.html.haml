@@ -6,20 +6,16 @@
   -if @search.phrase.blank?
     .list-card--item
       .list-card--title
-  -elsif @search.empty?
-    .list-card--item
-      .list-card--title
-        Could not find anything matching "#{@search.phrase}" in #{resource.name}.
-        =link_to "Search entire account", account_search_path(@account, search: @search.phrase)
   -else
-    - @search.items.each do |item|
+    -if @search.empty?
       .list-card--item
-        .list-card--item--title=link_to item.name, item
-        .list-card--item--details
-          .list-card--item--detail
-            Created
-            =local_time_ago item.created_at
-        -if parent = item.parent
-          .list-card--item--detail
-            In
-            = link_to parent.name, parent
+        .list-card--title
+          Could not find anything matching "#{@search.phrase}" in #{resource.name}.
+    -else
+      - @search.items.each do |item|
+        = render_item_list_card item do
+          -if parent = item.parent
+            .list-card--item--detail
+              In
+              = link_to parent.name, parent
+    =link_to "Search entire account", account_search_path(@account, search: @search.phrase)

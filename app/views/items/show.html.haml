@@ -10,7 +10,8 @@
       =link_to "Search", item_search_path(@account, item: @item), class: "button"
 
   .list-card
-    =render partial: "items/list-card--item", collection: resource.children.order(:name), as: :item
+    - resource.children.order("container DESC, name ASC").each do |item|
+      = render_item_list_card item
 
 -else
   =resource_field :created_at do

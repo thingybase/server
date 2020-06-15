@@ -3,6 +3,14 @@ module ItemsHelper
     item.shelf_life_end > Time.now ?  "Expires" : "Expired"
   end
 
+  def render_item_list_card(item, &block)
+    if block
+      render layout: "items/list-card--item", locals: { item: item }, &block
+    else
+      render partial: "items/list-card--item", locals: { item: item }
+    end
+  end
+
   def item_select_values(scope, delimiter: " / ")
     flatten_items(scope.hash_tree).map do |row|
       [
