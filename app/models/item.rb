@@ -71,6 +71,10 @@ class Item < ApplicationRecord
     self.shelf_life = (shelf_life_begin || today)..date
   end
 
+  def self.container
+    where(container: true)
+  end
+
   private
     def shelf_life_begin_less_than_end?
       return if shelf_life.nil?
