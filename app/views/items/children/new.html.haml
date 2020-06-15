@@ -2,6 +2,7 @@
 = application_form @item do |f|
   = f.input :name, autofocus: true
   = f.input :shelf_life_end, label: "Expiration date", hint: %[If the item expires enter a date like "Jan 29" or something relative like "6 months from now"], optional: true
+  = f.input :container, hint: "Allow items to be contained within this item", optional: true
   = f.association :account, as: :hidden
   = f.association :parent, as: :hidden
   = f.button :submit, class: 'is-primary'

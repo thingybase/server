@@ -14,6 +14,6 @@ class ItemsController < ResourcesController
   end
 
   def permitted_params
-    [:name, :account_id, :parent_id, :shelf_life_begin, :shelf_life_end]
+    [:name, :account_id, :parent_id, :shelf_life_begin, :shelf_life_end, :container]
   end
 end

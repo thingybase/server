@@ -8,7 +8,7 @@ SimpleForm.setup do |config|
 
   # DRY up settings for Bulma form helpers
   def bulma_wrapper(name, config)
-    config.wrappers name, class: "field", hint_class: "help", error_class: "is-danger" do |b|
+    config.wrappers name, class: "field", error_class: "is-danger" do |b|
       b.use :html5
       b.use :placeholder
       b.optional :maxlength
@@ -41,10 +41,25 @@ SimpleForm.setup do |config|
     end
   end
 
+  config.wrappers :boolean, class: "field", error_class: "is-danger" do |b|
+    b.use :html5
+    b.optional :readonly
+
+    b.use :label, class: "label"
+
+    b.wrapper tag: :label, class: "control" do |label|
+      label.use :input, class: "checkbox", error_class: "is-danger"
+      label.use :hint, wrap_with: { tag: :span, class: "is-inline ml-2" }
+    end
+
+    b.use :full_error, wrap_with: { tag: :p, class: "help is-danger" }
+  end
+
   # Custom wrappers for input types. This should be a hash containing an input
   # type as key and the wrapper that will be used for all inputs with specified type.
   config.wrapper_mappings = {
-    select: :select
+    select: :select,
+    boolean: :boolean
   }
 
   # The default wrapper to be used by the FormBuilder.

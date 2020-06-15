@@ -11,7 +11,7 @@ module Items
     end
 
     def permitted_params
-      [:name, :account_id, :parent_id]
+      [:name, :account_id, :parent_id, :container]
     end
 
     def parent_resource_name
