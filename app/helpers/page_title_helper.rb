@@ -4,20 +4,17 @@ module PageTitleHelper
   DELIMITER = " · "
   PRODUCT_NAME = "Thingybase"
 
-  def title(title, subtitle: nil)
+  def title(title, subtitle: nil, icon: nil)
     provide_page_title title
-    build_title_tags title, subtitle
+    render partial: "page_title_helper/page_header_title", locals: {
+      title: title,
+      subtitle: subtitle,
+      icon: icon
+    }
   end
 
   def provide_page_title(title)
     provide :title, title_tag_text(title)
-  end
-
-  def build_title_tags(title, subtitle)
-    tags = []
-    tags << content_tag(:h1, title, class: "title")
-    tags << content_tag(:h2, subtitle, class: "subtitle") if subtitle
-    tags.join.html_safe
   end
 
   def render_page_title

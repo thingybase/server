@@ -1,0 +1,7 @@
+%h1.title.has-inline-icon
+  -if icon
+    = render_icon icon, class: "icon is-medium mr-3"
+  = title
+
+-if subtitle
+  %h2.subtitle= subtitle

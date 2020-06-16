@@ -2,6 +2,10 @@
 Faker::Config.locale = 'en-US'
 
 FactoryBot.define do
+  factory :svg_icon_file do
+    key { folder }
+  end
+
   factory :user_resolution do
     email { Faker::Internet.unique.email }
   end

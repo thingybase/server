@@ -47,6 +47,10 @@ class Item < ApplicationRecord
     ReadonlyAssociationDelegate.new(super, !container)
   end
 
+  def icon
+    container ? "folder" : "sugar-cube"
+  end
+
   def find_or_create_label(text: name)
     label || create_label!(user: user, account: account, text: text)
   end

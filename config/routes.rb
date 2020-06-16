@@ -71,6 +71,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :icons do
+    member do
+      get :light
+      get :dark
+    end
+  end
+
   resources :users
   resource :user_resolution, only: %i[create new]
   resource :email_code_verification, only: %i[create new]
