@@ -3,7 +3,11 @@
 class IconsController < ApplicationController
   skip_security!
 
-  before_action :load_icon
+  before_action :load_icon, except: :index
+
+  def index
+    @icons = SvgIconFile.all.to_a
+  end
 
   def light
     respond_to do |format|

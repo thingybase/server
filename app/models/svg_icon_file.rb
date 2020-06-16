@@ -10,6 +10,10 @@ class SvgIconFile < ApplicationModel
     File.open icon_path
   end
 
+  def name
+    key.underscore.humanize
+  end
+
   def dark_svg
     @_dark_svg ||= File.open(icon_path) do |file|
       Nokogiri::XML(file).tap do |svg|
@@ -28,6 +32,10 @@ class SvgIconFile < ApplicationModel
 
   def fingerprint
     @_fingerprint ||= Digest::MD5.hexdigest(light_svg.read)
+  end
+
+  def updated_at
+    File.mtime icon_path
   end
 
   private

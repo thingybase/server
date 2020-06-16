@@ -66,6 +66,12 @@ $family-sans-serif: 'Inter var alt', -apple-system, Helvetica, sans-serif
       border-color: $grey-lighter
       @media (prefers-color-scheme: dark)
         border-color: $grey-darker
+
+.grid
+  display: grid
+  grid-gap: 1rem
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr))
+
 .has-inline-icon
   display: flex
   align-items: center
