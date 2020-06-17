@@ -99,3 +99,5 @@ group :test do
 end
 
 gem "turbolinks-form", "~> 0.1.4"
+
+gem "nilify_blanks", "~> 1.4"
