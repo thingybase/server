@@ -38,6 +38,10 @@ class SvgIconFile < ApplicationModel
     File.mtime icon_path
   end
 
+  def to_param
+    [key, fingerprint].join("-")
+  end
+
   private
     def self.root_path
       Rails.root.join("app/icons")

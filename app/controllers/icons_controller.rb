@@ -10,7 +10,7 @@ class IconsController < ApplicationController
   end
 
   def light
-    respond_to do |format|
+    cached_respond_to do |format|
       format.svg do
         render xml: cache_rendition { @icon.light_svg.read }
       end
@@ -18,7 +18,7 @@ class IconsController < ApplicationController
   end
 
   def dark
-    respond_to do |format|
+    cached_respond_to do |format|
       format.svg do
         render xml: cache_rendition { @icon.dark_svg.to_s }
       end
@@ -26,6 +26,17 @@ class IconsController < ApplicationController
   end
 
   private
+    def permitted_params
+      key, _, fingerprint = params[:id].rpartition("-")
+      Hash[key: key, fingerprint: fingerprint]
+    end
+
+    def cached_respond_to(&block)
+      http_cache_forever(public: true) do
+        respond_to(&block)
+      end
+    end
+
     def cache_rendition(&block)
       cache @icon.cache_key(action_name, request.format) do
         block.call
@@ -33,6 +44,6 @@ class IconsController < ApplicationController
     end
 
     def load_icon
-      @icon = SvgIconFile.find params.fetch(:id)
+      @icon = SvgIconFile.find permitted_params.fetch(:key)
     end
 end
