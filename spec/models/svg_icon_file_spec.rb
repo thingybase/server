@@ -10,7 +10,7 @@ RSpec.describe SvgIconFile, type: :model do
     end
     context "file does not exist" do
       it "raises ActiveRecord::RecordNotFound" do
-        expect{SvgIconFile.find("non-existant-jibber-jabber")}.to raise_error(ActiveRecord::RecordNotFound)
+        expect{SvgIconFile.find("non-existant-jibber-jabber")}.to raise_error(SvgIconFile::IconNotFound)
       end
     end
   end

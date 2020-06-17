@@ -5,6 +5,8 @@ class IconsController < ApplicationController
 
   before_action :load_icon, except: :index
 
+  rescue_from SvgIconFile::IconNotFound, with: :request_not_found
+
   def index
     @icons = SvgIconFile.all.to_a
   end

@@ -2,6 +2,8 @@ class SvgIconFile < ApplicationModel
   attr_accessor :key
   validates :key, presence: true
 
+  IconNotFound = Class.new(RuntimeError)
+
   def icon_path
     self.class.icon_path_by_key(key)
   end
@@ -53,7 +55,7 @@ class SvgIconFile < ApplicationModel
 
     def self.find(key)
       icon = new(key: key)
-      raise ActiveRecord::RecordNotFound unless icon.persisted?
+      raise IconNotFound unless icon.persisted?
       icon
     end
 
