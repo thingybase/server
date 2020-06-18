@@ -1,21 +1,31 @@
 class NestedResourcesController < ResourcesController
-  before_action :set_parent_resource
-  before_action :set_resources, only: :index
+  before_action :set_parent_resource_instance_variable
+  before_action :set_resources_instance_variable, only: :index
+
+  helper_method :parent_resource
 
   protected
     def self.parent_resource
       raise NotImplementedError, "ShallowResourcesController.parent_resource must be an ActiveModel or ActiveRecord class"
     end
 
-    def set_resources
-      self.resources = nested_resource_scope
+    def resources
+      @_resources ||= nested_resource_scope
     end
 
     # Use callbacks to share common setup or constraints between actions.
-    def set_parent_resource
+    def set_parent_resource_instance_variable
+      instance_variable_set("@#{parent_resource_name}", parent_resource)
+    end
+
+    def parent_resource
+      @_parent_resource ||= find_parent_resource
+    end
+
+    def find_parent_resource
       query = {}
       query[parent_active_record_id] = params[parent_resource_id_param]
-      self.parent_resource = self.class.parent_resource.find_by! **query
+      self.class.parent_resource.find_by! **query
     end
 
     # If we're deep, we want to show only members that are scoped
@@ -46,19 +56,6 @@ class NestedResourcesController < ResourcesController
       if params.key? resource_name
         params.require(resource_name).permit(permitted_params)
       end
-    end
-
-    # Sets instance variable for templates to match the model name. For
-    # example, `Account` model name would set the `@account` instance variable
-    # for template access.
-    def parent_resource=(value)
-      instance_variable_set("@#{parent_resource_name}", value)
-    end
-
-    # Gets instance variable for templates to match the model name. For
-    # example, `Account` model name would get the `@account` instance variable.
-    def parent_resource
-      instance_variable_get("@#{parent_resource_name}")
     end
 
     # Gets the resource name of the ActiveRecord model for use by

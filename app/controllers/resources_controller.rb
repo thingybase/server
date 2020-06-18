@@ -1,8 +1,8 @@
 class ResourcesController < ApplicationController
   before_action :authenticate_user
-  before_action :set_resource, if: :member_request?
+  before_action :set_resource_instance_variable, if: :member_request?
   before_action :authorize_resource, if: :member_request?
-  before_action :set_resources, only: :index
+  before_action :set_resources_instance_variable, only: :index
 
   helper_method :resource_name, :resource_class, :resource, :resources
 
@@ -105,29 +105,10 @@ class ResourcesController < ApplicationController
     end
 
     # Sets instance variable for templates to match the model name. For
-    # example, `Account` model name would set the `@account` instance variable
-    # for template access.
-    def resource=(value)
-      instance_variable_set("@#{resource_name}", value)
-    end
-
-    # Sets instance variable for templates to match the model name. For
     # example, `Account` model name would set the `@accounts` instance variable
     # for template access.
-    def resources=(value)
-      instance_variable_set("@#{resources_name}", value)
-    end
-
-    # Gets instance variable for templates to match the model name. For
-    # example, `Account` model name would get the `@account` instance variable.
-    def resource
-      instance_variable_get("@#{resource_name}")
-    end
-
-    # Gets instance variable for templates to match the model name. For
-    # example, `Account` model name would get the `@accounts` instance variable.
-    def resources
-      instance_variable_get("@#{resources_name}")
+    def set_resources_instance_variable
+      instance_variable_set("@#{resources_name}", resources)
     end
 
     # A hook that allows sub-classes to assign attributes to a model.
@@ -162,10 +143,26 @@ class ResourcesController < ApplicationController
     end
 
     # Use callbacks to share common setup or constraints between actions.
-    def set_resource
+    def set_resource_instance_variable
+      instance_variable_set("@#{resource_name}", resource)
+    end
+
+    def resource
+      @_resource ||= find_resource
+    end
+
+    # Sometimes we need to set the resource to hack the controller from another method, such as the
+    # case of setting the instance variable to be an instance of a model.
+    def resource=(value)
+      @_resource = value
+      set_resource_instance_variable
+    end
+
+    # Finds resource, which is called by `set_resource` to assign it to the right variables.
+    def find_resource
       query = {}
       query[active_record_id] = params[resource_id_param]
-      self.resource = resource_class.find_by! **query
+      resource_class.find_by! **query
     end
 
     # Initializes a model for the `new` action.
@@ -173,8 +170,8 @@ class ResourcesController < ApplicationController
       self.resource = resource_class.new
     end
 
-    def set_resources
-      self.resources = resource_scope
+    def resources
+      @_resources ||= resource_scope
     end
 
     # Additional formats can be specified for successful response creations
