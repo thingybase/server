@@ -49,11 +49,7 @@ Rails.application.routes.draw do
       resources :members
       resources :invitations
       resources :labels
-      resources :items do
-        collection do
-          get :tree
-        end
-      end
+      resources :items
     end
     collection do
       get :launch
