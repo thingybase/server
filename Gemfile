@@ -7,13 +7,13 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
+gem 'rails', '~> 6.0'
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '>= 4.2.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 # Use CoffeeScript for .coffee assets and views
@@ -21,11 +21,11 @@ gem 'coffee-rails', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.7'
+gem 'jbuilder', '~> 2.10'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.13'
 # HAML templates yo
 gem 'haml-rails'
 # Authorization libraries
@@ -34,7 +34,7 @@ gem 'omniauth-google-oauth2'
 # Authorization logic
 gem 'pundit'
 # Form helper
-gem 'simple_form'
+gem 'simple_form', '~> 5.0'
 # Communicate with Twilio
 gem 'twilio-ruby'
 # Handle phone numbers as a propper data type (and normalize)
@@ -46,8 +46,7 @@ gem 'strong_password'
 # Display times locally
 gem 'local_time'
 # Run Postgres in production
-# TODO: Switch to 1.0.0 when Heroku figures out their compatability problems.
-gem 'pg', '~> 1.1.0'
+gem 'pg', '~> 1.2.0'
 # Application error alerts
 gem 'rollbar'
 # Reduces boot times through caching; required in config/boot.rb
@@ -62,14 +61,12 @@ gem "qrcode", "~> 0.0.1"
 gem "closure_tree", "~> 7.0"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-# CSS framework
-gem "bulma-rails", "~> 0.7.0"
 # Parse natrual language date and time strings
 gem "chronic", "~> 0.10.2"
 # Search Postgres records
-gem "pg_search", "~> 2.1"
+gem "pg_search", "~> 2.3"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '~> 5.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
