@@ -24,6 +24,13 @@ module ItemsHelper
     # doesn't have a child, its an empty Hash.
   end
 
+  # If we don't do this and the icon is an error, an exception would be thrown
+  # because the icon isn't found. This just grabs the old icon value so we can
+  # fix the problem and move on.
+  def item_edit_icon(item)
+    item.valid? ? item.icon : item.icon_key_was
+  end
+
   private
     def flatten_items(tree = {}, row = [], rows = [])
       row.freeze

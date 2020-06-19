@@ -59,6 +59,10 @@ class SvgIconFile < ApplicationModel
       icon
     end
 
+    def self.exists?(key)
+      new(key: key).persisted?
+    end
+
     def self.paths
       root_path.glob("*.svg")
     end

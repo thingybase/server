@@ -3,6 +3,32 @@ require 'rails_helper'
 RSpec.describe Item, type: :model do
   subject { build(:item) }
   it { is_expected.to validate_presence_of(:name) }
+
+  describe "#icon_key" do
+    it { is_expected.to allow_value(nil).for(:icon_key) }
+    it { is_expected.to allow_value("folder").for(:icon_key) }
+    it { is_expected.to_not allow_value("no-asdlkjasdlkj_exists").for(:icon_key) }
+  end
+
+  describe "#icon" do
+    context "container=false" do
+      it "defaults to 'object'" do
+        expect(subject.icon).to eql "object"
+      end
+    end
+    context "container=true" do
+      it "defaults to 'folder'" do
+        expect(subject.icon).to eql "folder"
+      end
+    end
+    context "icon_key='home'" do
+      subject { build(:item, icon_key: "home") }
+      it "is 'folder'" do
+        expect(subject.icon).to eql "home"
+      end
+    end
+  end
+
   describe "#container" do
     context "true" do
       subject { build(:item, container: true) }

@@ -15,6 +15,10 @@ class Item < ApplicationRecord
   validate :shelf_life_begin_less_than_end?
   validate :convertable_from_container_to_item?
   validate :parent_is_container?
+  validate :icon_key_exists?
+
+  DEFAULT_CONTAINER_ICON_KEY = "folder".freeze
+  DEFAULT_ITEM_ICON_KEY = "object".freeze
 
   # This was implemented this way because the clojure_tree gem
   # needs to be patched to add a `before_add` callback to the `children`
@@ -48,7 +52,11 @@ class Item < ApplicationRecord
   end
 
   def icon
-    container ? "folder" : "sugar-cube"
+    icon_key || default_icon_key
+  end
+
+  def icon=(value)
+    self.icon_key = value
   end
 
   def find_or_create_label(text: name)
@@ -83,7 +91,12 @@ class Item < ApplicationRecord
     order("container DESC").order(:name)
   end
 
+  def default_icon_key
+    container ? DEFAULT_CONTAINER_ICON_KEY : DEFAULT_ITEM_ICON_KEY
+  end
+
   private
+
     def shelf_life_begin_less_than_end?
       return if shelf_life.nil?
 
@@ -96,6 +109,11 @@ class Item < ApplicationRecord
       if not container? and children.exists?
         errors.add(:container, "must have all items removed before it can be changed to not be a container")
       end
+    end
+
+    def icon_key_exists?
+      return if icon_key.blank?
+      errors.add(:icon_key, "does not exist") unless SvgIconFile.exists? icon_key
     end
 
     def parent_is_container?
