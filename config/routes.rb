@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       resources :labels, only: %i[create]
       resources :copies, only: %i[create new]
       resources :batches, only: %i[new create]
+      resource :icon, only: %i[edit update]
     end
   end
   resources :members

@@ -1,0 +1,11 @@
+= title "Change icon", subtitle: breadcrumb(item_breadcrumbs), icon: item_edit_icon(@item)
+
+= form_for resource, turbolinks_form: true do |f|
+  .field
+    .grid.is-for-icons.is-for-radio-buttons
+      -@icons.each do |icon|
+        = f.radio_button :icon_key, icon.key
+        = f.label [:icon_key, icon.key].join("_") do
+          .box
+            = render_icon icon.key, class: "image"
+  = f.submit "Save", class: "button is-primary"
