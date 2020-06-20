@@ -3,7 +3,7 @@ Faker::Config.locale = 'en-US'
 
 FactoryBot.define do
   factory :svg_icon_file do
-    key { folder }
+    path { SvgIconFile.find("folder").path }
   end
 
   factory :user_resolution do

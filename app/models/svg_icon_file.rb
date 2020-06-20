@@ -1,31 +1,31 @@
+# Manipulates SVG files and gives paths.
 class SvgIconFile < ApplicationModel
-  attr_accessor :key
-  validates :key, presence: true
+  attr_accessor :key, :path
+  validates :path, presence: true
 
   IconNotFound = Class.new(RuntimeError)
-
-  def icon_path
-    self.class.icon_path_by_key(key)
-  end
-
-  def light_svg
-    File.open icon_path
-  end
 
   def name
     key.underscore.humanize
   end
 
+  def svg
+    @_svg ||= File.read path
+  end
+  alias :light_svg :svg
+
+  def key
+    @key || path.basename(".svg").to_s
+  end
+
   def dark_svg
-    @_dark_svg ||= File.open(icon_path) do |file|
-      Nokogiri::XML(file).tap do |svg|
-        svg.css("path[fill]").attr("fill", "#fff")
-      end
+    @_dark_svg ||= Nokogiri::XML(svg).tap do |doc|
+      doc.css("path[fill]").attr("fill", "#fff")
     end
   end
 
   def persisted?
-    icon_path.exist?
+    File.exist? path
   end
 
   def cache_key(*segments)
@@ -33,49 +33,63 @@ class SvgIconFile < ApplicationModel
   end
 
   def fingerprint
-    @_fingerprint ||= Digest::MD5.hexdigest(light_svg.read)
+    @_fingerprint ||= Digest::MD5.hexdigest(light_svg)
   end
 
   def updated_at
-    File.mtime icon_path
+    File.mtime path
   end
 
   def to_param
     [key, fingerprint].join("-")
   end
 
-  private
-    def self.root_path
-      Rails.root.join("app/icons")
-    end
+  class << self
+    delegate :find,
+        :find!,
+        :all,
+        :exist?,
+      to: :collection
 
-    def self.icon_path_by_key(key)
-      root_path.join([key, "svg"].join("."))
-    end
-
-    def self.find(key)
-      icon = new(key: key)
-      raise IconNotFound unless icon.persisted?
-      icon
-    end
-
-    def self.exists?(key)
-      new(key: key).persisted?
-    end
-
-    def self.paths
-      root_path.glob("*.svg")
-    end
-
-    def self.keys
-      paths.map{ |path| path.basename(".svg").to_s }
-    end
-
-    def self.all
-      Enumerator.new do |y|
-        keys.each do |key|
-          y << new(key: key)
-        end
+    private
+      def collection
+        @_collection ||= FileCollection.new
       end
+  end
+
+  # All of the goo needed to find the SVG file in a directory and pull it
+  # SvgIconFile objects.
+  class FileCollection
+    attr_accessor :path
+
+    def initialize(path=nil)
+      @path ||= Rails.root.join("app/icons")
     end
+
+    def find(key)
+      return nil unless exist? key
+      SvgIconFile.new(key: key, path: icon_path_by_key(key))
+    end
+
+    def find!(key)
+      find(key) || raise(IconNotFound)
+    end
+
+    def exist?(key)
+      File.exist? icon_path_by_key(key)
+    end
+
+    def all
+      paths.map { |path| SvgIconFile.new(path: path) }
+    end
+
+    private
+      def paths
+        path.glob("*.svg")
+      end
+
+      def icon_path_by_key(key)
+        path.join([key, "svg"].join("."))
+      end
+  end
 end

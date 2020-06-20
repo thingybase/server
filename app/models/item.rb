@@ -113,7 +113,7 @@ class Item < ApplicationRecord
 
     def icon_key_exists?
       return if icon_key.blank?
-      errors.add(:icon_key, "does not exist") unless SvgIconFile.exists? icon_key
+      errors.add(:icon_key, "does not exist") unless SvgIconFile.exist? icon_key
     end
 
     def parent_is_container?

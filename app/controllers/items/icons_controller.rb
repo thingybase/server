@@ -10,14 +10,19 @@ module Items
       @icons = SvgIconFile.all
     end
 
-    def permitted_params
-      [:icon_key]
-    end
+    private
+      def permitted_params
+        [:icon_key]
+      end
 
-    def assign_attributes
-      self.resource.user = current_user
-      self.resource.account ||= parent_resource.account
-      self.resource.parent ||= parent_resource
-    end
+      def assign_attributes
+        resource.user = current_user
+        resource.account ||= parent_resource.account
+        resource.parent ||= parent_resource
+      end
+
+      def find_account_by_resource
+        parent_resource.account
+      end
   end
 end

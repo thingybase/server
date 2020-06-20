@@ -46,6 +46,6 @@ class IconsController < ApplicationController
     end
 
     def load_icon
-      @icon = SvgIconFile.find permitted_params.fetch(:key)
+      @icon = SvgIconFile.find! permitted_params.fetch(:key)
     end
 end
