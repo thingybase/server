@@ -17,6 +17,7 @@ RSpec.describe Item, type: :model do
       end
     end
     context "container=true" do
+      subject { build(:item, container: true) }
       it "defaults to 'folder'" do
         expect(subject.icon).to eql "folder"
       end
