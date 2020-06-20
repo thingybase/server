@@ -1,0 +1,1 @@
+Item.find_each { |i| i.update_attribute :uuid, SecureRandom.uuid }

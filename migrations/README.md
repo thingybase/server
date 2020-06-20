@@ -4,6 +4,10 @@ The migrations in this folder are scripts or any other **non-schema** migrations
 
 Each migration has it's own folder that's the `month-day-year` format, scripts to run the migrations, and an entry in this README.md file so we can keep track of why the migrations are in place.
 
+## June 19, 2020
+
+Populates the `items.uuid` rows in the items schema with `SecureRandom.uuid`. Just run `transform.rb`.
+
 ## June 8, 2020
 
 The Container model is no longer needed; instead an Item will be capable of containing other Items. Since there's only a few hundred records in production at the time of this writing, its much easier to do the migration via Ruby app code than it would be to figure out how to build a hierarchy in pure SQL.
