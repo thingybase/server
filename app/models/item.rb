@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   include PgSearch::Model
+  include UuidField
 
   pg_search_scope :search_by_name, against: :name
 
@@ -12,6 +13,7 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :account, presence: true
   validates :user, presence: true
+
   validate :shelf_life_begin_less_than_end?
   validate :convertable_from_container_to_item?
   validate :parent_is_container?

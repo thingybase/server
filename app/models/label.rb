@@ -1,6 +1,5 @@
 class Label < ApplicationRecord
-  validates :uuid, presence: true, uniqueness: true
-  before_validation :assign_default_uuid
+  include UuidField
 
   belongs_to :user
   belongs_to :account
@@ -9,9 +8,4 @@ class Label < ApplicationRecord
   validates :user, presence: true
   validates :account, presence: true
   validates :text, presence: true
-
-  private
-    def assign_default_uuid
-      self.uuid ||= SecureRandom.uuid
-    end
 end

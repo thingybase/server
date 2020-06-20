@@ -59,14 +59,9 @@ FactoryBot.define do
   end
 
   factory :label do
-    subject { Faker::Hipster.sentence }
-    message { Faker::Hipster.paragraph }
+    text { Faker::Hipster.sentence }
     user
     account
-  end
-
-  factory :acknowledgement do
-    user
-    label
+    item
   end
 end
