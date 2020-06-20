@@ -14,7 +14,7 @@ class IconsController < ApplicationController
   def light
     cached_respond_to do |format|
       format.svg do
-        render xml: cache_rendition { @icon.light_svg.read }
+        render xml: cache_rendition { @icon.light_svg }
       end
     end
   end
@@ -22,7 +22,7 @@ class IconsController < ApplicationController
   def dark
     cached_respond_to do |format|
       format.svg do
-        render xml: cache_rendition { @icon.dark_svg.to_s }
+        render xml: cache_rendition { @icon.dark_svg }
       end
     end
   end
@@ -40,9 +40,7 @@ class IconsController < ApplicationController
     end
 
     def cache_rendition(&block)
-      cache @icon.cache_key(action_name, request.format) do
-        block.call
-      end
+      cache @icon.cache_key(action_name, request.format), &block
     end
 
     def load_icon
