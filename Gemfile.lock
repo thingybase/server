@@ -273,6 +273,8 @@ GEM
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     spring (2.1.0)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
@@ -364,6 +366,7 @@ DEPENDENCIES
   shoulda-matchers (~> 3.1)
   simple_form (~> 5.0)
   spring
+  spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
   strong_password
   turbolinks (~> 5)
