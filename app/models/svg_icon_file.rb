@@ -21,7 +21,7 @@ class SvgIconFile < ApplicationModel
   def dark_svg
     @_dark_svg ||= Nokogiri::XML(svg).tap do |doc|
       doc.css("path[fill]").attr("fill", "#fff")
-    end
+    end.to_xml
   end
 
   def persisted?
