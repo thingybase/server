@@ -29,7 +29,6 @@ module AccountLayout
     end
 
     def find_account_by_resource
-      return unless member_request?
       resource.account if resource
     end
 end

@@ -17,4 +17,9 @@ class NestedWeakResourceController < NestedResourcesController
   def find_resource
     parent_resource
   end
+
+  # This is for the `account_layout` helper in all sub-classes.
+  def find_account
+    parent_resource.account
+  end
 end

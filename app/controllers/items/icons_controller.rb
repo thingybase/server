@@ -20,9 +20,5 @@ module Items
         resource.account ||= parent_resource.account
         resource.parent ||= parent_resource
       end
-
-      def find_account_by_resource
-        parent_resource.account
-      end
   end
 end
