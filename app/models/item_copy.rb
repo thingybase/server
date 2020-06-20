@@ -49,6 +49,13 @@ class ItemCopy < ApplicationModel
   end
 
   def persist_copy!
-    item.dup.tap(&:save!)
+    duplicate.tap(&:save!)
+  end
+
+  def duplicate
+    item.dup.tap do |i|
+      # Nil fields that need to remain unique and be auto-generated.
+      i.id = i.uuid = nil
+    end
   end
 end

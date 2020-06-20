@@ -1,5 +1,5 @@
 module LabelsHelper
-  def label_uuid_redirector_url(label)
-    label_url label.uuid
+  def scan_label_url(item)
+    super item.uuid
   end
 end

@@ -1,6 +1,4 @@
 class Label < ApplicationRecord
-  include UuidField
-
   belongs_to :user
   belongs_to :account
   belongs_to :item, optional: true

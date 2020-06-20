@@ -1,5 +1,5 @@
 module Accounts
-  class MembersController < ResourcesController
+  class MembersController < NestedResourcesController
     include AccountLayout
 
     def self.resource

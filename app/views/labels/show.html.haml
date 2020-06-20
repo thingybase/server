@@ -7,7 +7,7 @@
   -else
     Not linked to item
 =resource_field :label_link do
-  =link_to label_uuid_redirector_url(resource)
+  =link_to scan_label_url(resource), scan_label_url(resource)
 =resource_field :created_at do
   =local_time resource.created_at
 =resource_field :updated_at do

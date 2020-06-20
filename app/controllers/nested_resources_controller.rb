@@ -23,9 +23,19 @@ class NestedResourcesController < ResourcesController
     end
 
     def find_parent_resource
-      query = {}
-      query[parent_active_record_id] = params[parent_resource_id_param]
-      self.class.parent_resource.find_by! **query
+      self.class.parent_resource.find_resource params[parent_resource_id_param]
+    end
+
+    # Finds the account of the resource depending on the request type and
+    # the parent resource.
+    def find_account
+      if member_request?
+        resource.account
+      elsif parent_resource.is_a? Account
+        parent_resource
+      else
+        parent_resource.account
+      end
     end
 
     # If we're deep, we want to show only members that are scoped

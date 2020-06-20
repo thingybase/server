@@ -136,12 +136,6 @@ class ResourcesController < ApplicationController
       :id
     end
 
-    # Key used to find the resource via ActiveRecord. Typically this is the primary key of the record,
-    # but it would be a different field if you don't want to expose users to primary keys.
-    def active_record_id
-      :id
-    end
-
     # Use callbacks to share common setup or constraints between actions.
     def set_resource_instance_variable
       instance_variable_set("@#{resource_name}", resource)
@@ -160,9 +154,7 @@ class ResourcesController < ApplicationController
 
     # Finds resource, which is called by `set_resource` to assign it to the right variables.
     def find_resource
-      query = {}
-      query[active_record_id] = params[resource_id_param]
-      resource_class.find_by! **query
+      resource_class.find_resource params[resource_id_param]
     end
 
     # Initializes a model for the `new` action.
@@ -196,6 +188,11 @@ class ResourcesController < ApplicationController
     # `flash[:notice]` message when a resource is successfully deleted
     def destroy_notice
       "#{resource_name.capitalize} deleted"
+    end
+
+    # Get the current account of the resource, if possible.
+    def find_account
+      resource.account if member_request?
     end
 
   private

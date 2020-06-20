@@ -34,7 +34,7 @@ module Labels
 
         LabelGenerator.new(layout: label_layout).tap do |generator|
           Array(resources).each do |r|
-            generator.add_label text: r.text, url: label_uuid_redirector_url(r) do |label|
+            generator.add_label text: r.text, url: scan_label_url(r) do |label|
               label.lines << "Created #{r.item.created_at.to_date.to_s(:long)}" if r.item
               label.lines << r.uuid
             end

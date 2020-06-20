@@ -30,7 +30,7 @@ class LabelsController < ResourcesController
     end
   end
 
-  def redirect
+  def scan
     @label = resource_scope.find_by! uuid: params[:uuid]
     authorize @label, :show?
     if item = @label.item
@@ -73,7 +73,7 @@ class LabelsController < ResourcesController
 
       LabelGenerator.new(layout: label_layout).tap do |generator|
         Array(resources).each do |r|
-          generator.add_label text: r.text, url: label_uuid_redirector_url(r) do |label|
+          generator.add_label text: r.text, url: scan_label_url(r) do |label|
             label.lines << "Created #{r.item.created_at.to_date.to_s(:long)}" if r.item
             label.lines << r.uuid
           end
