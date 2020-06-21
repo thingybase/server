@@ -6,4 +6,11 @@ class Label < ApplicationRecord
   validates :user, presence: true
   validates :account, presence: true
   validates :text, presence: true
+  before_validation :assign_default_uuid
+  validates :uuid, presence: true, uniqueness: true
+
+  private
+    def assign_default_uuid
+      self.uuid ||= SecureRandom.uuid
+    end
 end
