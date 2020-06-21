@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_20_053534) do
+ActiveRecord::Schema.define(version: 2020_06_21_193113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_053534) do
     t.boolean "container", default: false
     t.bigint "parent_id"
     t.string "icon_key"
-    t.uuid "uuid"
+    t.uuid "uuid", null: false
     t.index ["account_id"], name: "index_items_on_account_id"
     t.index ["container"], name: "index_items_on_container"
     t.index ["parent_id"], name: "index_items_on_parent_id"
