@@ -11,4 +11,9 @@ class Accounts::SearchesController < ApplicationController
       items: items
     )
   end
+
+  private
+    def find_account
+      Account.find params[:account_id]
+    end
 end

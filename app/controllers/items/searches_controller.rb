@@ -16,6 +16,10 @@ class Items::SearchesController < ApplicationController
 
   private
     def resource
-      Item.find(params[:item_id])
+      Item.find_resource params[:item_id]
+    end
+
+    def find_account
+      resource.account
     end
 end
