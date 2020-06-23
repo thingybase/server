@@ -14,6 +14,6 @@ class Accounts::SearchesController < ApplicationController
 
   private
     def find_account
-      Account.find params[:account_id]
+      Account.find_resource params[:account_id]
     end
 end

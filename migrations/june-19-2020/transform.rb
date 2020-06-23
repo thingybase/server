@@ -1,1 +1,1 @@
-Item.find_each { |i| i.update_attribute :uuid, SecureRandom.uuid }
+Item.where(uuid: nil).find_each { |i| i.update_attribute :uuid, SecureRandom.uuid }
