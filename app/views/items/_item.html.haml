@@ -1,0 +1,12 @@
+=resource_field :created_at do
+  =local_time item.created_at
+=resource_field :updated_at do
+  =local_time item.updated_at
+=resource_field :created_by do
+  =item.user.name
+-if item.shelf_life_begin
+  =resource_field :shelf_life_begin do
+    =local_date item.shelf_life_begin
+-if item.shelf_life_end
+  =resource_field :shelf_life_end do
+    =local_date item.shelf_life_end

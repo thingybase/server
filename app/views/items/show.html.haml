@@ -1,33 +1,8 @@
 = title resource.name, subtitle: breadcrumb(item_breadcrumbs), icon: @item.icon
 
--if @item.container?
-  .buttons
-    = link_to "+ Add", new_item_child_path(@item), class: 'button is-primary'
-    = link_to "Select...", new_item_batch_path(@item), class: 'button'
-    .is-hidden-mobile
-      =search_field url: item_search_path(@item)
-    .is-hidden-tablet
-      =link_to "Search", item_search_path(@account, item: @item), class: "button"
+=render partial: @item.container? ? "container" : "item", locals: { item: @item }
 
-  .list-card
-    - resource.children.container_then_item.each do |item|
-      = render_item_list_card item
-
--else
-  =resource_field :created_at do
-    =local_time resource.created_at
-  =resource_field :updated_at do
-    =local_time resource.updated_at
-  =resource_field :created_by do
-    =resource.user.name
-  -if resource.shelf_life_begin
-    =resource_field :shelf_life_begin do
-      =local_date resource.shelf_life_begin
-  -if resource.shelf_life_end
-    =resource_field :shelf_life_end do
-      =local_date resource.shelf_life_end
-
-.buttons.has-top-margin
+.buttons.mt-4
   = link_to t('.edit', default: t("helpers.links.edit")), edit_item_path(@item), class: 'button is-default'
   -if label = resource.label
     = link_to "View label", label_path(label), class: 'button'
