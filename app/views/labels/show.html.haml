@@ -15,7 +15,7 @@
 =resource_field :created_by do
   =resource.user.name
 
-.buttons.has-top-margin
+.buttons.mt-4
   = link_to t('.edit', default: t("helpers.links.edit")), edit_label_path(@label), class: 'button'
   = link_to "Print label", label_path(@label, format: :pdf), class: 'button'
   = link_to "Print jumbo label", label_path(@label, format: :pdf, size: :large), class: 'button is-text'
