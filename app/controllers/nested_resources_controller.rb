@@ -6,7 +6,7 @@ class NestedResourcesController < ResourcesController
 
   protected
     def self.parent_resource
-      raise NotImplementedError, "ShallowResourcesController.parent_resource must be an ActiveModel or ActiveRecord class"
+      raise NotImplementedError, "NestedResourcesController.parent_resource must be an ActiveModel or ActiveRecord class"
     end
 
     def resources
