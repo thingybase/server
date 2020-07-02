@@ -12,13 +12,11 @@ class User < ApplicationRecord
 
   has_many :labels
   has_many :api_keys
-
-  def accounts
-    Account
-      .joins("LEFT JOIN members ON accounts.id = members.account_id")
-      .where("members.user_id = ? OR accounts.user_id = ?", id, id)
-      .distinct
-  end
+  has_many :items
+  has_many :accounts, -> (user) {
+    joins("LEFT JOIN members ON accounts.id = members.account_id")
+      .where("members.user_id = ? OR accounts.user_id = ?", user.id, user.id)
+      .distinct }
 
   # TODO: Move this into a service object.
   def self.find_or_create_from_auth_hash(auth_hash)
