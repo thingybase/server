@@ -1,2 +1,8 @@
-%h1.title New item
-= render 'form'
+%h1.title Create item
+%h2.subtitle Select the account you'd like to add a new item to
+
+.grid
+  -current_user.accounts.each do |account|
+    .box
+      %p
+      =link_to account.name, new_account_item_path(account)

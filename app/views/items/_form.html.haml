@@ -1,9 +1,0 @@
-= application_form @item do |f|
-  = f.input :name, autofocus: true
-  = f.association :account, as: :hidden
-  = f.association :parent, label: "Contained in", collection: item_select_values(account_policy_scope(Item.container)), include_blank: true
-  = f.input :shelf_life_begin, as: :string, hint: %[Dates and times like "Jan 1", "last week", "an hour from now" all work]
-  = f.input :shelf_life_end, as: :string, hint: %[Dates and times like "Jan 1", "last week", "an hour from now" all work]
-  = f.input :container, hint: "Allow items to be contained within this item", optional: true
-  = f.input :icon_key, label: "Icon", collection: icon_select_values, include_blank: true
-  = f.button :submit, class: 'is-primary'
