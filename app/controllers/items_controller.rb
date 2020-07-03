@@ -5,15 +5,16 @@ class ItemsController < ResourcesController
     Item
   end
 
-  def destroy_redirect_url
-    @item.parent || items_url
-  end
+  private
+    def destroy_redirect_url
+      @item.parent || account_items_url(@item.account)
+    end
 
-  def create_redirect_url
-    @item.parent || @item
-  end
+    def create_redirect_url
+      @item.parent || @item
+    end
 
-  def permitted_params
-    [:name, :account_id, :parent_id, :shelf_life_begin, :shelf_life_end, :container, :icon_key]
-  end
+    def permitted_params
+      [:name, :account_id, :parent_id, :shelf_life_begin, :shelf_life_end, :container, :icon_key]
+    end
 end
