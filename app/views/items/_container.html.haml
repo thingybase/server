@@ -4,7 +4,7 @@
   .is-hidden-mobile
     =search_field url: item_search_path(item)
   .is-hidden-tablet
-    =link_to "Search", item_search_path(@account, item: item), class: "button"
+    =link_to "Search", item_search_path(item), class: "button"
 
 .list-card
   - resource.children.container_then_item.each do |item|
