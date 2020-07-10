@@ -7,5 +7,5 @@
   = f.input :container, as: :hidden
   = f.input :shelf_life_begin, as: :string, hint: %[Dates and times like "Jan 1", "last week", "an hour from now" all work]
   = f.input :shelf_life_end, as: :string, hint: %[Dates and times like "Jan 1", "last week", "an hour from now" all work]
-  = f.input :icon_key, label: "Icon", collection: icon_select_values, include_blank: true
+  = f.input :icon_key, label: "Icon", collection: icons, as: :image_radio_buttons
   = f.button :submit, class: 'is-primary'

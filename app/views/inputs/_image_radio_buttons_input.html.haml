@@ -1,0 +1,6 @@
+.grid.is-for-icons.is-for-radio-buttons
+  -icons.each do |icon|
+    = builder.radio_button :icon_key, icon.key
+    = builder.label [:icon_key, icon.key].join("_") do
+      .box
+        = render_icon icon.key, class: "image"

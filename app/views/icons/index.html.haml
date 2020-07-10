@@ -5,6 +5,7 @@
     .box.mb-0
       %figure= render_icon icon.key, class: "image is-4by3 mb-4"
       %strong= icon.name
+      %p= icon.key
       %p
         Updated at
         =local_time_ago icon.updated_at

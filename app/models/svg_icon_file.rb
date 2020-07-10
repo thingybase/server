@@ -48,6 +48,7 @@ class SvgIconFile < ApplicationModel
     delegate :find,
         :find!,
         :all,
+        :where,
         :exist?,
       to: :collection
 
@@ -73,6 +74,10 @@ class SvgIconFile < ApplicationModel
 
     def find!(key)
       find(key) || raise(IconNotFound)
+    end
+
+    def where(key:)
+      key.map{ |key| find key }.compact
     end
 
     def exist?(key)

@@ -2,6 +2,8 @@ module Items::Templates
   class BaseController < ResourcesController
     include AccountLayout
 
+    helper_method :icons
+
     def self.resource
       Item
     end
@@ -9,6 +11,10 @@ module Items::Templates
     protected
       def permitted_params
         [:name, :icon_key, :shelf_life_begin, :shelf_life_end]
+      end
+
+      def icons
+        SvgIconFile.all
       end
 
       def assign_item_attributes
