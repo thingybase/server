@@ -11,7 +11,13 @@ class ItemsController < ResourcesController
     end
 
     def create_redirect_url
-      @item.parent || @item
+      if @item.container?
+        @item
+      elsif @item.parent
+        @item.parent
+      else
+        @item
+      end
     end
 
     def permitted_params

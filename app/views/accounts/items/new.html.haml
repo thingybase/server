@@ -1,6 +1,26 @@
-%h1.title New item
-= application_form @item do |f|
-  = f.input :name, autofocus: true
-  = f.input :shelf_life_end, label: "Expiration date", hint: %[If the item expires enter a date like "Jan 29" or something relative like "6 months from now"], optional: true
-  = f.association :account, as: :hidden
-  = f.button :submit, class: 'is-primary'
+= title "Add to #{@account.name}"
+
+.list-cards
+  .list-card--item
+    .list-card--item--title.has-inline-icon
+      =render_icon "folder", class: "icon mr-2 is-small"
+      =link_to "Container", new_account_templates_containers_path(@account)
+    .list-card--item--details
+      .list-card--item--detail
+        Shelves, boxes, folders, or anything you put items into
+
+  .list-card--item
+    .list-card--item--title.has-inline-icon
+      =render_icon "object", class: "icon mr-2 is-small"
+      =link_to "Item", new_account_templates_items_path(@account)
+    .list-card--item--details
+      .list-card--item--detail
+        Add a basic item to this folder
+
+  .list-card--item
+    .list-card--item--title.has-inline-icon
+      =render_icon "steak", class: "icon mr-2 is-small"
+      =link_to "Perishable", new_account_templates_perishables_path(@account)
+    .list-card--item--details
+      .list-card--item--detail
+        Food or anything that expires

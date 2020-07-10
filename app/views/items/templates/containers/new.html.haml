@@ -1,7 +1,13 @@
-= title "Add container", subtitle: breadcrumb(item_breadcrumbs(@item.parent)), icon: @item.parent.icon
+- if @item.parent
+  = title "Add container", subtitle: breadcrumb(item_breadcrumbs(@item.parent)), icon: @item.parent.icon
+- else
+  = title "Add container", icon: @item.icon
 
 = application_form @item, url: url_for(action: :create) do |f|
   = f.input :name, autofocus: true
   = f.association :account, as: :hidden
+  - if @item.parent
+    = f.association :parent, as: :hidden
+  = f.input :container, as: :hidden
   = f.input :icon_key, label: "Icon", collection: icon_select_values, include_blank: true
   = f.button :submit, class: 'is-primary'

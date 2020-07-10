@@ -1,11 +1,3 @@
-def parent_resources(name, **opts)
-  resources name, **opts do
-    scope module: name do
-      yield
-    end
-  end
-end
-
 def batch_resources(resources_name)
   resources resources_name,
     param: :ids,
@@ -15,6 +7,14 @@ def batch_resources(resources_name)
 end
 
 Rails.application.routes.draw do
+  concern :templateable do
+    namespace :templates do
+      resource :perishables, only: %i[new create], controller: "/items/templates/perishables"
+      resource :containers, only: %i[new create], controller: "/items/templates/containers"
+      resource :items, only: %i[new create], controller: "/items/templates/items"
+    end
+  end
+
   with_options to: "labels#scan", uuid: /[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/i do |legacy_scan|
     # Labels printed before June 20, 2020 point to this route. When you decide to use `uuid` as the resource
     # key, instead of `id`, you will create a conflict where this route should redirect to the item for older
@@ -33,11 +33,7 @@ Rails.application.routes.draw do
       resources :copies, only: %i[create new]
       resources :batches, only: %i[new create]
       resource :icon, only: %i[edit update]
-      namespace :templates do
-        resource :perishables, only: %i[new create]
-        resource :containers, only: %i[new create]
-        resource :items, only: %i[new create]
-      end
+      concerns :templateable
     end
   end
   resources :members
@@ -52,12 +48,15 @@ Rails.application.routes.draw do
     end
   end
 
-  parent_resources :phone_number_claims do
-    # No ID ; should this really be an
-    # `interaction` resource? e.g.
-    # `interaction :acknowledgements`
-    resource :verification
+  resources :phone_number_claims do
+    scope module: :phone_number_claims do
+      # No ID ; should this really be an
+      # `interaction` resource? e.g.
+      # `interaction :acknowledgements`
+      resource :verification
+    end
   end
+
   resources :accounts do
     get :search, to: "accounts/searches#index"
     scope module: :accounts do
@@ -65,6 +64,7 @@ Rails.application.routes.draw do
       resources :invitations
       resources :labels
       resources :items
+      concerns :templateable
     end
     collection do
       get :launch

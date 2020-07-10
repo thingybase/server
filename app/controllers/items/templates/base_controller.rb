@@ -1,12 +1,8 @@
 module Items::Templates
-  class BaseController < NestedResourcesController
+  class BaseController < ResourcesController
     include AccountLayout
 
     def self.resource
-      Item
-    end
-
-    def self.parent_resource
       Item
     end
 
@@ -29,18 +25,26 @@ module Items::Templates
       end
 
     private
-      def parent_resource_name
-        "item_parent"
+      def find_account
+        Account.find_resource params.fetch(:account_id) if params.key? :account_id
       end
 
-      def parent_resource_id_param
-        "item_id"
+      def find_parent_item
+        Item.find_resource params.fetch(:item_id) if params.key? :item_id
+      end
+
+      def account
+        @_account ||= find_account
+      end
+
+      def parent_item
+        @_parent_item ||= find_parent_item
       end
 
       def assign_attributes
-        self.resource.user = current_user
-        self.resource.account ||= parent_resource.account
-        self.resource.parent ||= parent_resource
+        @item.user = current_user
+        @item.account ||= parent_item&.account || find_account
+        @item.parent ||= parent_item
         assign_item_attributes
       end
   end

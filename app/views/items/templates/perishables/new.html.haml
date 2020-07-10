@@ -1,9 +1,13 @@
-= title "Add perishable item", subtitle: breadcrumb(item_breadcrumbs(@item.parent)), icon: @item.parent.icon
+- if @item.parent
+  = title "Add perishable item", subtitle: breadcrumb(item_breadcrumbs(@item.parent)), icon: @item.parent.icon
+- else
+  = title "Add perishable item", icon: @item.icon
 
 = application_form @item, url: url_for(action: :create) do |f|
   = f.input :name, autofocus: true
   = f.association :account, as: :hidden
-  = f.association :parent, as: :hidden
+  - if @item.parent
+    = f.association :parent, as: :hidden
   = f.input :container, as: :hidden
   = f.input :shelf_life_begin, as: :string, hint: %[Dates and times like "Jan 1", "last week", "an hour from now" all work]
   = f.input :shelf_life_end, as: :string, hint: %[Dates and times like "Jan 1", "last week", "an hour from now" all work]
