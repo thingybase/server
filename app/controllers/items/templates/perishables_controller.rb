@@ -3,6 +3,7 @@ module Items::Templates
     protected
       def icons
         SvgIconFile.where key: %w[
+          tag
           potted-plant
           sack-of-flour
           eggs
@@ -50,6 +51,7 @@ module Items::Templates
     private
       def assign_item_attributes
         @item.container = false
+        @item.icon_key ||= "tag"
       end
   end
 end
