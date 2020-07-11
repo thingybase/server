@@ -32,7 +32,11 @@ module Items::Templates
 
     private
       def find_account
-        Account.find_resource params.fetch(:account_id) if params.key? :account_id
+        if params.key? :account_id
+          Account.find_resource params.fetch(:account_id)
+        elsif parent_item
+          parent_item.account
+        end
       end
 
       def find_parent_item
