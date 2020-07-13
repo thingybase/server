@@ -6,15 +6,15 @@ def batch_resources(resources_name)
     as: "#{resources_name}_batch"
 end
 
-Rails.application.routes.draw do
-  concern :templateable do
-    namespace :templates do
-      resource :perishables, only: %i[new create], controller: "/items/templates/perishables"
-      resource :containers, only: %i[new create], controller: "/items/templates/containers"
-      resource :items, only: %i[new create], controller: "/items/templates/items"
+def template_resources(*templates)
+  namespace :templates do
+    templates.each do |template|
+      resource template, only: %i[new create], controller: "/items/templates/#{template}"
     end
   end
+end
 
+Rails.application.routes.draw do
   with_options to: "labels#scan", uuid: /[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/i do |legacy_scan|
     # Labels printed before June 20, 2020 point to this route. When you decide to use `uuid` as the resource
     # key, instead of `id`, you will create a conflict where this route should redirect to the item for older
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
       resources :copies, only: %i[create new]
       resources :batches, only: %i[new create]
       resource :icon, only: %i[edit update]
-      concerns :templateable
+      template_resources :containers, :items, :perishables
     end
   end
   resources :members
@@ -64,7 +64,7 @@ Rails.application.routes.draw do
       resources :invitations
       resources :labels
       resources :items
-      concerns :templateable
+      template_resources :containers, :items, :perishables, :rooms
     end
     collection do
       get :launch

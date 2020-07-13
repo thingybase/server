@@ -7,7 +7,7 @@
       =link_to "Container", new_account_templates_containers_path(@account)
     .list-card--item--details
       .list-card--item--detail
-        Shelves, boxes, folders, or anything you put items into
+        Shelves, boxes, folders, or anything else that stuff is put into
 
   .list-card--item
     .list-card--item--title.has-inline-icon
@@ -15,7 +15,7 @@
       =link_to "Item", new_account_templates_items_path(@account)
     .list-card--item--details
       .list-card--item--detail
-        Add a basic item to this folder
+        All the important things to keep track of
 
   .list-card--item
     .list-card--item--title.has-inline-icon
@@ -24,3 +24,11 @@
     .list-card--item--details
       .list-card--item--detail
         Food or anything that expires
+
+  .list-card--item
+    .list-card--item--title.has-inline-icon
+      =render_icon "room", class: "icon mr-2 is-small"
+      =link_to "Room", new_account_templates_rooms_path(@account)
+    .list-card--item--details
+      .list-card--item--detail
+        Keep track of where things are located
