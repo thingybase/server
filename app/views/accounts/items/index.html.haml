@@ -1,5 +1,4 @@
-%h1.title= @account.name
-%h2.subtitle All the items you want to track
+= title @account.name, subtitle: "All the items you want to track"
 
 .buttons
   = link_to "+ Add", new_account_item_path(@account), class: 'button is-primary'

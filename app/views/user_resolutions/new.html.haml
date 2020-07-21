@@ -1,5 +1,4 @@
-%h1.title Enter an email address
-%h2.subtitle We'll send you an authentication code that you can use to login to your account or create a new one if its your first time here.
+= title "Enter an email address", subtitle: "We'll send you an authentication code that you can use to login to your account or create a new one if its your first time here."
 
 = application_form @user_resolution, url: user_resolution_url do |f|
   = f.input :email, autofocus: true, hint: "We will only use the email entered here to send a verification code"
