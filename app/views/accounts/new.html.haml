@@ -1,6 +1,26 @@
-%h1.title Create a new account
-%h2.subtitle Give it a name, like "Home" or "Business", so its easy to remember.
+= title "Create a new account", subtitle: "We'll setup the basics and you can customize the rest"
 
-= application_form @account do |f|
-  = f.input :name, autofocus: true
-  = f.button :submit, "Create account", class: 'is-primary'
+.list-cards
+  .list-card--item
+    .list-card--item--title.has-inline-icon
+      =render_icon "home", class: "icon mr-2 is-small"
+      =link_to "Home", new_accounts_templates_home_path
+    .list-card--item--details
+      .list-card--item--detail
+        Setup all the rooms in your house and then we can get it all setup
+
+  .list-card--item
+    .list-card--item--title.has-inline-icon
+      =render_icon "small-business-store-front", class: "icon mr-2 is-small"
+      =link_to "Office", new_accounts_templates_office_path
+    .list-card--item--details
+      .list-card--item--detail
+        Organize your office supply closet and pantry
+
+  .list-card--item
+    .list-card--item--title.has-inline-icon
+      =render_icon "sheets", class: "icon mr-2 is-small"
+      =link_to "Blank", new_accounts_templates_blank_path
+    .list-card--item--details
+      .list-card--item--detail
+        Start with an empty account and set it all up yourself

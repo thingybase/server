@@ -1,0 +1,6 @@
+%h1.title Create a new blank account
+%h2.subtitle Name the account and customize it next
+
+= application_form resource, url: url_for(action: :create) do |f|
+  = f.input :name, autofocus: true
+  = f.button :submit, "Create account", class: 'is-primary'

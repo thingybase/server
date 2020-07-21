@@ -177,17 +177,22 @@ class ResourcesController < ApplicationController
 
     # `flash[:notice]` message when a resource is successfully created
     def create_notice
-      "#{resource_name.capitalize} created"
+      "#{notice_resource_name} created"
     end
 
     # `flash[:notice]` message when a resource is successfully updated
     def update_notice
-      "#{resource_name.capitalize} updated"
+      "#{notice_resource_name} updated"
     end
 
     # `flash[:notice]` message when a resource is successfully deleted
     def destroy_notice
-      "#{resource_name.capitalize} deleted"
+      "#{notice_resource_name} deleted"
+    end
+
+    # What do you call the things that are created?
+    def notice_resource_name
+      resource_name.capitalize
     end
 
     # Get the current account of the resource, if possible.

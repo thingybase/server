@@ -4,11 +4,11 @@ module Items::Templates
 
     helper_method :icons
 
-    def self.resource
-      Item
-    end
-
     protected
+      def self.resource
+        Item
+      end
+
       def permitted_params
         [:name, :icon_key, :shelf_life_begin, :shelf_life_end]
       end

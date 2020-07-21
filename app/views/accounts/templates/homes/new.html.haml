@@ -1,0 +1,11 @@
+%h1.title Create a new home account
+%h2.subtitle Tell us a few things, we'll setup the basics, then you can customize the rest.
+
+= application_form resource, url: url_for(action: :create) do |f|
+  = f.input :name, autofocus: true
+  = f.input :bedrooms, as: :integer, hint: "How many bedrooms do you have?"
+  = f.input :kitchen, as: :boolean, hint: "Fridge, cabinets, pantry, and the works"
+  = f.input :garage, as: :boolean, hint: "Shelves and cars"
+  = f.input :family_room, as: :boolean, hint: "Where the whole family hangs out"
+  = f.input :basement, as: :boolean, hint: "A dark and cool place that probably has a lot of stuff"
+  = f.button :submit, "Create account", class: 'is-primary'

@@ -70,6 +70,14 @@ Rails.application.routes.draw do
       get :launch
     end
   end
+  namespace :accounts do
+    namespace :templates do
+      resource :home
+      resource :office
+      resource :blank
+    end
+  end
+
   resources :invitations do
     scope module: :invitations do
       # No ID ; should this really be an
