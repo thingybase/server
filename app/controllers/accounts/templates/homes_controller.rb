@@ -9,6 +9,8 @@ module Accounts::Templates
         :living_room,
         :storage_room
 
+      validates :bedrooms, numericality: { greater_than_or_equal_to: 0, only_integer: true }
+
       def build
         account.name = name
 

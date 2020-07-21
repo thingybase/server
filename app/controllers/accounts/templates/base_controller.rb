@@ -21,7 +21,7 @@ module Accounts::Templates
 
         account.transaction do
           build
-          account.save
+          account.save!
         end
       end
 
