@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       resources :copies, only: %i[create new]
       resources :batches, only: %i[new create]
       resource :icon, only: %i[edit update]
+      resource :badge, only: :show
       template_resources :containers, :items, :perishables
     end
   end
