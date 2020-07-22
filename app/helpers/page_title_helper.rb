@@ -5,7 +5,7 @@ module PageTitleHelper
   PRODUCT_NAME = "Thingybase"
 
   def title(title, subtitle: nil, icon: nil)
-    provide_page_title title
+    provide :title, title
     render partial: "page_title_helper/page_header_title", locals: {
       title: title,
       subtitle: subtitle,
@@ -13,12 +13,8 @@ module PageTitleHelper
     }
   end
 
-  def provide_page_title(title)
-    provide :title, title_tag_text(title)
-  end
-
   def render_page_title
-    content_for(:title) || PRODUCT_NAME
+    title_tag_text content_for(:title)
   end
 
   def title_tag_text(title)

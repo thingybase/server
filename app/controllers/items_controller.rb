@@ -1,5 +1,8 @@
 class ItemsController < ResourcesController
   include AccountLayout
+  include OpenGraphHelper
+
+  before_action :assign_open_graph_image_url, only: :show
 
   def self.resource
     Item
@@ -22,5 +25,9 @@ class ItemsController < ResourcesController
 
     def permitted_params
       [:name, :account_id, :parent_id, :shelf_life_begin, :shelf_life_end, :container, :icon_key]
+    end
+
+    def assign_open_graph_image_url
+      self.open_graph_image_url = item_badge_url(@item, format: :png)
     end
 end
