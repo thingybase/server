@@ -11,8 +11,9 @@ module Items
     skip_security!
 
     before_action :set_resource_instance_variable
+    before_action :noindex_header
 
-    VIEWPORT_HEIGHT = 600
+    VIEWPORT_HEIGHT = 400
     VIEWPORT_WIDTH = 600
 
     def show
@@ -51,6 +52,11 @@ module Items
 
       def set_resource_instance_variable
         @item = find_item
+      end
+
+      # We never want search engines indexing the badge  .html
+      def noindex_header
+        headers["X-Robots-Tag"] = "noindex" if request.format.html?
       end
   end
 end
