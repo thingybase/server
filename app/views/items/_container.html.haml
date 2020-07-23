@@ -7,5 +7,12 @@
     =link_to "Search", item_search_path(item), class: "button"
 
 .list-card
-  - resource.children.container_then_item.each do |item|
-    = render_item_list_card item
+  - if resource.children.empty?
+    .empty-box
+      %h3.title.is-6
+        = @item.name
+        is empty
+      = link_to "Add items", new_item_child_path(item), class: 'button'
+  - else
+    - resource.children.container_then_item.each do |item|
+      = render_item_list_card item
