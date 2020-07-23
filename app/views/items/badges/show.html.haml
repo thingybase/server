@@ -1,4 +1,6 @@
 =render_layout "body" do
-  %section.section
-    .container
-      = title @item.name, icon: @item.icon
+  .badge
+    .badge-icon
+      %figure= render_icon @item.icon, class: "image"
+    .badge-title
+      %h1.title= @item.name
