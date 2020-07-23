@@ -12,6 +12,9 @@ module Items
 
     before_action :set_resource_instance_variable
 
+    VIEWPORT_HEIGHT = 600
+    VIEWPORT_WIDTH = 600
+
     def show
       respond_to do |format|
         format.html { render layout: false }
@@ -22,8 +25,8 @@ module Items
     protected
       def screenshot_url
         microlink_screenshot_url url: url_for(format: :html),
-          width: 1_200,
-          height: 1_200,
+          "viewport.width": VIEWPORT_WIDTH,
+          "viewport.height": VIEWPORT_HEIGHT,
           type: :png
       end
 
