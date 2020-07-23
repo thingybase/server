@@ -1,3 +1,7 @@
+%meta(property="og:site_name" content="{open_graph_site_name}")
 %meta(property="og:title" content="#{open_graph_title}")
+%meta(property="twitter:title" content="#{open_graph_title}")
 -if open_graph_image_url.present?
   %meta(property="og:image" content="#{open_graph_image_url}")
+  %meta(property="twitter:image" content="#{open_graph_image_url}")
+%meta(property="twitter:card" content="summary_large_image")

@@ -11,7 +11,8 @@ module OpenGraphHelper
   def open_graph_meta_tags
     render partial: "open_graph_helper/meta_tags", locals: {
       open_graph_image_url: @open_graph_image_url,
-      open_graph_title: open_graph_title
+      open_graph_title: open_graph_title,
+      open_graph_site_name: PageTitleHelper::PRODUCT_NAME
     }
   end
 
