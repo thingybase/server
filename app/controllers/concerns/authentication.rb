@@ -49,7 +49,7 @@ module Authentication
 
     def deny_access
       session[:access_denied_url] = request.url
-      render :unauthorized, status: :unauthorized
+      render :unauthorized
     end
 
     def access_denied_url
