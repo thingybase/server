@@ -24,10 +24,12 @@ module Items
 
     protected
       def screenshot_url
-        microlink_screenshot_url url: url_for(format: :html),
+        microlink_screenshot_url "url": url_for(format: :html),
           "viewport.width": VIEWPORT_WIDTH,
           "viewport.height": VIEWPORT_HEIGHT,
-          type: :png
+          "width": VIEWPORT_WIDTH,
+          "waitUntil": :load,
+          "type": :png
       end
 
       def microlink_screenshot_url(**params)
