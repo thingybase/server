@@ -18,6 +18,6 @@ module PageTitleHelper
   end
 
   def title_tag_text(title)
-    [title, PRODUCT_NAME].join(DELIMITER)
+    [title, PRODUCT_NAME].compact.join(DELIMITER)
   end
 end
