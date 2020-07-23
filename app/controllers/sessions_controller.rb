@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def create
     if user = User.find_or_create_from_auth_hash(auth_hash)
-      redirect_url = access_denied_url || launch_accounts_url
+      redirect_url = access_denied_url || launch_url
       reset_session # Prevents session fixation attacks
       self.current_user = user
       redirect_to redirect_url

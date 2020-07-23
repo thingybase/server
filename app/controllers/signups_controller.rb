@@ -10,7 +10,7 @@ class SignupsController < ApplicationController
     @user = User.new(resource_params)
 
     if @user.save
-      redirect_url = access_denied_url || launch_accounts_url
+      redirect_url = access_denied_url || launch_url
       reset_session
       self.current_user = @user
       redirect_to redirect_url

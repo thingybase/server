@@ -67,9 +67,6 @@ Rails.application.routes.draw do
       resources :items
       template_resources :containers, :items, :perishables, :rooms
     end
-    collection do
-      get :launch
-    end
   end
   namespace :accounts do
     namespace :templates do
@@ -78,6 +75,8 @@ Rails.application.routes.draw do
       resource :blank
     end
   end
+
+  resource :launch
 
   resources :invitations do
     scope module: :invitations do

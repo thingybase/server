@@ -29,7 +29,7 @@ class EmailCodeVerificationsController < ApplicationController
       rotate_session
       if user = User.find_by_email(email)
         self.current_user = user
-        redirect_to launch_accounts_url
+        redirect_to launch_url
       else
         # Now set an authentic email for the next view.
         session[:authentic_email] = email

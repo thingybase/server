@@ -10,21 +10,6 @@ class AccountsController < ResourcesController
     render layout: "application"
   end
 
-  def launch
-    authorize Account, :index?
-
-    redirect_url = case policy_scope.count
-      when 0
-        new_account_url
-      when 1
-        account_items_url policy_scope.first
-      else
-        accounts_url
-      end
-
-    redirect_to redirect_url
-  end
-
   private
     # After we create an account, add the current user that just created the account as the owner.
     def add_current_user_to_members
