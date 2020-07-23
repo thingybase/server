@@ -10,13 +10,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, unless: :has_authentication_header?
   protect_from_forgery with: :null_session, if: :has_authentication_header?
 
-  rescue_from Pundit::NotAuthorizedError, with: :request_unauthorized
+  rescue_from Pundit::NotAuthorizedError, with: :request_forbidden
   rescue_from ActiveRecord::RecordNotFound, with: :request_not_found
 
   protected
-    def request_unauthorized(exception)
+    def request_forbidden(exception)
       @permission = humanized_permission exception.query
-      render "unauthorized", layout: "application", status: :unauthorized
+      render "forbidden", layout: "application", status: :forbidden
     end
 
     def request_not_found
