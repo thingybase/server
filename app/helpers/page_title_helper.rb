@@ -18,6 +18,13 @@ module PageTitleHelper
   end
 
   def title_tag_text(title)
-    [title, PRODUCT_NAME].compact.join(DELIMITER)
+    [title, produt_name_title].compact.join(DELIMITER)
   end
+
+  private
+    # User agents that we control, like custom apps, should not display the
+    # product title because its redudant, so we hide it from the `<title/>` tag.
+    def produt_name_title
+      PRODUCT_NAME unless is_app?
+    end
 end
