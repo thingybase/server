@@ -68,7 +68,7 @@ class EmailCodeVerification < ApplicationModel
   end
 
   private
-    def assign_default_values
+    def assign_defaults
       self.expires_at ||= TIME_TO_LIVE.from_now
       self.verification_attempts ||= 0
     end
