@@ -69,8 +69,8 @@ class EmailCodeVerification < ApplicationModel
 
   private
     def assign_defaults
-      self.expires_at ||= TIME_TO_LIVE.from_now
-      self.verification_attempts ||= 0
+      assign_default :expires_at, TIME_TO_LIVE.from_now
+      assign_default :verification_attempts, 0
     end
 
     def code_authenticity
