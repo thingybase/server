@@ -1,5 +1,5 @@
-= title "Enter an email address", subtitle: "We'll send you an authentication code that you can use to login to your account or create a new one if its your first time here."
+= title "Get a login code", subtitle: "We'll email you a login code to make sure we get you securely to your account"
 
 = application_form @user_resolution, url: user_resolution_url do |f|
-  = f.input :email, autofocus: true, hint: "We will only use the email entered here to send a verification code"
-  = f.button :submit, "Continue →", class: 'is-primary'
+  = f.input :email, autofocus: true, hint: "We only use this address to send you a login code and do not store your email"
+  = f.button :submit, "Email code →", class: 'is-primary'

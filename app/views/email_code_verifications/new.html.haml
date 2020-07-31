@@ -1,4 +1,4 @@
-= title "Enter verification code"
+= title "Verify login code"
 
 %h2.subtitle
   Look for a
@@ -8,7 +8,7 @@
 
 = application_form @email_code_verification, url: email_code_verification_url do |f|
   = f.input :code, autofocus: true, hint: "You have a few minutes to enter the code before it expires", pattern: '[0-9]*'
-  = f.button :submit, "Continue →", class: 'is-primary'
+  = f.button :submit, "Verify code →", class: 'is-primary'
 
 %hr
 

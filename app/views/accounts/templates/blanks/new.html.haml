@@ -1,5 +1,4 @@
-%h1.title Create a new blank account
-%h2.subtitle Name the account and customize it next
+= title "Create a new blank account", subtitle: "Give it a name and then customize it next", icon: "sheets"
 
 = application_form resource, url: url_for(action: :create) do |f|
   = f.input :name, autofocus: true
