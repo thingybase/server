@@ -13,6 +13,10 @@ module PhoneNumberClaims
     end
 
     private
+      def create_notice
+        "Phone number successfully verified"
+      end
+
       def assign_attributes
         resource.claim = parent_resource
       end

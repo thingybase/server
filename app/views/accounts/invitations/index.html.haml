@@ -1,25 +1,22 @@
-.page-header
-  %h1.title=t '.title', default: resource_class.model_name.human.pluralize.titleize
-%table.table.is-fullwidth.is-striped
-  %thead
-    %tr
-      %th= resource_class.human_attribute_name(:email)
-      %th= resource_class.human_attribute_name(:name)
-      %th= resource_class.human_attribute_name(:account_id)
-      %th= resource_class.human_attribute_name(:user_id)
-      %th= resource_class.human_attribute_name(:created_at)
-      %th=t '.actions', default: t("helpers.actions")
-  %tbody
-    - @invitations.each do |invitation|
-      %tr
-        %td= link_to invitation.email, invitation_path(invitation)
-        %td= invitation.name
-        %td= invitation.account.name
-        %td= invitation.user.name
-        %td= local_time invitation.created_at
-        %td
-          = link_to t('.show', default: t("helpers.links.show")), invitation_path(invitation), class: 'button is-default is-xs'
-          = link_to t('.edit', default: t("helpers.links.edit")), edit_invitation_path(invitation), class: 'button is-default is-xs'
-          = link_to t('.destroy', default: t("helpers.links.destroy")), invitation_path(invitation), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-xs is-danger'
+=title "#{@account.name} invitations", subtitle: "Invite people to join your account", icon: "mailer"
 
-= link_to t('.new', default: t("helpers.links.new")), new_invitation_path, class: 'button is-primary'
+.buttons
+  = link_to "+ Create new invitation", new_account_invitation_path(@account), class: 'button is-primary'
+
+- if @invitations.empty?
+  .empty-box
+    .title.is-5 No pending account invitations
+    .subtitle.is-6 Invitations will appear here after they are added
+    = link_to "+ Create new invitation", new_account_invitation_path(@account), class: 'button'
+
+- else
+  - @invitations.each do |invitation|
+    .list-card--item
+      .list-card--item--title= link_to invitation.email, invitation_path(invitation)
+      .list-card--item--details
+        -if invitation.name
+          .list-card--item--detail
+            = invitation.name
+        .list-card--item--detail
+          Created
+          = local_time_ago invitation.created_at

@@ -192,7 +192,7 @@ class ResourcesController < ApplicationController
 
     # What do you call the things that are created?
     def notice_resource_name
-      resource_name.capitalize
+      resource_name.humanize.capitalize
     end
 
     # Get the current account of the resource, if possible.

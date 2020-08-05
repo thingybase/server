@@ -1,4 +1,4 @@
-%h1.title
+=title @api_key.name, icon: "key"
 
 =resource_field :name
 =resource_field :created_at
@@ -12,9 +12,12 @@
   = link_to "API Keys", api_keys_path, class: 'button is-text'
   = link_to t('.destroy', default: t("helpers.links.destroy")), api_key_path(@api_key), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-danger'
 
-.box
-  %h2.title.is-5 curl request
-  %p Example of using curl to request a list of accounts
-  %pre.is-family-code
-    :plain
-      curl "#{accounts_url(format: :json)}" -H "Authentication: apitoken #{@api_key.token}"
+%hr
+
+.notification
+  .content
+    %h2.title.is-5 curl request
+    %p Example of using curl to request a list of accounts
+    %pre.is-family-code
+      :plain
+        curl "#{accounts_url(format: :json)}" -H "Authentication: apitoken #{@api_key.token}"

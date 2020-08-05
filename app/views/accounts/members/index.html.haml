@@ -1,13 +1,18 @@
-.page-header
-  %h1.title=t '.title', default: resource_class.model_name.human.pluralize.titleize
-%table.table.is-fullwidth.is-striped
-  %thead
-    %tr
-      %th Name
-      %th Became member at
-  %tbody
-    - @members.each do |member|
-      %tr
-        %td= link_to member.user.name, member_path(member)
-        %td= local_time member.created_at
-= link_to t('.new', default: t("helpers.links.new")), new_account_invitation_path(@account), class: 'button is-primary'
+= title "Team members", subtitle: "People who have access to the #{@account.name} account", icon: "basketball-jersey"
+
+.buttons
+  = link_to "+ Invite a team member", new_account_invitation_path(@account), class: 'button is-primary'
+
+- if @members.empty?
+  .empty-box
+    .title.is-5 No pending account members
+    .subtitle.is-6 Team members will appear here after they accept an invitation
+    = link_to "+ Create new invitation", new_account_invitation_path(@account), class: 'button'
+- else
+  - @members.each do |member|
+    .list-card--item
+      .list-card--item--title= link_to member.name, member_path(member)
+      .list-card--item--details
+        .list-card--item--detail
+          Became team member
+          = local_time_ago member.created_at

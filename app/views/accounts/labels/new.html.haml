@@ -1,4 +1,5 @@
-%h1.title New label
+=title "Add label", subtitle: "You can edit them later", icon: Label::DEFAULT_ICON_KEY
+
 = application_form @label do |f|
   = f.input :text, autofocus: true
   = f.association :account, as: :hidden

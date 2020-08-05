@@ -4,4 +4,4 @@
   = f.association :item, collection: item_select_values(account_policy_scope(Item.container)), include_blank: true
   .buttons
     = f.button :submit, class: 'is-primary'
-    =link_to "Link to new item", label_items_path(resource), method: :post, class: "button"
+    =link_to "Link to new item", label_items_path(resource), method: :post, class: "button is-text"

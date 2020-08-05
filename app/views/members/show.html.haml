@@ -1,14 +1,7 @@
-%h1.title=t '.title', default: resource_class.model_name.human.titleize
+= title @member.name, subtitle: "#{@member.account.name} team member"
 
-%p
-  %strong= resource_class.human_attribute_name(:user_id) + ':'
-  %br
-  = @member.user.name
-%p
-  %strong= resource_class.human_attribute_name(:account_id) + ':'
-  %br
-  = @member.account.name
+=resource_field :created_at do
+  =local_time @member.created_at
 
-
-= link_to t('.edit', default: t("helpers.links.edit")), edit_member_path(@member), class: 'button is-default'
-= link_to t('.destroy', default: t("helpers.links.destroy")), member_path(@member), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-danger'
+.buttons
+  = link_to "Remove member", member_path(@member), method: "delete", data: { confirm: 'Are you sure?' }, class: 'button is-danger'

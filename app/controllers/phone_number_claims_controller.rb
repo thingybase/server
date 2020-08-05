@@ -14,6 +14,10 @@ class PhoneNumberClaimsController < ResourcesController
   end
 
   private
+    def create_notice
+      nil
+    end
+
     def send_claim_code
       # TODO: Assert this happens and move this to a better place in the code.
       SendClaimCodeSmsJob.perform_later resource if resource.valid?

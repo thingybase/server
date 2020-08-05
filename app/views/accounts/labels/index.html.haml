@@ -1,8 +1,7 @@
-%h1.title=t '.title', default: resource_class.model_name.human.pluralize.titleize
-%h2.subtitle Quickly print labels and organize them later
+=title "Labels", subtitle: "Quickly print labels and organize them later", icon: "tags"
 
 .buttons
-  = link_to "Add label", new_account_label_path(@account), class: 'button is-primary'
+  = link_to "+ Add label", new_account_label_path(@account), class: 'button is-primary'
 
 .list-card
   - @labels.each do |label|

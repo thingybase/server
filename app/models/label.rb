@@ -9,6 +9,12 @@ class Label < ApplicationRecord
   before_validation :assign_default_uuid
   validates :uuid, presence: true, uniqueness: true
 
+  DEFAULT_ICON_KEY = "tags".freeze
+
+  def icon
+    item ? item.icon : DEFAULT_ICON_KEY
+  end
+
   private
     def assign_default_uuid
       self.uuid ||= SecureRandom.uuid

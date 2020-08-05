@@ -39,7 +39,6 @@ Rails.application.routes.draw do
   end
   resources :members
 
-  batch_resources :labels
   resources :labels do
     member do
       get :scan
@@ -48,6 +47,7 @@ Rails.application.routes.draw do
       resources :items, only: %i[create]
     end
   end
+  batch_resources :labels
 
   resources :phone_number_claims do
     scope module: :phone_number_claims do

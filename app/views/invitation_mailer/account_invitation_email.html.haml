@@ -1,5 +1,6 @@
-%p
-  #{@salutation},
+-if @invitation.name
+  %p
+    Hello #{@invitation.name},
 
 %p
   #{@invitation.user.name} has invited you to the "#{@invitation.account.name}" Thingybase account.
