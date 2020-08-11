@@ -28,7 +28,9 @@ module ItemsHelper
   # because the icon isn't found. This just grabs the old icon value so we can
   # fix the problem and move on.
   def item_edit_icon(item)
-    item.valid? ? item.icon : item.icon_key_was
+    item.icon
+  rescue
+    item.icon_key_was
   end
 
   private

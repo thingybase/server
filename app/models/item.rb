@@ -14,10 +14,18 @@ class Item < ApplicationRecord
   validates :account, presence: true
   validates :user, presence: true
 
+  validate :valid_chronic_dates
   validate :shelf_life_begin_less_than_end?
   validate :convertable_from_container_to_item?
   validate :parent_is_container?
   validate :icon_key_exists?
+
+  before_save :assign_shelf_life_range
+
+  def valid_chronic_dates
+    errors.add :shelf_life_begin, "is an invalid date" if !valid_chronic_date?(@shelf_life_begin)
+    errors.add :shelf_life_end, "is an invalid date" if !valid_chronic_date?(@shelf_life_end)
+  end
 
   DEFAULT_CONTAINER_ICON_KEY = "folder".freeze
   DEFAULT_ITEM_ICON_KEY = "object".freeze
@@ -38,24 +46,24 @@ class Item < ApplicationRecord
     label || create_label!(user: user, account: account, text: text)
   end
 
+  attr_writer :shelf_life_begin
   def shelf_life_begin
-    shelf_life&.begin
+    @shelf_life_begin ||= begin
+      shelf_life&.begin == -Float::INFINITY ? nil : shelf_life&.begin
+    end
   end
 
-  def shelf_life_begin=(date)
-    date = parse_date(date)
-    return if date.blank?
-    self.shelf_life = (date || today)..shelf_life_end
-  end
-
+  attr_writer :shelf_life_end
   def shelf_life_end
-    shelf_life&.end
+    @shelf_life_end ||= begin
+      shelf_life&.end == Float::INFINITY ? nil : shelf_life&.end
+    end
   end
 
-  def shelf_life_end=(date)
-    date = parse_date(date)
-    return if date.blank?
-    self.shelf_life = (shelf_life_begin || today)..date
+  def assign_shelf_life_range
+    begin_date = parse_date(@shelf_life_begin)
+    end_date = parse_date(@shelf_life_end)
+    self.shelf_life = begin_date..end_date
   end
 
   def self.container
@@ -73,9 +81,10 @@ class Item < ApplicationRecord
   private
 
     def shelf_life_begin_less_than_end?
+      assign_shelf_life_range
       return if shelf_life.nil?
 
-      if shelf_life_begin > shelf_life_end
+      if (shelf_life.end && shelf_life.begin) && shelf_life.begin > shelf_life.end
         errors.add(:shelf_life_begin, "must be less than shelf life end")
       end
     end
@@ -94,6 +103,10 @@ class Item < ApplicationRecord
     def parent_is_container?
       return if root?
       errors.add :parent, "must be a container" if not parent.container?
+    end
+
+    def valid_chronic_date?(date)
+      date.blank? || parse_date(date)
     end
 
     def parse_date(date)
