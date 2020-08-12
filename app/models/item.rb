@@ -15,7 +15,7 @@ class Item < ApplicationRecord
   validates :user, presence: true
 
   validate :valid_chronic_dates
-  validate :shelf_life_begin_less_than_end?
+  validate :shelved_at_less_than_end?
   validate :convertable_from_container_to_item?
   validate :parent_is_container?
   validate :icon_key_exists?
@@ -23,8 +23,8 @@ class Item < ApplicationRecord
   before_save :assign_shelf_life_range
 
   def valid_chronic_dates
-    errors.add :shelf_life_begin, "is an invalid date" if !valid_chronic_date?(@shelf_life_begin)
-    errors.add :shelf_life_end, "is an invalid date" if !valid_chronic_date?(@shelf_life_end)
+    errors.add :shelved_at, "is an invalid date" if !valid_chronic_date?(@shelved_at)
+    errors.add :expires_at, "is an invalid date" if !valid_chronic_date?(@expires_at)
   end
 
   DEFAULT_CONTAINER_ICON_KEY = "folder".freeze
@@ -46,23 +46,23 @@ class Item < ApplicationRecord
     label || create_label!(user: user, account: account, text: text)
   end
 
-  attr_writer :shelf_life_begin
-  def shelf_life_begin
-    @shelf_life_begin ||= begin
+  attr_writer :shelved_at
+  def shelved_at
+    @shelved_at ||= begin
       shelf_life&.begin == -Float::INFINITY ? nil : shelf_life&.begin
     end
   end
 
-  attr_writer :shelf_life_end
-  def shelf_life_end
-    @shelf_life_end ||= begin
+  attr_writer :expires_at
+  def expires_at
+    @expires_at ||= begin
       shelf_life&.end == Float::INFINITY ? nil : shelf_life&.end
     end
   end
 
   def assign_shelf_life_range
-    begin_date = parse_date(@shelf_life_begin)
-    end_date = parse_date(@shelf_life_end)
+    begin_date = parse_date(@shelved_at)
+    end_date = parse_date(@expires_at)
     self.shelf_life = begin_date..end_date
   end
 
@@ -74,18 +74,17 @@ class Item < ApplicationRecord
     order("container DESC").order(:name)
   end
 
-  def default_icon_key
-    container ? DEFAULT_CONTAINER_ICON_KEY : DEFAULT_ITEM_ICON_KEY
-  end
-
   private
+    def default_icon_key
+      container ? DEFAULT_CONTAINER_ICON_KEY : DEFAULT_ITEM_ICON_KEY
+    end
 
-    def shelf_life_begin_less_than_end?
+    def shelved_at_less_than_end?
       assign_shelf_life_range
       return if shelf_life.nil?
 
       if (shelf_life.end && shelf_life.begin) && shelf_life.begin > shelf_life.end
-        errors.add(:shelf_life_begin, "must be less than shelf life end")
+        errors.add(:shelved_at, "must happen before expires at")
       end
     end
 

@@ -4,9 +4,9 @@
   =local_time item.updated_at
 =resource_field :created_by do
   =item.user.name
--if item.shelf_life_begin
-  =resource_field :shelf_life_begin do
-    =local_date item.shelf_life_begin
--if item.shelf_life_end
-  =resource_field :shelf_life_end do
-    =local_date item.shelf_life_end
+-if item.expires_at
+  =resource_field :expires_at do
+    =local_date item.expires_at
+-if item.shelved_at
+  =resource_field :shelved_at do
+    =local_date item.shelved_at

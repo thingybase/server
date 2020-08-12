@@ -23,7 +23,7 @@
               .list-card--item--detail
                 Created
                 =local_time_ago item.created_at
-              -if item.shelf_life_end
+              -if item.expires_at
                 .list-card--item--detail
                   =item_expiration_tense item
-                  =local_time_ago item.shelf_life_end
+                  =local_time_ago item.expires_at

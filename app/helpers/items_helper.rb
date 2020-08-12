@@ -1,6 +1,6 @@
 module ItemsHelper
   def item_expiration_tense(item)
-    item.shelf_life_end > Time.now ?  "Expires" : "Expired"
+    item.expires_at > Time.now ?  "Expires" : "Expired"
   end
 
   def render_item_list_card(item, &block)

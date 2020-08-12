@@ -10,7 +10,7 @@ module Items::Templates
       end
 
       def permitted_params
-        [:name, :icon_key, :shelf_life_begin, :shelf_life_end]
+        [:name, :icon_key, :shelved_at, :expires_at]
       end
 
       def icons
