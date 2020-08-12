@@ -3,15 +3,15 @@
 .notification.is-primary
   .level.has-text-centered.is-uppercase
     .level-item
-      %div
+      =link_to account_items_path(@account), class: "has-no-text-decoration" do
         .header="Item".pluralize(@account.items.count)
         .title=@account.items.count
     .level-item
-      %div
+      =link_to account_labels_path(@account), class: "has-no-text-decoration" do
         .header="Label".pluralize(@account.labels.count)
         .title=@account.labels.count
     .level-item
-      %div
+      =link_to account_members_path(@account), class: "has-no-text-decoration" do
         .header="Team member".pluralize(@account.members.count)
         .title=@account.members.count
 
