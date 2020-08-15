@@ -1,6 +1,11 @@
 module Accounts
   class InvitationsController < NestedResourcesController
-    layout "account"
+    include AccountLayout
+
+    protected
+      def navigation_section
+        "People"
+      end
 
     private
       def create_notice

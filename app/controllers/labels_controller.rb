@@ -41,6 +41,10 @@ class LabelsController < ResourcesController
   end
 
   protected
+    def navigation_section
+      "Labels"
+    end
+
     def resource_scope
       policy_scope.joins(:user)
     end

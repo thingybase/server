@@ -6,11 +6,11 @@ class AccountsController < ResourcesController
     Account
   end
 
-  def show
-    render layout: "application"
-  end
-
   private
+    def navigation_section
+      "Dashboard"
+    end
+
     # After we create an account, add the current user that just created the account as the owner.
     def add_current_user_to_members
       @account.members.create!(user: current_user) if @account.valid?

@@ -10,6 +10,11 @@ module Accounts
       Account
     end
 
+    protected
+      def navigation_section
+        "Items"
+      end
+
     private
       def resource_scope
         policy_scope.roots.includes(:account).container_then_item

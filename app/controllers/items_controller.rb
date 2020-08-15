@@ -8,6 +8,11 @@ class ItemsController < ResourcesController
     Item
   end
 
+  protected
+    def navigation_section
+      "Items"
+    end
+
   private
     # We want to show these when access is denied for people who are not logged in.
     def access_denied

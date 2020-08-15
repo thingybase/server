@@ -5,6 +5,10 @@ module Items::Templates
     helper_method :icons
 
     protected
+      def navigation_section
+        "Items"
+      end
+
       def self.resource
         Item
       end

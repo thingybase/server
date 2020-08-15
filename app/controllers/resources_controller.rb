@@ -5,6 +5,7 @@ class ResourcesController < ApplicationController
   before_action :set_resources_instance_variable, only: :index
 
   helper_method :resource_name, :resource_class, :resource, :resources
+  helper_method :navigation_section
 
   def self.resource
     raise NotImplementedError, "ResourcesController.resource must be an ActiveModel or ActiveRecord class"

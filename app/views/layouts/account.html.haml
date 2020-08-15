@@ -1,9 +1,19 @@
 =render_layout "body" do
-  %section.section
-    .container= notice_message class: "mb-4"
-    .container= yield
-  %footer.section.has-text-centered
-    .container
-      .columns
-        .column
-          = link_to "Manage #{@account.name} account", account_path(@account)
+  #account-layout
+    #account-layout--nav.is-hidden-mobile
+      #account-layout--nav--top
+        =link_to_nav "Dashboard", account_path(@account), class: "button is-text"
+        =link_to_nav "Items", account_items_path(@account), class: "button is-text"
+        =link_to_nav "Labels", account_labels_path(@account), class: "button is-text"
+        =link_to_nav "People", account_members_path(@account), class: "button is-text"
+      #account-layout--nav--top
+        =link_to_nav "Profile", user_path(current_user), class: "button is-text"
+    #account-layout--content
+      %section.section
+        -if notice_message
+          .container
+            = notice_message class: "mb-4"
+        .container
+          = yield
+      %footer#account-layout--footer.is-hidden-tablet.has-text-centered.py-6
+        =link_to_nav "Manage #{@account.name}", account_path(@account), class: "button is-text"

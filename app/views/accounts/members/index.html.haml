@@ -1,13 +1,13 @@
-= title "Team members", subtitle: "People who have access to the #{@account.name} account", icon: "basketball-jersey"
+= title "People", subtitle: "Control access to the #{@account.name} account", icon: "basketball-jersey"
 
 .buttons
-  = link_to "+ Invite a team member", new_account_invitation_path(@account), class: 'button is-primary'
+  = link_to "+ Invite a person", new_account_invitation_path(@account), class: 'button is-primary'
 
 - if @members.empty?
   .empty-box
     .title.is-5 No pending account members
-    .subtitle.is-6 Team members will appear here after they accept an invitation
-    = link_to "+ Create new invitation", new_account_invitation_path(@account), class: 'button'
+    .subtitle.is-6 People will appear here after they accept an invitation
+    = link_to "+ Invite a person", new_account_invitation_path(@account), class: 'button'
 - else
   - @members.each do |member|
     .list-card--item

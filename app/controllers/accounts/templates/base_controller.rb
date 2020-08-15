@@ -41,6 +41,10 @@ module Accounts::Templates
     end
 
     protected
+      def navigation_section
+        "Items"
+      end
+
       def assign_attributes
         resource.user = current_user
         assign_account_attributes

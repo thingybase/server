@@ -106,3 +106,30 @@ $family-sans-serif: 'Inter var alt', -apple-system, Helvetica, sans-serif
   background-color: $white-ter
   @media (prefers-color-scheme: dark)
     background-color: $black-ter
+
+#account-layout
+  display: flex
+  flex-direction: row
+  width: 100%
+  height: 100vh
+  &--nav
+    padding: 1rem 0
+    display: flex
+    flex-direction: column
+    height: 100vh
+    justify-content: space-between
+    flex: 0 0 auto
+    border-right: 1px solid
+    border-color: $grey-lighter
+    @media (prefers-color-scheme: dark)
+      border-color: $grey-darker
+    &--top, &--bottom
+      display: flex
+      flex-direction: column
+      padding: 0.5rem 1rem
+    a
+      justify-content: left
+      text-decoration: none
+  &--content
+    width: 100%
+    overflow: auto
