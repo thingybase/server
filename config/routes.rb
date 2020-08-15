@@ -1,9 +1,10 @@
-def batch_resources(resources_name)
+def batch_resources(resources_name, **kwargs)
   resources resources_name,
     param: :ids,
     ids: /(\d+,)+\d+/,
     controller: "#{resources_name}/batches",
-    as: "#{resources_name}_batch"
+    as: "#{resources_name}_batch",
+    **kwargs
 end
 
 def template_resources(*templates)
@@ -39,6 +40,7 @@ Rails.application.routes.draw do
   end
   resources :members
 
+  batch_resources :labels, only: :show
   resources :labels do
     member do
       get :scan
@@ -47,7 +49,6 @@ Rails.application.routes.draw do
       resources :items, only: %i[create]
     end
   end
-  batch_resources :labels
 
   resources :phone_number_claims do
     scope module: :phone_number_claims do
