@@ -1,14 +1,8 @@
--if @invitation.name
-  %p
-    Hello #{@invitation.name},
-
 %p
   #{@invitation.user.name} has invited you to the "#{@invitation.account.name}" Thingybase account.
 
 %p
   You may accept or decline the invitation at #{link_to new_invitation_response_url(@invitation, token: @invitation.token), new_invitation_response_url(@invitation, token: @invitation.token)}.
-
-%p If you have any questions or concerns please reply to this email.
 
 %p
   Best,
