@@ -1,11 +1,16 @@
 =title "Preview invitation email", subtitle: "If everything looks good, send it and the person can join the account", icon: "mailer"
 
-%p
-  %strong To:
-  =@invitation.email
-%p
-  %strong Message:
-  %iframe.email-preview{srcdoc: InvitationMailer.account_invitation_email(@invitation).body}
+- with InvitationMailer.account_invitation_email(@invitation) do |email|
+  .box
+    %p
+      %strong To:
+      =email.to.join(", ")
+    %p
+      %strong From:
+      =email.from.join(", ")
+    %hr
+    %p
+      .content.mb-0= render_email_body email
 
 .buttons
   = link_to "Send invitation", email_invitation_path(@invitation), method: :put, class: 'button is-primary'
