@@ -10,7 +10,7 @@ class LabelsController < ResourcesController
     respond_to do |format|
       format.html
       format.pdf do
-        send_data label_generator(resource).render_pdf,
+        send_data LabelGenerator.batch(resource, size: params[:size]).render_pdf,
           disposition: "inline",
           type: "application/pdf",
           filename: "label-#{@label.to_param}.pdf"
@@ -22,7 +22,7 @@ class LabelsController < ResourcesController
     respond_to do |format|
       format.html
       format.pdf do
-        send_data label_generator(resources).render_pdf,
+        send_data LabelGenerator.batch(resources, size: params[:size]).render_pdf,
           disposition: "inline",
           type: "application/pdf",
           filename: "labels.pdf"
@@ -64,24 +64,5 @@ class LabelsController < ResourcesController
 
     def create_success_formats(format)
       format.pdf { redirect_to resource, format: :pdf }
-    end
-
-  private
-    def label_generator(resources)
-      label_layout = case params[:size]
-      when "large"
-        LabelGenerator::LARGE_LAYOUT
-      else
-        LabelGenerator::SMALL_LAYOUT
-      end
-
-      LabelGenerator.new(layout: label_layout).tap do |generator|
-        Array(resources).each do |r|
-          generator.add_label text: r.text, url: scan_label_url(r) do |label|
-            label.lines << "Created #{r.item.created_at.to_date.to_s(:long)}" if r.item
-            label.lines << r.uuid
-          end
-        end
-      end
     end
 end

@@ -49,6 +49,32 @@ class LabelGenerator
     pdf.render.to_s
   end
 
+  # TODO: This has hit peak complexity. If anything is added to it, it should be refactored
+  # into its own class. This method is doing too much, and its doing stuff that the Label
+  # class is already doing. What should probably be done is delegate some of the Label class
+  # to an associated item, if its present; and handle the logic of what text gets displayed.
+  def self.batch(resources, size:)
+    label_layout = case size
+    when "large"
+      LabelGenerator::LARGE_LAYOUT
+    else
+      LabelGenerator::SMALL_LAYOUT
+    end
+
+    LabelGenerator.new(layout: label_layout).tap do |generator|
+      Array(resources).each do |r|
+        generator.add_label text: r.text, url: Rails.application.routes.url_helpers.scan_label_url(r) do |label|
+          if r.item&.expires_at
+            label.lines << "Expires #{r.item.expires_at.to_date}"
+          elsif r.item
+            label.lines << "Created #{r.item.created_at.to_date}"
+          end
+          label.lines << r.uuid
+        end
+      end
+    end
+  end
+
   private
     def pdf
       sheets do |pdf, label|
