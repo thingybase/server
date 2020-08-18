@@ -11,8 +11,8 @@
         .header="Label".pluralize(@account.labels.count)
         .title=@account.labels.count
     .level-item
-      =link_to account_members_path(@account), class: "has-no-text-decoration" do
-        .header="Team member".pluralize(@account.members.count)
+      =link_to account_people_path(@account), class: "has-no-text-decoration" do
+        .header="People".pluralize(@account.members.count)
         .title=@account.members.count
 
 .tile.is-ancestor
@@ -33,10 +33,9 @@
           %p.subtitle.is-5 Organize better with a team
           %p
             You have a total of
-            =pluralize @account.members.count, "member"
+            =pluralize @account.members.count, "person"
             in your account.
-          %p=link_to "View people", account_members_path(@account)
-          %p=link_to "View pending invitations", account_invitations_path(@account)
+          %p=link_to "Manage people", account_people_path(@account)
       .tile.is-parent
         .tile.is-child.notification
           %h3.title.is-4 Labels

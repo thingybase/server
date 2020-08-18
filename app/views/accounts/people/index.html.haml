@@ -1,0 +1,46 @@
+= title "People", subtitle: "Control who can help organize or find stuff in the #{@account.name} account", icon: "basketball-jersey"
+
+.buttons
+  = link_to "+ Add person", new_account_invitation_path(@account), class: 'button is-primary'
+
+.list-cards
+  -with @account.user do |owner|
+    .list-card--item
+      .list-card--item--title.has-inline-icon
+        = render_icon "star", class: "icon mr-2 is-small"
+        = link_to owner.name, user_path(owner)
+      .list-card--item--details
+        .list-card--item--detail
+          Owner
+        .list-card--item--detail
+          Account created
+          = local_time_ago @account.created_at
+
+  - if @members.empty? and @invitations.empty?
+    .empty-box
+      .title.is-5 No people in account
+      .subtitle.is-6 People will appear here after they accept an invitation
+      = link_to "+ Add person", new_account_invitation_path(@account), class: 'button'
+  - else
+    - @members.each do |member|
+      .list-card--item
+        .list-card--item--title.has-inline-icon
+          = render_icon "basketball-jersey", class: "icon mr-2 is-small"
+          = link_to member.name, member_path(member)
+        .list-card--item--details
+          .list-card--item--detail
+            Member
+          .list-card--item--detail
+            Added
+            = local_time_ago member.created_at
+    - @invitations.each do |invitation|
+      .list-card--item
+        .list-card--item--title.has-inline-icon
+          = render_icon "mailer", class: "icon mr-2 is-small"
+          = link_to invitation.name || invitation.email, invitation_path(invitation)
+        .list-card--item--details
+          .list-card--item--detail
+            Pending invitation
+          .list-card--item--detail
+            Invited
+            = local_time_ago invitation.created_at

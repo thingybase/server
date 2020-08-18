@@ -25,7 +25,7 @@ module Accounts
       end
 
       def destroy_redirect_url
-        account_members_url @account
+        account_people_url @account
       end
   end
 end

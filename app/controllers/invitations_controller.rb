@@ -4,8 +4,13 @@ class InvitationsController < ResourcesController
   def email
     InvitationMailer.account_invitation_email(@invitation).deliver_now
     flash[:notice] = "Invitation sent to #{@invitation.email}"
-    redirect_to account_invitations_path(@invitation.account)
+    redirect_to account_people_path(@invitation.account)
   end
+
+  protected
+    def navigation_section
+      "People"
+    end
 
   private
     def self.resource
@@ -21,7 +26,11 @@ class InvitationsController < ResourcesController
     end
 
     def destroy_redirect_url
-      @account ? account_invitations_url(@account) : invitations_url
+      @account ? account_people_url(@account) : invitations_url
+    end
+
+    def create_redirect_url
+      account_people_url(@account)
     end
 
     def assign_attributes

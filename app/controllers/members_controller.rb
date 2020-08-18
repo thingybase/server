@@ -1,6 +1,11 @@
 class MembersController < ResourcesController
   include AccountLayout
 
+  protected
+    def navigation_section
+      "People"
+    end
+
   private
     def self.resource
       Member
@@ -19,6 +24,6 @@ class MembersController < ResourcesController
     end
 
     def destroy_redirect_url
-      account_members_url @account
+      account_people_url @account
     end
 end

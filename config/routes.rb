@@ -66,6 +66,7 @@ Rails.application.routes.draw do
       resources :invitations
       resources :labels
       resources :items
+      resources :people, only: :index, format: :html
       template_resources :containers, :items, :perishables, :rooms
     end
   end
