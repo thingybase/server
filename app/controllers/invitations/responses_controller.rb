@@ -18,8 +18,8 @@ module Invitations
       def assign_attributes
         @invitation_response.user = current_user
         @invitation_response.invitation = @invitation
-        @invitation_response.token ||= params[:token]
-        @invitation_response.status ||= "accept"
+        @invitation_response.assign_default :token, params[:token]
+        @invitation_response.assign_default :status, "accept"
       end
 
       def create_redirect_url
@@ -31,7 +31,11 @@ module Invitations
       end
 
       def create_notice
-        "Successfully added to account" if @invitation_response.accepted?
+        if @invitation_response.accepted?
+          "Invitation accepted"
+        else
+          "Invitation declined"
+        end
       end
 
       def access_denied

@@ -26,7 +26,7 @@ class ApplicationModel
   # When we're dealing with t/f values, the ||= doesn't work, so we set those
   # defaults up here.
   def assign_default(attr, val)
-    self.send("#{attr}=", val)if self.send(attr).nil?
+    self.send("#{attr}=", val) if self.send(attr).nil?
   end
 
   # Idiomatic transacition blocks for models that manipulate

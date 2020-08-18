@@ -1,6 +1,12 @@
 = title "Accept account invitation", subtitle: "#{@invitation.user.name} has invited you to join the #{@invitation.account.name} account"
 
-= application_form @invitation_response, url: invitation_response_path(@invitation) do |f|
-  = f.input :token, hint: "Code needed to accept or decline the invitation"
-  = f.input :status, collection: InvitationResponse::STATUSES, include_blank: false
-  = f.button :submit, "Respond to invitation", class: "is-primary"
+.is-inline-block
+  = application_form @invitation_response.tap{ |r| r.status = "accept" }, url: invitation_response_path(@invitation) do |f|
+    = f.input :token, as: :hidden
+    = f.input :status, as: :hidden
+    = f.button :submit, "Accept invitation", class: "is-primary"
+.is-inline-block
+  = application_form @invitation_response.tap{ |r| r.status = "decline" }, url: invitation_response_path(@invitation) do |f|
+    = f.input :token, as: :hidden
+    = f.input :status, as: :hidden
+    = f.button :submit, "Decline invitation", class: "is-text"
