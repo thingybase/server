@@ -99,3 +99,5 @@ end
 gem "turbolinks-form", "~> 0.1.4"
 
 gem "nilify_blanks", "~> 1.4"
+
+gem "active_record_extended", "~> 1.4"

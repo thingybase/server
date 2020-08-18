@@ -13,10 +13,17 @@ class User < ApplicationRecord
   has_many :labels
   has_many :api_keys
   has_many :items
-  has_many :accounts, -> (user) {
-    joins("LEFT JOIN members ON accounts.id = members.account_id")
-      .where("members.user_id = ? OR accounts.user_id = ?", user.id, user.id)
-      .distinct }
+  has_many :members
+  # Accounts the user belongs to, but doesn't own.
+  has_many :member_accounts, through: :members, source: :account
+  # Accounts the user owns.
+  has_many :owned_accounts, class_name: "Account"
+
+  # Combination of accounts the user owns and belongs to; used heavily
+  # by authorization logic to see if a user has access to an account or not.
+  def accounts
+    Account.union owned_accounts, member_accounts
+  end
 
   # TODO: Move this into a service object.
   def self.find_or_create_from_auth_hash(auth_hash)
