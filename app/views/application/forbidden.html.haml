@@ -1,6 +1,6 @@
 %section.hero.is-fullheight-with-navbar.is-bold
   .hero-body
     .container
-      = title "You do not have permissions to #{@permission} this #{resource.model_name.human}", icon: "no-entry-badge"
+      = title "You do not have permissions to #{@permission} this #{@forbidden_resource.model_name.human.downcase}", icon: "no-entry-badge"
       %p
-        You're currently logged in and acccessing this resource as #{link_to current_user.email, current_user}.
+        You're logged in and acccessing this resource as #{link_to current_user.email, current_user}.

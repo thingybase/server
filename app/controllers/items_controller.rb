@@ -17,6 +17,7 @@ class ItemsController < ResourcesController
     # We want to show these when access is denied for people who are not logged in.
     def access_denied
       assign_open_graph_attributes
+      super
     end
 
     def destroy_redirect_url

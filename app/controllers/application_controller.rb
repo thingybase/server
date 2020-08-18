@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   protected
     def request_forbidden(exception)
       @permission = humanized_permission exception.query
+      @forbidden_resource = exception.record
       render "forbidden", layout: "application", status: :forbidden
     end
 

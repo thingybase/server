@@ -50,10 +50,10 @@ module Authentication
     def deny_access
       session[:access_denied_url] = request.url
       access_denied
-      render :unauthorized, layout: "application"
     end
 
     def access_denied
+      render :unauthorized, layout: "application"
     end
 
     def access_denied_url

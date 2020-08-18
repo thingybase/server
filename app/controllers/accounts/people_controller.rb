@@ -3,6 +3,7 @@ module Accounts
     include AccountLayout
 
     def index
+      authorize @account, :show?
       @members = policy_scope(Member).where(account: @account)
       @invitations = policy_scope(Invitation).where(account: @account)
     end

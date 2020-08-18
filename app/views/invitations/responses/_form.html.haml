@@ -1,4 +1,0 @@
-= application_form @invitation_response, url: invitation_response_path(@invitation) do |f|
-  = f.input :token
-  = f.input :status, as: :radio_buttons, collection: InvitationResponse::STATUSES
-  = f.button :submit, "Respond to invitation"
