@@ -3,25 +3,25 @@
 .buttons
   = link_to "+ Add person", new_account_invitation_path(@account), class: 'button is-primary'
 
-.list-cards
-  -with @account.user do |owner|
-    .list-card--item
-      .list-card--item--title.has-inline-icon
-        = render_icon "star", class: "icon mr-2 is-small"
-        = link_to owner.name, user_path(owner)
-      .list-card--item--details
-        .list-card--item--detail
-          Owner
-        .list-card--item--detail
-          Account created
-          = local_time_ago @account.created_at
+- if @members.empty? and @invitations.empty?
+  .empty-box
+    .title.is-5 No people in account
+    .subtitle.is-6 People will appear here after they accept an invitation
+    = link_to "+ Add person", new_account_invitation_path(@account), class: 'button'
+- else
+  .list-cards
+    -with @account.user do |owner|
+      .list-card--item
+        .list-card--item--title.has-inline-icon
+          = render_icon "star", class: "icon mr-2 is-small"
+          = link_to owner.name, user_path(owner)
+        .list-card--item--details
+          .list-card--item--detail
+            Owner
+          .list-card--item--detail
+            Account created
+            = local_time_ago @account.created_at
 
-  - if @members.empty? and @invitations.empty?
-    .empty-box
-      .title.is-5 No people in account
-      .subtitle.is-6 People will appear here after they accept an invitation
-      = link_to "+ Add person", new_account_invitation_path(@account), class: 'button'
-  - else
     - @members.each do |member|
       .list-card--item
         .list-card--item--title.has-inline-icon
