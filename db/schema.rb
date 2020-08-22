@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_21_193113) do
+ActiveRecord::Schema.define(version: 2020_08_20_063957) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
@@ -83,6 +82,16 @@ ActiveRecord::Schema.define(version: 2020_06_21_193113) do
     t.index ["item_id"], name: "index_labels_on_item_id"
     t.index ["user_id"], name: "index_labels_on_user_id"
     t.index ["uuid"], name: "index_labels_on_uuid", unique: true
+  end
+
+  create_table "member_requests", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id", "user_id"], name: "index_member_requests_on_account_id_and_user_id", unique: true
+    t.index ["account_id"], name: "index_member_requests_on_account_id"
+    t.index ["user_id"], name: "index_member_requests_on_user_id"
   end
 
   create_table "members", force: :cascade do |t|
