@@ -6,6 +6,7 @@ module Accounts
       authorize @account, :show?
       @members = policy_scope(Member).where(account: @account)
       @invitations = policy_scope(Invitation).where(account: @account)
+      @member_requests = policy_scope(MemberRequest).where(account: @account)
     end
 
     private

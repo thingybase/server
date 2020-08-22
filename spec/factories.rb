@@ -2,6 +2,11 @@
 Faker::Config.locale = 'en-US'
 
 FactoryBot.define do
+  factory :member_request do
+    account
+    user
+  end
+
   factory :svg_icon_file do
     path { SvgIconFile.find("folder").path }
   end

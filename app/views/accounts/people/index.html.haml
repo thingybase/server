@@ -3,7 +3,7 @@
 .buttons
   = link_to "+ Add person", new_account_invitation_path(@account), class: 'button is-primary'
 
-- if @members.empty? and @invitations.empty?
+- if @members.empty? and @invitations.empty? and @member_requests.empty?
   .empty-box
     .title.is-5 No people in account
     .subtitle.is-6 People will appear here after they accept an invitation
@@ -33,6 +33,7 @@
           .list-card--item--detail
             Added
             = local_time_ago member.created_at
+
     - @invitations.each do |invitation|
       .list-card--item
         .list-card--item--title.has-inline-icon
@@ -44,3 +45,15 @@
           .list-card--item--detail
             Invited
             = local_time_ago invitation.created_at
+
+    - @member_requests.each do |request|
+      .list-card--item
+        .list-card--item--title.has-inline-icon
+          = render_icon "object", class: "icon mr-2 is-small"
+          = link_to request.user.name, new_member_request_review_path(request)
+        .list-card--item--details
+          .list-card--item--detail
+            Pending request
+          .list-card--item--detail
+            Invited
+            = local_time_ago request.created_at

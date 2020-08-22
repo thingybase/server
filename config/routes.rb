@@ -63,6 +63,7 @@ Rails.application.routes.draw do
     get :search, to: "accounts/searches#index"
     scope module: :accounts do
       resources :members
+      resources :member_requests, only: [:new, :create]
       resources :invitations
       resources :labels
       resources :items
@@ -75,6 +76,12 @@ Rails.application.routes.draw do
       resource :home
       resource :office
       resource :blank
+    end
+  end
+
+  resources :member_requests, only: :show do
+    scope module: :member_requests do
+      resource :review, only: [:new, :create]
     end
   end
 

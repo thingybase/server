@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :member_accounts, through: :members, source: :account
   # Accounts the user owns.
   has_many :owned_accounts, class_name: "Account"
+  has_many :member_requests
 
   # Combination of accounts the user owns and belongs to; used heavily
   # by authorization logic to see if a user has access to an account or not.
