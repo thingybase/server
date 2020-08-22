@@ -1,7 +1,5 @@
 module Invitations
   class ResponsesController < NestedResourcesController
-    rescue_from Pundit::NotAuthorizedError, with: :request_forbidden
-
     protected
       def self.resource
         InvitationResponse

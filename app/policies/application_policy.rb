@@ -7,15 +7,15 @@ class ApplicationPolicy
   end
 
   def index?
-    user.present?
+    is_user?
   end
 
   def show?
-    user.present? && scope.where(id: record.id).exists?
+    is_user? && scope.where(id: record.id).exists?
   end
 
   def create?
-    user.present?
+    is_user?
   end
 
   def new?
@@ -52,15 +52,19 @@ class ApplicationPolicy
   end
 
   private
+    def is_user?
+      user.present?
+    end
+
     def is_owner?
-      user.present? && user == record.user
+      is_user? && user == record.user
     end
 
     def is_account_owner?
-      user.present? && user == record.account.user
+      is_user? && user == record.account.user
     end
 
     def is_account_member?
-      user.present? && user.accounts.where(id: record.account).exists?
+      is_user? && user.accounts.where(id: record.account).exists?
     end
 end

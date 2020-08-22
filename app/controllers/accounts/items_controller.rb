@@ -1,6 +1,6 @@
 module Accounts
   class ItemsController < NestedResourcesController
-    layout "account"
+    include AccountLayout
 
     def self.resource
       Item

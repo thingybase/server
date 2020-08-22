@@ -27,12 +27,16 @@ module ApplicationHelper
   end
 
   # Wrap whatever form helpers are needed to get the job done.
-  def application_form(model, turbolinks_form: turbolinks_form_enabled?, **kwargs, &block)
-    simple_form_for model, turbolinks_form: turbolinks_form, **kwargs, &block
+  def application_form(model, turbolinks_form: application_form_turbolinks_form_enabled?, url: application_form_default_url, **kwargs, &block)
+    simple_form_for model, turbolinks_form: turbolinks_form, url: url, **kwargs, &block
   end
 
   private
-    def turbolinks_form_enabled?
+    def application_form_turbolinks_form_enabled?
       not Rails.env.development?
+    end
+
+    def application_form_default_url
+      url_for(action: :create)
     end
 end

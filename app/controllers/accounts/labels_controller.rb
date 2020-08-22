@@ -1,6 +1,6 @@
 module Accounts
   class LabelsController < NestedResourcesController
-    layout "account"
+    include AccountLayout
 
     def self.resource
       Label
