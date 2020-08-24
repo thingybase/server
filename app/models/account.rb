@@ -1,4 +1,6 @@
 class Account < ApplicationRecord
+  include UuidField
+
   belongs_to :user
   has_many :members, dependent: :destroy
   has_many :users, through: :members, dependent: :destroy
