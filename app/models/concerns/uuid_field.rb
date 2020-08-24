@@ -1,4 +1,5 @@
-# When included into an ActiveRecord, it will be linkable via its UUID column.
+# When included into an ActiveRecord, it will be linkable via its UUID column. The longer hex uuid formats
+# are shortend to a custom Base62 format so the URLs can be shorter.
 module UuidField
   extend ActiveSupport::Concern
 
@@ -8,13 +9,24 @@ module UuidField
   end
 
   class_methods do
-    def find_resource(uuid)
+    def find_resource(short_uuid)
+      uuid = UuidField.to_long_uuid short_uuid
       find_by! uuid: uuid
     end
   end
 
   def to_param
-    uuid
+    short_uuid
+  end
+
+  # Converts longer `94409fd3-b518-4236-9aa6-96be0f82f045` format to shorter `EfuYpHIrZbTTsztzBz0xHf`
+  def short_uuid
+    Anybase::Base62.to_native Anybase::Hex.to_i uuid.gsub("-", "")
+  end
+
+  # Converts shorter `EfuYpHIrZbTTsztzBz0xHf` to longer `94409fd3b51842369aa696be0f82f045`
+  def self.to_long_uuid(short_uuid)
+    Anybase::Hex.to_native Anybase::Base62.to_i short_uuid
   end
 
   private
