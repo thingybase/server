@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_20_063957) do
+ActiveRecord::Schema.define(version: 2020_08_24_064130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,9 @@ ActiveRecord::Schema.define(version: 2020_08_20_063957) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "uuid"
     t.index ["user_id"], name: "index_accounts_on_user_id"
+    t.index ["uuid"], name: "index_accounts_on_uuid", unique: true
   end
 
   create_table "api_keys", force: :cascade do |t|
