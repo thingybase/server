@@ -30,7 +30,7 @@ module Accounts
       end
 
       def redirect_to_existing_request
-        member_request = resource_scope.find_by(user: current_user)
+        member_request = MemberRequest.find_by(user: current_user, account: @account)
         redirect_to member_request if member_request
       end
 

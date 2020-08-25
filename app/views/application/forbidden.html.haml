@@ -1,6 +1,12 @@
-%section.hero.is-fullheight-with-navbar.is-bold
+%section.hero.is-medium
   .hero-body
     .container
-      = title "You do not have permissions to #{@permission} this #{@forbidden_resource.model_name.human.downcase}", icon: "no-entry-badge"
-      %p
-        You're logged in and acccessing this resource as #{link_to current_user.email, current_user}.
+      = title "You do not have permission to #{@permission} this #{@forbidden_resource.model_name.human.downcase}", icon: "no-entry-badge", subtitle: "You're trying to access this as #{current_user.name} (#{current_user.email})"
+      - if @member_request
+        %p
+          = application_form @member_request, url: account_member_requests_path(@member_request.account) do |f|
+            = f.input :account, as: :hidden
+            = f.input :user, as: :hidden
+            = f.button :submit, "Request to join account", class: "is-primary"
+      -else
+        = link_to "← Go back", :back, class: "button"

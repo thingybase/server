@@ -11,6 +11,11 @@ module AccountLayout
     def navigation_section
     end
 
+    def request_forbidden(exception)
+      @member_request = MemberRequest.new(account: find_account, user: current_user)
+      super(exception)
+    end
+
   private
     def set_account_instance_variable
       @account = find_account
