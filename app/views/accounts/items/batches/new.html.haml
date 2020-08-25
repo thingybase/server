@@ -1,0 +1,28 @@
+= title "Selecting items", subtitle: @account.name
+
+=form_for [:account, :items, @batch] do |f|
+  =f.hidden_field :account_id
+  .buttons
+    =f.button "Print labels", value: "label", name: "batch[action]", class: "button"
+    =f.button "Delete", value: "delete", name: "batch[action]", class: "button is-text", data: { confirm: "Are you sure?" }
+  -if f.object.errors[:base].any?
+    .message.is-danger
+      .message-body=f.object.errors[:base].to_sentence
+  .list-card
+    =f.fields_for :items, @batch.items, include_id: false do |s|
+      =s.label :selected, class: "list-card--selection" do
+        =s.hidden_field :uid
+        =s.check_box :selected, class: "checkbox list-card--selection--checkbox"
+        .list-card--item
+          - with s.object.model do |item|
+            .list-card--item--title.has-inline-icon
+              =render_icon item.icon, class: "icon mr-2 is-small"
+              =item.name
+            .list-card--item--details
+              .list-card--item--detail
+                Created
+                =local_time_ago item.created_at
+              -if item.expires_at
+                .list-card--item--detail
+                  =item_expiration_tense item
+                  =local_time_ago item.expires_at

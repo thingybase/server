@@ -15,7 +15,7 @@ module Items
 
     def new
       super
-      @items = authorize parent_resource.children
+      @items = authorize items_scope
     end
 
     def delete
@@ -29,7 +29,7 @@ module Items
 
       flash[:notice] = "Deleted  #{pluralize selected_models_count, "thing"}"
       respond_to do |format|
-        format.html { redirect_to parent_resource }
+        format.html { redirect_to delete_redirect_url }
         format.json { render :show, status: :created, location: resource }
       end
     end
@@ -60,6 +60,14 @@ module Items
     end
 
     protected
+      def delete_redirect_url
+        parent_resource
+      end
+
+      def create_redirect_url
+        [:item, @batch]
+      end
+
       def uids(scope)
         scope.map(&:uid).join(",")
       end
@@ -80,14 +88,10 @@ module Items
         ]
       end
 
-      def create_redirect_url
-        [:item, @batch]
-      end
-
       def assign_attributes
         self.resource.user = current_user
-        self.resource.account ||= parent_resource.account
-        self.resource.scope ||= parent_resource.children
+        self.resource.account ||= find_account
+        self.resource.scope ||= items_scope
       end
 
       def find_account
@@ -98,6 +102,10 @@ module Items
       def dispatch_batch_action(action_name)
         return unless BATCH_ACTIONS.include? action_name.to_sym
         self.public_send action_name
+      end
+
+      def items_scope
+        parent_resource.children
       end
   end
 end

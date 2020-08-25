@@ -67,6 +67,9 @@ Rails.application.routes.draw do
       resources :invitations
       resources :labels
       resources :items
+      namespace :items do
+        resources :batches, only: %i[new create]
+      end
       resources :people, only: :index, format: :html
       template_resources :containers, :items, :perishables, :rooms
     end
