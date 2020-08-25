@@ -15,7 +15,7 @@ module Accounts
         end
 
         def items_scope
-          parent_resource.items
+          parent_resource.items.roots.includes(:account).container_then_item
         end
 
         def delete_redirect_url
