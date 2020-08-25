@@ -3,6 +3,9 @@
 module UuidField
   extend ActiveSupport::Concern
 
+  # Length of GUID string, without dashes
+  GUID_LENGTH = 32
+
   included do
     before_validation :assign_default_uuid
     validates :uuid, presence: true, uniqueness: true
@@ -26,10 +29,14 @@ module UuidField
 
   # Converts shorter `EfuYpHIrZbTTsztzBz0xHf` to longer `94409fd3b51842369aa696be0f82f045`
   def self.to_long_uuid(short_uuid)
-    Anybase::Hex.to_native Anybase::Base62.to_i short_uuid
+    pad_guid_leading_zeros Anybase::Hex.to_native Anybase::Base62.to_i short_uuid
   end
 
   private
+    def self.pad_guid_leading_zeros(guid)
+      guid.rjust(GUID_LENGTH,'0')
+    end
+
     def assign_default_uuid
       self.uuid ||= SecureRandom.uuid
     end
