@@ -38,7 +38,7 @@ module Items
       labels = @batch.selected_models.map(&:find_or_create_label)
 
       respond_to do |format|
-        format.html { redirect_to label_url(ids(labels), format: :pdf) }
+        format.html { redirect_to label_url(uids(labels), format: :pdf) }
         format.json { render :show, status: :created, location: resource }
       end
     end
@@ -60,8 +60,8 @@ module Items
     end
 
     protected
-      def ids(scope)
-        scope.map(&:id).join(",")
+      def uids(scope)
+        scope.map(&:uid).join(",")
       end
 
       def create_notice
@@ -73,7 +73,7 @@ module Items
           :account_id,
           :action,
           { items_attributes: [
-              :id,
+              :uid,
               :selected
             ]
           }

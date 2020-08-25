@@ -1,3 +1,7 @@
+# TODO: This code is starting to do more than just dealing with the AccountLayout;
+# for example, it's dealing with denying authorization when a user looks at an item
+# on an account thats not theirs. This should probably be moved into its own class
+# or rolled into an AccountResources controller.
 module AccountLayout
   extend ActiveSupport::Concern
 

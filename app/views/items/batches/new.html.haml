@@ -12,7 +12,7 @@
   .list-card
     =f.fields_for :items, @batch.items, include_id: false do |s|
       =s.label :selected, class: "list-card--selection" do
-        =s.hidden_field :id
+        =s.hidden_field :uid
         =s.check_box :selected, class: "checkbox list-card--selection--checkbox"
         .list-card--item
           - with s.object.model do |item|

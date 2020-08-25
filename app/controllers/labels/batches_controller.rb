@@ -6,7 +6,7 @@ module Labels
     after_action :verify_policy_scoped
 
     def show
-      @labels = policy_scope Label.where(id: ids)
+      @labels = policy_scope Label.find_resources(uids)
 
       respond_to do |format|
         format.html
@@ -20,8 +20,8 @@ module Labels
     end
 
     protected
-      def ids
-        params.fetch(:ids).split(",").map{ |id| Integer(id) }
+      def uids
+        params.fetch(:ids).split(",")
       end
   end
 end

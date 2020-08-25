@@ -1,7 +1,7 @@
 def batch_resources(resources_name, **kwargs)
   resources resources_name,
     param: :ids,
-    ids: /(\d+,)+\d+/,
+    ids: /(\w+,)+\w+/,
     controller: "#{resources_name}/batches",
     as: "#{resources_name}_batch",
     **kwargs
