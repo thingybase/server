@@ -1,8 +1,6 @@
 .buttons
   = link_to "+ Add item", new_item_child_path(item), class: 'button is-primary'
   = link_to "Select...", new_item_batch_path(item), class: 'button'
-  .is-hidden-mobile
-    =search_field url: item_search_path(item)
   .is-hidden-tablet
     =link_to "Search", item_search_path(item), class: "button"
 

@@ -3,8 +3,6 @@
 .buttons
   = link_to "+ Add item", new_account_item_path(@account), class: 'button is-primary'
   = link_to "Select...", new_account_items_batch_path(@account), class: 'button'
-  .is-hidden-mobile
-    =search_field autofocus: true, url: account_search_path(@account)
   .is-hidden-tablet
     =link_to "Search", account_search_path(@account), class: "button"
 

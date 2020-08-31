@@ -1,5 +1,6 @@
 class AccountsController < ResourcesController
-  layout "account", except: %i[index new]
+  include AccountLayout
+  before_action :set_account_layout, except: %i[index new]
   after_action :add_current_user_to_members, only: :create
 
   def self.resource
@@ -22,5 +23,9 @@ class AccountsController < ResourcesController
 
     def resource_scope
       policy_scope.joins(:user)
+    end
+
+    def find_account
+      @account
     end
 end

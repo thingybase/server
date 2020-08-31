@@ -3,7 +3,7 @@
 =render partial: @item.container? ? "container" : "item", locals: { item: @item }
 
 .buttons.mt-4
-  = link_to t('.edit', default: t("helpers.links.edit")), edit_item_path(@item), class: 'button is-default'
+  = link_to "Edit", edit_item_path(@item), class: 'button is-default'
   -if label = resource.label
     = link_to "View label", label_path(label), class: 'button'
   -else

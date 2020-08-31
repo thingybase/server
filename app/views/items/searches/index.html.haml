@@ -1,6 +1,7 @@
 = title "Search #{resource.name}", subtitle: breadcrumb(item_breadcrumbs)
 
-=search_field autofocus: true
+.is-hidden-tablet
+  =search_field autofocus: true
 
 .list-card
   -if @search.phrase.blank?

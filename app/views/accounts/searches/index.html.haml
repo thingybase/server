@@ -1,7 +1,8 @@
 %h1.title Search #{@account.name}
 %h2.subtitle Find items, containers, and other things
 
-=search_field autofocus: true
+.is-hidden-tablet
+  =search_field autofocus: true
 
 .list-card
   -if @search.phrase.blank?
