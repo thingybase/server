@@ -14,7 +14,7 @@ module Items::Templates
       end
 
       def permitted_params
-        [:name, :icon_key, :shelved_at, :expires_at]
+        [:name, :icon_key, :expires_at]
       end
 
       def icons

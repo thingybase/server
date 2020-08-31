@@ -35,7 +35,7 @@ class ItemsController < ResourcesController
     end
 
     def permitted_params
-      [:name, :account_id, :parent_id, :shelved_at, :expires_at, :container, :icon_key]
+      [:name, :account_id, :parent_id, :expires_at, :container, :icon_key]
     end
 
     def assign_open_graph_attributes

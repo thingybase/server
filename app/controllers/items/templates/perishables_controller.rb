@@ -52,7 +52,6 @@ module Items::Templates
       def assign_item_attributes
         @item.container = false
         @item.icon_key ||= "tag"
-        @item.shelved_at ||= "Today"
         @item.expires_at ||= "6 months from now"
       end
   end
