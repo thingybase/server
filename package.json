@@ -9,6 +9,7 @@
     "bulma": "^0.9.0",
     "bulma-prefers-dark": "^0.1.0-beta.0",
     "local-time": "^2.1.0",
+    "stimulus": "^1.1.1",
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {

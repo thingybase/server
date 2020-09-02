@@ -24,3 +24,5 @@ require("local-time").start()
 
 import "../javascripts/bulma.js"
 import "../javascripts/turbolinks-form-core.js"
+
+import "controllers"

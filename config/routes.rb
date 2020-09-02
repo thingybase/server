@@ -70,7 +70,7 @@ Rails.application.routes.draw do
       namespace :items do
         resources :batches, only: %i[new create]
       end
-      resources :people, only: :index, format: :html
+      resources :people, only: %i[index new], format: :html
       template_resources :containers, :items, :perishables, :rooms
     end
   end

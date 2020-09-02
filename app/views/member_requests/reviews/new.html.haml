@@ -6,11 +6,11 @@
   =local_date resource.created_at
 
 .is-inline-block
-  = application_form resource.tap{ |r| r.status = "accept" } do |f|
+  = application_form resource.tap{ |r| r.status = "accept" }, url: member_request_review_path do |f|
     = f.input :status, as: :hidden
     = f.button :submit, "Accept", class: "is-primary"
 
 .is-inline-block
-  = application_form resource.tap{ |r| r.status = "decline" } do |f|
+  = application_form resource.tap{ |r| r.status = "decline" }, url: member_request_review_path do |f|
     = f.input :status, as: :hidden
     = f.button :submit, "Decline"
