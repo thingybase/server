@@ -1,6 +1,5 @@
 class AccountsController < ResourcesController
   include AccountLayout
-  before_action :set_account_layout, except: %i[index new]
   after_action :add_current_user_to_members, only: :create
 
   def self.resource

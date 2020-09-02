@@ -52,6 +52,6 @@ module AccountLayout
     end
 
     def set_account_layout
-      @account ? "account" : "application"
+      @account&.persisted? ? "account" : "application"
     end
 end
