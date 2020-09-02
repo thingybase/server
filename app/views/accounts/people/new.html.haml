@@ -16,8 +16,8 @@
       = button_tag "Copy link", class: "button is-primary", data: { action: "clipboard#copy" }
 %hr
 
-.fields
-  .field{"data-controller": "clipboard"}
+.fields{"data-controller": "clipboard"}
+  .field
     = label_tag "email_template", "Email template", class: "label"
     = text_area_tag "email_template", render(partial: "email_template", locals: {url: new_account_member_request_url(@account)}), class: "textarea", readonly: true, data: { target: "clipboard.source" }, rows: 7
     .help
