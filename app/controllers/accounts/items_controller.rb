@@ -10,6 +10,10 @@ module Accounts
       Account
     end
 
+    def templates
+      authorize :item, :new?
+    end
+
     protected
       def navigation_section
         "Items"

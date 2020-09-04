@@ -29,7 +29,11 @@ Rails.application.routes.draw do
   resources :items do
     get :search, to: "items/searches#index"
     scope module: :items do
-      resources :children, only: %i[index new]
+      resources :children, only: %i[index new] do
+        collection do
+          get :templates
+        end
+      end
       resources :labels, only: %i[create]
       resources :copies, only: %i[create new]
       resources :batches, only: %i[new create]
@@ -66,7 +70,11 @@ Rails.application.routes.draw do
       resources :member_requests, only: [:new, :create]
       resources :invitations
       resources :labels
-      resources :items
+      resources :items do
+        collection do
+          get :templates
+        end
+      end
       namespace :items do
         resources :batches, only: %i[new create]
       end

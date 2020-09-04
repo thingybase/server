@@ -10,26 +10,31 @@ module Items
       Item
     end
 
-    def permitted_params
-      [:name, :account_id, :parent_id, :container]
+    def templates
+      authorize :item, :new?
     end
 
-    def parent_resource_name
-      "item_parent"
-    end
+    private
+      def permitted_params
+        [:name, :account_id, :parent_id, :container]
+      end
 
-    def parent_resource_id_param
-      "item_id"
-    end
+      def parent_resource_name
+        "item_parent"
+      end
 
-    def nested_resource_scope
-      policy_scope parent_resource.children
-    end
+      def parent_resource_id_param
+        "item_id"
+      end
 
-    def assign_attributes
-      self.resource.user = current_user
-      self.resource.account ||= parent_resource.account
-      self.resource.parent ||= parent_resource
-    end
+      def nested_resource_scope
+        policy_scope parent_resource.children
+      end
+
+      def assign_attributes
+        self.resource.user = current_user
+        self.resource.account ||= parent_resource.account
+        self.resource.parent ||= parent_resource
+      end
   end
 end
