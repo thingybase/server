@@ -1,4 +1,4 @@
-.list-card--item
+.list-card--item{id: dom_id(item)}
   .list-card--item--title.has-inline-icon
     =render_icon item.icon, class: "icon mr-2 is-small"
     =link_to item.name, item

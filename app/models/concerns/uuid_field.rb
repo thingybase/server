@@ -24,7 +24,7 @@ module UuidField
   end
 
   def uid
-    UuidField.to_short_uuid uuid
+    UuidField.to_short_uuid uuid if uuid
   end
 
   def to_param

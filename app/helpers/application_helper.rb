@@ -1,6 +1,10 @@
 require "set"
 
 module ApplicationHelper
+  def record_key_for_dom_id(record)
+    record.to_param
+  end
+
   def active_link_to(text, path, **opts)
     classes = Set.new(opts.fetch(:class, "").split)
     classes << "menu-item"
