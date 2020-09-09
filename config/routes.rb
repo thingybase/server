@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   resources :items do
     get :search, to: "items/searches#index"
     scope module: :items do
-      resources :children, only: %i[index new] do
+      resources :children, only: %i[index new create] do
         collection do
           get :templates
         end
