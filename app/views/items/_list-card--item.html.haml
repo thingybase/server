@@ -1,6 +1,6 @@
 .list-card--item{id: dom_id(item)}
   .list-card--item--title.has-inline-icon
-    =render_icon item.icon, class: "icon mr-2 is-small"
+    =component :icon, item.icon, class: "icon mr-2 is-small"
     =link_to item.name, item
   .list-card--item--details
     .list-card--item--detail

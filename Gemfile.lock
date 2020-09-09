@@ -312,6 +312,8 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
+    view_component (2.18.1)
+      activesupport (>= 5.0.0, < 7.0)
     web-console (4.0.4)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -383,6 +385,7 @@ DEPENDENCIES
   twilio-ruby
   tzinfo-data
   uglifier (>= 4.2.0)
+  view_component (~> 2.18)
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 5.1)

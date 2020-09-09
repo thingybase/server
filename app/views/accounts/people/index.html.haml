@@ -13,7 +13,7 @@
     -with @account.user do |owner|
       .list-card--item
         .list-card--item--title.has-inline-icon
-          = render_icon "star", class: "icon mr-2 is-small"
+          = component :icon, "star", class: "icon mr-2 is-small"
           = link_to owner.name, user_path(owner)
         .list-card--item--details
           .list-card--item--detail
@@ -25,7 +25,7 @@
     - @members.each do |member|
       .list-card--item
         .list-card--item--title.has-inline-icon
-          = render_icon "basketball-jersey", class: "icon mr-2 is-small"
+          = component :icon, "basketball-jersey", class: "icon mr-2 is-small"
           = link_to member.name, member_path(member)
         .list-card--item--details
           .list-card--item--detail
@@ -37,7 +37,7 @@
     - @invitations.each do |invitation|
       .list-card--item
         .list-card--item--title.has-inline-icon
-          = render_icon "mailer", class: "icon mr-2 is-small"
+          = component :icon, "mailer", class: "icon mr-2 is-small"
           = link_to invitation.name || invitation.email, invitation_path(invitation)
         .list-card--item--details
           .list-card--item--detail
@@ -49,7 +49,7 @@
     - @member_requests.each do |request|
       .list-card--item
         .list-card--item--title.has-inline-icon
-          = render_icon "object", class: "icon mr-2 is-small"
+          = component :icon, "object", class: "icon mr-2 is-small"
           = link_to request.user.name, new_member_request_review_path(request)
         .list-card--item--details
           .list-card--item--detail

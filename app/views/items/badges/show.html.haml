@@ -1,6 +1,6 @@
 =render_layout "body" do
   .badge
     .badge-icon
-      %figure= render_icon @item.icon, class: "image"
+      %figure= component :icon, @item.icon, class: "image"
     .badge-title
       %h1.title= @item.name

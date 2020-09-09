@@ -3,7 +3,7 @@
 .list-cards
   .list-card--item
     .list-card--item--title.has-inline-icon
-      =render_icon "home", class: "icon mr-2 is-small"
+      =component :icon, "home", class: "icon mr-2 is-small"
       =link_to "Home", new_accounts_templates_home_path
     .list-card--item--details
       .list-card--item--detail
@@ -11,7 +11,7 @@
 
   .list-card--item
     .list-card--item--title.has-inline-icon
-      =render_icon "home-office", class: "icon mr-2 is-small"
+      =component :icon, "home-office", class: "icon mr-2 is-small"
       =link_to "Office snacks & supplies", new_accounts_templates_office_path
     .list-card--item--details
       .list-card--item--detail
@@ -19,7 +19,7 @@
 
   .list-card--item
     .list-card--item--title.has-inline-icon
-      =render_icon "sheets", class: "icon mr-2 is-small"
+      =component :icon, "sheets", class: "icon mr-2 is-small"
       =link_to "Blank", new_accounts_templates_blank_path
     .list-card--item--details
       .list-card--item--detail

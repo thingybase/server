@@ -3,7 +3,7 @@
 .list-cards
   .list-card--item
     .list-card--item--title.has-inline-icon
-      =render_icon "folder", class: "icon mr-2 is-small"
+      =component :icon, "folder", class: "icon mr-2 is-small"
       =link_to "Container", new_account_templates_containers_path(@account)
     .list-card--item--details
       .list-card--item--detail
@@ -11,7 +11,7 @@
 
   .list-card--item
     .list-card--item--title.has-inline-icon
-      =render_icon "object", class: "icon mr-2 is-small"
+      =component :icon, "object", class: "icon mr-2 is-small"
       =link_to "Item", new_account_templates_items_path(@account)
     .list-card--item--details
       .list-card--item--detail
@@ -19,7 +19,7 @@
 
   .list-card--item
     .list-card--item--title.has-inline-icon
-      =render_icon "tag", class: "icon mr-2 is-small"
+      =component :icon, "tag", class: "icon mr-2 is-small"
       =link_to "Perishable", new_account_templates_perishables_path(@account)
     .list-card--item--details
       .list-card--item--detail
@@ -27,7 +27,7 @@
 
   .list-card--item
     .list-card--item--title.has-inline-icon
-      =render_icon "room", class: "icon mr-2 is-small"
+      =component :icon, "room", class: "icon mr-2 is-small"
       =link_to "Room", new_account_templates_rooms_path(@account)
     .list-card--item--details
       .list-card--item--detail

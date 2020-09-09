@@ -3,7 +3,7 @@
 .grid.is-4
   -@icons.each do |icon|
     .box.mb-0
-      %figure= render_icon icon.key, class: "image is-4by3 mb-4"
+      %figure= component :icon, icon.key, class: "image is-4by3 mb-4"
       %strong= icon.name
       %p= icon.key
       %p
