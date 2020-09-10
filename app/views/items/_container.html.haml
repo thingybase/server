@@ -13,5 +13,4 @@
       .subtitle.is-6 Items will appear here after they are added
       = link_to "+ Add item", new_item_child_path(item), class: 'button'
   - else
-    - resource.children.container_then_item.each do |item|
-      = render_item_list_card item
+    = components :item_list_card, resource.children.container_then_item

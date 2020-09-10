@@ -1,8 +1,0 @@
-.list-card--item
-  .list-card--item--title=link_to account.name, account_items_path(account)
-  .list-card--item--details
-    .list-card--item--detail
-      Created
-      =local_time_ago account.created_at
-    .list-card--item--detail
-      =pluralize account.items.size, "item"

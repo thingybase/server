@@ -1,26 +1,14 @@
 = title "Add to #{@item_parent.name}", subtitle: breadcrumb(item_breadcrumbs(@item_parent)), icon: @item_parent.icon
 
 .list-cards
-  .list-card--item
-    .list-card--item--title.has-inline-icon
-      =component :icon, "folder", class: "icon mr-2 is-small"
-      =link_to "Container", new_item_templates_containers_path
-    .list-card--item--details
-      .list-card--item--detail
-        Shelves, boxes, folders, or anything you put items into
+  =component :list_card, "Container", new_item_templates_containers_path, icon: "folder" do |card|
+    - card.slot(:detail) do
+      Shelves, boxes, folders, or anything you put items into
 
-  .list-card--item
-    .list-card--item--title.has-inline-icon
-      =component :icon, "object", class: "icon mr-2 is-small"
-      =link_to "Item", new_item_templates_items_path
-    .list-card--item--details
-      .list-card--item--detail
-        Add a basic item to this folder
+  =component :list_card, "Item", new_item_templates_items_path, icon: "object" do |card|
+    - card.slot(:detail) do
+      Add a basic item to this folder
 
-  .list-card--item
-    .list-card--item--title.has-inline-icon
-      =component :icon, "tag", class: "icon mr-2 is-small"
-      =link_to "Perishable", new_item_templates_perishables_path
-    .list-card--item--details
-      .list-card--item--detail
-        Food or anything that expires
+  =component :list_card, "Perishable", new_item_templates_perishables_path, icon: "tag" do |card|
+    - card.slot(:detail) do
+      Food or anything that expires

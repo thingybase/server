@@ -2,15 +2,5 @@
 
 = link_to "Add item", new_item_path, class: 'button is-primary'
 
-.list-card
-  - @items.each do |item|
-    .list-card--item
-      .list-card--item--title=link_to item.name, item
-      .list-card--item--details
-        .list-card--item--detail
-          Created
-          =local_time_ago item.created_at
-        -if parent = item.parent
-          .list-card--item--detail
-            In
-            = link_to parent.name, parent
+.list-cards
+  = components :item_list_card, @items, is_parent_visible: true

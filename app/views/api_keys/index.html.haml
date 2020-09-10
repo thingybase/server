@@ -3,11 +3,9 @@
 
 = link_to "+ New API key ", new_api_key_path, class: 'button is-primary'
 
-.list-card
+.list-cards
   - @api_keys.each do |api_key|
-    .list-card--item
-      .list-card--item--title= link_to api_key.name, api_key_path(api_key)
-      .list-card--item--details
-        .list-card--item--detail
-          Created
-          =local_time api_key.created_at
+    = component :list_card, api_key.name, api_key_path(api_key) do |card|
+      - card.slot(:detail) do
+        Created
+        =local_time api_key.created_at

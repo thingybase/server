@@ -13,9 +13,4 @@
       .list-card--title
         Could not find anything matching "#{@search.phrase}" in #{@account.name}.
   -else
-    - @search.items.each do |item|
-      =render_item_list_card item do
-        -if parent = item.parent
-          .list-card--item--detail
-            In
-            = link_to parent.name, parent
+    = components :item_list_card, @search.items, is_parent_visible: true

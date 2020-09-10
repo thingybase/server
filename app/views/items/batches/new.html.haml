@@ -9,21 +9,10 @@
   -if f.object.errors[:base].any?
     .message.is-danger
       .message-body=f.object.errors[:base].to_sentence
-  .list-card
+  .list-cards
     =f.fields_for :items, @batch.items, include_id: false do |s|
       =s.label :selected, class: "list-card--selection" do
         =s.hidden_field :uid
         =s.check_box :selected, class: "checkbox list-card--selection--checkbox"
-        .list-card--item
-          - with s.object.model do |item|
-            .list-card--item--title.has-inline-icon
-              =component :icon, item.icon, class: "icon mr-2 is-small"
-              =item.name
-            .list-card--item--details
-              .list-card--item--detail
-                Created
-                =local_time_ago item.created_at
-              -if item.expires_at
-                .list-card--item--detail
-                  =item_expiration_tense item
-                  =local_time_ago item.expires_at
+        - with s.object.model do |item|
+          = component :item_list_card, item: item, link: false

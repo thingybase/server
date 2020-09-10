@@ -6,10 +6,5 @@
   .is-hidden-tablet
     =link_to "Search", account_search_path(@account), class: "button"
 
-.list-card
-  - @items.each do |item|
-    =render_item_list_card item do
-      -if parent = item.parent
-        .list-card--item--detail
-          In
-          = link_to parent.name, parent
+.list-cards
+  = components :item_list_card, @items

@@ -1,0 +1,13 @@
+.list-card--item
+  .list-card--item--title.has-inline-icon
+    - if @icon
+      = render IconComponent.new(@icon, class: "icon mr-2 is-small")
+    - if @link
+      = link_to @title, @link
+    - else
+      = @title
+  .list-card--item--details
+    - if details.any?
+      - details.each do |detail|
+        .list-card--item--detail
+          = detail.content

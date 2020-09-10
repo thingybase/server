@@ -1,0 +1,15 @@
+= render ListCardComponent.new(@item.name, @link, icon: @item.icon) do |c|
+  = c.slot(:detail) do
+    Created
+    = helpers.local_time_ago @item.created_at
+  - if expires?
+    = c.slot(:detail) do
+      = expiration_tense
+      = helpers.local_time_ago @item.expires_at
+  - if is_parent_visible?
+    = c.slot(:detail) do
+      In
+      = link_to @item.parent.name, @item.parent
+  - details.each do |detail|
+    = c.slot(:detail) do
+      = detail.content

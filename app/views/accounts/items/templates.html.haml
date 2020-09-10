@@ -1,34 +1,15 @@
 = title "Add to #{@account.name}"
 
 .list-cards
-  .list-card--item
-    .list-card--item--title.has-inline-icon
-      =component :icon, "folder", class: "icon mr-2 is-small"
-      =link_to "Container", new_account_templates_containers_path(@account)
-    .list-card--item--details
-      .list-card--item--detail
-        Shelves, boxes, folders, or anything else that stuff is put into
-
-  .list-card--item
-    .list-card--item--title.has-inline-icon
-      =component :icon, "object", class: "icon mr-2 is-small"
-      =link_to "Item", new_account_templates_items_path(@account)
-    .list-card--item--details
-      .list-card--item--detail
-        All the important things to keep track of
-
-  .list-card--item
-    .list-card--item--title.has-inline-icon
-      =component :icon, "tag", class: "icon mr-2 is-small"
-      =link_to "Perishable", new_account_templates_perishables_path(@account)
-    .list-card--item--details
-      .list-card--item--detail
-        Food or anything that expires
-
-  .list-card--item
-    .list-card--item--title.has-inline-icon
-      =component :icon, "room", class: "icon mr-2 is-small"
-      =link_to "Room", new_account_templates_rooms_path(@account)
-    .list-card--item--details
-      .list-card--item--detail
-        Keep track of where things are located
+  = component :list_card, "Container", new_account_templates_containers_path(@account), icon: "folder" do |c|
+    - c.slot :detail do
+      Shelves, boxes, folders, or anything else that stuff is put into
+  = component :list_card, "Item", new_account_templates_items_path(@account), icon: "object" do |c|
+    - c.slot :detail do
+      All the important things to keep track of
+  = component :list_card, "Perishable", new_account_templates_perishables_path(@account), icon: "tag" do |c|
+    - c.slot :detail do
+      Food or anything that expires
+  = component :list_card, "Room", new_account_templates_rooms_path(@account), icon: "room" do |c|
+    - c.slot :detail do
+      Keep track of where things are located

@@ -1,26 +1,14 @@
 = title "Create a new account", subtitle: "Get started quickly with a template"
 
 .list-cards
-  .list-card--item
-    .list-card--item--title.has-inline-icon
-      =component :icon, "home", class: "icon mr-2 is-small"
-      =link_to "Home", new_accounts_templates_home_path
-    .list-card--item--details
-      .list-card--item--detail
-        Setup all the rooms in your house and then we can get it all setup
+  = component :list_card, "Home", new_accounts_templates_home_path, icon: "home" do |card|
+    - card.slot(:detail) do
+      Setup all the rooms in your house and then we can get it all setup
 
-  .list-card--item
-    .list-card--item--title.has-inline-icon
-      =component :icon, "home-office", class: "icon mr-2 is-small"
-      =link_to "Office snacks & supplies", new_accounts_templates_office_path
-    .list-card--item--details
-      .list-card--item--detail
-        Inventory all of your snack and supply rooms so employees can find it themselves
+  = component :list_card, "Office snacks & supplies", new_accounts_templates_office_path, icon: "homeoffice" do |card|
+    - card.slot(:detail) do
+      Inventory all of your snack and supply rooms so employees can find it themselves
 
-  .list-card--item
-    .list-card--item--title.has-inline-icon
-      =component :icon, "sheets", class: "icon mr-2 is-small"
-      =link_to "Blank", new_accounts_templates_blank_path
-    .list-card--item--details
-      .list-card--item--detail
-        Got something else in mind? Start with an empty account and set it all up yourself
+  = component :list_card, "Blank", new_accounts_templates_blank_path, icon: "sheets" do |card|
+    - card.slot(:detail) do
+      Got something else in mind? Start with an empty account and set it all up yourself

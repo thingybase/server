@@ -11,49 +11,33 @@
 - else
   .list-cards
     -with @account.user do |owner|
-      .list-card--item
-        .list-card--item--title.has-inline-icon
-          = component :icon, "star", class: "icon mr-2 is-small"
-          = link_to owner.name, user_path(owner)
-        .list-card--item--details
-          .list-card--item--detail
-            Owner
-          .list-card--item--detail
-            Account created
-            = local_time_ago @account.created_at
+      = component :list_card, owner.name, user_path(owner), icon: "star" do |card|
+        - card.slot(:detail) do
+          Owner
+        - card.slot(:detail) do
+          Account created
+          = local_time_ago @account.created_at
 
     - @members.each do |member|
-      .list-card--item
-        .list-card--item--title.has-inline-icon
-          = component :icon, "basketball-jersey", class: "icon mr-2 is-small"
-          = link_to member.name, member_path(member)
-        .list-card--item--details
-          .list-card--item--detail
-            Member
-          .list-card--item--detail
-            Added
-            = local_time_ago member.created_at
+      = component :list_card, member.name, member_path(member), icon: "basketball-jersey" do |card|
+        - card.slot(:detail) do
+          Member
+        - card.slot(:detail) do
+          Added
+          = local_time_ago member.created_at
 
     - @invitations.each do |invitation|
-      .list-card--item
-        .list-card--item--title.has-inline-icon
-          = component :icon, "mailer", class: "icon mr-2 is-small"
-          = link_to invitation.name || invitation.email, invitation_path(invitation)
-        .list-card--item--details
-          .list-card--item--detail
-            Pending invitation
-          .list-card--item--detail
-            Invited
-            = local_time_ago invitation.created_at
+      = component :list_card, (invitation.name || invitation.email), invitation_path(invitation), icon: "mailer" do |card|
+        - card.slot(:detail) do
+          Pending invitation
+        - card.slot(:detail) do
+          Invited
+          = local_time_ago invitation.created_at
 
     - @member_requests.each do |request|
-      .list-card--item
-        .list-card--item--title.has-inline-icon
-          = component :icon, "object", class: "icon mr-2 is-small"
-          = link_to request.user.name, new_member_request_review_path(request)
-        .list-card--item--details
-          .list-card--item--detail
-            Pending request
-          .list-card--item--detail
-            Invited
-            = local_time_ago request.created_at
+      = component :list_card, request.user.name, new_member_request_review_path(request), icon: "mailer" do |card|
+        - card.slot(:detail) do
+          Pending request
+        - card.slot(:detail) do
+          Invited
+          = local_time_ago request.created_at

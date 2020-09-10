@@ -3,11 +3,9 @@
 .buttons
   = link_to "+ Add label", new_account_label_path(@account), class: 'button is-primary'
 
-.list-card
+.list-cards
   - @labels.each do |label|
-    .list-card--item
-      .list-card--item--title=link_to label.text, label
-      .list-card--item--details
-        .list-card--item--detail
-          Created
-          =local_time_ago label.created_at
+    = component :list_card, label.text, label do |card|
+      = card.slot(:detail) do
+        Created
+        =local_time_ago label.created_at
