@@ -19,7 +19,9 @@
 .fields{"data-controller": "clipboard"}
   .field
     = label_tag "email_template", "Email template", class: "label"
-    = text_area_tag "email_template", render(partial: "email_template", locals: {url: new_account_member_request_url(@account)}), class: "textarea", readonly: true, data: { target: "clipboard.source" }, rows: 7
+    = text_area_tag "email_template", account_invitation_email_body, class: "textarea", readonly: true, data: { target: "clipboard.source" }, rows: 7
     .help
       Copy and paste this into your email app and send to people so they can request to join this account.
-  .field= button_tag "Copy template", class: "button", data: { action: "clipboard#copy" }
+  .field
+    = mail_to "", "Send email", subject: "Join my account on Thingybase", body: account_invitation_email_body, class: "button"
+    = button_tag "Copy template", class: "button is-text", data: { action: "clipboard#copy" }
