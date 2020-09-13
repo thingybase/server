@@ -27,6 +27,16 @@ module Items
         "item_id"
       end
 
+      def create_redirect_url
+        if @item.container?
+          @item
+        elsif @item.parent
+          @item.parent
+        else
+          @item
+        end
+      end
+
       def nested_resource_scope
         policy_scope parent_resource.children
       end

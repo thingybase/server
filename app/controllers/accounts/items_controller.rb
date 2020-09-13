@@ -20,12 +20,22 @@ module Accounts
       end
 
     private
+      def create_redirect_url
+        if @item.container?
+          @item
+        elsif @item.parent
+          @item.parent
+        else
+          @item
+        end
+      end
+
       def resource_scope
         policy_scope.roots.includes(:account).container_then_item
       end
 
       def permitted_params
-        [:name, :account_id]
+        [:name, :account_id, :container]
       end
 
       def assign_attributes
