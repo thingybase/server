@@ -13,11 +13,6 @@ module Items
       Item
     end
 
-    def new
-      super
-      @items = authorize items_scope
-    end
-
     def delete
       selected_models_count = @batch.selected_models.count
       Batch.transaction do
