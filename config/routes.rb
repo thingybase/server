@@ -96,7 +96,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :launch
+  resource :launch do
+    get :profile
+    get :account
+    get :items
+    get :people
+  end
 
   resources :invitations do
     scope module: :invitations do
