@@ -7,7 +7,7 @@
   .empty-box
     .title.is-5 No people in account
     .subtitle.is-6 People will appear here after they accept an invitation
-    = link_to "+ Add person", new_account_invitation_path(@account), class: 'button'
+    = link_to "+ Add person", new_account_person_path(@account), class: 'button'
 - else
   .list-cards
     -with @account.user do |owner|
