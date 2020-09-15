@@ -94,6 +94,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
+    csv_builder (2.1.2)
+      actionpack (>= 3.0.0)
     diff-lcs (1.4.4)
     erubi (1.9.0)
     erubis (2.7.0)
@@ -350,6 +352,7 @@ DEPENDENCIES
   chronic (~> 0.10.2)
   closure_tree (~> 7.0)
   coffee-rails (~> 5.0)
+  csv_builder (~> 2.1)
   factory_bot_rails
   faker
   haml-rails

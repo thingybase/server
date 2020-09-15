@@ -31,7 +31,7 @@ module Accounts
       end
 
       def resource_scope
-        policy_scope.roots.includes(:account).container_then_item
+        policy_scope.includes(:account).order(:name)
       end
 
       def permitted_params

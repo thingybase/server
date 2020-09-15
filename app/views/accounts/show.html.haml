@@ -50,7 +50,13 @@
     .tile.is-child.notification
       %h3.title.is-5 Settings
       %p.subtitle.is-6 Configure your profile and accounts
+
       %p=link_to "Personal settings", user_path(current_user)
       %p=link_to "Account settings", edit_account_path(@account)
       %p=link_to "Switch accounts", accounts_path
       %p=link_to "Sign out", session_path, method: :delete
+
+      %h3.title.is-5.mt-6 Export
+      %p.subtitle.is-6 Save everything for safe keeping
+
+      %p=link_to "Export items to spreadsheet", account_items_path(@account, format: :csv)
