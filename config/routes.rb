@@ -16,7 +16,7 @@ def template_resources(*templates)
 end
 
 Rails.application.routes.draw do
-  with_options to: "labels#scan", uuid: /[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/i do |legacy_scan|
+  with_options to: "labels#scan", uuid: UuidField::GUID_REGEXP do |legacy_scan|
     # Labels printed before June 20, 2020 point to this route. When you decide to use `uuid` as the resource
     # key, instead of `id`, you will create a conflict where this route should redirect to the item for older
     # labels. Those older users would have to have a `/labels/:guid/show` link so they don't get redirected
