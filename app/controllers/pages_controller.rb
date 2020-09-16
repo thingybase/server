@@ -1,4 +1,4 @@
-class PagesController < ApplicationController
+class PagesController < Sitepress::SiteController
   skip_security!
 
   def index

@@ -107,3 +107,7 @@ gem "anybase", "~> 0.0.15"
 gem "view_component", "~> 2.18"
 
 gem "csv_builder", "~> 2.1"
+
+gem "sitepress-rails", "~> 1.0"
+
+gem "markdown-rails", "~> 0.2.1"
