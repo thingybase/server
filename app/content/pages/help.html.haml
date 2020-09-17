@@ -1,0 +1,12 @@
+---
+title: "Help"
+---
+
+= title "Help", subtitle: "Dive in a little deeper and figure it out", icon: "open-book"
+
+.columns.is-multiline
+  - current_page.children.each do |page|
+    .column.is-one-third
+      = link_to page.request_path do
+        %h3.title.is-5= page.data.fetch("title")
+        %p.subtitle.is-6= page.data.fetch("subtitle")
