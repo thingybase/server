@@ -111,3 +111,5 @@ gem "csv_builder", "~> 2.1"
 gem "sitepress-rails", "~> 1.0"
 
 gem "markdown-rails", "~> 0.2.1"
+
+gem "colorist", "~> 0.0.2"

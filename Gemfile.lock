@@ -92,6 +92,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    colorist (0.0.2)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
     csv_builder (2.1.2)
@@ -364,6 +365,7 @@ DEPENDENCIES
   chronic (~> 0.10.2)
   closure_tree (~> 7.0)
   coffee-rails (~> 5.0)
+  colorist (~> 0.0.2)
   csv_builder (~> 2.1)
   factory_bot_rails
   faker
