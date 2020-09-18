@@ -20,9 +20,17 @@ class SvgIconFile < ApplicationModel
 
   def dark_svg
     @_dark_svg ||= Nokogiri::XML(svg).tap do |doc|
-      doc.css("path[fill]").each do |el|
+      doc.css("[fill]").each do |el|
+        fill = el.attr("fill")
+        next if fill == "none"
         color = Colorist::Color.from(el.attr("fill"))
         el.set_attribute("fill", color.invert)
+      end
+      doc.css("[stroke]").each do |el|
+        stroke = el.attr("stroke")
+        next if stroke == "none"
+        color = Colorist::Color.from(el.attr("stroke"))
+        el.set_attribute("stroke", color.invert)
       end
     end.to_xml
   end
