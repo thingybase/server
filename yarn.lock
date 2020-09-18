@@ -1592,10 +1592,9 @@ builtin-status-codes@^3.0.0:
   resolved "https://registry.npmjs.org/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
   integrity sha1-hZgoeOIbmOHGZCXgPQF0eI9Wnug=
 
-bulma-prefers-dark@^0.1.0-beta.0:
+bulma-prefers-dark@jloh/bulma-prefers-dark:
   version "0.1.0-beta.0"
-  resolved "https://registry.npmjs.org/bulma-prefers-dark/-/bulma-prefers-dark-0.1.0-beta.0.tgz#646350738ed00ac66d0f84ec6821a677aa1a66c5"
-  integrity sha512-EeDW8pQrkYEOXo2l3WykfghbUzi8jlQWGI+Cu2HwmXwQHMcoGF6yiKYCNShttN+8z3atq8fLWh3B7pqXUV4fBA==
+  resolved "https://codeload.github.com/jloh/bulma-prefers-dark/tar.gz/a3db9b5b87fd4d4f4df6ff2c69f0bd2fb1666f78"
 
 bulma@^0.9.0:
   version "0.9.0"
