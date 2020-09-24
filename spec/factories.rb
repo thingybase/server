@@ -8,7 +8,7 @@ FactoryBot.define do
   end
 
   factory :svg_icon_file do
-    path { SvgIconFile.find("folder").path }
+    path { SvgAsset.find("folder").path }
   end
 
   factory :user_resolution do

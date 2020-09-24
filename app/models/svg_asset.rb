@@ -1,5 +1,5 @@
 # Manipulates SVG files and gives paths.
-class SvgIconFile < ApplicationModel
+class SvgAsset < ApplicationModel
   attr_accessor :key, :path
   validates :path, presence: true
 
@@ -70,7 +70,7 @@ class SvgIconFile < ApplicationModel
   end
 
   # All of the goo needed to find the SVG file in a directory and pull it
-  # SvgIconFile objects.
+  # SvgAsset objects.
   class FileCollection
     attr_accessor :path
 
@@ -80,7 +80,7 @@ class SvgIconFile < ApplicationModel
 
     def find(key)
       return nil unless exist? key
-      SvgIconFile.new(key: key, path: icon_path_by_key(key))
+      SvgAsset.new(key: key, path: icon_path_by_key(key))
     end
 
     def find!(key)
@@ -96,7 +96,7 @@ class SvgIconFile < ApplicationModel
     end
 
     def all
-      paths.map { |path| SvgIconFile.new(path: path) }
+      paths.map { |path| SvgAsset.new(path: path) }
     end
 
     private

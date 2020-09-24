@@ -18,7 +18,7 @@ module Items::Templates
       end
 
       def icons
-        SvgIconFile.all
+        SvgAsset.all
       end
 
       def assign_item_attributes

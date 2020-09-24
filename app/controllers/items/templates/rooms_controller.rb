@@ -37,7 +37,7 @@ module Items::Templates
 
     protected
       def icons
-        SvgIconFile.where key: %w[
+        SvgAsset.where key: %w[
           room
           book-shelf
           closet

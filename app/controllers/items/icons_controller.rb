@@ -7,7 +7,7 @@ module Items
     end
 
     def edit
-      @icons = SvgIconFile.all
+      @icons = SvgAsset.all
     end
 
     private

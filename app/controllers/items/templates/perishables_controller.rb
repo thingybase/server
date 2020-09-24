@@ -2,7 +2,7 @@ module Items::Templates
   class PerishablesController < BaseController
     protected
       def icons
-        SvgIconFile.where key: %w[
+        SvgAsset.where key: %w[
           tag
           potted-plant
           sack-of-flour

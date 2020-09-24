@@ -3,7 +3,7 @@ class IconComponent < ViewComponent::Base
 
   def initialize(key, mode: nil, **locals)
     @mode = mode
-    @icon = SvgIconFile.find(key) || SvgIconFile.find(NOT_FOUND_ICON)
+    @icon = SvgAsset.find(key) || SvgAsset.find(NOT_FOUND_ICON)
     @css_class = locals[:class]
   end
 end

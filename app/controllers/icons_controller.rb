@@ -5,10 +5,10 @@ class IconsController < ApplicationController
 
   before_action :load_icon, except: :index
 
-  rescue_from SvgIconFile::IconNotFound, with: :request_not_found
+  rescue_from SvgAsset::IconNotFound, with: :request_not_found
 
   def index
-    @icons = SvgIconFile.all.to_a
+    @icons = SvgAsset.all.to_a
   end
 
   def light
@@ -44,6 +44,6 @@ class IconsController < ApplicationController
     end
 
     def load_icon
-      @icon = SvgIconFile.find! permitted_params.fetch(:key)
+      @icon = SvgAsset.find! permitted_params.fetch(:key)
     end
 end

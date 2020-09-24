@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe SvgIconFile, type: :model do
+RSpec.describe SvgAsset, type: :model do
   it { is_expected.to validate_presence_of(:path) }
   describe ".find!" do
     context "file exists" do
-      it "returns SvgIconFile instance" do
-        expect(SvgIconFile.find!("folder")).to be_a SvgIconFile
+      it "returns SvgAsset instance" do
+        expect(SvgAsset.find!("folder")).to be_a SvgAsset
       end
     end
     context "file does not exist" do
       it "raises ActiveRecord::RecordNotFound" do
-        expect{SvgIconFile.find!("non-existant-jibber-jabber")}.to raise_error(SvgIconFile::IconNotFound)
+        expect{SvgAsset.find!("non-existant-jibber-jabber")}.to raise_error(SvgAsset::IconNotFound)
       end
     end
   end

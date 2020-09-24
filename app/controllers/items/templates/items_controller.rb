@@ -2,7 +2,7 @@ module Items::Templates
   class ItemsController < BaseController
     protected
       def icons
-        SvgIconFile.where key: %w[
+        SvgAsset.where key: %w[
           object
           objects-module
           t-shirt
