@@ -14,7 +14,7 @@ module PageTitleHelper
   end
 
   def render_page_title
-    title_tag_text content_for(:title)
+    title_tag_text @page_title || content_for(:title)
   end
 
   def title_tag_text(title)

@@ -1,0 +1,101 @@
+---
+layout: body
+title: Thingybase
+---
+
+%section.hero.is-fullheight-with-navbar
+  .hero-body
+    .container
+      .columns.is-vcentered
+        .column.is-4
+          %h1.title.is-2 Thingybase
+          %h2.subtitle.is-5 Organize, track, and treasure your stuff
+          =link_to "Get started →", launch_path, class: "button is-primary is-medium is-primary", role: "button"
+        .column
+          = component :vector, key: "illustrations/organizational-pride.svg"
+
+%section.hero.is-medium.is-warning
+  .hero-body
+    .container
+      .columns
+        .column.is-5.is-offset-2.mt-6
+          %h2.title A search engine for your stuff
+          %h3.subtitle "Thingybase, where are the ice skates?"
+          .content.is-4
+            %p Next time you're looking for something, don't bother getting up to dig around, just bust out your phone, punch in a few keywords, and we'll tell you where it is. You can even add family members to your account so they can search too and help keep things organized.
+        .column.is-3
+          = component :vector, key: "illustrations/search-sketch.svg", mode: :light
+
+%section.hero.is-medium
+  .hero-body
+    .container
+      .columns
+        .column.is-6.is-offset-1
+          = component :vector, key: "illustrations/caring-sharing.svg"
+        .column.is-4
+          %h2.title Loan things to friends
+          %h3.subtitle We'll remind them to give it back
+          .content
+            %p Camping stuff, tools; whatever stuff your friends borrow can be tracked so you don't forget about it. Just enter their email address and a due date and we'll mark the item as "out on loan". When the time comes to get it back, we'll email them a nice reminder so you don't have to.
+
+            %p If you have stuff you share with a regular group of friends, you can even create private sharing lists that only the group can search to borrow the items.
+
+%section.hero.is-medium.is-info
+  .hero-body
+    .container
+      .columns.is-vcentered
+        .column.is-4.is-offset-2
+          %h2.title Take it easy on the Earth
+          %h3.subtitle Use less stuff. Waste less stuff.
+          .content
+            %p Track food in your freezer with expiration dates and get an email reminder before it goes bad. Add items to your "available for loan" list that only your friends can see so we all buy less stuff. Never purchase something twice that you already own because you couldn't remember if you already had it while you were shopping at the store. The more you know about your stuff, the less wasteful you'll be.
+        .column.is-3.is-offset-1
+          = component :vector, key: "illustrations/save-earth.svg", mode: :dark
+
+%section.hero.is-medium
+  .hero-body
+    .container
+      .columns.is-vcentered
+        .column.is-5.is-offset-1
+          = component :vector, key: "illustrations/magic-labels.svg"
+        .column.is-4
+          %h2.title Magic labels
+          %h3.subtitle Look inside boxes without opening them
+          .content
+            %p See what’s in a box without opening it—just scan it with your phone and see what’s inside.
+            %p If you cook a lot of food ahead of time and store it in a deep freezer, slap a magic label on it with an expiration date and you’ll be notified before it expires.
+
+%section.hero.is-light
+  .hero-body
+    .container
+      .columns
+        .column.is-offset-3.is-6.has-text-centered.mb-5
+          %h2.title Manifesto
+          %h3.subtitle How the universe will be dented
+      .columns
+        .column.is-offset-3.is-6
+          .content.box.px-6.py-6.is-size-5.is-radiusless
+            %p Hey there—
+
+            %p Let’s face it, people have lots of stuff. We've come up with countless ways to deal with it all: The KonMari Method™, minimalism, getting rid of stuff … the list goes on, but it’s always about having less stuff and sometimes makes us feel bad about the things we already have.
+
+            %p What if the opposite approach was taken, <span class="highlight">“how can I better manage all my stuff?”</span>. That's what Thingybase does. It gives you the same superpowers that huge companies have enjoyed for decades to track their vast inventories of stuff, but in a delightful way that's streamlined for use by the entire family at home.
+
+            %p The best part isn't how good you'll feel after getting things organized; its how you'll use things way more efficiently. If you add expiration dates to food labels, you'll get an email reminding you its about to expire, which cuts down on waste. When you loan items to your friends, its less stuff that had to be made in a factory and trucked around.
+
+            %p As long as Thingybase is around, there will always be a way to get a better handle on our stuff, be less wasteful, and worry less about our things.
+
+            %p= component :vector, key: "illustrations/signature.svg"
+
+%section.hero.is-primary
+  .hero-body
+    .container
+      .columns
+        .column
+      %h1.title.is-4 Oh wow, you made it all the way down here?
+      %h2.subtitle.is-5
+        If you're still not convinced
+        =succeed "," do
+          =mail_to "hey@thingybase.com", "tell us why", subject: "Hey!"
+        but if you are...
+      =link_to "Sign up →", launch_path, class: "button is-light is-medium", role: "button"

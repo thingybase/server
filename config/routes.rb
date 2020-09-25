@@ -132,5 +132,5 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback", to: 'sessions#create'
 
   get "*resource_path", to: "pages#show", format: false, constraints: Sitepress::RouteConstraint.new
-  root to: 'pages#index'
+  root to: "pages#index"
 end

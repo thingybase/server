@@ -1,17 +1,17 @@
 = render_layout "application" do
   .columns
-    .column.is-2
-      %aside.menu
-        - Sitepress.site.glob("pages/*.html.*").each do |root_page|
-          %p.menu-label
-            = root_page.data.fetch("title")
-          %ul.menu-list
-            - root_page.children.each do |page|
-              %li
-                = link_to_page page, active_class: "is-active"
     .column
       %h1.title= current_page.data.fetch("title")
       - if subtitle = current_page.data.fetch("subtitle", nil)
         %h2.subtitle= subtitle
       .content
         = yield
+    .column.is-2
+      %aside.menu
+        - with current_page.parent do |root_page|
+          %p.menu-label
+            = root_page.data.fetch("title")
+          %ul.menu-list
+            - root_page.children.each do |page|
+              %li
+                = link_to_page page, active_class: "is-active"
