@@ -1,5 +1,5 @@
 = title "Change icon", subtitle: breadcrumb(item_breadcrumbs), icon: item_edit_icon(@item)
 
 = application_form resource do |f|
-  = f.input :icon_key, label: "Icon", collection: SvgAsset.all, as: :image_radio_buttons, label: false
+  = f.input :icon_key, label: "Icon", collection: Icon.all, as: :image_radio_buttons, label: false
   = f.button :submit, class: 'is-primary'

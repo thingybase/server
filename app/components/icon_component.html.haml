@@ -1,9 +1,0 @@
-%picture{class: @css_class}
-  - case @mode
-  - when nil
-    %source(media="(prefers-color-scheme: dark)" srcset="#{dark_icon_path(@icon, format: :svg)}")
-    =image_tag light_icon_path(@icon, format: :svg), alt: @icon.name
-  - when :dark
-    =image_tag dark_icon_path(@icon, format: :svg), alt: @icon.name
-  - when :light
-    =image_tag light_icon_path(@icon, format: :svg), alt: @icon.name

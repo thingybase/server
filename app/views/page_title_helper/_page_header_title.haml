@@ -1,6 +1,6 @@
 %h1.title.has-inline-icon
   -if icon
-    =render IconComponent.new(icon: icon, class: "icon is-medium mr-3")
+    = component :icon, icon, class: "icon is-medium mr-3"
   = title
 
 -if subtitle

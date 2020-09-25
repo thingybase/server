@@ -37,7 +37,7 @@ module Items::Templates
 
     protected
       def icons
-        SvgAsset.where key: %w[
+        Icon.all keys: %w[
           room
           book-shelf
           closet
@@ -49,7 +49,6 @@ module Items::Templates
           purse
           trash
           objects
-          toilet
           home-office
           small-business-store-front
           home

@@ -2,7 +2,7 @@ module Items::Templates
   class ContainersController < BaseController
     protected
       def icons
-        SvgAsset.where key: %w[
+        Icon.all keys: %w[
           folder
           open-folder
           closed-cardboard-box
