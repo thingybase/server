@@ -9,7 +9,7 @@ class VectorsController < ApplicationController
   def hsl
     cached_respond_to do |format|
       format.svg do
-        render xml: cache_rendition { @icon.hsl(permitted_params[:h], permitted_params[:s], permitted_params[:l]) }
+        render xml: cache_rendition { @icon.hsl(permitted_params[:h], permitted_params[:s], permitted_params[:l]).serialize }
       end
     end
   end
