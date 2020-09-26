@@ -3,15 +3,15 @@ layout: body
 title: Thingybase
 ---
 
-%section.hero.is-medium
+%section.hero.is-fullheight
   .hero-body
     .container
       .columns.is-vcentered
-        .column.is-4.is-offset-1
+        .column.is-4.has-text-right
           %h1.title.is-2 Thingybase
           %h2.subtitle.is-5 Organize, track, and treasure your stuff
           =link_to "Get started →", launch_path, class: "button is-primary is-medium is-primary", role: "button"
-        .column.is-6
+        .column
           = component :vector, key: "illustrations/organizational-pride.svg"
 
 %section.hero.is-medium.is-warning

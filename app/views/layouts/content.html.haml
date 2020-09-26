@@ -1,6 +1,6 @@
 = render_layout "application" do
   .columns
-    .column
+    .column.is-offset-2.is-6
       %h1.title= current_page.data.fetch("title")
       - if subtitle = current_page.data.fetch("subtitle", nil)
         %h2.subtitle= subtitle
