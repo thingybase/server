@@ -24,16 +24,6 @@ class ItemsController < ResourcesController
       @item.parent || account_items_url(@item.account)
     end
 
-    def create_redirect_url
-      if @item.container?
-        @item
-      elsif @item.parent
-        @item.parent
-      else
-        @item
-      end
-    end
-
     def permitted_params
       [:name, :account_id, :parent_id, :expires_at, :container, :icon_key]
     end

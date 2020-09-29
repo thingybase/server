@@ -24,16 +24,6 @@ module Items::Templates
       def assign_item_attributes
       end
 
-      def create_redirect_url
-        if @item.container?
-          @item
-        elsif @item.parent
-          @item.parent
-        else
-          @item
-        end
-      end
-
     private
       def find_account
         if params.key? :account_id

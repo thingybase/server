@@ -20,16 +20,6 @@ module Accounts
       end
 
     private
-      def create_redirect_url
-        if @item.container?
-          @item
-        elsif @item.parent
-          @item.parent
-        else
-          @item
-        end
-      end
-
       def resource_scope
         policy_scope.includes(:account).order(:name)
       end
