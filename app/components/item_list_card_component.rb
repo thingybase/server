@@ -14,8 +14,13 @@ class ItemListCardComponent < ViewComponent::Base
     @item.expires_at
   end
 
+  def expired?
+    return unless expires?
+    @item.expires_at < Time.now
+  end
+
   def expiration_tense
-    @item.expires_at > Time.now ?  "Expires" : "Expired"
+    expired? ? "Expired" : "Expires"
   end
 
   def is_parent_visible?
