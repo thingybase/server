@@ -29,32 +29,6 @@ title: Thingybase
 %section.hero.is-medium
   .hero-body
     .container
-      .columns
-        .column.is-6.is-offset-1
-          = component :vector, key: "illustrations/caring-sharing.svg"
-        .column.is-4
-          %h2.title Loan things to friends
-          %h3.subtitle We'll remind them to give it back
-          .content
-            %p Camping stuff, tools—whatever stuff your friends borrow can be tracked so you don't forget about it. Just enter their email address and a due date and we'll mark the item as "out on loan". When the time comes to get it back, we'll email them a nice reminder so you don't have to.
-
-            %p If you have things you share with a regular group of friends, you can even create private sharing lists that only the group can search to borrow the items.
-
-%section.hero.is-medium.is-info
-  .hero-body
-    .container
-      .columns.is-vcentered
-        .column.is-4.is-offset-2
-          %h2.title Take it easy on the Earth
-          %h3.subtitle Use less stuff. Waste less stuff.
-          .content
-            %p Track food in your freezer with expiration dates and get an email reminder before it goes bad. Add items to your "available for loan" list that only your friends can see so we all buy less stuff. Never purchase something twice that you already own because you couldn't remember if you already had it while you were shopping at the store. The more you know about your stuff, the less wasteful you'll be.
-        .column.is-3.is-offset-1
-          = component :vector, key: "illustrations/save-earth.svg", mode: :dark
-
-%section.hero.is-medium
-  .hero-body
-    .container
       .columns.is-vcentered
         .column.is-5.is-offset-1
           = component :vector, key: "illustrations/magic-labels.svg"
@@ -64,6 +38,33 @@ title: Thingybase
           .content
             %p See what’s in a box without opening it—just scan it with your phone and see what’s inside.
             %p If you cook a lot of food ahead of time and store it in a deep freezer, slap a magic label on it with an expiration date and you’ll be notified before it expires.
+
+-# TODO: Implement this feature! This will help Tb spread.
+  %section.hero.is-medium
+    .hero-body
+      .container
+        .columns
+          .column.is-6.is-offset-1
+            = component :vector, key: "illustrations/caring-sharing.svg"
+          .column.is-4
+            %h2.title Loan things to friends
+            %h3.subtitle We'll remind them to give it back
+            .content
+              %p Camping stuff, tools—whatever stuff your friends borrow can be tracked so you don't forget about it. Just enter their email address and a due date and we'll mark the item as "out on loan". When the time comes to get it back, we'll email them a nice reminder so you don't have to.
+
+              %p If you have things you share with a regular group of friends, you can even create private sharing lists that only the group can search to borrow the items.
+
+%section.hero.is-medium.is-info
+  .hero-body
+    .container
+      .columns.is-vcentered
+        .column.is-4.is-offset-2
+          %h2.title Take it easy on the Earth
+          %h3.subtitle Use less stuff. Waste less stuff.
+          .content
+            %p Track food in your freezer with expiration dates and get an email reminder before it goes bad. Never purchase something twice that you already own because you couldn't remember if you already had it while you were shopping at the store. The more you know about your stuff, the less wasteful you'll be.
+        .column.is-3.is-offset-1
+          = component :vector, key: "illustrations/save-earth.svg", mode: :dark
 
 %section.hero.is-light
   .hero-body
