@@ -1,13 +1,51 @@
 = title resource.name, subtitle: breadcrumb(item_breadcrumbs), icon: @item.icon
 
+
 =render partial: @item.container? ? "container" : "item", locals: { item: @item }
 
-.buttons.mt-4
-  = link_to "Edit", edit_item_path(@item), class: 'button is-default'
-  -if label = resource.label
-    = link_to "View label", label_path(label), class: 'button'
-  -else
-    = link_to "Print label", item_labels_path(resource), class: 'button', method: :post
-  = link_to t('.destroy', default: t("helpers.links.destroy")), item_path(@item), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-text'
-  = link_to "Copy", new_item_copy_path(@item), class: 'button is-text'
-  = link_to "Change icon", edit_item_icon_path(@item), class: 'button is-text'
+-#
+  .buttons.mt-4
+    = link_to "Edit", edit_item_path(@item), class: 'button is-default'
+    = link_to "Change icon", edit_item_icon_path(@item), class: 'button is-text'
+    = link_to "Copy", new_item_copy_path(@item), class: 'button is-text'
+    -if label = resource.label
+      = link_to "View label", label_path(label), class: 'button'
+    -else
+      = link_to "Print label", item_labels_path(resource), class: 'button', method: :post
+    = link_to t('.destroy', default: t("helpers.links.destroy")), item_path(@item), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-text'
+
+  .dropdown
+    .dropdown-trigger
+      %button.button{"aria-controls" => "dropdown-menu3", "aria-haspopup" => "true"}
+        %span Click me
+        %span.icon.is-small
+          %i.fas.fa-angle-down{"aria-hidden" => "true"}
+    #dropdown-menu3.dropdown-menu{:role => "menu"}
+      .dropdown-content
+        = link_to "Edit", edit_item_path(@item), class: 'dropdown-item'
+        = link_to "Change icon", edit_item_icon_path(@item), class: 'dropdown-item'
+        = link_to "Copy", new_item_copy_path(@item), class: 'dropdown-item'
+        %hr.dropdown-divider
+        -if label = resource.label
+          = link_to "View label", label_path(label), class: 'dropdown-item'
+        -else
+          = link_to "Print label", item_labels_path(resource), class: 'dropdown-item', method: :post
+        = link_to t('.destroy', default: t("helpers.links.destroy")), item_path(@item), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'dropdown-item'
+
+        %a.dropdown-item{:href => "#"}
+          Overview
+        %a.dropdown-item{:href => "#"}
+          Modifiers
+        %a.dropdown-item{:href => "#"}
+          Grid
+        %a.dropdown-item{:href => "#"}
+          Form
+        %a.dropdown-item{:href => "#"}
+          Elements
+        %a.dropdown-item{:href => "#"}
+          Components
+        %a.dropdown-item{:href => "#"}
+          Layout
+        %hr.dropdown-divider/
+        %a.dropdown-item{:href => "#"}
+          More

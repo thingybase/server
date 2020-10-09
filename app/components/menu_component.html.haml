@@ -1,0 +1,26 @@
+%span.menu-component(data-controller="menu")
+  .is-hidden-mobile
+    .dropdown.is-hoverable
+      .dropdown-trigger
+        %button.button{"aria-controls" => "dropdown-menu4", "aria-haspopup" => "true"}
+          = @title
+      #dropdown-menu4.dropdown-menu{:role => "menu"}
+        - if items.any?
+          .dropdown-content
+            - items.each do |item|
+              .dropdown-item
+                = item.content
+  .is-hidden-tablet
+    %button.button(data-action="click->menu#open" aria-controls="modal-menu4" aria-haspopup="true")
+      = @title
+    #modal-menu4.modal(data-target="menu.modal")
+      .modal-background(data-action="click->menu#close")
+      .modal-content
+        - if items.any?
+          .dropdown-content.mx-5
+            .dropdown-item
+              %p.title.is-6.has-text-centered= @title
+            - items.each do |item|
+              %hr.dropdown-divider
+              .dropdown-item
+                = item.content

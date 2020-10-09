@@ -11,6 +11,10 @@ module Items
     end
 
     private
+      def navigation_section
+        "Items"
+      end
+
       def permitted_params
         [:icon_key]
       end
