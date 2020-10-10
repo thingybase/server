@@ -1,6 +1,7 @@
 @import "~bulma/bulma.sass"
 
 $link-dark: hsl(209, 71%,  63%) // Bug or something ... this is the value in Bulma, but something is overriding
+$modal-background-background-color-dark: rgba($white, 0.15) !default
 @import "~bulma-prefers-dark/bulma-prefers-dark.sass"
 
 @import url('https://rsms.me/inter/inter.css')
@@ -130,3 +131,6 @@ $family-sans-serif: 'Inter var alt', -apple-system, Helvetica, sans-serif
   background-color: rgba($yellow, 0.75)
   @media (prefers-color-scheme: dark)
     background-color: rgba($yellow, 0.25)
+
+.modal-background
+  backdrop-filter: blur(2px)
