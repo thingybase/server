@@ -9,7 +9,7 @@ class ItemsController < ResourcesController
   end
 
   protected
-    def navigation_section
+    def navigation_key
       "Items"
     end
 

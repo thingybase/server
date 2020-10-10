@@ -1,10 +1,5 @@
 module AccountsHelper
-  def link_to_nav(text, url, **kwargs)
-    if navigation_section == text
-      classes = kwargs[:class].to_s.split(" ")
-      classes << "has-text-weight-bold"
-      kwargs[:class] = classes.join(" ")
-    end
-    link_to text, url, **kwargs
+  def is_active_navigation_key(key, active: true, inactive: nil, &block)
+    block.call navigation_key == key ? active : inactive
   end
 end

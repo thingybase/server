@@ -17,7 +17,7 @@ module Accounts
         MemberRequestMailer.account_request_email(@member_request).deliver_now
       end
 
-      def navigation_section
+      def navigation_key
         "People"
       end
 

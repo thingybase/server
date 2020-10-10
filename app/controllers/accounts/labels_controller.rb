@@ -18,7 +18,7 @@ module Accounts
     end
 
     protected
-      def navigation_section
+      def navigation_key
         "Labels"
       end
 

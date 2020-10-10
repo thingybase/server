@@ -41,7 +41,7 @@ module Accounts::Templates
     end
 
     protected
-      def navigation_section
+      def navigation_key
         "Items"
       end
 

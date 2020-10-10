@@ -7,7 +7,7 @@ class AccountsController < ResourcesController
   end
 
   private
-    def navigation_section
+    def navigation_key
       "Dashboard"
     end
 

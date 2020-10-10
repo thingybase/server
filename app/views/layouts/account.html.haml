@@ -4,11 +4,26 @@
       #account-layout--nav--top
         =search_field autofocus: true, url: navigation_search_path, button: false, autofocus: false, placeholder: navigation_search_placeholder
         %hr
-        =link_to_nav "Dashboard", account_path(@account), class: "button is-text"
-        =link_to_nav "Items", account_items_path(@account), class: "button is-text"
-        =link_to_nav "People", account_people_path(@account), class: "button is-text"
+        - is_active_navigation_key "Dashboard", active: "has-text-weight-bold" do |active|
+          =link_to account_path(@account), class: ["button is-text", active].join(" ") do
+            = component :icon, "dashboard-gauge", class: "icon"
+            %span.ml-2
+              Dashboard
+        - is_active_navigation_key "Items", active: "has-text-weight-bold" do |active|
+          =link_to account_items_path(@account), class: ["button is-text", active].join(" ") do
+            = component :icon, active ? "chest-open" : "chest", class: "icon"
+            %span.ml-2
+              Items
+        - is_active_navigation_key "People", active: "has-text-weight-bold" do |active|
+          =link_to account_people_path(@account), class: ["button is-text", active].join(" ") do
+            = component :icon, "basketball-jersey", class: "icon"
+            %span.ml-2
+              People
       #account-layout--nav--top
-        =link_to_nav "Profile", user_path(current_user), class: "button is-text"
+        =link_to user_path(current_user), class: "button is-text" do
+          = component :icon, "gears", class: "icon"
+          %span.ml-2
+            Profile
     #account-layout--content
       %section.section
         -if notice_message
@@ -17,4 +32,4 @@
         .container
           = yield
       %footer#account-layout--footer.is-hidden-tablet.has-text-centered.py-6
-        =link_to_nav "Manage #{@account.name}", account_path(@account), class: "button is-text"
+        =link_to "Manage #{@account.name}", account_path(@account), class: "button is-text"

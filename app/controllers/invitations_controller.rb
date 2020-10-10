@@ -8,7 +8,7 @@ class InvitationsController < ResourcesController
   end
 
   protected
-    def navigation_section
+    def navigation_key
       "People"
     end
 

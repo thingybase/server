@@ -2,7 +2,7 @@ module Accounts
   module Items
     class BatchesController < ::Items::BatchesController
       protected
-        def navigation_section
+        def navigation_key
           "Items"
         end
 

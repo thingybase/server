@@ -11,7 +11,7 @@ module Items
     end
 
     private
-      def navigation_section
+      def navigation_key
         "Items"
       end
 

@@ -14,7 +14,7 @@ module Accounts
     end
 
     private
-      def navigation_section
+      def navigation_key
         "People"
       end
 

@@ -8,11 +8,11 @@ module AccountLayout
   included do
     before_action :set_account_instance_variable
     layout :set_account_layout
-    helper_method :navigation_section, :navigation_search_path, :navigation_search_placeholder
+    helper_method :navigation_key, :navigation_search_path, :navigation_search_placeholder
   end
 
   protected
-    def navigation_section
+    def navigation_key
     end
 
     def navigation_search_path

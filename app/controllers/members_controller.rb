@@ -2,7 +2,7 @@ class MembersController < ResourcesController
   include AccountLayout
 
   protected
-    def navigation_section
+    def navigation_key
       "People"
     end
 

@@ -41,7 +41,7 @@ class LabelsController < ResourcesController
   end
 
   protected
-    def navigation_section
+    def navigation_key
       "Labels"
     end
 

@@ -5,7 +5,7 @@ module Items::Templates
     helper_method :icons
 
     protected
-      def navigation_section
+      def navigation_key
         "Items"
       end
 
