@@ -1,0 +1,16 @@
+%p Delete this paragraph and forward to family members you'd like to add to your Thingybase account so they can help find, manage, and organize stuff around the house.
+
+%hr
+
+%p Hi!
+
+%p I just created the #{@account.name} account on Thingybase and thought you'd like to join and help keep things organized around the house.
+
+%p Here's what it takes to get setup
+
+%ol
+  %li Sign up or login to Thingybase with your email address.
+  %li Request to join my account at #{link_to new_account_member_request_url(@account), new_account_member_request_url(@account)}
+  %li Once I approve your request, you'll be able to search and manage all the stuff on the account.
+
+%p Let's do this!

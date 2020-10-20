@@ -1,3 +1,13 @@
 %html
+  :sass
+    .is-large-text
+      font-size: 2rem
   %body
     = yield
+    %p
+      Cheers,
+      %br
+      Thingybase
+    %hr
+    %p.is-not-important-text
+      What is #{link_to "Thingybase", root_url}? Oh nothing really, it's just a really sweet way to organize, treasure, and track your stuff.

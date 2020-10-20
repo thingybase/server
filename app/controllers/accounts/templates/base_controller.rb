@@ -2,6 +2,8 @@ module Accounts::Templates
   class BaseController < ResourcesController
     # Object used for form validation for account in the template controller. Also builds
     # out the item object graph of the template.
+    after_action :deliver_welcome_emails, only: :create
+
     class BaseTemplate < ApplicationModel
       validates :name, presence: true
       validates :account, presence: true
@@ -63,6 +65,13 @@ module Accounts::Templates
 
       def notice_resource_name
         "Account"
+      end
+
+      def deliver_welcome_emails
+      end
+
+      def mailer
+        AccountTemplateMailer.with(account: resource.account)
       end
   end
 end

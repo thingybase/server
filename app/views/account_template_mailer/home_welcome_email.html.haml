@@ -1,0 +1,16 @@
+%p Welcome to your new #{@account.name} account on Thingybase! You probably clicked around a bit, added a few things, and might now be wondering, "now what?"
+
+%p
+  =succeed "." do
+    %strong=link_to "Add family members", page_url("help/users")
+  We sent you another email that you can forward to people in your family that you'd like to add to your account.
+
+%p
+  =succeed "." do
+    %strong=link_to "Start labeling", page_url("help/printers")
+  You can print labels from your computer or phone and put them on boxes, shelves, or whatever to get things a bit more organized.
+
+%p
+  =succeed "." do
+    %strong=mail_to("support@thingybase.com", "Say hello", subject: "Hey!")
+  If you have a question about how something works or have an awesome idea for something you'd like to see in Thingybase reply to this email and pour your heart out.

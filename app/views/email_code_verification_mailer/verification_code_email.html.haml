@@ -1,14 +1,7 @@
 %p Greetings,
 
-%p You requested a login code. Copy and paste the code or type it in your browser or app before it expires in the next few minutes to continue.
+%p You requested a login code. Copy and paste the code or type it in your browser or app before it self-destructs in the next few minutes to continue.
 
-%p
-  Code:
-  %strong=@email_verification_code.code
+%code.is-large-text=@email_verification_code.code
 
 %p If you didn't request a code, please forward this to security@thingybase.com.
-
-%p
-  Best,
-  %br
-  The Thingybase account

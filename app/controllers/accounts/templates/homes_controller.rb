@@ -55,6 +55,11 @@ module Accounts::Templates
         resource.kitchen ||= true
       end
 
+      def deliver_welcome_emails
+        mailer.home_welcome_email.deliver_now
+        mailer.home_invite_users_email.deliver_now
+      end
+
       def permitted_params
         [
           :name,
