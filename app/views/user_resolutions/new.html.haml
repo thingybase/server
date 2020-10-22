@@ -3,3 +3,8 @@
 = application_form @user_resolution, url: user_resolution_url do |f|
   = f.input :email, autofocus: true, hint: "We only use this address to send you a login code and do not store your email"
   = f.button :submit, "Email code →", class: 'is-primary'
+
+%hr
+
+%p
+  Thingybase uses email login codes instead of passwords to keep your account safe. #{link_to "Learn more", page_path("help/logging-in")}.
