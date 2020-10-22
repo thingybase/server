@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'support@thingybase.com'
+  default from: %("Thingybase" <website@thingybase.com>)
   layout 'mailer'
 end
