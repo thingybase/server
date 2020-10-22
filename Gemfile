@@ -9,7 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0'
 # Use Puma as the app server
-gem 'puma', '~> 4.3'
+gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Use Uglifier as compressor for JavaScript assets
@@ -108,7 +108,7 @@ gem "view_component", "~> 2.18"
 
 gem "csv_builder", "~> 2.1"
 
-gem "sitepress-rails", "~> 1.0"
+gem "sitepress-rails", "~> 1.0.0"
 
 gem "markdown-rails", "~> 0.2.1"
 
