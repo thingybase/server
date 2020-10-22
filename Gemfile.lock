@@ -114,6 +114,8 @@ GEM
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    groupdate (5.2.1)
+      activesupport (>= 5)
     haml (5.2.0)
       temple (>= 0.8.0)
       tilt
@@ -371,6 +373,7 @@ DEPENDENCIES
   csv_builder (~> 2.1)
   factory_bot_rails
   faker
+  groupdate (~> 5.2)
   haml-rails
   jbuilder (~> 2.10)
   jwt

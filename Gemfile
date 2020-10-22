@@ -51,7 +51,6 @@ gem 'pg', '~> 1.2.0'
 gem 'rollbar'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-
 # Generate's PDFs, mostly for labels
 gem "prawn", "~> 2.2"
 # Print QR codes in a PDF
@@ -67,6 +66,27 @@ gem "chronic", "~> 0.10.2"
 gem "pg_search", "~> 2.3"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.1'
+# Makes form submissions use turbolinks instead of POST/PUT methods. Makes
+# mobile development a tad easier.
+gem "turbolinks-form", "~> 0.1.4"
+# Blanks from forms are converted into nil instead of stored as "" in the database
+gem "nilify_blanks", "~> 1.4"
+# Does union queries in ActiveRecord.
+gem "active_record_extended", "~> 1.4"
+# Converts GUIDs in the URLs into shorter ids
+gem "anybase", "~> 0.0.15"
+# Pull this out when Rails 6.1 is a thing.
+gem "view_component", "~> 2.18"
+# View template for CSV files
+gem "csv_builder", "~> 2.1"
+# Content management
+gem "sitepress-rails", "~> 1.0.0"
+# Renders markdown via `.html.md` in rails views.
+gem "markdown-rails", "~> 0.2.1"
+# Parses SVG vector files and inverts them for darkmode.
+gem "color", "~> 1.8"
+# Used for reporting from the shell so I can see who signed up within a day/week
+gem "groupdate", "~> 5.2"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -95,21 +115,3 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
-
-gem "turbolinks-form", "~> 0.1.4"
-
-gem "nilify_blanks", "~> 1.4"
-
-gem "active_record_extended", "~> 1.4"
-
-gem "anybase", "~> 0.0.15"
-
-gem "view_component", "~> 2.18"
-
-gem "csv_builder", "~> 2.1"
-
-gem "sitepress-rails", "~> 1.0.0"
-
-gem "markdown-rails", "~> 0.2.1"
-
-gem "color", "~> 1.8"
