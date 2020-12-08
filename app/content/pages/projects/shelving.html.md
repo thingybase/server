@@ -1,8 +1,11 @@
 ---
 title: Storage shelving
 subtitle: Like having a hardware store in your garage or basement
-layout: content
+layout: content-with-hero
+image_url: https://s3.amazonaws.com/bradgessler/IMG_6743.jpg
 ---
+
+You probably have a bunch of shelves and crates that you keep in a garage, storage closet, or basement. Infrequently used items are usually stored here, like holiday decorations or spare electronics, but when you need to find them or see what's in storage, its a lot of digging around. Thingybase can make managing the much easier, and make it possible for your whole family to search it all.
 
 ## What you need
 
@@ -12,10 +15,6 @@ You'll need the following to get started:
 * [Thermal label printer](/help/printers)
 * [Heavy duty shelves](https://www.amazon.com/s?k=deep+freezer)
 * Crates or boxes to put on the shelves
-
-## Watch the video
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3EpT_GdSnoY" frameborder="0" allow="clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
 
 ## How to do it
 

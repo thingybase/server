@@ -1,10 +1,11 @@
 ---
 title: Spice rack
-subtitle: Make cooking a joy again
-layout: content
+subtitle: Bring even more joy to the time you spend cooking
+layout: content-with-hero
+image_url: https://s3.amazonaws.com/bradgessler/IMG_6741.jpg
 ---
 
-Build out a spice rack that fits perfectly in your cabinets with labels that you can quickly read while cooking.
+Nothing beats cooking in a well organized kitchen. Build out a spice rack that fits perfectly in your cabinets with labels that you can quickly read while cooking.
 
 ## What you need
 
@@ -19,15 +20,13 @@ You'll need the following to get started:
 * Pencil
 * Clamps to hold boards while cutting
 
-## Watch the video
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3EpT_GdSnoY" frameborder="0" allow="clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-
 ## How to do it
 
 With a little bit of planning and some time, you can make some great spice racks to put in your cabinets to keep your spices organized and easy to read.
 
 ### Put spices in jars and label
+
+Take all of your spices and put them into the jars. Using Thingybase, print lables for each spice that you want to see while you're cooking.
 
 ### Measure cabinets
 
@@ -44,3 +43,7 @@ Now that the boards are cut, you'll have to make sure the boards fit into the ca
 First you'll wiggle the 4x4 into place so its in the back of the shelf. Then wiggle in the 2x4.
 
 ### Put jars on boards
+
+When it's all done, put the jars on the boards, then take a picture of it and admire your work. If you want to make your friends a little bit jealous, share the picture on Instagram and show off your newly organize pantry.
+
+![Completed spice rack](https://s3.amazonaws.com/bradgessler/IMG_6741.jpg)
