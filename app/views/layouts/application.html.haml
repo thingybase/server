@@ -1,23 +1,4 @@
-=render_layout "body" do
-  %header
-    %nav.navbar(role="navigation" aria-label="main navigation")
-      .container
-        .navbar-brand
-          = active_link_to "Thingybase", root_path, class: "navbar-item has-text-weight-bold"
-          %a.navbar-burger.burger(aria-expanded="false" aria-label="menu" data-target="navbar-application-navigation" role="button")
-            %span(aria-hidden="true")
-            %span(aria-hidden="true")
-            %span(aria-hidden="true")
-        .navbar-menu#navbar-application-navigation
-          .navbar-end
-            = active_link_to "Help", page_path("help"), class: "navbar-item"
-            -if logged_in?
-              = active_link_to "Accounts", accounts_path, class: "navbar-item"
-              = active_link_to "Profile", user_path(current_user), class: "navbar-item"
-              = active_link_to "Sign out", session_path, method: :delete, class: "navbar-item"
-            -else
-              = active_link_to "Signup", new_session_path, class: "navbar-item"
-              = active_link_to "Log in", launch_path, class: "navbar-item"
+=render_layout "page" do
   %section.section
     .container= notice_message class: "mb-4"
     .container= yield

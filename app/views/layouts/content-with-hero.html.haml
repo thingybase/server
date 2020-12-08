@@ -1,4 +1,12 @@
 = render_layout "page" do
+  .hero.is-large{style: background_image_style}
+    .hero-body
+      .container
+        %h1.title
+          .is-slab-text= current_page.data.fetch("title")
+        - if subtitle = current_page.data.fetch("subtitle", nil)
+          %h2.subtitle
+            .is-slab-text= subtitle
   %section.section
     .container
       .columns

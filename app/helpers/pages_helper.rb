@@ -9,6 +9,10 @@ module PagesHelper
     link_to page.data.fetch("title"), page.request_path, **kwargs
   end
 
+  def background_image_style(url: current_page.data.fetch("image_url"))
+    "background-image: url(#{url}); background-position: center center; background-size: cover; background-attachment: fixed;"
+  end
+
   private
     def coerce_page(value)
       case value
