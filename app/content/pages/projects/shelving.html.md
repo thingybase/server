@@ -5,7 +5,7 @@ layout: content-with-hero
 image_url: https://s3.amazonaws.com/bradgessler/IMG_6743.jpg
 ---
 
-You probably have a bunch of shelves and crates that you keep in a garage, storage closet, or basement. Infrequently used items are usually stored here, like holiday decorations or spare electronics, but when you need to find them or see what's in storage, its a lot of digging around. Thingybase can make managing the much easier, and make it possible for your whole family to search it all.
+You probably have a bunch of shelves and crates that you keep in a garage, storage closet, or basement. Infrequently used items are usually stored there, like holiday decorations or spare electronics, but when you need to find them or see what's in storage, its a lot of digging around. Thingybase can make managing them much easier, and make it possible for your whole family to search through all of it all from their phones or computers.
 
 ## What you need
 
@@ -18,7 +18,7 @@ You'll need the following to get started:
 
 ## How to do it
 
-You probably have a bunch of shelves and crates that you keep in a garage, storage closet, or basement. Infrequently used items are usually stored here, like holiday decorations or spare electronics, but when you need to find them or see what's in storage, its a lot of digging around. Thingybase can make managing the much easier, and make it possible for your whole family to search it all.
+If you haven't already, setup a bunch of shelves and crates in the room where you store all of your infrequently used stuff.
 
 ### Create shelves in Thingybase
 

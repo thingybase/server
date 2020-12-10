@@ -5,7 +5,7 @@ layout: content-with-hero
 image_url: https://s3.amazonaws.com/bradgessler/IMG_4713.jpeg
 ---
 
-When you cook big batches of food to stash away in the deep freezer for an easy meal later, Thingybase can help manage all the inventory so waste less of it.
+When you cook big batches of food to stash away in the deep freezer for an easy meal later, Thingybase can help manage all the inventory so you waste less of it. Even better, you can search your freezer from the comfort of your couch if you're sitting there wondering, "what's for dinner tonight?"
 
 ## What you need
 
@@ -24,13 +24,13 @@ You'll need the following to get started:
 
 ## How to do it
 
-You already have a deep dreezer plugged in and probably full of food. Ideally you're reusing old food containers, like cottage cheese or large yougurt containers, to reduce plastic waste. Make sure your [thermal label printer](/help/printers) is plugged in and working on your network; you'll be printing labels with it from your phone or computer.
+You already have a deep dreezer plugged in and probably full of food. Ideally you're storing your food in old food containers, like cottage cheese or large yougurt containers, to reduce plastic waste. Make sure your [thermal label printer](/help/printers) is plugged in and working on your network; you'll be printing labels with it from your phone or computer.
 
 Alright, lets get to it.
 
 ### Create "Deep freezer" in Thingybase
 
-First, find or create the room in your [Thingybase account items](/launch/items) where your deep freezer is located. Click `+ Add item`, enter the name "Deep freezer", and check the `Allow items to be contained within this item` checkbox. Next click `Create item`, which saves it to your account. If you want, click `More...`, `Change icon` and select the freezer so it stands out a bit more.
+First, find or create the room in your [Thingybase account items](/launch/items) where your deep freezer is located. Click `+ Add item`, enter the name "Deep freezer", and check the `Allow items to be contained within this item` checkbox. Next click `Create item`, which saves it to your account. If you want, click `More...`, `Change icon` and select the freezer icon so it stands out a bit more.
 
 ### Add items to the deep freezer
 
@@ -38,11 +38,15 @@ Once you've created the deep freezer in Thingybase, it's time to start adding al
 
 ### Print labels
 
-After all the items are added to Thingybase, print the labels and slap them on the food. You'll scan these later when you take the food out so you can quickly delete them from your inventory.
+After all the items are added to Thingybase, print the labels and slap them on the food containers. You'll scan these later when you take the food out so you can quickly delete them from your inventory.
+
+Here's what it looks like after I printed a bunch of labels for a batch of sou vide pork belly:
+
+![Thingybase labels attached to pork belly](https://s3.amazonaws.com/bradgessler/IMG_4713.jpeg)
 
 ### Store in deep freezer
 
-Once all of the items are labeled, stash it all away in the deep freezer to enjoy another day.
+Once all of the items are labeled, stash it all away in the deep freezer to enjoy another day. You'll be happy you did after you don't feel like cooking from scratch after a long day of work.
 
 ## Using food from the freezer
 
@@ -54,4 +58,4 @@ Head to your (items)[/accounts/launch/items] and search for whatever you feel li
 
 ### Remove from inventory
 
-When you're ready to eat an item you need to remove it from Thingybase. To do that turn the camera on your phone, hold up the item so the label is clearly visible and a link should appear. When you open that link you'll be taken to that item in Thingybase. All you do now is delete the item and its gone from Thingybase. That's it. Enjoy your meal!
+When you're ready to eat an item you'll need to remove it from Thingybase. To do that turn the camera on your phone, hold up the item so the label is clearly visible and a link should appear. When you open that link you'll be taken to that item in Thingybase. All you do now is delete the item and its gone from Thingybase. That's it, well, except for reheating your delicious meal. Enjoy!
