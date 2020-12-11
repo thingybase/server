@@ -2,7 +2,7 @@
 title: Spice rack
 subtitle: Bring even more joy to the time you spend cooking
 layout: content-with-hero
-image_url: https://s3.amazonaws.com/bradgessler/IMG_6741.jpg
+image_url: https://objects.bradgessler.com/IMG_6741.jpg
 ---
 
 Nothing beats cooking in a well organized kitchen. Build out a spice rack that fits perfectly in your cabinets with labels that you can quickly read while cooking.
@@ -48,7 +48,7 @@ First you'll wiggle the 4x4 into place so its in the back of the shelf. Then wig
 
 When the boards are placed properly in the cabinets, put the jars on the boards, then take a picture of it and admire your work. If you want to make your friends a little bit jealous, share the picture on Instagram and show off your newly organize pantry.
 
-![A spice rack organized on 2x4's and 4x4's](https://s3.amazonaws.com/bradgessler/IMG_6741.jpg)
+![A spice rack organized on 2x4's and 4x4's](https://objects.bradgessler.com/IMG_6741.jpg)
 
 ## One more thing
 

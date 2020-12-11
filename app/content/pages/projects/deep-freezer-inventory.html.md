@@ -2,7 +2,7 @@
 title: Deep freezer inventory
 subtitle: Never throw out expired food again
 layout: content-with-hero
-image_url: https://s3.amazonaws.com/bradgessler/IMG_4713.jpeg
+image_url: https://objects.bradgessler.com/IMG_4713.jpeg
 ---
 
 When you cook big batches of food to stash away in the deep freezer for an easy meal later, Thingybase can help manage all the inventory so you waste less of it. Even better, you can search your freezer from the comfort of your couch if you're sitting there wondering, "what's for dinner tonight?"
@@ -42,7 +42,7 @@ After all the items are added to Thingybase, print the labels and slap them on t
 
 Here's what it looks like after I printed a bunch of labels for a batch of sou vide pork belly:
 
-![Thingybase labels attached to pork belly](https://s3.amazonaws.com/bradgessler/IMG_4713.jpeg)
+![Thingybase labels attached to pork belly](https://objects.bradgessler.com/IMG_4713.jpeg)
 
 ### Store in deep freezer
 

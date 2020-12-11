@@ -2,7 +2,7 @@
 title: Storage shelving
 subtitle: Like having a hardware store in your garage or basement
 layout: content-with-hero
-image_url: https://s3.amazonaws.com/bradgessler/IMG_6743.jpg
+image_url: https://objects.bradgessler.com/IMG_6743.jpg
 ---
 
 You probably have a bunch of shelves and crates that you keep in a garage, storage closet, or basement. Infrequently used items are usually stored there, like holiday decorations or spare electronics, but when you need to find them or see what's in storage, its a lot of digging around. Thingybase can make managing them much easier, and make it possible for your whole family to search through all of it all from their phones or computers.
