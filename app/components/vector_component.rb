@@ -1,8 +1,9 @@
 class VectorComponent < ViewComponent::Base
-  def initialize(key: nil, asset: nil, mode: nil, **locals)
+  def initialize(key: nil, asset: nil, mode: nil, alt: nil, **locals)
     @mode = mode
     @asset = asset || VectorAsset.collection.find(key)
     @css_class = locals[:class]
+    @alt ||= @asset.name
   end
 
   private

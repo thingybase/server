@@ -10,7 +10,7 @@ class ApplicationMarkdownRenderer < Redcarpet::Render::HTML
       path = Pathname.new(url.path).relative_path_from("/").to_s
       VectorComponent.new(key: path).render_in ActionView::Base.new
     else
-      ActionController::Base.helpers.image_tag link, alt: alt_text
+      ActionController::Base.helpers.image_tag link, alt: alt_text, title: title
     end
   end
 end
