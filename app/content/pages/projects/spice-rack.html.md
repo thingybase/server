@@ -36,7 +36,7 @@ You'll need to measure the width and depth of the cabinets. The width will tell 
 
 Cut the 2x4 and 4x4's to the length that matches the width for your cabinet.
 
-![Boards arranged in cabinets](/vectors/hsl-0,0,0/illustrations/spice-rack-board-cutaway-51e3fbf01a64b8553985af3d5a964a2f.svg)
+![Boards arranged in cabinets](vector:///illustrations/spice-rack-board-cutaway.svg)
 
 ### Fit boards into cabinets
 
