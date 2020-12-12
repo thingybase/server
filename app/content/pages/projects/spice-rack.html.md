@@ -5,7 +5,7 @@ layout: content-with-hero
 image_url: https://objects.bradgessler.com/IMG_6741.jpg
 ---
 
-Nothing beats cooking in a well organized kitchen. Build out a spice rack that fits perfectly in your cabinets with labels that you can quickly read while cooking.
+Nothing beats cooking in a well organized kitchen. Build out a spice rack with a few boards and some glass jars that fits perfectly in your cabinets with labels that you can quickly read while cooking.
 
 ## What you need
 
@@ -26,7 +26,7 @@ With a little bit of planning and some time, you can make some great spice racks
 
 ### Put spices in jars and label
 
-Take all of your spices and put them into the jars. Using Thingybase, print lables for each spice that you want to see while you're cooking.
+Take all of your spices and put them into the jars. Using Thingybase, [print labels](/help/printers) for each spice that you want to see while you're cooking.
 
 ### Measure cabinets
 
@@ -36,13 +36,15 @@ You'll need to measure the width and depth of the cabinets. The width will tell 
 
 Cut the 2x4 and 4x4's to the length that matches the width for your cabinet.
 
+The boards will fit in your cabinet like this:
+
 ![Boards arranged in cabinets](vector:///illustrations/spice-rack-board-cutaway.svg)
 
 ### Fit boards into cabinets
 
 Now that the boards are cut, you'll have to make sure the boards fit into the cabinets. You might have to angle the board at first to get it into the cabinet or shimmy it around. If it doesn't fit, you might have to cut the board to be shorter than the width of the cabinets. It's OK if its a little bit shorter than the width of the cabinet; there's still going to be plenty of room to spread out the spice jars.
 
-First you'll wiggle the 4x4 into place so its in the back of the shelf. Then wiggle in the 2x4.
+First you'll wiggle the 4x4 into place so its in the back of the shelf. Then wiggle in the 2x4. When the boards are in, the back of your spice rack will be the 4x4, the 2x4 in the middle, and the bottom of the shelf in the front.
 
 ### Put jars on boards
 

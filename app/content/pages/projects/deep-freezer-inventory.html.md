@@ -24,13 +24,13 @@ You'll need the following to get started:
 
 ## How to do it
 
-You already have a deep dreezer plugged in and probably full of food. Ideally you're storing your food in old food containers, like cottage cheese or large yougurt containers, to reduce plastic waste. Make sure your [thermal label printer](/help/printers) is plugged in and working on your network; you'll be printing labels with it from your phone or computer.
+You already have a deep freezer plugged in and probably full of food. Ideally you're storing your food in old food containers, like cottage cheese or large yogurt containers, to reduce plastic waste. Make sure your [thermal label printer](/help/printers) is plugged in and working on your network; you'll be printing labels with it from your phone or computer.
 
 Alright, lets get to it.
 
 ### Create "Deep freezer" in Thingybase
 
-First, find or create the room in your [Thingybase account items](/launch/items) where your deep freezer is located. Click `+ Add item`, enter the name "Deep freezer", and check the `Allow items to be contained within this item` checkbox. Next click `Create item`, which saves it to your account. If you want, click `More...`, `Change icon` and select the freezer icon so it stands out a bit more.
+First, find or create the room in your [Thingybase account items](/launch/items) where your deep freezer is located. Click `+ Add item`, enter the name "Deep freezer", and check the `Allow items to be contained within this item` check box. Next click `Create item`, which saves it to your account. If you want, click `More...`, `Change icon` and select the freezer icon so it stands out a bit more.
 
 ### Add items to the deep freezer
 
@@ -40,7 +40,7 @@ Once you've created the deep freezer in Thingybase, it's time to start adding al
 
 After all the items are added to Thingybase, print the labels and slap them on the food containers. You'll scan these later when you take the food out so you can quickly delete them from your inventory.
 
-Here's what it looks like after I printed a bunch of labels for a batch of sou vide pork belly:
+Here's what it looks like after I printed a bunch of labels for a batch of sous vide pork belly:
 
 ![Thingybase labels attached to pork belly](https://objects.bradgessler.com/IMG_4713.jpeg)
 
@@ -54,7 +54,7 @@ A few weeks or months later, when you're feeling hungry, you might be wondering 
 
 ### Search for items
 
-Head to your (items)[/accounts/launch/items] and search for whatever you feel like eating. If you don't find it, navigate to your deep freezer in Thingybase to see what's inside of it.
+Head to your [items](/accounts/launch/items) and search for whatever you feel like eating. If you don't find it, navigate to your deep freezer in Thingybase to see what's inside of it.
 
 ### Remove from inventory
 
