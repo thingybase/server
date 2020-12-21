@@ -1,0 +1,26 @@
+= render_layout "page" do
+  .hero.is-large{style: background_image_style}
+    .hero-body
+      .container
+        %h1.title
+          .is-slab-text= current_page.data.fetch("title")
+        - if subtitle = current_page.data.fetch("subtitle", nil)
+          %h2.subtitle
+            .is-slab-text= subtitle
+  %section.section
+    .container
+      .columns
+        .column.is-6.is-offset-3
+          .content
+            = yield
+  %hr
+  %section.hero
+    .hero-body
+      .container.has-text-centered
+        %h2.title More projects
+        %h3.subtitle If you feeling like conquering the world, these other projets will help you get even more organized
+      .container.my-6
+        .columns
+          - current_page.siblings.each do |page|
+            .column.is-one-third
+              = page_card page

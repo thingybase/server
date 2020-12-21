@@ -75,7 +75,7 @@ title: Thingybase
           %h3.subtitle How the universe will be dented
       .columns
         .column.is-offset-3.is-6
-          .content.box.px-6.py-6.is-size-5.is-radiusless
+          .content.box.px-6.py-6.is-size-5.is-radiusless.is-rotated-1-deg
             %p Hey there—
 
             %p Let’s face it, people have lots of stuff. We've come up with countless ways to deal with it all: The KonMari Method™, minimalism, getting rid of stuff … the list goes on, but it’s always about having less stuff and sometimes makes us feel bad about the things we already have.
@@ -87,6 +87,17 @@ title: Thingybase
             %p As long as Thingybase is around, there will always be a way to get a better handle on our stuff, be less wasteful, and worry less about our things.
 
             %p= component :vector, key: "illustrations/signature.svg"
+
+%section.hero.is-medium
+  .hero-body
+    .container.has-text-centered
+      %h2.title Projects
+      %h3.subtitle See all of the things you can do with Thingybase once you get it up and running
+    .container.mt-6
+      .columns
+        - site.get("projects").children.take(3).each do |page|
+          .column.is-one-third
+            = page_card page
 
 %section.hero.is-primary
   .hero-body

@@ -13,6 +13,14 @@ module PagesHelper
     "background-image: url(#{url}); background-position: center center; background-size: cover; background-attachment: fixed;"
   end
 
+  def page_card(page = current_page)
+    component :card,
+      url: page.request_path,
+      image_url: page.data.fetch("image_url"),
+      title: page.data.fetch("title"),
+      subtitle: page.data.fetch("subtitle")
+  end
+
   private
     def coerce_page(value)
       case value

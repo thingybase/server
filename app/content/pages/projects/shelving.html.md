@@ -1,7 +1,7 @@
 ---
 title: Storage shelving
-subtitle: Like having a hardware store in your garage or basement
-layout: content-with-hero
+subtitle: Like having a hardware store in your home
+layout: project
 image_url: https://objects.bradgessler.com/IMG_6743.jpg
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Deep freezer inventory
 subtitle: Never throw out expired food again
-layout: content-with-hero
+layout: project
 image_url: https://objects.bradgessler.com/IMG_4713.jpeg
 ---
 

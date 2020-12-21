@@ -1,0 +1,11 @@
+= link_to @url do
+  .card
+    .card-image
+      %figure.image.is-4by3
+        = image_tag @image_url
+    .card-content
+      .media
+        .media-content
+          %h3.title.is-5= @title
+          %p.subtitle.is-6= @subtitle
+          %p.mt-4=link_to "Read more →", @url

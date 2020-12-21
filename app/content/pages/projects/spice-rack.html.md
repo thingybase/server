@@ -1,7 +1,7 @@
 ---
 title: Spice rack
 subtitle: Bring even more joy to the time you spend cooking
-layout: content-with-hero
+layout: project
 image_url: https://objects.bradgessler.com/IMG_6741.jpg
 ---
 
