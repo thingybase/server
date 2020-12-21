@@ -1,6 +1,6 @@
 ---
 title: Storage shelving
-subtitle: Like having a hardware store in your home
+subtitle: The days of forgetting what's in storage are over
 layout: project
 image_url: https://objects.bradgessler.com/IMG_6743.jpg
 ---

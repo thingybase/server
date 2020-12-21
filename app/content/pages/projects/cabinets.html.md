@@ -1,6 +1,6 @@
 ---
 title: Cabinets, drawers, & dressers
-subtitle: A sane way of labeling a few things
+subtitle: Easily search in places that are hard to reach
 layout: project
 image_url: https://objects.bradgessler.com/lVLkBBiqo6HsgLNRbfjt31vOktIMTZ2Bh3q2iknSlNyIPNLNAZy1WyNS6B3OAsSZ2yzxDlvWZHJMXoQ1pYPfqb4KAa3ab9ioEUXT.jpg
 ---
