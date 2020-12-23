@@ -1,5 +1,5 @@
 ---
-layout: body
+layout: page-with-footer
 title: Thingybase
 ---
 
@@ -98,16 +98,3 @@ title: Thingybase
         - site.get("projects").children.take(3).each do |page|
           .column.is-one-third
             = page_card page
-
-%section.hero.is-primary
-  .hero-body
-    .container
-      .columns
-        .column
-      %h1.title.is-4 Oh wow, you made it all the way down here?
-      %h2.subtitle.is-5
-        If you're still not convinced
-        =succeed "," do
-          =mail_to "hey@thingybase.com", "tell us why", subject: "Hey!"
-        but if you are...
-      =link_to "Sign up →", launch_path, class: "button is-light is-medium", role: "button"

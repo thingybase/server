@@ -1,4 +1,4 @@
-=render_layout "body" do
+=render_layout "page-with-footer" do
   %header
     %nav.navbar(role="navigation" aria-label="main navigation")
       .container
@@ -19,26 +19,3 @@
               = active_link_to "Signup", new_session_path, class: "navbar-item"
               = active_link_to "Log in", launch_path, class: "navbar-item"
   = yield
-  %footer.footer.is-light
-    .container
-      .columns
-        .column.is-6
-          %h4.title.is-5 Create an account in a few minutes
-          %h2.subtitle.is-6
-            If you're still not convinced
-            =succeed "," do
-              =mail_to "hey@thingybase.com", "tell us why", subject: "Hey!"
-            but if you are...
-          =link_to "Sign up →", launch_path, class: "button is-medium is-primary", role: "button"
-        .column.is-2.is-offset-2
-          %h4.has-text-weight-bold.is-5 Learn
-          %ul
-            %li= link_to "About", page_path("about")
-            %li= link_to "Projects", page_path("projects")
-            %li= link_to "Help", page_path("help")
-        .column.is-2
-          %h4.has-text-weight-bold.is-5 About
-          %ul
-            %li= link_to "Privacy", page_path("trust/privacy")
-            %li= link_to "Terms", page_path("trust/terms")
-            %li= link_to "Twitter", "https://www.twitter.com/thingybase"
