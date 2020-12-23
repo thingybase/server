@@ -22,7 +22,7 @@ If you haven't already, setup a bunch of shelves and crates in the room where yo
 
 ### Create shelves in Thingybase
 
-First, find or create the room in your [Thingybase account items](/launch/items) where your shelves are located. Click `+ Add item`, enter the name "Shelf 1", and check the `Allow items to be contained within this item` checkbox. Next click `Create item`, which saves it to your account. If you want, click `More...`, `Change icon` and select a shelf icon so it stands out a bit more.
+First, find or create the room in your [Thingybase account items](/launch/items) where your shelves are located. Click `+ Add item`, enter the name "Shelf 1", and check the `Allow items to be contained within this item` check-box. Next click `Create item`, which saves it to your account. If you want, click `More...`, `Change icon` and select a shelf icon so it stands out a bit more.
 
 If you have more shelves, go ahead and add them to the room.
 
@@ -36,7 +36,7 @@ Before labeling the crates, its a good idea to get them a bit organized. Maybe t
 
 ### Put the crates on the shelves
 
-Once you've got your crates organized, its time to put them on the shelves physically and in Thingybase. Put the crate on the shelf, then either find the coresponding shelf in Thingybase or scan the label on the shelf you printed. When you're on the shelf's page, click `+ Add item`, then name your crate and check the `Allow items to be contained within this item` checkbox. If you'd like, you can also start adding items into the crate on Thingybase that will help you find it later.
+Once you've got your crates organized, its time to put them on the shelves physically and in Thingybase. Put the crate on the shelf, then either find the corresponding shelf in Thingybase or scan the label on the shelf you printed. When you're on the shelf's page, click `+ Add item`, then name your crate and check the `Allow items to be contained within this item` check-box. If you'd like, you can also start adding items into the crate on Thingybase that will help you find it later.
 
 ### Label the crates
 
