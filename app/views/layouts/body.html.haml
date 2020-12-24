@@ -9,7 +9,7 @@
     %meta(name="apple-mobile-web-app-status-bar-style" content="black-translucent")
     = open_graph_meta_tags
     = csrf_meta_tags
-    = stylesheet_pack_tag "application"
+    = stylesheet_pack_tag "application", media: "screen,app"
     = javascript_pack_tag "application"
     = render partial: "partials/tags/google_analytics"
   %body
