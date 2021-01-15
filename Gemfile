@@ -77,6 +77,8 @@ gem "csv_builder", "~> 2.1"
 gem "sitepress-rails", "~> 1.0.0"
 # Renders markdown via `.html.md` in rails views.
 gem "markdown-rails", "~> 0.2.1", github: "polleverywhere/markdown-rails"
+# Markdown gem
+gem "redcarpet", "~> 3.5"
 # Parses SVG vector files and inverts them for darkmode.
 gem "color", "~> 1.8"
 # Used for reporting from the shell so I can see who signed up within a day/week
@@ -109,5 +111,3 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
-
-gem "redcarpet", "~> 3.5"
