@@ -97,13 +97,6 @@ GEM
     closure_tree (7.2.0)
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
-    coffee-rails (5.0.0)
-      coffee-script (>= 2.2.0)
-      railties (>= 5.2.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     color (1.8)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
@@ -112,7 +105,6 @@ GEM
     diff-lcs (1.4.4)
     erubi (1.10.0)
     erubis (2.7.0)
-    execjs (2.7.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.1.0)
@@ -338,8 +330,6 @@ GEM
       nokogiri (>= 1.6, < 2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    uglifier (4.2.0)
-      execjs (>= 0.3.0, < 3)
     view_component (2.20.0)
       activesupport (>= 5.0.0, < 7.0)
     web-console (4.0.4)
@@ -377,7 +367,6 @@ DEPENDENCIES
   capybara (>= 2.15)
   chronic (~> 0.10.2)
   closure_tree (~> 7.0)
-  coffee-rails (~> 5.0)
   color (~> 1.8)
   csv_builder (~> 2.1)
   factory_bot_rails
@@ -418,7 +407,6 @@ DEPENDENCIES
   turbolinks-form (~> 0.1.4)
   twilio-ruby
   tzinfo-data
-  uglifier (>= 4.2.0)
   view_component (~> 2.18)
   web-console (>= 3.3.0)
   webdrivers
