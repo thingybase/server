@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0'
+gem 'rails', '~> 6.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -72,7 +72,7 @@ gem "turbolinks-form", "~> 0.1.4"
 # Blanks from forms are converted into nil instead of stored as "" in the database
 gem "nilify_blanks", "~> 1.4"
 # Does union queries in ActiveRecord.
-gem "active_record_extended", "~> 1.4"
+gem "active_record_extended", "~> 2.0"
 # Converts GUIDs in the URLs into shorter ids
 gem "anybase", "~> 0.0.15"
 # Pull this out when Rails 6.1 is a thing.
