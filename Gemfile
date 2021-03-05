@@ -91,6 +91,8 @@ gem "redcarpet", "~> 3.5"
 gem "color", "~> 1.8"
 # Used for reporting from the shell so I can see who signed up within a day/week
 gem "groupdate", "~> 5.2"
+# Asset compiler ... Heroku needs it.
+gem "uglifier", "~> 4.2"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

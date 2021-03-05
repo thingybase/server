@@ -97,6 +97,7 @@ GEM
     diff-lcs (1.4.4)
     erubi (1.10.0)
     erubis (2.7.0)
+    execjs (2.7.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.1.0)
@@ -327,6 +328,8 @@ GEM
       nokogiri (>= 1.6, < 2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    uglifier (4.2.0)
+      execjs (>= 0.3.0, < 3)
     view_component (2.26.1)
       activesupport (>= 5.0.0, < 7.0)
     web-console (4.1.0)
@@ -404,6 +407,7 @@ DEPENDENCIES
   turbolinks-form (~> 0.1.4)
   twilio-ruby
   tzinfo-data
+  uglifier (~> 4.2)
   view_component (~> 2.26)
   web-console (>= 3.3.0)
   webdrivers
