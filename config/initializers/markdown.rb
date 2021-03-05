@@ -8,7 +8,7 @@ class ApplicationMarkdownRenderer < Redcarpet::Render::HTML
     url = URI(link)
     if url.scheme == "vector"
       path = Pathname.new(url.path).relative_path_from("/").to_s
-      VectorComponent.new(key: path).render_in ApplicationController.helpers
+      VectorComponent.new(key: path).render_in PagesController.helpers
     else
       ActionController::Base.helpers.image_tag link, alt: alt_text, title: title
     end
