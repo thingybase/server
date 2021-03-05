@@ -70,13 +70,21 @@ gem "active_record_extended", "~> 2.0"
 # Converts GUIDs in the URLs into shorter ids
 gem "anybase", "~> 0.0.15"
 # Pull this out when Rails 6.1 is a thing.
-gem "view_component", "~> 2.18"
+gem "view_component", "~> 2.26"
 # View template for CSV files
 gem "csv_builder", "~> 2.1"
 # Content management
-gem "sitepress-rails", "~> 1.0.0"
+if sitepress_gem_path = ENV["SITEPRESS_GEM_PATH"]
+  gem "sitepress",        path: sitepress_gem_path
+  gem "sitepress-cli",    path: sitepress_gem_path
+  gem "sitepress-rails",  path: sitepress_gem_path
+  gem "sitepress-core",   path: sitepress_gem_path
+  gem "sitepress-server", path: sitepress_gem_path
+else
+  gem "sitepress-rails", "~> 2.0.0.beta"
+end
 # Renders markdown via `.html.md` in rails views.
-gem "markdown-rails", "~> 0.2.1", github: "polleverywhere/markdown-rails"
+gem "markdown-rails", "~> 1.0.0"
 # Markdown gem
 gem "redcarpet", "~> 3.5"
 # Parses SVG vector files and inverts them for darkmode.
