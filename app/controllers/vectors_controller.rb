@@ -17,7 +17,7 @@ class VectorsController < ApplicationController
   private
     def permitted_params
       id, _, fingerprint = params[:id].rpartition("-")
-      params.permit(:h, :s, :l, :id, :fingerprint).merge(id: id, fingerprint: fingerprint)
+      params.permit(:h, :s, :l, :id, :fingerprint, :format).merge(id: id, fingerprint: fingerprint)
     end
 
     def cached_respond_to(&block)

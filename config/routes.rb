@@ -117,9 +117,9 @@ Rails.application.routes.draw do
 
   resources :icons, only: :index
 
-  get "/vectors/hsl-:h,:s,:l/*id", to: "vectors#hsl", as: :vector, defaults: {
-    h: 0, s: 0, l: 0, format: :svg
-  }
+  get "/vectors/hsl-:h,:s,:l/*id", to: "vectors#hsl",
+    as: :vector,
+    defaults: { h: 0, s: 0, l: 0, format: :svg }
 
   resources :users
   resource :user_resolution, only: %i[create new]
