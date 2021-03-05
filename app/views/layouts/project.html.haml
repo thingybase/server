@@ -18,9 +18,9 @@
     .hero-body
       .container.has-text-centered
         %h2.title More projects
-        %h3.subtitle If you feeling like conquering the world, these other projets will help you get even more organized
+        %h3.subtitle If you feeling like conquering the world, these other projects will help you get even more organized
       .container.my-6
         .columns
-          - current_page.siblings.each do |page|
+          - current_page.siblings.excluding(current_page).take(3).each do |page|
             .column.is-one-third
               = page_card page
