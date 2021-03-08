@@ -1,6 +1,6 @@
 ---
 title: Account users
-subtitle: Add people to your account so they find stuff and help you stay organized
+subtitle: Securely share your account with other people
 layout: content
 ---
 
