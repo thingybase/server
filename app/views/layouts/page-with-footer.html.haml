@@ -1,4 +1,4 @@
-=render_layout "body" do
+= render_layout "page" do
   = yield
   %footer.footer.is-light.is-hidden-app
     .container
@@ -7,16 +7,16 @@
           %h4.title.is-5 Create an account in a few minutes
           %h2.subtitle.is-6
             You'll get everything organized in no time
-          =link_to "Sign up →", launch_path, class: "button is-medium is-primary", role: "button"
+          = link_to "Sign up →", launch_path, class: "button is-medium is-primary", role: "button"
         .column.is-2.is-offset-2
           %h4.has-text-weight-bold.is-5 Learn
           %ul
             %li= link_to "About", page_path("about")
             %li= link_to "Projects", page_path("projects")
             %li= link_to "Help", page_path("help")
+            %li= link_to "Twitter", "https://www.twitter.com/thingybase"
         .column.is-2
-          %h4.has-text-weight-bold.is-5 About
+          %h4.has-text-weight-bold.is-5 Trust
           %ul
             %li= link_to "Privacy", page_path("trust/privacy")
             %li= link_to "Terms", page_path("trust/terms")
-            %li= link_to "Twitter", "https://www.twitter.com/thingybase"
