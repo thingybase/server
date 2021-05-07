@@ -1,5 +1,6 @@
 class UserResolutionsController < ApplicationController
   skip_security!
+  layout "focused"
 
   def new
     @user_resolution = UserResolution.new

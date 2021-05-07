@@ -3,6 +3,7 @@ module Accounts::Templates
     # Object used for form validation for account in the template controller. Also builds
     # out the item object graph of the template.
     after_action :deliver_welcome_emails, only: :create
+    layout "focused"
 
     class BaseTemplate < ApplicationModel
       validates :name, presence: true

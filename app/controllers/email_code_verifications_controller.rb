@@ -1,6 +1,7 @@
 class EmailCodeVerificationsController < ApplicationController
   skip_security!
   before_action :ensure_session_email
+  layout "focused"
 
   def new
     @email_code_verification = EmailCodeVerification.new(session_params)

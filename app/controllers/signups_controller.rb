@@ -1,6 +1,7 @@
 class SignupsController < ApplicationController
   skip_security!
   before_action :ensure_authentic_email
+  layout "focused"
 
   def new
     @user = User.new(session_params)

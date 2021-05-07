@@ -1,0 +1,14 @@
+= render_layout "body" do
+  %header.is-hidden-app
+    %nav.navbar(role="navigation" aria-label="main navigation")
+      .container
+        .navbar-brand
+          = active_link_to "Thingybase", root_path, class: "navbar-item has-text-weight-bold"
+  %section.section
+    .container
+      .columns
+        .column.is-offset-2.is-8
+          = notice_message class: "mb-4"
+          .box.p-6
+            = yield
+  %footer.section

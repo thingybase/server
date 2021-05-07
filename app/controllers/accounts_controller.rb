@@ -1,6 +1,7 @@
 class AccountsController < ResourcesController
   include AccountLayout
   after_action :add_current_user_to_members, only: :create
+  layout "focused", only: %w[new index]
 
   def self.resource
     Account
