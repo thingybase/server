@@ -1,0 +1,1 @@
+LabelGenerator.batch(resources, size: params[:size]).render_pdf

@@ -9,24 +9,14 @@ class LabelsController < ResourcesController
   def show
     respond_to do |format|
       format.html
-      format.pdf do
-        send_data LabelGenerator.batch(resource, size: params[:size]).render_pdf,
-          disposition: "inline",
-          type: "application/pdf",
-          filename: "label-#{@label.to_param}.pdf"
-      end
+      format.pdf
     end
   end
 
   def index
     respond_to do |format|
       format.html
-      format.pdf do
-        send_data LabelGenerator.batch(resources, size: params[:size]).render_pdf,
-          disposition: "inline",
-          type: "application/pdf",
-          filename: "labels.pdf"
-      end
+      format.pdf
     end
   end
 
