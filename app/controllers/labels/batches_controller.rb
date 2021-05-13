@@ -10,12 +10,7 @@ module Labels
 
       respond_to do |format|
         format.html
-        format.pdf do
-          send_data LabelGenerator.batch(@labels, size: params[:size]).render_pdf,
-            disposition: "inline",
-            type: "application/pdf",
-            filename: "labels.pdf"
-        end
+        format.pdf
       end
     end
 

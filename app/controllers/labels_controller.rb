@@ -1,6 +1,7 @@
 class LabelsController < ResourcesController
   include AccountLayout
   include LabelsHelper
+  skip_before_action :authorize_resource, only: :move
 
   def self.resource
     Label
@@ -11,6 +12,10 @@ class LabelsController < ResourcesController
       format.html
       format.pdf
     end
+  end
+
+  def move
+    authorize @label, :show?
   end
 
   def index

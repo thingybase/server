@@ -1,22 +1,20 @@
 =title "#{resource.text} label", subtitle: breadcrumb(label_breadcrumbs), icon: resource.icon
 
-=resource_field :text
-=resource_field :item do
-  -if item = resource.item
-    =link_to item.name, item
-  -else
-    Not linked to item
-=resource_field :label_link do
-  =link_to scan_label_url(resource), scan_label_url(resource)
-=resource_field :created_at do
-  =local_time resource.created_at
-=resource_field :updated_at do
-  =local_time resource.updated_at
-=resource_field :created_by do
-  =resource.user.name
+.field.has-addons
+  .control
+    = link_to "Edit", edit_label_path(@label), class: "button"
+  .control
+    = component :menu, title: "Print..." do |menu|
+      = menu.slot(:item) do
+        = link_to "Small label", label_path(@label, format: :pdf)
+      = menu.slot(:item) do
+        = link_to "Jumbo label", label_path(@label, format: :pdf, size: :large)
+      -if @label&.item&.parent
+        = menu.slot(:item) do
+          = link_to "Moving label", move_label_path(@label, format: :pdf)
+
+.label-preview
+  %iframe.label-preview--embed{type: "application/pdf", src: label_path(@label, format: :pdf)}
 
 .buttons.mt-4
-  = link_to t('.edit', default: t("helpers.links.edit")), edit_label_path(@label), class: 'button'
-  = link_to "Print label", label_path(@label, format: :pdf), class: 'button'
-  = link_to "Print jumbo label", label_path(@label, format: :pdf, size: :large), class: 'button is-text'
   = link_to t('.destroy', default: t("helpers.links.destroy")), label_path(@label), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-text'
