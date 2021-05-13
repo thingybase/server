@@ -59,7 +59,7 @@ gem "chronic", "~> 0.10.2"
 # Search Postgres records
 gem "pg_search", "~> 2.3"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.2'
+gem 'webpacker', '~> 5.3'
 # Makes form submissions use turbolinks instead of POST/PUT methods. Makes
 # mobile development a tad easier.
 gem "turbolinks-form", "~> 0.1.4"
