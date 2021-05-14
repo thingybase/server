@@ -45,8 +45,16 @@ class LabelGenerator
     labels.append label
   end
 
+  def prawn_document
+    pdf
+  end
+
   def render_pdf
     pdf.render.to_s
+  end
+
+  def render_pdf_file(path)
+    pdf.render_file path
   end
 
   # TODO: This has hit peak complexity. If anything is added to it, it should be refactored

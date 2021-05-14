@@ -14,7 +14,7 @@
           = link_to "Moving label", move_label_path(@label, format: :pdf)
 
 .label-preview
-  %img.label-preview--embed{type: "application/pdf", src: label_path(@label, format: :pdf)}
+  %img.label-preview--embed{src: label_path(@label, format: :png)}
 
 .buttons.mt-4
   = link_to t('.destroy', default: t("helpers.links.destroy")), label_path(@label), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-text'
