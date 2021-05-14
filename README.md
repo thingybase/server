@@ -1,24 +1,74 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Server application for Thingybase.
 
-Things you may want to cover:
+## Principals
 
-* Ruby version
+Keep the following in mind when developing patterns.
 
-* System dependencies
+### Avoid JavaScript
 
-* Configuration
+Do as many things on the server as possible. If you don't think you can do it on the server, you'll need to prove why. Then ask at least two other people if they can think of ideas for how to do it on the server. After that, check with the owner of this repo if it can be done on the server. Only then should you do it in JavaScript.
 
-* Database creation
+Yes, this is hard. It requires a lot of thinking. If you figure it out though, its worth it. Your future-self will thank you for it.
 
-* Database initialization
+Here's one war story. When I was building out the PDF label feature, I needed a way to preview the PDFs on the browser. I tried using `<embed/>`, `<iframe/>`, and `<object/>` tags, but it did all sorts of weird stuff on all the different clients. In Safari it would hang the browser because it couldn't free up the PDF renderer when you hit the back button (Turbolinks).
 
-* How to run the test suite
+My first thought was, "dang! I guess I have to use PDF.js", so I added the `pdfjs-dist` package to the `package.json` file and all hell broke loose. First I had to figure out how to load the file within webpack. After spending an hour searching, I found a few old articles that pulled it off. Of course none of them worked and I kept getting loading errors. "It must be the webpacker pipeline" I told myself. I tried upgrading it a version. That didn't work. Then I upgraded it to a pre-release version. That didn't work. I found a beta build of rails where somebody got it working, spun it up, and that worked. Unfortunately that didn't translate into this app. Finally I found a few React packages where people said it simply won't work plug-and-play.
 
-* Services (job queues, cache servers, search engines, etc.)
+I questioned the meaning of life, went a walk, and felt like a complete failure.
 
-* Deployment instructions
+But then I remembered, "can I do this on the server?". I then thought, "what I render the pdf as a png to preview the thing?". I did some digging around in the MiniMagik libraries and found that it was possible. It wasn't super straight forward. There were some issues loading the PDF and increasing the DPI, but within an hour I was able to figure it out without banging my head against the wall in an asset pipeline that works in a bunch of different ways that renderes things completely different in different browsers.
 
-* ...
+SVGs was another version of that. Getting them to work in dark/light mode for the icons would have required a pretty decent amount of hoops to jump through on the client, so instead I did the hoop jumping on the server.
+
+There's more stories, but you get the idea. You can probably do most things on the server.
+
+### No part is the best part
+
+You're an engineer. You get paid to build complicated things. The more complicated it is the more impressive it will look. Right? WRONG!
+
+Mark Twain once said, "I didn't have time to write you a 1 page letter so I wrote you a 5 page letter instead". This applies to whatever you build. Simplify it. DRY it up. Just please don't try to impress anybody with complexity. If you don't have to build it that's even better. If you have to build it, do it in a way that's DRY, reusable, and ideally open-sourcable (the sign of proper decoupling).
+
+You'll see simplicity all over that's not impressive. Everything is stored in a boring pg RDBMS. The application is deployed to Heroku. The app is built on Rails using Turbolinks. Boring. Boring. Boring.
+
+### Keep data structures simple
+
+All intereactions between the client and server are done via very simple RESTful endpoints.
+
+## Setup
+
+To get this project going on macOS, you'll need:
+
+* Docker for Mac
+* Homebrew
+
+To get it setup run:
+
+```
+$ brew bundle
+$ bundle
+$ yarn
+$ gem install foreman
+```
+
+Then to get the party started:
+
+```
+$ compose up -d
+$ foreman start
+```
+
+Open the website in your browser and its off to the races.
+
+## Deployment
+
+The server is deployed to Heroku. It's super boring and lame, but its also very easy and we don't have to pay an ops team for a long time or worry about patching servers.
+
+To deploy:
+
+```
+$ git push heroku master
+```
+
+Wasn't that easy?
