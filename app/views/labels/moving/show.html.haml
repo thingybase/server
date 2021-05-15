@@ -1,0 +1,20 @@
+=title "#{resource.text} label", subtitle: breadcrumb(label_breadcrumbs), icon: resource.icon
+
+.field.has-addons
+  .control
+    = link_to "Edit", edit_label_path(@label), class: "button"
+  .control
+    = link_to "Print", url_for(format: :pdf), class: "button"
+
+.tabs
+  %ul
+    %li
+      =link_to "Standard", label_standard_path(@label), "data-turbolinks-action": "replace"
+    %li.is-active
+      =link_to "Moving", label_moving_path(@label), "data-turbolinks-action": "replace"
+
+.label-preview
+  %img.label-preview--embed{src: url_for(format: :png)}
+
+.buttons.mt-4
+  = link_to "Delete label", label_path(@label), method: :delete, class: 'button is-text'

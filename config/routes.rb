@@ -53,6 +53,8 @@ Rails.application.routes.draw do
     scope module: :labels do
       resources :items, only: %i[create]
     end
+    resource :moving, controller: "labels/moving"
+    resource :standard, controller: "labels/standard"
   end
 
   resources :phone_number_claims do

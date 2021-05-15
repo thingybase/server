@@ -14,6 +14,9 @@ module Server
 
     routes.default_url_options = { host: 'localhost', port: 5000 }
 
+    # Files from lib should be moved into a gem or the `./app/<something>` directory.
+    config.autoload_paths << Rails.root.join('lib')
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
