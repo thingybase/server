@@ -83,8 +83,6 @@ if sitepress_gem_path = ENV["SITEPRESS_GEM_PATH"]
 else
   gem "sitepress-rails", "~> 2.0.0.beta"
 end
-# Renders markdown via `.html.md` in rails views.
-gem "markdown-rails", "~> 1.0.0"
 # Markdown gem
 gem "redcarpet", "~> 3.5"
 # Parses SVG vector files and inverts them for darkmode.

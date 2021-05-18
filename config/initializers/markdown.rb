@@ -1,26 +1,70 @@
-class ApplicationMarkdownRenderer < Redcarpet::Render::HTML
-  # include ActionController::Base.helpers
-  # def block_quote(quote)
-  #   %(<blockquote class="my-custom-class">#{quote}</blockquote>)
-  # end
+module Redcarpet
+  module Rails
+    DEFAULT_BASE_RENDERER = Redcarpet::Render::HTML
+    DEFAULT_OPTIONS = Hash.new
 
-  def image(link, title, alt_text)
-    url = URI(link)
-    if url.scheme == "vector"
-      path = Pathname.new(url.path).relative_path_from("/").to_s
-      VectorComponent.new(key: path).render_in PagesController.helpers
-    else
-      ActionController::Base.helpers.image_tag link, alt: alt_text, title: title
+    class << self
+      def stack
+        @stack ||= Stack.new
+      end
+    end
+
+    class Stack
+      attr_reader :base_renderer, :view_context, :options
+
+      def initialize(base_renderer: DEFAULT_BASE_RENDERER, options: DEFAULT_OPTIONS)
+        @base_renderer = base_renderer
+        @options = options
+      end
+
+      def view_context=(view_context)
+        renderer.view_context = view_context
+      end
+
+      def delegate(method, to_helper:)
+        renderer.define_method method do |*args, **kwargs|
+          view_context.send(to_helper, *args, **kwargs)
+        end
+      end
+
+      def markdown
+        Redcarpet::Markdown.new(renderer, options)
+      end
+
+      private
+        def renderer
+          # This makes the view context accessible via the `view_context`
+          # method from the Markdown renderer so that helpers can be access.
+          @renderer ||= Class.new base_renderer do
+            def self.view_context
+              @view_context
+            end
+
+            def self.view_context=(view_context)
+              @view_context = view_context
+            end
+
+            def view_context
+              self.class.view_context
+            end
+          end
+        end
+    end
+
+    class Template
+      def call(_, source)
+        <<-SOURCE
+          Redcarpet::Rails.stack.view_context = self
+          Redcarpet::Rails.stack.markdown.render(#{source.inspect})
+        SOURCE
+      end
     end
   end
 end
 
-markdown = Redcarpet::Markdown.new(ApplicationMarkdownRenderer,
-  fenced_code_blocks: true,
-  autolink: true)
+Redcarpet::Rails.stack.delegate :image, to_helper: :markdown_image
 
-MarkdownRails.configure do |config|
-  config.render do |markdown_source|
-    markdown.render(markdown_source)
-  end
+handler = Redcarpet::Rails::Template.new
+%i[md markdown].each do |extension|
+  ActionView::Template.register_template_handler extension, handler
 end
