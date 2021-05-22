@@ -16,6 +16,8 @@ module UuidField
 
   class_methods do
     def find_resource(short_uuid)
+      return nil if short_uuid.blank?
+
       uuid = UuidField.to_long_uuid short_uuid
       find_by! uuid: uuid
     end
