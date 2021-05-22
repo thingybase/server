@@ -111,12 +111,13 @@ end
 
 group :test do
   gem 'pundit-matchers', '~> 1.3.1'
-  gem 'shoulda-matchers', '~> 3.1'
+  gem 'shoulda-matchers', '~> 4.5.0'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'rexml'
 end
 
 gem "mini_magick", "~> 4.11"
