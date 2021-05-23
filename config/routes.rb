@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     end
   end
   resources :members
+  resources :moves, only: %i[show edit destroy]
 
   batch_resources :labels, only: :show
   resources :labels do
@@ -73,6 +74,7 @@ Rails.application.routes.draw do
       resources :member_requests, only: [:new, :create]
       resources :invitations
       resources :labels
+      resource :move, only: [:new, :create, :show]
       resources :items do
         collection do
           get :templates

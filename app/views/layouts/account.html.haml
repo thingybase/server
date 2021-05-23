@@ -19,6 +19,12 @@
             = component :icon, "basketball-jersey", class: "icon"
             %span.ml-2
               People
+        - if @account.move.present?
+          - is_active_navigation_key "Moving", active: "has-text-weight-bold" do |active|
+            =link_to account_move_path(@account), class: ["button is-text", active].join(" ") do
+              = component :icon, "dolly-cart", class: "icon"
+              %span.ml-2
+                Moving
       #account-layout--nav--top
         =link_to user_path(current_user), class: "button is-text" do
           = component :icon, "gears", class: "icon"

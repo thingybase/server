@@ -8,6 +8,7 @@ class Account < ApplicationRecord
   has_many :labels, dependent: :destroy
   has_many :items, dependent: :destroy
   has_many :member_requests
+  has_one :move
 
   validates :user, presence: true
   validates :name, presence: true
