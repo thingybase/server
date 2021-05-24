@@ -10,4 +10,13 @@ class Move < ApplicationRecord
 
   validates :user,
     presence: true
+
+  has_many :movements, dependent: :destroy
+
+  # Items that are to be moved.
+  has_many :items, through: :movements,
+    # When somebody asks "what am I moving", its a bunch of origins
+    # which could be items or containers.
+    foreign_key: :origin_id,
+    source: :origin
 end
