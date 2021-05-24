@@ -1,0 +1,20 @@
+= title @movement.origin.name, subtitle: "Move to #{@movement.destination.name}", icon: @movement.origin.icon
+
+.buttons
+  .field.has-addons
+    .control= link_to "Edit", url_for(action: :edit), class: "button"
+    .control= link_to "Print label", url_for(format: :pdf), class: "button"
+
+=resource_field :created_at do
+  =local_time @movement.created_at
+=resource_field :updated_at do
+  =local_time @movement.updated_at
+=resource_field :created_by do
+  =@movement.user.name
+=resource_field :origin do
+  =link_to @movement.origin.name, @movement.origin
+=resource_field :destination do
+  =link_to @movement.destination.name, @movement.destination
+
+.buttons
+  = link_to "Delete", movement_path(@movement), class: "button is-text", method: :delete, data: { confirm: "Are you sure?" }

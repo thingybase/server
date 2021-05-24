@@ -42,8 +42,16 @@ Rails.application.routes.draw do
       template_resources :containers, :items, :perishables
     end
   end
+
   resources :members
-  resources :moves, only: %i[show edit destroy]
+
+  resources :moves, only: %i[show edit destroy] do
+    scope module: :moves do
+      resources :movements, only: %i[index new create]
+    end
+  end
+
+  resources :movements, only: %i[edit show destroy]
 
   batch_resources :labels, only: :show
   resources :labels do

@@ -1,12 +1,8 @@
-class MovesController < ResourcesController
+class MovementsController < ResourcesController
   include AccountLayout
 
   def self.resource
-    Move
-  end
-
-  def show
-    redirect_to [@move, :movements]
+    Movement
   end
 
   protected
@@ -15,6 +11,6 @@ class MovesController < ResourcesController
     end
 
     def destroy_redirect_url
-      @account
+      [@movement.move, :movements]
     end
 end
