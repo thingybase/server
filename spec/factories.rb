@@ -2,6 +2,14 @@
 Faker::Config.locale = 'en-US'
 
 FactoryBot.define do
+  factory :movement do
+    account
+    user
+    move
+    origin
+    destination
+  end
+
   factory :move do
     account
     user
