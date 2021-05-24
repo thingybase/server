@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :movements, only: %i[edit show destroy]
+  resources :movements, only: %i[edit show update destroy]
 
   batch_resources :labels, only: :show
   resources :labels do

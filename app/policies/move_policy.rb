@@ -1,18 +1,18 @@
 class MovePolicy < ApplicationPolicy
   def new?
-    is_user?
+    is_account_owner?
   end
 
   def create?
-    is_account_member?
+    is_account_owner?
   end
 
   def update?
-    is_account_member?
+    is_account_owner?
   end
 
   def destroy?
-    is_account_member?
+    is_account_owner?
   end
 
   def index?
