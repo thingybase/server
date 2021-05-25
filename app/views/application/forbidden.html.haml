@@ -5,8 +5,8 @@
       - if @member_request
         %p
           = application_form @member_request, url: account_member_requests_path(@member_request.account) do |f|
-            = f.input :account, as: :hidden
-            = f.input :user, as: :hidden
+            = f.association :account, as: :hidden
+            = f.association :user, as: :hidden
             = f.button :submit, "Request to join account", class: "is-primary"
       -else
         = link_to "← Go back", :back, class: "button"
