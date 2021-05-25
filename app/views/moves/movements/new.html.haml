@@ -1,5 +1,12 @@
 = title "New movement", subtitle: "Make a label for where you're going to move stuff", icon: "dolly-cart"
 
+.tabs
+  %ul
+    %li
+      =link_to "New", new_move_movement_builder_path(@move), "data-turbolinks-action": "replace"
+    %li.is-active
+      =link_to "Existing", new_move_movement_path(@move), "data-turbolinks-action": "replace"
+
 = application_form [:move, @movement] do |f|
   = f.input :account, as: :hidden
   = f.association :origin, collection: origin_select_items(move: @move), include_blank: false, hint: "What is being moved?", label: "Unpacked items"

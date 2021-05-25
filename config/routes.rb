@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   resources :moves, only: %i[show edit destroy] do
     scope module: :moves do
       resources :movements, only: %i[index new create]
+      resource :movement_builder, only: %i[new create]
     end
   end
 

@@ -1,13 +1,13 @@
 = title "Movements", subtitle: "Track all stuff as its packed, moved, and unpacked into a new place", icon: "dolly-cart"
 
 .buttons
-  = link_to "+ Create moving label", new_move_movement_path(@move), class: "button is-primary"
+  = link_to "+ Create moving label", new_move_movement_builder_path(@move), class: "button is-primary"
 
 - if @movements.empty?
   .empty-box
     .title.is-5 Create a moving label
     .subtitle.is-6 Get started with your move by creating labels that you can put on your box.
-    = link_to "+ Create moving label", new_move_movement_path(@move), class: 'button'
+    = link_to "+ Create moving label", new_move_movement_builder_path(@move), class: 'button'
 
 - else
   .list-cards
