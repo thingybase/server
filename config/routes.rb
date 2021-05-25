@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       resources :batches, only: %i[new create]
       resource :icon, only: %i[edit update]
       resource :badge, only: :show
+      resource :movement, only: %i[new create]
       template_resources :containers, :items, :perishables
     end
   end
@@ -51,7 +52,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :movements, only: %i[edit show update destroy]
+  resources :movements, only: %i[edit show update destroy] do
+    scope module: :movements do
+      resource :scan, only: :show
+    end
+  end
 
   batch_resources :labels, only: :show
   resources :labels do

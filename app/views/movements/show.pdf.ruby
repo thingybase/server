@@ -17,7 +17,7 @@ sheets.add do
 
   # QR code so people can scan the item.
   sheets.grid_box(top: 7, left: 9, height: 5, width: 3) do
-    sheets.qr_code movement_url(@movement)
+    sheets.qr_code movement_scan_url(@movement)
   end
 
   # Name of the item, which describes the contents.

@@ -27,7 +27,7 @@ module ApplicationHelper
 
   # Useful for contextualizing variables in HAML
   def with(*object, &block)
-    block.call(*object)
+    block.call(*object) if object.all?(&:present?)
   end
 
   # Wrap whatever form helpers are needed to get the job done.

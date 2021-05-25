@@ -6,9 +6,12 @@ class Item < ApplicationRecord
 
   has_closure_tree dependent: :destroy
 
-  has_one :label
   belongs_to :account
   belongs_to :user
+  has_one :label
+  has_one :movement,
+    dependent: :destroy,
+    foreign_key: :origin_id
 
   validates :name, presence: true
   validates :account, presence: true

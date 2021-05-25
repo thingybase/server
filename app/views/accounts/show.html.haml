@@ -65,5 +65,8 @@
       %h3.title.is-5.mt-6 Moving
       %p.subtitle.is-6 Keep tabs on all your stuff while moving from one place to another
 
-      %p=link_to "Start a move", account_move_path(@account)
+      - if move = @account.move
+        %p=link_to "View move", move_path(move)
+      -else
+        %p=link_to "Start a move", account_move_path(@account)
 
