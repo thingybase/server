@@ -3,41 +3,35 @@
 .buttons
   = link_to "+ Add people", new_account_person_path(@account), class: "button is-primary"
 
-- if @members.empty? and @invitations.empty? and @member_requests.empty?
-  .empty-box
-    .title.is-5 No people in account
-    .subtitle.is-6 People will appear here after they accept an invitation
-    = link_to "+ Add person", new_account_person_path(@account), class: 'button'
-- else
-  .list-cards
-    -with @account.user do |owner|
-      = component :list_card, owner.name, user_path(owner), icon: "star" do |card|
-        - card.slot(:detail) do
-          Owner
-        - card.slot(:detail) do
-          Account created
-          = local_time_ago @account.created_at
+.list-cards
+  -with @account.user do |owner|
+    = component :list_card, owner.name, user_path(owner), icon: "star" do |card|
+      - card.slot(:detail) do
+        Owner
+      - card.slot(:detail) do
+        Account created
+        = local_time_ago @account.created_at
 
-    - @members.each do |member|
-      = component :list_card, member.name, member_path(member), icon: "basketball-jersey" do |card|
-        - card.slot(:detail) do
-          Member
-        - card.slot(:detail) do
-          Added
-          = local_time_ago member.created_at
+  - @members.each do |member|
+    = component :list_card, member.name, member_path(member), icon: "basketball-jersey" do |card|
+      - card.slot(:detail) do
+        Member
+      - card.slot(:detail) do
+        Added
+        = local_time_ago member.created_at
 
-    - @invitations.each do |invitation|
-      = component :list_card, (invitation.name || invitation.email), invitation_path(invitation), icon: "mailer" do |card|
-        - card.slot(:detail) do
-          Pending invitation
-        - card.slot(:detail) do
-          Invited
-          = local_time_ago invitation.created_at
+  - @invitations.each do |invitation|
+    = component :list_card, (invitation.name || invitation.email), invitation_path(invitation), icon: "mailer" do |card|
+      - card.slot(:detail) do
+        Pending invitation
+      - card.slot(:detail) do
+        Invited
+        = local_time_ago invitation.created_at
 
-    - @member_requests.each do |request|
-      = component :list_card, request.user.name, new_member_request_review_path(request), icon: "mailer" do |card|
-        - card.slot(:detail) do
-          Pending request
-        - card.slot(:detail) do
-          Invited
-          = local_time_ago request.created_at
+  - @member_requests.each do |request|
+    = component :list_card, request.user.name, new_member_request_review_path(request), icon: "mailer" do |card|
+      - card.slot(:detail) do
+        Pending request
+      - card.slot(:detail) do
+        Invited
+        = local_time_ago request.created_at
