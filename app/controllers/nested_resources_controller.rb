@@ -1,6 +1,7 @@
 class NestedResourcesController < ResourcesController
   before_action :set_parent_resource_instance_variable
   before_action :set_resources_instance_variable, only: :index
+  before_action :authorize_parent_resource
 
   helper_method :parent_resource
 
@@ -57,6 +58,14 @@ class NestedResourcesController < ResourcesController
     # but it would be a different field if you don't want to expose users to primary keys.
     def parent_active_record_id
       :id
+    end
+
+    # If the user doesn't have `show?` priviledge on the parent resource,
+    # then its highly likely they won't be authorized to do anything with
+    # the child resource. This isn't 100% true, but I'm having a hard time
+    # thinking of a practical edge case.
+    def authorize_parent_resource
+      authorize parent_resource, :show?
     end
 
   private

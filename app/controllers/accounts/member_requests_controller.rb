@@ -34,6 +34,10 @@ module Accounts
         redirect_to member_request if member_request
       end
 
+      def authorize_parent_resource
+        authorize @account, :new?
+      end
+
     private
       def permitted_params
         [:user_id, :account_id]
