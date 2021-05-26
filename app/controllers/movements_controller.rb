@@ -19,6 +19,10 @@ class MovementsController < ResourcesController
       [@movement.move, :movements]
     end
 
+    def permitted_params
+      [:origin_id, :destination_id]
+    end
+
   private
     def prawn_document
       sheets = PdfSheets.new(columns: 12, rows: 12, height: mm2pt(62), width: mm2pt(100))
