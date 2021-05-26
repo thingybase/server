@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_23_165238) do
+ActiveRecord::Schema.define(version: 2021_05_25_172113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,7 +129,9 @@ ActiveRecord::Schema.define(version: 2021_05_23_165238) do
     t.uuid "uuid", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "new_item_container_id"
     t.index ["account_id"], name: "index_moves_on_account_id"
+    t.index ["new_item_container_id"], name: "index_moves_on_new_item_container_id"
     t.index ["user_id"], name: "index_moves_on_user_id"
     t.index ["uuid"], name: "index_moves_on_uuid", unique: true
   end
@@ -170,6 +172,7 @@ ActiveRecord::Schema.define(version: 2021_05_23_165238) do
   add_foreign_key "movements", "moves"
   add_foreign_key "movements", "users"
   add_foreign_key "moves", "accounts"
+  add_foreign_key "moves", "items", column: "new_item_container_id"
   add_foreign_key "moves", "users"
   add_foreign_key "phone_number_claims", "users"
 end
