@@ -9,7 +9,7 @@
 
 = application_form resource, url: move_movement_builder_path(@move) do |f|
   = f.input :account, as: :hidden
-  = f.input :name, label: "Unpacked items", hint: "What is being moved?", autofocus: true
-  = f.input :destination_id, collection: destination_select_items, include_blank: false, hint: "Where will it be moved?"
+  = f.input :name, label: "Item", hint: "What is being moved? #{link_to "Select an existing item", new_move_movement_path(@move), "data-turbolinks-action": "replace"}.".html_safe, autofocus: true
+  = f.input :destination_id, collection: destination_select_items, include_blank: false, hint: "Where will the item be moved?"
   .buttons
-    = f.button :submit, "Create move label", class: 'is-primary'
+    = f.button :submit, "Create Movement", class: 'is-primary'

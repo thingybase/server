@@ -15,11 +15,11 @@
       -with movement.origin do |item|
         = render ListCardComponent.new(item.name, movement, icon: item.icon) do |c|
           = c.slot(:detail) do
-            Created
-            = local_time_ago item.created_at
-          = c.slot(:detail) do
             Move to
             = link_to movement.destination.name, movement.destination
+          = c.slot(:detail) do
+            Created
+            = local_time_ago item.created_at
 
 .buttons
   = link_to "Delete move", move_path(@move), class: "button is-text", method: :delete, data: { confirm: "Are you sure?" }

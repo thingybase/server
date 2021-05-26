@@ -16,4 +16,12 @@ class Movement < ApplicationRecord
     # You can only move something once
     uniqueness: { scope_to: :move_id, message: "has already been packed" }
   validates :destination, presence: true
+
+  validate :destination_is_container
+
+  private
+    def destination_is_container
+      return if destination.nil? or destination&.container?
+      errors.add :destination, "must be a container"
+    end
 end

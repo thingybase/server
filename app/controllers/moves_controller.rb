@@ -5,11 +5,11 @@ class MovesController < ResourcesController
     Move
   end
 
-  def show
-    redirect_to [@move, :movements]
-  end
-
   protected
+    def permitted_params
+      [:new_item_container_id]
+    end
+
     def navigation_key
       "Moving"
     end

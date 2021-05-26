@@ -26,7 +26,7 @@ module Moves
       end
 
       def create_redirect_url
-        url_for [@move, :movements]
+        movement_url @movement_builder.movement
       end
   end
 end

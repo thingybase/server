@@ -11,6 +11,10 @@ module Items
     end
 
     private
+      def create_redirect_url
+        movement_url @movement
+      end
+
       def permitted_params
         [:destination_id]
       end

@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
   resources :members
 
-  resources :moves, only: %i[show edit destroy] do
+  resources :moves, only: %i[show edit destroy update] do
     scope module: :moves do
       resources :movements, only: %i[index new create]
       resource :movement_builder, only: %i[new create]
@@ -120,6 +120,7 @@ Rails.application.routes.draw do
     get :account
     get :items
     get :people
+    get :move
   end
 
   resources :invitations do

@@ -2,6 +2,7 @@
 # if they are not moving an existing item.
 class MovementBuilder < ApplicationModel
   attr_accessor :name
+  validates :name, presence: :true
 
   delegate :account, :account=,
       :user, :user=,
@@ -11,6 +12,8 @@ class MovementBuilder < ApplicationModel
     to: :movement
 
   def save
+    return if invalid?
+
     self.class.transaction do
       item = build_item
       item.save!
@@ -29,10 +32,11 @@ class MovementBuilder < ApplicationModel
 
   private
     def build_item
-      Item.new(name: name, container: parent, account: account, user: user)
+      Item.new(name: name, parent: parent, account: account, user: user)
     end
 
+    # Default container, configured by the Move#container method.
     def parent
-      nil # Root for now; we'll get this from the parent.
+      move.new_item_container
     end
 end
