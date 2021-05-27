@@ -1,6 +1,8 @@
 # This builder lets people quickly create moving labels (via movements)
 # if they are not moving an existing item.
 class MovementBuilder < ApplicationModel
+  ITEM_ICON = "closed-cardboard-box".freeze
+
   attr_accessor :name
   validates :name, presence: :true
 
@@ -32,7 +34,7 @@ class MovementBuilder < ApplicationModel
 
   private
     def build_item
-      Item.new(name: name, parent: parent, account: account, user: user)
+      Item.new(name: name, parent: parent, account: account, user: user, icon: ITEM_ICON)
     end
 
     # Default container, configured by the Move#container method.
