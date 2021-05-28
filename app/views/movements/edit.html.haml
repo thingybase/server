@@ -1,4 +1,4 @@
-= title @movement.origin.name, subtitle: "Make a label for where you're going to move stuff", icon: "dolly-cart"
+= title  @movement.origin.name, subtitle: breadcrumb(item_breadcrumbs(@movement.origin).push(breadcrumb_link("Move", movement_path(@movement))), leaf: "Edit"), icon: @movement.origin.icon
 
 = application_form @movement do |f|
   = f.input :account, as: :hidden
