@@ -28,6 +28,7 @@ module Items
         resource.user = current_user
         resource.account = parent_resource.account
         resource.origin = parent_resource
+        resource.destination ||= parent_resource.parent
       end
   end
 end
