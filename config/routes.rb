@@ -63,7 +63,6 @@ Rails.application.routes.draw do
   resources :labels do
     member do
       get :scan
-      get :move
     end
     scope module: :labels do
       resources :items, only: %i[create]
