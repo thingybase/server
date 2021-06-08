@@ -21,6 +21,10 @@ class LaunchesController < ApplicationController
     redirect_to people_redirect_url
   end
 
+  def move
+    redirect_to move_redirect_url
+  end
+
   private
     def items_redirect_url
       account_items_url(current_account)
@@ -28,6 +32,10 @@ class LaunchesController < ApplicationController
 
     def people_redirect_url
       account_people_url(current_account)
+    end
+
+    def move_redirect_url
+      account_move_url(current_account)
     end
 
     def account_redirect_url
