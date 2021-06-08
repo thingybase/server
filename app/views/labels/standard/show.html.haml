@@ -4,14 +4,6 @@
   .control
     = link_to "Edit", edit_label_path(@label), class: "button"
   .control
-    = link_to "Print", url_for(format: :pdf), class: "button"
-
-.tabs
-  %ul
-    %li.is-active
-      =link_to "Standard", label_standard_path(@label), "data-turbolinks-action": "replace"
-    %li
-      =link_to "Moving", label_moving_path(@label), "data-turbolinks-action": "replace"
 
 .label-preview
   %img.label-preview--embed{src: url_for(format: :png)}
