@@ -7,7 +7,12 @@ class Label < ApplicationRecord
 
   validates :user, presence: true
   validates :account, presence: true
-  validates :text, presence: true
+
+  # TODO: Drop the `text` column -- its just confusing.
+  # validates :text, presence: true
+  def text
+    item&.name
+  end
 
   DEFAULT_ICON_KEY = "tags".freeze
 
