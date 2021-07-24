@@ -22,7 +22,7 @@ module Items
         end
       end
 
-      flash[:notice] = "Deleted  #{pluralize selected_models_count, "thing"}"
+      flash[:notice] = "Deleted #{pluralize selected_models_count, "thing"}"
       respond_to do |format|
         format.html { redirect_to delete_redirect_url }
         format.json { render :show, status: :created, location: resource }
