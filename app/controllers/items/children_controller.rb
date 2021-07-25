@@ -14,6 +14,11 @@ module Items
       authorize :item, :new?
     end
 
+    protected
+      def navigation_key
+        "Items"
+      end
+
     private
       def permitted_params
         [:name, :account_id, :parent_id, :container]
