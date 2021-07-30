@@ -1,4 +1,4 @@
-= title "Add to #{@item_parent.name}", subtitle: breadcrumb(item_breadcrumbs(@item_parent)), icon: @item_parent.icon
+= title "Add to #{@container.name}", subtitle: breadcrumb(item_breadcrumbs(@container)), icon: @container.icon
 
 .list-cards
   =component :list_card, "Container", new_item_templates_containers_path, icon: "folder" do |card|

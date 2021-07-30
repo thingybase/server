@@ -4,8 +4,17 @@ class ResourcesController < ApplicationController
   before_action :authorize_resource, if: :member_request?
   before_action :set_resources_instance_variable, only: :index
 
-  helper_method :resource_name, :resource_class, :resource, :resources
-  helper_method :navigation_key
+  helper_method :resource_name,
+    :resource_class,
+    :resource,
+    :resources,
+    :navigation_key,
+    :created_resource,
+    :updated_resource
+
+  # These are used to contain the serialized IDs for resources so they can
+  # be accessed from views on the other side of the action that's performed.
+  add_flash_types :created_resource, :updated_resource
 
   def self.resource
     raise NotImplementedError, "ResourcesController.resource must be an ActiveModel or ActiveRecord class"
@@ -33,6 +42,7 @@ class ResourcesController < ApplicationController
 
     respond_to do |format|
       if resource.save
+        flash_created_resource
         format.html { redirect_to create_redirect_url, notice: create_notice }
         format.json { render :show, status: :created, location: resource }
         create_success_formats format
@@ -50,6 +60,7 @@ class ResourcesController < ApplicationController
 
     respond_to do |format|
       if resource.save
+        flash_updated_resource
         format.html { redirect_to update_redirect_url, notice: update_notice }
         format.json { render :show, status: :ok, location: resource }
       else
@@ -61,6 +72,7 @@ class ResourcesController < ApplicationController
 
   def destroy
     resource.destroy
+
     respond_to do |format|
       format.html { redirect_to destroy_redirect_url, notice: destroy_notice }
       format.json { head :no_content }
@@ -205,5 +217,27 @@ class ResourcesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def resource_params
       params.require(resource_name).permit(permitted_params)
+    end
+
+    # Assign global_id to resource that was just created. This is used in subsequent
+    # screens to display a link or information about the resource that was just created.
+    def flash_created_resource
+      flash[:created_resource] = resource.to_global_id.uri
+    end
+
+    # Resource that was created from the last action.
+    def created_resource
+      @created_resource ||= GlobalID::Locator.locate flash[:created_resource]
+    end
+
+    # Assign global_id to resource that was just created. This is used in subsequent
+    # screens to display a link or information about the resource that was just created.
+    def flash_updated_resource
+      flash[:updated_resource] = resource.to_global_id.uri
+    end
+
+    # Resource that was updated from the last action.
+    def updated_resource
+      @updated_resource ||= GlobalID::Locator.locate flash[:updated_resource]
     end
 end

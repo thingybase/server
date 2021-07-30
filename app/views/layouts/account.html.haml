@@ -1,7 +1,7 @@
 = render_layout "body" do
   #account-layout
-    #account-layout--nav.is-hidden-mobile
-      #account-layout--nav--top
+    #account-layout--sidecar.is-hidden-mobile
+      #account-layout--sidecar--top
         =search_field autofocus: true, url: navigation_search_path, button: false, autofocus: false, placeholder: navigation_search_placeholder
         %hr
         - is_active_navigation_key "Dashboard", active: "has-text-weight-bold" do |active|
@@ -25,12 +25,12 @@
               = component :icon, "dolly-cart", class: "icon"
               %span.ml-2
                 Moving
-      #account-layout--nav--top
+      #account-layout--sidecar--top
         =link_to user_path(current_user), class: "button is-text" do
           = component :icon, "gears", class: "icon"
           %span.ml-2
             Profile
-    #account-layout--content
+    #account-layout--main
       %section.section
         -if notice_message
           .container

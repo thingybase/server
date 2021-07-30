@@ -1,6 +1,7 @@
 module Items
   class ChildrenController < NestedResourcesController
     include AccountLayout
+    before_action :assign_items, only: :new
 
     def self.resource
       Item
@@ -19,13 +20,25 @@ module Items
         "Items"
       end
 
+      def assign_items
+        @items = @container.children
+      end
+
     private
+      def create_notice
+        nil
+      end
+
+      def create_redirect_url
+        url_for action: :new
+      end
+
       def permitted_params
         [:name, :account_id, :parent_id, :container]
       end
 
       def parent_resource_name
-        "item_parent"
+        "container"
       end
 
       def parent_resource_id_param
@@ -37,9 +50,10 @@ module Items
       end
 
       def assign_attributes
-        self.resource.user = current_user
-        self.resource.account ||= parent_resource.account
-        self.resource.parent ||= parent_resource
+        resource.user = current_user
+        resource.account ||= parent_resource.account
+        resource.parent ||= parent_resource
+        resource.container ||= created_resource&.container
       end
   end
 end

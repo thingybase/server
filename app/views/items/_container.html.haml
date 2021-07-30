@@ -1,5 +1,5 @@
 .buttons
-  = link_to "+ Add item", new_item_child_path(item), class: 'button is-primary'
+  = link_to "+ Add items", new_item_child_path(@item), class: "button is-primary"
   .field.has-addons
     .control= link_to "Edit", edit_item_path(@item), class: "button"
     .control= link_to "Select", new_item_batch_path(item), class: 'button'
@@ -21,13 +21,14 @@
           = link_to "Delete", item_path(@item), method: :delete, data: { confirm: 'Are you sure?' }
         = menu.slot(:item) do
           = link_to "Search", item_search_path(item)
+
 .list-card
-  - if resource.children.empty?
+  - if @item.children.empty?
     .empty-box
       .title.is-5
         = @item.name
         is empty
       .subtitle.is-6 Items will appear here after they are added
-      = link_to "+ Add item", new_item_child_path(item), class: 'button'
+      = link_to "+ Add items", new_item_child_path(@item), class: 'button'
   - else
-    = components :item_list_card, resource.children.container_then_item
+    = components :item_list_card, @item.children.container_then_item

@@ -24,6 +24,14 @@ module Items::Templates
       def assign_item_attributes
       end
 
+      def create_notice
+        nil
+      end
+
+      def create_redirect_url
+        new_item_child_path(@item.parent)
+      end
+
     private
       def find_account
         if params.key? :account_id

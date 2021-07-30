@@ -1,6 +1,7 @@
 module Accounts
   class ItemsController < NestedResourcesController
     include AccountLayout
+    before_action :assign_items, only: :new
 
     def self.resource
       Item
@@ -19,7 +20,12 @@ module Accounts
         "Items"
       end
 
+      def assign_items
+        @items = resources.roots
+      end
+
     private
+
       def resource_scope
         policy_scope.includes(:account).order(:name)
       end
