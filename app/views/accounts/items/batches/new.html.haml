@@ -1,4 +1,4 @@
-= title "Selecting items", subtitle: @account.name
+= title @account.name, subtitle: breadcrumb(account_breadcrumbs(@account), leaf: "Selecting items"), icon: "chest-open"
 
 =form_for [:account, :items, @batch] do |f|
   =f.hidden_field :account_id

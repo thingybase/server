@@ -20,6 +20,10 @@ module BreadcrumbHelper
       .reverse
   end
 
+  def account_breadcrumbs(account)
+    [ Link.new(account.name, account_items_path(account)) ]
+  end
+
   def label_breadcrumbs(label=resource)
     return [] unless label.item
     links = item_breadcrumbs(label.item)

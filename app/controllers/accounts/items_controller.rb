@@ -24,6 +24,14 @@ module Accounts
         @items = resources.roots
       end
 
+      def create_notice
+        nil
+      end
+
+      def create_redirect_url
+        url_for action: :new
+      end
+
     private
 
       def resource_scope
@@ -35,8 +43,9 @@ module Accounts
       end
 
       def assign_attributes
-        self.resource.user = current_user
-        self.resource.account ||= @account
+        resource.user = current_user
+        resource.account ||= @account
+        resource.container ||= created_resource&.container
       end
   end
 end
