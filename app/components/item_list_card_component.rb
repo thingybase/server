@@ -23,6 +23,14 @@ class ItemListCardComponent < ViewComponent::Base
     expired? ? "Expired" : "Expires"
   end
 
+  def container?
+    !!@item.container
+  end
+
+  def contents
+    container? ? "Container" : "Item"
+  end
+
   def is_parent_visible?
     @is_parent_visible && @item.parent
   end
