@@ -244,7 +244,7 @@ GEM
     redcarpet (3.5.0)
     regexp_parser (2.1.1)
     rexml (3.2.5)
-    rollbar (3.0.1)
+    rollbar (3.2.0)
     rqrcode (1.2.0)
       chunky_png (~> 1.0)
       rqrcode_core (~> 0.2)
