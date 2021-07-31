@@ -151,4 +151,7 @@ Rails.application.routes.draw do
 
   get "*resource_path", to: "pages#show", format: false, constraints: Sitepress::RouteConstraint.new
   root to: "pages#show"
+
+  # Rick-roll security scanners and script kiddies.
+  get "/wp-login.php", to: redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 end
