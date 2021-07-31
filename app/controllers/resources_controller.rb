@@ -222,7 +222,7 @@ class ResourcesController < ApplicationController
     # Assign global_id to resource that was just created. This is used in subsequent
     # screens to display a link or information about the resource that was just created.
     def flash_created_resource
-      flash[:created_resource] = resource.to_global_id.uri
+      flash[:created_resource] = resource_global_uri
     end
 
     # Resource that was created from the last action.
@@ -233,7 +233,15 @@ class ResourcesController < ApplicationController
     # Assign global_id to resource that was just created. This is used in subsequent
     # screens to display a link or information about the resource that was just created.
     def flash_updated_resource
-      flash[:updated_resource] = resource.to_global_id.uri
+      flash[:updated_resource] = resource_global_uri
+    end
+
+    # Generates a GlobalID object that can be serialized into flash for the next action to
+    # pickup and find the object as an updated or created resource. The reason this check
+    # exists is because some resources are ApplicationModels (NOT Records) and don't have
+    # a way to find via ActiveRecord queries.
+    def resource_global_uri
+      resource.to_global_id.uri if resource.respond_to? :to_global_id
     end
 
     # Resource that was updated from the last action.
