@@ -38,9 +38,7 @@ class Search
 
     def search_by_uuid_scope(scope)
       partial_uuid = phrase.downcase
-      scope
-        .joins(:label)
-        .where("labels.uuid::text LIKE :prefix", prefix: "#{partial_uuid}%")
+      scope.where("uuid::text LIKE :prefix", prefix: "#{partial_uuid}%")
     end
 
     def partial_uuid?

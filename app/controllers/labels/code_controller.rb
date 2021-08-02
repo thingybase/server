@@ -18,7 +18,7 @@ module Labels
         pdf.font "Inter" do
           pdf.grid([0,0], [4,5]).bounding_box do
             # pdf.stroke_bounds
-            pdf.text_box @label.uuid[0...6].upcase,
+            pdf.text_box @label.code,
               size: 100,
               align: :center,
               overflow: :shrink_to_fit,

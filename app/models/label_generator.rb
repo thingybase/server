@@ -72,12 +72,12 @@ class LabelGenerator
     LabelGenerator.new(layout: label_layout).tap do |generator|
       Array(resources).each do |r|
         generator.add_label text: r.text, url: Rails.application.routes.url_helpers.scan_label_url(r) do |label|
-          if r.item&.expires_at
-            label.lines << "Expires #{r.item.expires_at.to_date}"
+          date = if r.item&.expires_at
+            "Expires #{r.item.expires_at.to_date}"
           elsif r.item
-            label.lines << "Created #{r.item.created_at.to_date}"
+            "Created #{r.item.created_at.to_date}"
           end
-          label.lines << r.uuid
+          label.lines << [date, r.code].join(" · ")
         end
       end
     end
