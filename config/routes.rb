@@ -68,6 +68,7 @@ Rails.application.routes.draw do
       resources :items, only: %i[create]
     end
     resource :standard, controller: "labels/standard"
+    resource :code, controller: "labels/code"
   end
 
   resources :phone_number_claims do
