@@ -14,6 +14,7 @@ class Label < ApplicationRecord
 
   validates :user, presence: true
   validates :account, presence: true
+  validate :uuid_equal_to_label_uuid
 
   # TODO: Drop the `text` column -- its just confusing.
   # validates :text, presence: true
@@ -33,4 +34,17 @@ class Label < ApplicationRecord
   def icon
     item ? item.icon : DEFAULT_ICON_KEY
   end
+
+  private
+    # TRANSITIONAL: This exists so I can get the migration out quickly that
+    # changes item uuids to match label uuids.
+    def assign_default_uuid
+      self.uuid = item&.uuid
+    end
+
+    # TRANSITIONAL: This should never trigger, but those are always famous
+    # last words with an ORM, so this acts as safety.
+    def uuid_equal_to_label_uuid
+      errors.add :uuid, "is not equal to item uuid" if uuid != item&.uuid
+    end
 end
