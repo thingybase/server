@@ -34,7 +34,7 @@ class LabelsController < ResourcesController
 
   protected
     def navigation_key
-      "Labels"
+      "Items"
     end
 
     def resource_scope

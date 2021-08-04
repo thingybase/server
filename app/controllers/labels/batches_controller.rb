@@ -6,7 +6,8 @@ module Labels
     after_action :verify_policy_scoped
 
     def show
-      @labels = policy_scope Label.find_resources(uids)
+      items = policy_scope Item.find_resources(uids)
+      @labels = items.map { |item| Label.new item: item }
 
       respond_to do |format|
         format.html

@@ -8,7 +8,6 @@ class Item < ApplicationRecord
 
   belongs_to :account
   belongs_to :user
-  has_one :label
   has_one :movement,
     dependent: :destroy,
     foreign_key: :origin_id
@@ -38,6 +37,10 @@ class Item < ApplicationRecord
 
   def find_or_create_label(text: name)
     label || create_label!(user: user, account: account, text: text)
+  end
+
+  def label
+    @label ||= Label.new item: self
   end
 
   def self.container

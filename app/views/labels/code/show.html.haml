@@ -1,4 +1,8 @@
-=title "#{resource.text} label", subtitle: breadcrumb(label_breadcrumbs), icon: resource.icon
+=title resource.text, subtitle: breadcrumb(item_breadcrumbs(@label.item), leaf: "Label"), icon: resource.icon
+
+.field.has-addons
+  .control
+    = link_to "Print", url_for(format: :pdf), class: "button"
 
 .tabs
   %ul
@@ -7,12 +11,5 @@
     %li.is-active
       =link_to "Handwritten", label_code_path(@label), "data-turbolinks-action": "replace"
 
-.field.has-addons
-  .control
-    = link_to "Print", url_for(format: :pdf), class: "button"
-
 .label-preview
   %img.label-preview--embed{src: url_for(format: :png)}
-
-.buttons.mt-4
-  = link_to "Delete label", label_path(@label), method: :delete, class: 'button is-text'

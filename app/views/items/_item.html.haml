@@ -2,11 +2,7 @@
   .field.has-addons
     .control= link_to "Edit", edit_item_path(@item), class: "button"
     .control= link_to "Change icon", edit_item_icon_path(@item), class: "button"
-    .control
-      -if label = resource.label
-        = link_to "Label", label_path(label), class: "button"
-      -else
-        = link_to "Label", item_labels_path(resource), method: :post, class: "button"
+    .control= link_to "Label", label_path(resource.label), class: "button"
     .control
       = component :menu, title: "More..." do |menu|
         = menu.slot(:item) do

@@ -7,10 +7,6 @@
         .header="Item".pluralize(@account.items.count)
         .title=@account.items.count
     .level-item
-      =link_to account_labels_path(@account), class: "has-no-text-decoration" do
-        .header="Label".pluralize(@account.labels.count)
-        .title=@account.labels.count
-    .level-item
       =link_to account_people_path(@account), class: "has-no-text-decoration" do
         .header="People".pluralize(@account.members.count)
         .title=@account.members.count
@@ -38,13 +34,13 @@
           %p=link_to "Manage people", account_people_path(@account)
       .tile.is-parent
         .tile.is-child.notification
-          %h3.title.is-4 Labels
-          %p.subtitle.is-5 Quickly print labels and organize them later
+          %h3.title.is-4 Moving
+          %p.subtitle.is-5 Keep tabs on all your stuff while moving from one place to another
           %p
-            You have a total of
-            =pluralize @account.labels.count, "label"
-            in your account.
-          %p=link_to "View labels", account_labels_path(@account)
+            - if move = @account.move
+              %p=link_to "View move", move_path(move)
+            -else
+              %p=link_to "Start a move", account_move_path(@account)
 
   .tile.is-parent
     .tile.is-child.notification
@@ -60,13 +56,4 @@
       %p.subtitle.is-6 Save everything for safe keeping
 
       %p=link_to "Export items to spreadsheet", account_items_path(@account, format: :csv)
-
-
-      %h3.title.is-5.mt-6 Moving
-      %p.subtitle.is-6 Keep tabs on all your stuff while moving from one place to another
-
-      - if move = @account.move
-        %p=link_to "View move", move_path(move)
-      -else
-        %p=link_to "Start a move", account_move_path(@account)
 

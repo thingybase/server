@@ -60,12 +60,9 @@ Rails.application.routes.draw do
   end
 
   batch_resources :labels, only: :show
-  resources :labels do
+  resources :labels, only: :show do
     member do
       get :scan
-    end
-    scope module: :labels do
-      resources :items, only: %i[create]
     end
     resource :standard, controller: "labels/standard"
     resource :code, controller: "labels/code"
@@ -86,7 +83,6 @@ Rails.application.routes.draw do
       resources :members
       resources :member_requests, only: [:new, :create]
       resources :invitations
-      resources :labels
       resource :move, only: [:new, :create, :show]
       resources :items do
         collection do

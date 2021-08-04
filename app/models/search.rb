@@ -5,7 +5,7 @@ class Search
 
   # If people search by UUID, it must be at least 6 characters. This makes it more difficult to try
   # find items by throwing short prefixes in front of it making it slightly more secure.
-  PARTIAL_UUID_REGEXP = /^[a-f0-9-]{6,}$/i.freeze
+  PARTIAL_UUID_REGEXP = /^[a-f0-9-]{#{Label::CODE_LENGTH},}$/i.freeze
 
   def initialize(phrase: nil, items: Item)
     @item_scope = items
