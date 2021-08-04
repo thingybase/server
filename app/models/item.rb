@@ -48,7 +48,7 @@ class Item < ApplicationRecord
   end
 
   def self.container_then_item
-    order("container DESC").order(:name)
+    order(:container, :name)
   end
 
   private

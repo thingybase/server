@@ -55,6 +55,10 @@ module Items
     end
 
     protected
+      def navigation_key
+        "Items"
+      end
+
       def delete_redirect_url
         parent_resource
       end

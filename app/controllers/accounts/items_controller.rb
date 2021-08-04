@@ -33,11 +33,6 @@ module Accounts
       end
 
     private
-
-      def resource_scope
-        policy_scope.includes(:account).order(:name)
-      end
-
       def permitted_params
         [:name, :account_id, :container]
       end

@@ -24,6 +24,6 @@
         is empty
       .subtitle.is-6 Items will appear here after they are added above
   - else
-    = components :item_list_card, @items.container_then_item
+    = components :item_list_card, @items.roots.container_then_item
 
 = link_to "Create item from a template...", templates_account_items_path(@account), class: "button is-text"
