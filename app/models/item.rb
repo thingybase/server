@@ -50,7 +50,7 @@ class Item < ApplicationRecord
   end
 
   def self.container_then_item
-    order(:container, :name)
+    order("container DESC, name ASC")
   end
 
   private
@@ -71,7 +71,7 @@ class Item < ApplicationRecord
 
     def parent_is_container?
       return if root?
-      errors.add :parent, "must be a container" if not parent.container?
+      errors.add(:parent, "must be a container") if not parent.container?
     end
 
     def assign_container_false_to_nil
