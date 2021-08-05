@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_03_125815) do
+ActiveRecord::Schema.define(version: 2021_08_05_014714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2021_08_03_125815) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "container", default: false
+    t.boolean "container", default: false, null: false
     t.bigint "parent_id"
     t.string "icon_key"
     t.uuid "uuid", null: false
