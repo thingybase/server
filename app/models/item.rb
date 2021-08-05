@@ -45,8 +45,20 @@ class Item < ApplicationRecord
     @label ||= Label.new item: self
   end
 
+  def items_count
+    children.item.count
+  end
+
+  def containers_count
+    children.container.count
+  end
+
   def self.container
     where(container: true)
+  end
+
+  def self.item
+    where(container: false)
   end
 
   def self.container_then_item
