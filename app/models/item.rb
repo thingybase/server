@@ -20,7 +20,7 @@ class Item < ApplicationRecord
   validate :parent_is_container?
   validate :icon_key_exists?
 
-  before_validation :assign_container_false_to_nil
+  before_validation :assign_container_false_if_nil
 
   DEFAULT_CONTAINER_ICON_KEY = "folder".freeze
   DEFAULT_ITEM_ICON_KEY = "object".freeze
@@ -86,7 +86,7 @@ class Item < ApplicationRecord
       errors.add(:parent, "must be a container") if not parent.container?
     end
 
-    def assign_container_false_to_nil
+    def assign_container_false_if_nil
       # Nil implies its not a container, but if we store it as a nil in that column
       # we get three different types if we group by `container`, so force a Nil to be
       # False. A database constraint was put into place to make sure this happens.
