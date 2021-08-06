@@ -5,7 +5,7 @@ layout: trust
 icon: key
 ---
 
-At Thingybase, accessible from https://www.thingybase.com/, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Thingybase and how we use it.
+At Thingybase, accessible from https://www.thingybase.com/ and owned by the Company Rocketship, LLC, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Thingybase and how we use it.
 
 If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
 

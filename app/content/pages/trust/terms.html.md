@@ -5,7 +5,7 @@ subtitle: What to expect from using our service
 icon: diploma
 ---
 
-By accessing this Website, accessible from https://www.thingybase.com/, you are agreeing to be bound by these Website Terms and Conditions of Use and agree that you are responsible for the agreement with any applicable local laws. If you disagree with any of these terms, you are prohibited from accessing this site. The materials contained in this Website are protected by copyright and trade mark law.
+By accessing this Website, accessible from https://www.thingybase.com/ and owned by the Company Rocketship, LLC, you are agreeing to be bound by these Website Terms and Conditions of Use and agree that you are responsible for the agreement with any applicable local laws. If you disagree with any of these terms, you are prohibited from accessing this site. The materials contained in this Website are protected by copyright and trademark law.
 
 ## Use license
 
