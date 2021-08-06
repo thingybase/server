@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_05_014714) do
+ActiveRecord::Schema.define(version: 2021_08_05_162344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 2021_08_05_014714) do
     t.string "icon_key"
     t.uuid "uuid", null: false
     t.datetime "expires_at"
+    t.integer "items_count", default: 0, null: false
+    t.integer "containers_count", default: 0, null: false
     t.index ["account_id"], name: "index_items_on_account_id"
     t.index ["container"], name: "index_items_on_container"
     t.index ["expires_at"], name: "index_items_on_expires_at"
