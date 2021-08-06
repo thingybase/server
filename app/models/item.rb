@@ -22,6 +22,10 @@ class Item < ApplicationRecord
 
   before_validation :assign_container_false_if_nil
 
+  before_update :update_counters
+  before_create :increment_new_counters
+  before_destroy :decrement_old_counters
+
   DEFAULT_CONTAINER_ICON_KEY = "folder".freeze
   DEFAULT_ITEM_ICON_KEY = "object".freeze
 
@@ -45,14 +49,6 @@ class Item < ApplicationRecord
     @label ||= Label.new item: self
   end
 
-  def items_count
-    children.item.count
-  end
-
-  def containers_count
-    children.container.count
-  end
-
   def self.container
     where(container: true)
   end
@@ -66,6 +62,34 @@ class Item < ApplicationRecord
   end
 
   private
+    def update_counters
+      if parent_id_changed?
+        # Update counts on different parents
+        decrement_old_counters
+        increment_new_counters
+      elsif container_changed?
+        # Update counts on the same parent
+        parent&.decrement! counter_attribute(container_was)
+        parent&.increment! counter_attribute(container)
+      end
+    end
+
+    def decrement_old_counters
+      parent_was&.decrement! counter_attribute(container_was)
+    end
+
+    def increment_new_counters
+      parent&.increment! counter_attribute(container)
+    end
+
+    def counter_attribute(container)
+      container ? :containers_count : :items_count
+    end
+
+    def parent_was
+      self.class.find_by_id parent_id_was
+    end
+
     def default_icon_key
       container ? DEFAULT_CONTAINER_ICON_KEY : DEFAULT_ITEM_ICON_KEY
     end
