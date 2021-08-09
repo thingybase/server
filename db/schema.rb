@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_05_162344) do
+ActiveRecord::Schema.define(version: 2021_08_08_003552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,18 @@ ActiveRecord::Schema.define(version: 2021_08_05_162344) do
     t.index ["item_id"], name: "index_labels_on_item_id"
     t.index ["user_id"], name: "index_labels_on_user_id"
     t.index ["uuid"], name: "index_labels_on_uuid", unique: true
+  end
+
+  create_table "loanable_lists", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.uuid "uuid", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_loanable_lists_on_account_id"
+    t.index ["user_id"], name: "index_loanable_lists_on_user_id"
+    t.index ["uuid"], name: "index_loanable_lists_on_uuid", unique: true
   end
 
   create_table "member_requests", force: :cascade do |t|
@@ -166,6 +178,8 @@ ActiveRecord::Schema.define(version: 2021_08_05_162344) do
   add_foreign_key "items", "users"
   add_foreign_key "labels", "accounts"
   add_foreign_key "labels", "users"
+  add_foreign_key "loanable_lists", "accounts"
+  add_foreign_key "loanable_lists", "users"
   add_foreign_key "members", "accounts"
   add_foreign_key "members", "users"
   add_foreign_key "movements", "accounts"
