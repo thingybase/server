@@ -1,0 +1,9 @@
+= title resource.name, subtitle: "Stuff that you can loan to your friends, family, and people you trust", icon: "heart"
+
+.buttons
+  .field.has-addons
+    .control= link_to "Edit", url_for(action: :edit), class: "button"
+    .control= link_to "Delete", resource, method: :delete, data: { confirm: 'Are you sure?' }, class: "button"
+
+.box
+  You need to designate items that you're willing to loan, then share this list with your friends and family.

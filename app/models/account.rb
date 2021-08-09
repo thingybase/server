@@ -9,6 +9,7 @@ class Account < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :member_requests
   has_one :move
+  has_one :loanable_list
 
   validates :user, presence: true
   validates :name, presence: true

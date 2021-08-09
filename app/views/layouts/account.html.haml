@@ -19,6 +19,11 @@
             = component :icon, "basketball-jersey", class: "icon"
             %span.ml-2
               People
+        - is_active_navigation_key "Borrowing", active: "has-text-weight-bold" do |active|
+          =link_to account_loanable_list_path(@account), class: ["button is-text", active].join(" ") do
+            = component :icon, "heart", class: "icon"
+            %span.ml-2
+              Borrowing
         - with @account.move do |move|
           - is_active_navigation_key "Moving", active: "has-text-weight-bold" do |active|
             =link_to account_move_path(@account), class: ["button is-text", active].join(" ") do

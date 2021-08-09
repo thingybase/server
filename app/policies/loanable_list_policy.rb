@@ -1,0 +1,2 @@
+class LoanableListPolicy < ApplicationPolicy
+end

@@ -1,0 +1,6 @@
+= title resource.name, subtitle: "Editing", icon: "heart"
+
+= application_form resource do |f|
+  = f.input :name
+  .buttons
+    = f.button :submit, "Save changes", class: 'is-primary'

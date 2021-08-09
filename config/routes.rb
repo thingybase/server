@@ -82,6 +82,7 @@ Rails.application.routes.draw do
     get :search, to: "accounts/searches#index"
     scope module: :accounts do
       resources :members
+      resource :loanable_list, only: [:new, :create, :show]
       resources :member_requests, only: [:new, :create]
       resources :invitations
       resource :move, only: [:new, :create, :show]
@@ -132,6 +133,13 @@ Rails.application.routes.draw do
   end
 
   resources :icons, only: :index
+
+  resources :loanable_lists, only: %i[show edit destroy update] do
+    # scope module: :loanable_lists do
+    #   resources :loanable_items, only: %i[index new create]
+    #   resource :loanable_items_builder, only: %i[new create]
+    # end
+  end
 
   get "/vectors/hsl-:h,:s,:l/*id", to: "vectors#hsl",
     as: :vector,

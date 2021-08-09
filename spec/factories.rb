@@ -2,6 +2,12 @@
 Faker::Config.locale = 'en-US'
 
 FactoryBot.define do
+  factory :loanable_list do
+    account
+    user
+    name { "#{Faker::Name.unique.name}'s stuff" }
+  end
+
   factory :movement do
     account
     user
