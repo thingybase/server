@@ -23,10 +23,10 @@ class LabelsController < ResourcesController
   end
 
   def scan
-    @label = find_label
-    authorize @label, :scan?
-    if item = @label.item
-      redirect_to item
+    @item = find_label
+    authorize @item, :scan?
+    if @item
+      redirect_to @item
     else
       render :gone, status: :gone
     end
