@@ -18,7 +18,7 @@ module PageTitleHelper
   end
 
   def title_tag_text(title)
-    [title, produt_name_title].compact.join(DELIMITER)
+    [title, produt_name_title].compact.join(DELIMITER).html_safe
   end
 
   private
