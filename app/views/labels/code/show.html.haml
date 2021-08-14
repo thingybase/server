@@ -7,7 +7,9 @@
 .tabs
   %ul
     %li
-      =link_to "Magic", label_standard_path(@label), "data-turbolinks-action": "replace"
+      =link_to "Standard", label_standard_path(@label), "data-turbolinks-action": "replace"
+    %li
+      =link_to "Jumbo", label_jumbo_path(@label), "data-turbolinks-action": "replace"
     %li.is-active
       =link_to "Handwritten", label_code_path(@label), "data-turbolinks-action": "replace"
 

@@ -65,6 +65,7 @@ Rails.application.routes.draw do
       get :scan
     end
     resource :standard, controller: "labels/standard"
+    resource :jumbo, controller: "labels/jumbo"
     resource :code, controller: "labels/code"
   end
 
