@@ -13,4 +13,7 @@ class LoanableList < ApplicationRecord
 
   validates :name,
     presence: :true
+
+  has_many :loanable_items, dependent: :destroy
+  has_many :items, through: :loanable_items
 end

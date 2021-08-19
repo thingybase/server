@@ -1,0 +1,2 @@
+class LoanableItemPolicy < ItemPolicy
+end

@@ -1,0 +1,4 @@
+=title @item.name, subtitle: breadcrumb(item_breadcrumbs(@item), leaf: "Loan"), icon: @item.icon
+
+= application_form @loanable_item, url: url_for(action: :create) do |f|
+  = f.button :submit, class: 'is-primary', value: "Add to borrowing list"

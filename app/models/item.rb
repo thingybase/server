@@ -12,6 +12,8 @@ class Item < ApplicationRecord
     dependent: :destroy,
     foreign_key: :origin_id
 
+  has_one :loanable_item
+
   validates :name, presence: true
   validates :account, presence: true
   validates :user, presence: true
@@ -19,6 +21,7 @@ class Item < ApplicationRecord
   validate :convertable_from_container_to_item?
   validate :parent_is_container?
   validate :icon_key_exists?
+  validate :not_container_if_loanable?
 
   before_validation :assign_container_false_if_nil
 
@@ -97,6 +100,12 @@ class Item < ApplicationRecord
     def convertable_from_container_to_item?
       if not container? and children.exists?
         errors.add(:container, "must have all items removed before it can be changed to not be a container")
+      end
+    end
+
+    def not_container_if_loanable?
+      if container? and loanable_item
+        errors.add(:container, "must be removed from borrowing list")
       end
     end
 

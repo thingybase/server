@@ -40,9 +40,12 @@ Rails.application.routes.draw do
       resource :icon, only: %i[edit update]
       resource :badge, only: :show
       resource :movement, only: %i[new create]
+      resource :loanable, only: %i[new create], controller: "loanable_items"
       template_resources :containers, :items, :perishables
     end
   end
+
+  resources :loanable_items
 
   resources :members
 
@@ -135,10 +138,10 @@ Rails.application.routes.draw do
   resources :icons, only: :index
 
   resources :loanable_lists, only: %i[show edit destroy update] do
-    # scope module: :loanable_lists do
-    #   resources :loanable_items, only: %i[index new create]
-    #   resource :loanable_items_builder, only: %i[new create]
-    # end
+    scope module: :loanable_lists do
+      resources :items, only: %i[index new create], controller: "loanable_items"
+      # resource :items_builder, only: %i[new create], controller: "loanable_items"
+    end
   end
 
   get "/vectors/hsl-:h,:s,:l/*id", to: "vectors#hsl",

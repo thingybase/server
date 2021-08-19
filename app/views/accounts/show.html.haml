@@ -34,13 +34,18 @@
           %p=link_to "Manage people", account_people_path(@account)
       .tile.is-parent
         .tile.is-child.notification
-          %h3.title.is-4 Moving
-          %p.subtitle.is-5 Keep tabs on all your stuff while moving from one place to another
+          %h3.title.is-4 Preview features
+          %p.subtitle.is-6 Try features before they're fully baked
           %p
             - if move = @account.move
-              %p=link_to "View move", move_path(move)
+              %p=link_to "View move", move
             -else
               %p=link_to "Start a move", account_move_path(@account)
+
+            - if loanable_list = @account.loanable_list
+              %p=link_to "View borrowing list", loanable_list
+            -else
+              %p=link_to "Create a borrowing list", account_loanable_list_path(@account)
 
   .tile.is-parent
     .tile.is-child.notification

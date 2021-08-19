@@ -5,7 +5,8 @@ module BreadcrumbHelper
     Link.new(text, url)
   end
 
-  def breadcrumb(links = [], leaf: nil)
+  def breadcrumb(*links, leaf: nil)
+    links = links.flatten
     links.append Link.new(leaf) if leaf
     return if links.empty?
 
