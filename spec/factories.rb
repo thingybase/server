@@ -12,8 +12,8 @@ FactoryBot.define do
     account
     user
     move
-    origin
-    destination
+    origin { build(:item, container: true) }
+    destination { build(:item, container: true) }
   end
 
   factory :move do

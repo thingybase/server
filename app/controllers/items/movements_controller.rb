@@ -1,6 +1,7 @@
 module Items
   class MovementsController < NestedResourcesController
     include AccountLayout
+    before_action :redirect_to_existing_movement, only: :new
 
     def self.parent_resource
       Item
@@ -29,6 +30,11 @@ module Items
         resource.account = parent_resource.account
         resource.origin = parent_resource
         resource.destination ||= parent_resource.parent
+      end
+
+    private
+      def redirect_to_existing_movement
+        redirect_to @item.movement if @item.movement
       end
   end
 end
