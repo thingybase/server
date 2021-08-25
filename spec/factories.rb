@@ -2,6 +2,16 @@
 Faker::Config.locale = 'en-US'
 
 FactoryBot.define do
+  factory :loanable_list_member_request do
+    user
+    loanable_list
+  end
+
+  factory :loanable_list_member do
+    user
+    loanable_list
+  end
+
   factory :loanable_item do
     loanable_list
     user
