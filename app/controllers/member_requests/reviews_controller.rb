@@ -33,6 +33,10 @@ module MemberRequests
         MemberRequestMailer.account_approval_email(resource.member, current_user).deliver_now
       end
 
+      def navigation_key
+        "People"
+      end
+
       def permitted_params
         [:status]
       end

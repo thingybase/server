@@ -44,8 +44,8 @@ module Accounts
       end
 
       def assign_attributes
-        self.resource.account = @account
-        self.resource.user = current_user
+        resource.account = @account
+        resource.user = current_user
       end
   end
 end
