@@ -1,0 +1,10 @@
+class CreateLoanableListMembers < ActiveRecord::Migration[6.1]
+  def change
+    create_table :loanable_list_members do |t|
+      t.references :user, null: false, foreign_key: true
+      t.references :loanable_list, null: false, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end
