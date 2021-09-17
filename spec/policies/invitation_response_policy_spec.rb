@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 describe InvitationResponsePolicy do
-  subject { described_class.new(user, invitation.response) }
+  subject { described_class.new(user, record) }
   let(:invitation) { create(:invitation) }
+  let(:record) { invitation.response }
+  let(:account) { record.account }
 
-  context 'a visitor' do
+  context 'visitor' do
     let(:user) { nil }
     it { is_expected.to forbid_action(:show) }
     it { is_expected.to forbid_action(:edit) }
@@ -15,39 +17,51 @@ describe InvitationResponsePolicy do
     it { is_expected.to forbid_action(:index) }
   end
 
-  context 'an owner' do
-    let(:user) { invitation.account.user }
+  context 'account owner' do
+    let(:user) { account.user }
+    it { is_expected.to permit_action(:create) }
+    it { is_expected.to permit_action(:new) }
+
     it { is_expected.to forbid_action(:show) }
-    it { is_expected.to forbid_action(:create) }
-    it { is_expected.to forbid_action(:new) }
     it { is_expected.to forbid_action(:destroy) }
     it { is_expected.to forbid_action(:index) }
-
-    it { is_expected.to permit_action(:edit) }
-    it { is_expected.to permit_action(:update) }
+    it { is_expected.to forbid_action(:edit) }
+    it { is_expected.to forbid_action(:update) }
   end
 
-  context 'a member' do
-    let(:user) { create(:member, account: invitation.account).user }
+  context 'record owner' do
+    let(:user) { account.add_user invitation.user }
+    it { is_expected.to permit_action(:create) }
+    it { is_expected.to permit_action(:new) }
+
     it { is_expected.to forbid_action(:show) }
-    it { is_expected.to forbid_action(:create) }
-    it { is_expected.to forbid_action(:new) }
     it { is_expected.to forbid_action(:destroy) }
     it { is_expected.to forbid_action(:index) }
-
-    it { is_expected.to permit_action(:edit) }
-    it { is_expected.to permit_action(:update) }
+    it { is_expected.to forbid_action(:edit) }
+    it { is_expected.to forbid_action(:update) }
   end
 
-  context 'not a member' do
-    let(:user) { User.create }
+  context 'member' do
+    let(:user) { account.add_user create(:user) }
+    it { is_expected.to permit_action(:create) }
+    it { is_expected.to permit_action(:new) }
+
     it { is_expected.to forbid_action(:show) }
-    it { is_expected.to forbid_action(:create) }
-    it { is_expected.to forbid_action(:new) }
     it { is_expected.to forbid_action(:destroy) }
     it { is_expected.to forbid_action(:index) }
+    it { is_expected.to forbid_action(:edit) }
+    it { is_expected.to forbid_action(:update) }
+  end
 
-    it { is_expected.to permit_action(:edit) }
-    it { is_expected.to permit_action(:update) }
+  context 'non-member' do
+    let(:user) { create(:user) }
+    it { is_expected.to permit_action(:create) }
+    it { is_expected.to permit_action(:new) }
+
+    it { is_expected.to forbid_action(:show) }
+    it { is_expected.to forbid_action(:destroy) }
+    it { is_expected.to forbid_action(:index) }
+    it { is_expected.to forbid_action(:edit) }
+    it { is_expected.to forbid_action(:update) }
   end
 end

@@ -3,10 +3,6 @@ class InvitationResponsePolicy < ApplicationPolicy
     false
   end
 
-  def new?
-    true
-  end
-
   def create?
     user.present?
   end

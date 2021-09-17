@@ -1,0 +1,33 @@
+require 'rails_helper'
+
+RSpec.describe LoanableListMemberReview, type: :model do
+  subject { LoanableListMemberReview.new(loanable_list_member_request: build(:loanable_list_member_request)) }
+  describe "#status" do
+    it { is_expected.to validate_presence_of(:status) }
+    it { is_expected.to allow_value("accept").for(:status) }
+    it { is_expected.to allow_value("decline").for(:status) }
+    it { is_expected.to_not allow_value("garbage").for(:status) }
+  end
+  describe "#save" do
+    let(:member_request) { create(:loanable_list_member_request) }
+    let(:user) { member_request.user }
+    let(:account) { member_request.account }
+    subject { LoanableListMemberReview.new(loanable_list_member_request: member_request, status: status) }
+    before { subject }
+    context "accept" do
+      let(:status) { "accept" }
+      it "destroys member_request" do
+        expect{subject.save}.to change{LoanableListMemberRequest.count}.by(-1)
+      end
+      it "creates member on account" do
+        expect{subject.save}.to change{member_request.loanable_list.members.where(user: user).count}.by(1)
+      end
+    end
+    context "decline" do
+      let(:status) { "decline" }
+      it "destroys member_request" do
+        expect{subject.save}.to change{LoanableListMemberRequest.count}.by(-1)
+      end
+    end
+  end
+end

@@ -66,7 +66,7 @@ gem "turbolinks-form", "~> 0.1.4"
 # Blanks from forms are converted into nil instead of stored as "" in the database
 gem "nilify_blanks", "~> 1.4"
 # Does union queries in ActiveRecord.
-gem "active_record_extended", "~> 2.0"
+gem "active_record_union"
 # Converts GUIDs in the URLs into shorter ids
 gem "anybase", "~> 0.0.15"
 # Pull this out when Rails 6.1 is a thing.
@@ -110,7 +110,7 @@ group :development do
 end
 
 group :test do
-  gem 'pundit-matchers', '~> 1.3.1'
+  gem 'pundit-matchers', '~> 1.7.0'
   gem 'shoulda-matchers', '~> 4.5.0'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'

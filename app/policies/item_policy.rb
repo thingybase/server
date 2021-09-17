@@ -1,6 +1,6 @@
 class ItemPolicy < ApplicationPolicy
   def new?
-    is_user?
+    is_account_member?
   end
 
   def create?

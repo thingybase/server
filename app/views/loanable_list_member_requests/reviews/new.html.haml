@@ -1,0 +1,16 @@
+= title "#{resource.name} would like to access #{resource.loanable_list.name}", subtitle: "If the request is approved, #{resource.name} will be able to see items on the borrow list and request to borrow them"
+
+=resource_field :name
+=resource_field :email
+=resource_field :created_at do
+  =local_date resource.created_at
+
+.is-inline-block
+  = application_form resource.tap{ |r| r.status = "accept" }, url: url_for(action: :create) do |f|
+    = f.input :status, as: :hidden
+    = f.button :submit, "Accept", class: "is-primary"
+
+.is-inline-block
+  = application_form resource.tap{ |r| r.status = "decline" }, url: url_for(action: :create) do |f|
+    = f.input :status, as: :hidden
+    = f.button :submit, "Decline"

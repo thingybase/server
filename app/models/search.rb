@@ -19,8 +19,7 @@ class Search
     elsif partial_uuid?
       # There's a super remote chance that somebody is naming their items with
       # hex codes, so we'll also search by text.
-      Item.union search_by_uuid_scope(@item_scope),
-        search_by_name_scope(@item_scope)
+      search_by_uuid_scope(@item_scope).union search_by_name_scope(@item_scope)
     else
       # Search by title
       search_by_name_scope @item_scope

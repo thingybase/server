@@ -22,7 +22,7 @@ class PhoneNumberVerification < ApplicationModel
           # so I'm not worried about performance here...
         end
         # Now assign the phone number to the user who is making the claim.
-        claim.user.update_attributes! phone_number: claim.phone_number
+        claim.user.update! phone_number: claim.phone_number
         claim.destroy
       end
     end

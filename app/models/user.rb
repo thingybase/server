@@ -10,7 +10,6 @@ class User < ApplicationRecord
     uniqueness: true,
     allow_nil: true
 
-  has_many :labels
   has_many :api_keys
   has_many :items
   has_many :members
@@ -23,7 +22,7 @@ class User < ApplicationRecord
   # Combination of accounts the user owns and belongs to; used heavily
   # by authorization logic to see if a user has access to an account or not.
   def accounts
-    Account.union owned_accounts, member_accounts
+    owned_accounts.union member_accounts
   end
 
   # TODO: Move this into a service object.

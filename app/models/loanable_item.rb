@@ -1,24 +1,18 @@
 class LoanableItem < ApplicationRecord
   include UuidField
 
-  belongs_to :loanable_list
-  belongs_to :user
-  belongs_to :account
-  belongs_to :item
+  delegate :name, to: :item
 
-  validates :loanable_list,
-    presence: true
-
-  validates :user,
-    presence: true
-
-  validates :account,
-    presence: true
+  belongs_to :loanable_list, required: true
+  belongs_to :user, required: true
+  belongs_to :account, required: true
+  belongs_to :item, required: true
 
   validates :item,
-    presence: true,
     # An item can only appear on a list once (but it could be on many lists)
-    uniqueness: { scope: :loanable_list_id, message: "is already loanable" }
+    uniqueness: {
+      scope: :loanable_list_id,
+      message: "is already loanable" }
 
   validate :item_is_not_container
 

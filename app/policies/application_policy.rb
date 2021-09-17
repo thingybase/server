@@ -57,14 +57,26 @@ class ApplicationPolicy
     end
 
     def is_owner?
-      is_user? && user == record.user
+      is_user? && user == record_owner
     end
 
     def is_account_owner?
-      is_user? && user == record.account.user
+      is_user? && user == account_owner
     end
 
     def is_account_member?
-      is_user? && user.accounts.where(id: record.account).exists?
+      is_user? && user.accounts.where(id: account).exists?
+    end
+
+    def account
+      record.account
+    end
+
+    def account_owner
+      account.user
+    end
+
+    def record_owner
+      record.user
     end
 end

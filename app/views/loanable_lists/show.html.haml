@@ -2,6 +2,7 @@
 
 .buttons
   =link_to "+ Add items people can borrow", new_loanable_list_item_path(@loanable_list), class: "button is-primary"
+  =link_to "Manage sharing", loanable_list_members_path(@loanable_list), class: "button"
   .field.has-addons
 
 -if resource.items.empty?

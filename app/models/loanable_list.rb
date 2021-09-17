@@ -24,4 +24,10 @@ class LoanableList < ApplicationRecord
     class_name: "LoanableListMemberRequest",
     dependent: :destroy
   has_many :requesting_users, through: :member_requests, class_name: "User"
+
+  validates :name, presence: true
+
+  def add_user(user)
+    members.create!(user: user).user
+  end
 end

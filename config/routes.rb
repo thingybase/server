@@ -140,7 +140,15 @@ Rails.application.routes.draw do
   resources :loanable_lists, only: %i[show edit destroy update] do
     scope module: :loanable_lists do
       resources :items, only: %i[index new create], controller: "loanable_items"
+      resources :members, only: %i[index new create], controller: "loanable_list_members"
+      resources :member_request, only: %i[index new create], controller: "loanable_list_member_requests"
       # resource :items_builder, only: %i[new create], controller: "loanable_items"
+    end
+  end
+
+  resources :loanable_list_member_requests, only: :show do
+    scope module: :loanable_list_member_requests do
+      resource :review, only: [:new, :create]
     end
   end
 

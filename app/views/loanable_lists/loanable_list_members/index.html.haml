@@ -1,0 +1,27 @@
+= title parent_resource.name, subtitle: breadcrumb(breadcrumb_link(parent_resource.name, parent_resource), breadcrumb_link("People", loanable_list_members_path(parent_resource))), icon: "heart"
+
+.buttons
+  =link_to "+ Invite people", new_loanable_list_member_path(@loanable_list), class: "button is-primary"
+  .field.has-addons
+
+- @loanable_list.members.each do |member|
+  = component :list_card, member.user.name, "loanable_list_member_path(member)", icon: "mailer" do |card|
+    - card.slot(:detail) do
+      Member
+    - card.slot(:detail) do
+      Approved
+      = local_time_ago member.created_at
+
+-if @loanable_list.member_requests.any?
+
+  %hr
+
+  %h3.title.is-4 Pending requests
+
+  - @loanable_list.member_requests.each do |request|
+    = component :list_card, request.user.name, new_loanable_list_member_request_review_path(request), icon: "mailer" do |card|
+      - card.slot(:detail) do
+        Pending request
+      - card.slot(:detail) do
+        Invited
+        = local_time_ago request.created_at

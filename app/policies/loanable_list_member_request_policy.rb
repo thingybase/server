@@ -1,0 +1,2 @@
+class LoanableListMemberRequestPolicy < MemberRequestPolicy
+end

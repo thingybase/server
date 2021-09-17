@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 describe AccountPolicy do
-  subject { described_class.new(user, account) }
+  subject { described_class.new(user, record) }
+  let(:record) { create(:account) }
+  let(:account) { record }
 
-  let(:account) { create(:account) }
-
-  context 'a visitor' do
+  context 'visitor' do
     let(:user) { nil }
     it { is_expected.to forbid_action(:show) }
     it { is_expected.to forbid_action(:edit) }
@@ -16,7 +16,7 @@ describe AccountPolicy do
     it { is_expected.to forbid_action(:index) }
   end
 
-  context 'an owner' do
+  context 'account owner' do
     let(:user) { account.user }
     it { is_expected.to permit_action(:show) }
     it { is_expected.to permit_action(:edit) }
@@ -27,8 +27,8 @@ describe AccountPolicy do
     it { is_expected.to permit_action(:index) }
   end
 
-  context 'a member' do
-    let(:user) { create(:member, account: account).user }
+  context 'member' do
+    let(:user) { account.add_user create(:user) }
     it { is_expected.to forbid_action(:edit) }
     it { is_expected.to forbid_action(:update) }
     it { is_expected.to forbid_action(:destroy) }
@@ -39,8 +39,8 @@ describe AccountPolicy do
     it { is_expected.to permit_action(:index) }
   end
 
-  context 'not a member' do
-    let(:user) { User.create }
+  context 'non-member' do
+    let(:user) { create(:user) }
     it { is_expected.to forbid_action(:show) }
     it { is_expected.to forbid_action(:edit) }
     it { is_expected.to forbid_action(:update) }
