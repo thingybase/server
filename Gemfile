@@ -7,11 +7,11 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1'
+gem 'rails', '~> 7.0.0.alpha'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
-gem 'sass-rails', '>= 6'
+gem 'sassc-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -46,10 +46,9 @@ gem 'rollbar'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 # Generate's PDFs, mostly for labels
-gem "prawn", "~> 2.2"
+gem "prawn", "~> 2.0"
 # Print QR codes in a PDF
-gem "prawn-qrcode", "~> 0.5.1"
-gem "qrcode", "~> 0.0.1"
+gem "prawn-qrcode", "~> 0.5.0"
 # Hierarchial record organization in ActiveRecord
 gem "closure_tree", "~> 7.0"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -62,7 +61,7 @@ gem "pg_search", "~> 2.3"
 gem 'webpacker', '~> 5.3'
 # Makes form submissions use turbolinks instead of POST/PUT methods. Makes
 # mobile development a tad easier.
-gem "turbolinks-form", "~> 0.1.4"
+gem "turbolinks-form", "~> 0.1.5"
 # Blanks from forms are converted into nil instead of stored as "" in the database
 gem "nilify_blanks", "~> 1.4"
 # Does union queries in ActiveRecord.
@@ -81,14 +80,17 @@ if sitepress_gem_path = ENV["SITEPRESS_GEM_PATH"]
   gem "sitepress-core",   path: sitepress_gem_path
   gem "sitepress-server", path: sitepress_gem_path
 else
-  gem "sitepress-rails", "~> 2.0.0.beta"
+  gem "sitepress-rails", "~> 2.0.0"
 end
 # Markdown gem
-gem "redcarpet", "~> 3.5"
+gem "redcarpet", "~> 3.5.0"
 # Parses SVG vector files and inverts them for darkmode.
 gem "color", "~> 1.8"
 # Used for reporting from the shell so I can see who signed up within a day/week
 gem "groupdate", "~> 5.2"
+# Render PDF file as an image to get around really annoying problems
+# embedding PDFs in webpages or trying to embed them via PDF.js
+gem "mini_magick", "~> 4.0.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -119,5 +121,3 @@ group :test do
   gem 'webdrivers'
   gem 'rexml'
 end
-
-gem "mini_magick", "~> 4.11"
