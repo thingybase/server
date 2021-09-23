@@ -5,7 +5,7 @@
   .field.has-addons
 
 - @loanable_list.members.each do |member|
-  = component :list_card, member.user.name, "loanable_list_member_path(member)", icon: "mailer" do |card|
+  = component :list_card, member.user.name, icon: "mailer" do |card|
     - card.slot(:detail) do
       Member
     - card.slot(:detail) do

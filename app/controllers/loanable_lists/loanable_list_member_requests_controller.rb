@@ -1,6 +1,8 @@
 module LoanableLists
   class LoanableListMemberRequestsController < NestedResourcesController
     before_action :redirect_to_existing_request, only: :create
+    layout "focused"
+    skip_before_action :authorize_parent_resource
 
     protected
       def self.resource
@@ -23,6 +25,14 @@ module LoanableLists
       def redirect_to_existing_request
         member_request = LoanableListMemberRequest.find_by(user: current_user, loanable_list: @loanable_list)
         redirect_to member_request if member_request
+      end
+
+      def access_denied
+        redirect_to new_session_url
+      end
+
+      def create_notice
+        nil
       end
   end
 end
