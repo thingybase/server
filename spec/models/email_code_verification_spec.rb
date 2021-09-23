@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe EmailCodeVerification, type: :model do
   subject { build(:email_code_verification) }
   it { is_expected.to validate_presence_of(:email) }
   before { subject.generate_random_code }

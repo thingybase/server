@@ -2,6 +2,7 @@ module Accounts
   class MemberRequestsController < NestedResourcesController
     after_action :deliver_email_notification, only: :create
     before_action :redirect_to_existing_request, only: :create
+    skip_before_action :authorize_parent_resource
 
     def self.resource
       MemberRequest
@@ -32,10 +33,6 @@ module Accounts
       def redirect_to_existing_request
         member_request = MemberRequest.find_by(user: current_user, account: @account)
         redirect_to member_request if member_request
-      end
-
-      def authorize_parent_resource
-        authorize @account, :new?
       end
 
     private

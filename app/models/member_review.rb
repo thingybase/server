@@ -1,7 +1,7 @@
 class MemberReview < ApplicationModel
   attr_accessor :member_request, :member, :status
 
-  delegate :user, :account, :created_at, to: :member_request
+  delegate :user, :account, :created_at, :id, to: :member_request
   delegate :name, :email, to: :user
 
   validates :status, presence: true

@@ -13,8 +13,12 @@ class User < ApplicationRecord
   has_many :api_keys
   has_many :items
   has_many :members
+  has_many :loanable_list_members
+  has_many :loanable_lists, through: :loanable_list_members
+
   # Accounts the user belongs to, but doesn't own.
   has_many :member_accounts, through: :members, source: :account
+
   # Accounts the user owns.
   has_many :owned_accounts, class_name: "Account"
   has_many :member_requests
