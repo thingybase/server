@@ -2,8 +2,9 @@ require 'rails_helper'
 
 describe LoanableItemPolicy do
   subject { described_class.new(user, record) }
-  let(:record) { create(:loanable_item) }
-  let(:account) { record.account }
+  let(:record) { create(:loanable_item, loanable_list: loanable_list, account: account) }
+  let(:loanable_list) { create(:loanable_list, account: account) }
+  let(:account) { create(:account) }
 
   context 'visitor' do
     let(:user) { nil }
@@ -41,6 +42,18 @@ describe LoanableItemPolicy do
 
   context 'member' do
     let(:user) { account.add_user create(:user) }
+    it { is_expected.to forbid_action(:edit) }
+    it { is_expected.to forbid_action(:update) }
+    it { is_expected.to forbid_action(:create) }
+    it { is_expected.to forbid_action(:destroy) }
+    it { is_expected.to forbid_action(:new) }
+
+    it { is_expected.to permit_action(:show) }
+    it { is_expected.to permit_action(:index) }
+  end
+
+  context 'loanable list member' do
+    let(:user) { loanable_list.add_user create(:user) }
     it { is_expected.to forbid_action(:edit) }
     it { is_expected.to forbid_action(:update) }
     it { is_expected.to forbid_action(:create) }

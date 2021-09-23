@@ -1,9 +1,7 @@
-class MemberPolicy < ApplicationPolicy
+class MemberPolicy < BaseAccountOwnerPolicy
+  # Nobody can add a Member directly; it must go through
+  # the MemberReviewPolicy to be added.
   def create?
-    false
-  end
-
-  def new?
     false
   end
 
@@ -11,22 +9,18 @@ class MemberPolicy < ApplicationPolicy
     false
   end
 
+  # Only an account owner or the person who is the member can
+  # destroy their membership and leave the account.
   def destroy?
-    is_owner? || is_account_owner?
+    is_owner? or is_account_owner?
+  end
+
+  # Other members of the account can see who else is on the account.
+  def show?
+    is_account_member?
   end
 
   def index?
-    show?
+    is_account_member?
   end
-
-  class Scope < Scope
-    def resolve
-      scope.where(account_id: user.accounts)
-    end
-  end
-
-  private
-    def is_account_owner?
-      user.present? && user == record.account&.user
-    end
 end

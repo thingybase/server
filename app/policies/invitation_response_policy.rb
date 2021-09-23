@@ -4,7 +4,7 @@ class InvitationResponsePolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+    is_user?
   end
 
   def update?

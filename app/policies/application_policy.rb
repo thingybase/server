@@ -4,6 +4,7 @@ class ApplicationPolicy
   def initialize(user, record)
     @user = user
     @record = record
+    Rails.logger.debug "Pundit policy: #{inspect}"
   end
 
   def index?
@@ -11,7 +12,7 @@ class ApplicationPolicy
   end
 
   def show?
-    is_user? && scope.where(id: record.id).exists?
+    is_user? and is_record_in_scope?
   end
 
   def create?
@@ -35,7 +36,7 @@ class ApplicationPolicy
   end
 
   def scope
-    Pundit.policy_scope!(user, record.class)
+    Pundit.policy_scope! user, record.class
   end
 
   class Scope
@@ -57,19 +58,27 @@ class ApplicationPolicy
     end
 
     def is_owner?
-      is_user? && user == record_owner
+      is_user? and user == record_owner
     end
 
     def is_account_owner?
-      is_user? && user == account_owner
+      is_user? and user == account_owner
     end
 
     def is_account_member?
-      is_user? && user.accounts.where(id: account).exists?
+      is_user? and accounts_scope.where(id: account).exists?
+    end
+
+    def is_record_in_scope?
+      scope.where(id: record.id).exists?
     end
 
     def account
       record.account
+    end
+
+    def accounts_scope
+      user.accounts
     end
 
     def account_owner
