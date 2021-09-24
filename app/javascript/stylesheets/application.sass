@@ -113,8 +113,7 @@ $family-sans-serif: 'Inter var alt', -apple-system, Helvetica, sans-serif
     flex: 0 0 auto
     border-right: 1px solid
     border-color: $grey-lighter
-    @media (prefers-color-scheme: dark)
-      border-color: $grey-darker
+    background-color: $white-ter
     &--top, &--bottom
       display: flex
       flex-direction: column
@@ -122,6 +121,15 @@ $family-sans-serif: 'Inter var alt', -apple-system, Helvetica, sans-serif
     a
       justify-content: left
       text-decoration: none
+      &.is-selected
+        background-color: $grey-lighter
+        color: $black
+    @media (prefers-color-scheme: dark)
+      border-color: $grey-darker
+      background-color: $black-ter
+      a.is-selected
+        background-color: $grey-darker
+        color: $white
   &--main
     width: 100%
     overflow: auto
