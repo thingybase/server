@@ -1,6 +1,8 @@
 = render_layout "body" do
   .account-layout
     .account-layout--sidecar.is-hidden-mobile
+      -if is_electron?
+        .electron-drag-region
       .account-layout--sidecar--navigation
         .account-layout--sidecar--navigation--top
           .my-4
@@ -38,6 +40,8 @@
             %span.ml-2
               Profile
     .account-layout--main
+      -if is_electron?
+        .electron-drag-region
       %section.section
         -if notice_message
           .container
