@@ -99,37 +99,41 @@ $family-sans-serif: 'Inter var alt', -apple-system, Helvetica, sans-serif
   @media (prefers-color-scheme: dark)
     background-color: $black-ter
 
-#account-layout
+.account-layout
   display: flex
   flex-direction: row
   width: 100%
   height: 100vh
   &--sidecar
-    padding: 1rem 0
-    display: flex
-    flex-direction: column
-    height: 100vh
-    justify-content: space-between
-    flex: 0 0 auto
     border-right: 1px solid
     border-color: $grey-lighter
     background-color: $white-ter
-    &--top, &--bottom
+    height: 100vh
+    display: flex
+    flex-direction: column
+    &--navigation
       display: flex
       flex-direction: column
-      padding: 0.5rem 1rem
-    a
-      justify-content: left
-      text-decoration: none
-      &.is-selected
-        background-color: $grey-lighter
-        color: $black
+      justify-content: space-between
+      flex: 1 0 auto
+      &--top, &--bottom
+        display: flex
+        flex-direction: column
+        margin: 0.5rem 1rem
+      a.button
+        justify-content: left
+        text-decoration: none
+        border: none
+        &.is-selected
+          background-color: $grey-lighter
+          color: $black
     @media (prefers-color-scheme: dark)
       border-color: $grey-darker
       background-color: $black-ter
-      a.is-selected
-        background-color: $grey-darker
-        color: $white
+      &--navigation
+        a.button.is-selected
+          background-color: $grey-darker
+          color: $white
   &--main
     width: 100%
     overflow: auto
