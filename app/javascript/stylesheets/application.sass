@@ -137,7 +137,15 @@ $family-sans-serif: 'Inter var alt', -apple-system, Helvetica, sans-serif
   &--main
     width: 100%
     overflow: auto
-
+    &--header, &--section
+      padding: 1rem
+    &--header.has-bottom-border
+      border-bottom: 1px solid $grey-lighter
+.toolbar
+  display: flex
+  flex-direction: row
+  &--navigation
+    margin-right: 2rem
 .highlight
   background-color: rgba($yellow, 0.75)
   @media (prefers-color-scheme: dark)
@@ -186,4 +194,3 @@ $family-sans-serif: 'Inter var alt', -apple-system, Helvetica, sans-serif
 
 .electron-drag-region
   -webkit-app-region: drag
-  height: 2rem

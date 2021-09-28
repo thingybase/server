@@ -13,6 +13,11 @@ module PageTitleHelper
     }
   end
 
+  def provide_title(title)
+    provide :title, title
+    title
+  end
+
   def render_page_title
     title_tag_text @page_title || content_for(:title)
   end

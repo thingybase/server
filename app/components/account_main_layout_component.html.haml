@@ -1,0 +1,9 @@
+.account-layout--main--header.has-bottom-border.electron-drag-region
+  = header
+.account-layout--main--section
+  %section.section
+    -if notice_message
+      .container
+        = notice_message class: "mb-4"
+    .container
+      = section

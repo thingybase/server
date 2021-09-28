@@ -1,0 +1,12 @@
+= component :account_main_layout do |layout|
+  = layout.header do
+    %h1.title.has-inline-icon.is-size-3
+      -if icon
+        = component :icon, icon, class: "icon is-medium mr-3"
+      = title
+    -if subtitle
+      %h2.subtitle= subtitle
+    .buttons
+      = control
+  = layout.section do
+    = section

@@ -1,17 +1,19 @@
-= title @account.name, subtitle: breadcrumb(account_breadcrumbs(@account), leaf: "Selecting items"), icon: "chest-open"
-
-=form_for [:account, :items, @batch] do |f|
-  =f.hidden_field :account_id
-  .buttons
-    =f.button "Print labels", value: "label", name: "batch[action]", class: "button"
-    =f.button "Delete", value: "delete", name: "batch[action]", class: "button is-text", data: { confirm: "Are you sure?" }
-  -if f.object.errors[:base].any?
-    .message.is-danger
-      .message-body=f.object.errors[:base].to_sentence
-  .list-cards
-    =f.fields_for :items, @batch.items, include_id: false do |s|
-      =s.label :selected, class: "list-card--selection" do
-        =s.hidden_field :uid
-        =s.check_box :selected, class: "checkbox list-card--selection--checkbox"
-        - with s.object.model do |item|
-          = component :item_list_card, item: item, link: false
+= component :account_main_layout do |layout|
+  = layout.header do
+    = title @account.name, subtitle: breadcrumb(account_breadcrumbs(@account), leaf: "Selecting items"), icon: "chest-open"
+  = layout.section do
+    =form_for [:account, :items, @batch] do |f|
+      =f.hidden_field :account_id
+      .buttons
+        =f.button "Print labels", value: "label", name: "batch[action]", class: "button"
+        =f.button "Delete", value: "delete", name: "batch[action]", class: "button is-text", data: { confirm: "Are you sure?" }
+      -if f.object.errors[:base].any?
+        .message.is-danger
+          .message-body=f.object.errors[:base].to_sentence
+      .list-cards
+        =f.fields_for :items, @batch.items, include_id: false do |s|
+          =s.label :selected, class: "list-card--selection" do
+            =s.hidden_field :uid
+            =s.check_box :selected, class: "checkbox list-card--selection--checkbox"
+            - with s.object.model do |item|
+              = component :item_list_card, item: item, link: false

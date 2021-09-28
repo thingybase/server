@@ -2,7 +2,7 @@
   .account-layout
     .account-layout--sidecar.is-hidden-mobile
       -if is_electron?
-        .electron-drag-region
+        .electron-drag-region{style: "height: 2rem;"}
       .account-layout--sidecar--navigation
         .account-layout--sidecar--navigation--top
           .my-4
@@ -40,13 +40,6 @@
             %span.ml-2
               Profile
     .account-layout--main
-      -if is_electron?
-        .electron-drag-region
-      %section.section
-        -if notice_message
-          .container
-            = notice_message class: "mb-4"
-        .container
-          = yield
+      = yield
       %footer.account-layout--footer.is-hidden-tablet.has-text-centered.py-6
         =link_to "Manage #{@account.name}", account_path(@account), class: "button is-text"

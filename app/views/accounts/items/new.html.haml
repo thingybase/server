@@ -1,29 +1,33 @@
-= title @account.name, subtitle: breadcrumb(account_breadcrumbs(@account), leaf: "Add items"), icon: "chest-open"
+= component :account_layout_application, title: provide_title(@account.name), subtitle: breadcrumb(account_breadcrumbs(@account), leaf: "Add items"), icon: "chest-open" do |layout|
+  = layout.control do
+    .buttons
+      = application_form @item, url: url_for(action: :create) do |f|
+        .field.has-addons
+          .control.is-hidden-mobile
+            %span.select= f.input_field :container, as: :select, include_blank: false, collection: [["Item", false], ["Container", true]]
+          .control.is-expanded= f.input_field :name, autofocus: true, class: "input", placeholder: "Name"
+          .control= f.button :submit, "Create", class: 'is-primary'
 
-= application_form @item, url: url_for(action: :create) do |f|
-  .field.has-addons
-    .control.is-hidden-mobile
-      %span.select= f.input_field :container, as: :select, include_blank: false, collection: [["Item", false], ["Container", true]]
-    .control.is-expanded= f.input_field :name, autofocus: true, class: "input", placeholder: "Name"
-    .control= f.button :submit, "Create", class: 'is-primary'
+  = layout.section do
+    -with created_resource do |item|
+      %p.mt-2.mb-4
+        %span
+          =item.name
+          created
+        %span.ml-1
+          =link_to "View", item, class: "mx-1"
+          =link_to "Edit", edit_item_path(item), class: "mx-1"
 
--with created_resource do |item|
-  %p.mt-2.mb-4
-    %span
-      =item.name
-      created
-    %span.ml-1
-      =link_to "View", item, class: "mx-1"
-      =link_to "Edit", edit_item_path(item), class: "mx-1"
+    .list-cards
+      - if @items.empty?
+        .empty-box
+          .title.is-5
+            = @container.name
+            is empty
+          .subtitle.is-6 Items will appear here after they are added above
+      - else
+        = components :item_list_card, @items.roots.container_then_item
 
-.list-cards.mt-5
-  - if @items.empty?
-    .empty-box
-      .title.is-5
-        = @container.name
-        is empty
-      .subtitle.is-6 Items will appear here after they are added above
-  - else
-    = components :item_list_card, @items.roots.container_then_item
+    = link_to "Create item from a template...", templates_account_items_path(@account), class: "button is-text"
 
-= link_to "Create item from a template...", templates_account_items_path(@account), class: "button is-text"
+
