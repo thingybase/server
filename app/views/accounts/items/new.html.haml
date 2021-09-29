@@ -1,4 +1,4 @@
-= title @account.name, subtitle: breadcrumb(account_breadcrumbs(@account), leaf: "Add items"), icon: "chest-open"
+= title @account.name, subtitle: breadcrumb(account_breadcrumb_links(@account), leaf: "Add items"), icon: "chest-open"
 
 = application_form @item, url: url_for(action: :create) do |f|
   .field.has-addons

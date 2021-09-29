@@ -1,4 +1,4 @@
-= title parent_resource.name, subtitle: breadcrumb(item_breadcrumbs(parent_resource), leaf: "Select items"), icon: item_edit_icon(@item)
+= title parent_resource.name, subtitle: item_breadcrumb(parent_resource, leaf: "Select items"), icon: item_edit_icon(@item)
 
 =form_for [:item, @batch] do |f|
   =f.hidden_field :account_id

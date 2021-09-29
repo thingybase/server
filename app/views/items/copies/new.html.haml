@@ -1,4 +1,4 @@
-=title @item.name, subtitle: breadcrumb(item_breadcrumbs(@item), leaf: "Copy"), icon: @item.icon
+=title @item.name, subtitle: item_breadcrumb(@item, leaf: "Copy"), icon: @item.icon
 
 = application_form @item_copy do |f|
   = f.input :number_of_copies, autofocus: true, as: :integer

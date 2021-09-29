@@ -1,4 +1,4 @@
-= title resource.name, subtitle: breadcrumb(item_breadcrumbs, leaf: "Change icon"), icon: item_edit_icon(@item)
+= title resource.name, subtitle: item_breadcrumb(leaf: "Change icon"), icon: item_edit_icon(@item)
 
 = application_form resource do |f|
   = f.input :icon_key, label: "Icon", collection: Icon.all, as: :image_radio_buttons, label: false

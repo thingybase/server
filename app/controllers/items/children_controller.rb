@@ -12,7 +12,7 @@ module Items
     end
 
     def templates
-      authorize :item, :new?
+      authorize parent_resource, :new?
     end
 
     protected

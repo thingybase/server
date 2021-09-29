@@ -34,6 +34,7 @@ Rails.application.routes.draw do
           get :templates
         end
       end
+      resources :ancestors, only: %i[index]
       resources :labels, only: %i[create]
       resources :copies, only: %i[create new]
       resources :batches, only: %i[new create]

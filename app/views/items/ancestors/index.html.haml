@@ -1,0 +1,12 @@
+= title resource.name, icon: @item.icon, subtitle: "Navigate to the container"
+
+.buttons
+  = link_to "← Back", :back, class: "button", "data-turbolinks-action": "replace"
+
+.list-card
+= component :item_list_card, item: @item
+= components :item_list_card, @item.ancestors.reverse
+= component :list_card, @account.name, account_items_path(@account), icon: "chest-open" do |card|
+  = card.slot(:detail) do
+    Created
+    = local_time_ago @account.created_at

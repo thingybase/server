@@ -1,4 +1,4 @@
-= title resource.name, subtitle: breadcrumb(item_breadcrumbs, leaf: "Edit"), icon: item_edit_icon(@item)
+= title resource.name, subtitle: item_breadcrumb(leaf: "Edit"), icon: item_edit_icon(@item)
 
 = application_form @item do |f|
   = f.input :name, autofocus: true
