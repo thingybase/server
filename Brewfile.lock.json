@@ -1,0 +1,27 @@
+{
+  "entries": {
+    "tap": {
+      "stripe/stripe-cli": {
+        "revision": "d14d384fc4b6a78eb199def52d6849c8339dddda"
+      }
+    },
+    "brew": {
+      "stripe": {
+        "version": "1.7.3",
+        "bottle": false
+      }
+    }
+  },
+  "system": {
+    "macos": {
+      "big_sur": {
+        "HOMEBREW_VERSION": "3.2.14",
+        "HOMEBREW_PREFIX": "/usr/local",
+        "Homebrew/homebrew-core": "331280c6a237c2b8b78abc58c23c9ee2eb88e844",
+        "CLT": "",
+        "Xcode": "13.0",
+        "macOS": "11.6"
+      }
+    }
+  }
+}

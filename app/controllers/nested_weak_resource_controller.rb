@@ -23,4 +23,9 @@ class NestedWeakResourceController < NestedResourcesController
     def find_account
       parent_resource.account
     end
+
+    def set_new_resource
+      # Do nothing; resource is already created, you're
+      # just doing something to it.
+    end
 end

@@ -322,6 +322,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    stripe (5.38.0)
     strong_password (0.0.10)
     temple (0.8.2)
     thor (1.1.0)
@@ -413,6 +414,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
+  stripe (~> 5.38)
   strong_password
   turbolinks (~> 5)
   turbolinks-form (~> 0.1.5)

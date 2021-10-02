@@ -95,6 +95,8 @@ Rails.application.routes.draw do
           get :templates
         end
       end
+      resource :plan
+      resource :payment
       namespace :items do
         resources :batches, only: %i[new create]
       end
@@ -151,6 +153,10 @@ Rails.application.routes.draw do
     scope module: :loanable_list_member_requests do
       resource :review, only: [:new, :create]
     end
+  end
+
+  namespace :webhooks do
+    resource :stripe, only: :create
   end
 
   get "/vectors/hsl-:h,:s,:l/*id", to: "vectors#hsl",

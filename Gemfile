@@ -121,3 +121,5 @@ group :test do
   gem 'webdrivers'
   gem 'rexml'
 end
+
+gem "stripe", "~> 5.38"
