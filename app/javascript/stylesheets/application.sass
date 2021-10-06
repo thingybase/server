@@ -187,3 +187,19 @@ $family-sans-serif: 'Inter var alt', -apple-system, Helvetica, sans-serif
 .electron-drag-region
   -webkit-app-region: drag
   height: 2rem
+
+.is-checklist
+  li:before
+    content: "✓"
+    margin-right: 0.5rem
+
+@media(max-width: $desktop)
+  .columns.is-reversed-touch
+    flex-direction: column-reverse
+    display: flex
+
+@media(max-width: $tablet)
+  .columns.is-reversed-mobile
+    flex-direction: column-reverse
+    display: flex
+
