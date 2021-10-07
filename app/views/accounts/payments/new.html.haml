@@ -4,12 +4,13 @@
     .container
       .columns.is-vcentered
         .column.is-6.is-offset-2
-          = title "Get Thingybase Plus", subtitle: "$4.99 per month billed annually"
+          = title "Get Thingybase Home Plus", subtitle: "$4.99 per month billed annually"
 
           .my-4
             =link_to "Upgrade now →", account_payment_path(@account), method: :post, class: "button is-primary is-medium"
 
-          %p.my-2 Upgrading gives you these superpowers:
+          %p.my-2 Get these superpowers in just a few minutes:
+
           %ul.is-checklist
             %li Add up to 6 family members to find stuff and stay organized
             %li Keep track of an unlimited number of items
@@ -18,7 +19,7 @@
 
           %hr
 
-          %p Our payment processer, Stripe, will collect your billing information to complete the upgrade.
+          %p Stripe will processes your payment information and complete the upgrade.
 
         .column.is-3
           = component :vector, key: "illustrations/save-earth.svg"

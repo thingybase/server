@@ -5,16 +5,15 @@
       .columns.is-vcentered.is-reversed-mobile
         .column.is-3.is-offset-1
           = component :vector, key: "illustrations/save-earth.svg"
-        .column.is-7.is-offset-1
-          = title "Thank you, thank you, thank you!", subtitle: "You successfully upgraded to Thingybase Plus"
+        .column.is-6.is-offset-1
+          = title "Thank you, thank you, thank you!", subtitle: "You successfully upgraded to Thingybase Home Plus"
 
-          %p.my-2 Now you have access to all these goodies:
+          %p.my-2 Start using all these goodies:
           %ul.is-checklist
             %li Add up to 6 family members to find stuff and stay organized
             %li Keep track of an unlimited number of items
             %li Waste less by tracking expiration dates on items
             %li Print magic labels that you can scan with your phone
 
-          %hr
-
+          .mt-5
             =link_to "Start using these new features →", @account, class: "button is-primary is-medium"
