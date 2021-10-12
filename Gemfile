@@ -91,6 +91,8 @@ gem "groupdate", "~> 5.2"
 # Render PDF file as an image to get around really annoying problems
 # embedding PDFs in webpages or trying to embed them via PDF.js
 gem "mini_magick", "~> 4.0.0"
+# Use pry for all interactive rails shells
+gem 'pry-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -108,7 +110,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
-  gem 'pry'
 end
 
 group :test do
