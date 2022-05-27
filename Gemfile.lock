@@ -1,3 +1,16 @@
+GIT
+  remote: https://github.com/sitepress/sitepress.git
+  revision: 6d27579a9da43bbdccf2286401ae65fd4b6239a8
+  branch: main
+  specs:
+    sitepress-core (3.0.1)
+      mime-types (>= 2.99)
+    sitepress-rails (3.0.1)
+      actionpack (>= 6.0)
+      railties (>= 6.0)
+      sitepress-core (= 3.0.1)
+      sprockets-rails (>= 2.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -333,13 +346,6 @@ GEM
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
-    sitepress-core (2.0.0)
-      mime-types (>= 2.99)
-    sitepress-rails (2.0.0)
-      actionpack (>= 6.0)
-      railties (>= 6.0)
-      sitepress-core (= 2.0.0)
-      sprockets-rails (>= 2.0.0)
     spring (2.1.1)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -443,7 +449,7 @@ DEPENDENCIES
   selenium-webdriver
   shoulda-matchers (~> 4.5.0)
   simple_form (~> 5.0)
-  sitepress-rails (~> 2.0.0)
+  sitepress-rails!
   spring
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)

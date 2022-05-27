@@ -80,7 +80,7 @@ if sitepress_gem_path = ENV["SITEPRESS_GEM_PATH"]
   gem "sitepress-core",   path: sitepress_gem_path
   gem "sitepress-server", path: sitepress_gem_path
 else
-  gem "sitepress-rails", "~> 2.0.0"
+  gem "sitepress-rails", github: "sitepress/sitepress", branch: "main"
 end
 # Markdown gem
 gem "redcarpet", "~> 3.5.0"

@@ -173,8 +173,7 @@ Rails.application.routes.draw do
   post "/auth/:provider/callback", to: 'sessions#create'
   get "/auth/:provider/callback", to: 'sessions#create'
 
-  get "*resource_path", to: "pages#show", format: false, constraints: Sitepress::RouteConstraint.new
-  root to: "pages#show"
+  sitepress_pages controller: :pages, root: true
 
   # Rick-roll security scanners and script kiddies.
   get "/wp-login.php", to: redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
