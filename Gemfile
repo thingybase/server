@@ -68,7 +68,7 @@ gem "nilify_blanks", "~> 1.4"
 gem "active_record_union"
 # Converts GUIDs in the URLs into shorter ids
 gem "anybase", "~> 0.0.15"
-# Pull this out when Rails 6.1 is a thing.
+# Pull this out when Rails 6.1 is a thing
 gem "view_component", "~> 2.26"
 # View template for CSV files
 gem "csv_builder", "~> 2.1"
@@ -82,6 +82,7 @@ if sitepress_gem_path = ENV["SITEPRESS_GEM_PATH"]
 else
   gem "sitepress-rails", github: "sitepress/sitepress", branch: "main"
 end
+
 # Markdown gem
 gem "redcarpet", "~> 3.5.0"
 # Parses SVG vector files and inverts them for darkmode.
@@ -124,3 +125,5 @@ group :test do
 end
 
 gem "stripe", "~> 5.38"
+
+gem "resourcefully", path: "../../resourcefully"

@@ -1,4 +1,4 @@
-class InvitationsController < ResourcesController
+class InvitationsController < Resourcefully::ResourcesController
   include AccountLayout
 
   def email

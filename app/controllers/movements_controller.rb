@@ -1,4 +1,4 @@
-class MovementsController < ResourcesController
+class MovementsController < Resourcefully::ResourcesController
   include AccountLayout
   include PreviewablePdf
 

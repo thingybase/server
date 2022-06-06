@@ -1,4 +1,4 @@
-class MemberRequestsController < ResourcesController
+class MemberRequestsController < Resourcefully::ResourcesController
   def self.resource
     MemberRequest
   end

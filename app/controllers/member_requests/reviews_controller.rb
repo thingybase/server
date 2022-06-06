@@ -1,5 +1,5 @@
 module MemberRequests
-  class ReviewsController < NestedResourcesController
+  class ReviewsController < Resourcefully::NestedResourcesController
     include AccountLayout
     after_action :deliver_email_notification, only: :create
 

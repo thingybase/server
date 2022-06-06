@@ -1,5 +1,5 @@
 module PhoneNumberClaims
-  class VerificationsController < NestedResourcesController
+  class VerificationsController < Resourcefully::NestedResourcesController
     def self.resource
       PhoneNumberVerification
     end

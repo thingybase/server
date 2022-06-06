@@ -11,6 +11,12 @@ GIT
       sitepress-core (= 3.0.1)
       sprockets-rails (>= 2.0.0)
 
+PATH
+  remote: ../../resourcefully
+  specs:
+    resourcefully (0.1.0)
+      rails (>= 7.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -442,6 +448,7 @@ DEPENDENCIES
   pundit-matchers (~> 1.7.0)
   rails (~> 7.0.0)
   redcarpet (~> 3.5.0)
+  resourcefully!
   rexml
   rollbar
   rspec-rails

@@ -1,5 +1,5 @@
 module Items
-  class IconsController < NestedWeakResourceController
+  class IconsController < Resourcefully::NestedWeakResourceController
     include AccountLayout
 
     def self.parent_resource

@@ -1,5 +1,5 @@
 module Moves
-  class MovementsController < NestedResourcesController
+  class MovementsController < Resourcefully::NestedResourcesController
     include AccountLayout
 
     protected

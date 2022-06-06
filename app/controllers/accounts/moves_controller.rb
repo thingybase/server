@@ -1,5 +1,5 @@
 module Accounts
-  class MovesController < NestedResourceController
+  class MovesController < Resourcefully::NestedResourceController
     include AccountLayout
 
     def self.resource

@@ -1,4 +1,4 @@
-class ResourcesController < ApplicationController
+class Resourcefully::ResourcesController < ApplicationController
   before_action :authenticate_user
   before_action :set_resource_instance_variable, if: :member_request?
   before_action :authorize_resource, if: :member_request?
@@ -17,7 +17,7 @@ class ResourcesController < ApplicationController
   add_flash_types :created_resource, :updated_resource
 
   def self.resource
-    raise NotImplementedError, "ResourcesController.resource must be an ActiveModel or ActiveRecord class"
+    raise NotImplementedError, "Resourcefully::ResourcesController.resource must be an ActiveModel or ActiveRecord class"
   end
 
   def index

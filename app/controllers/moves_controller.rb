@@ -1,4 +1,4 @@
-class MovesController < ResourcesController
+class MovesController < Resourcefully::ResourcesController
   include AccountLayout
 
   def self.resource

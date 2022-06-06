@@ -1,4 +1,4 @@
-class LabelsController < ResourcesController
+class LabelsController < Resourcefully::ResourcesController
   include AccountLayout
   include LabelsHelper
   skip_before_action :authorize_resource, only: :move

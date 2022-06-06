@@ -1,4 +1,4 @@
-class ApiKeysController < ResourcesController
+class ApiKeysController < Resourcefully::ResourcesController
   def self.resource
     ApiKey
   end

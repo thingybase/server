@@ -1,4 +1,4 @@
-class NestedResourcesController < ResourcesController
+class Resourcefully::NestedResourcesController < Resourcefully::ResourcesController
   before_action :set_parent_resource_instance_variable
   before_action :set_resources_instance_variable, only: :index
   before_action :authorize_parent_resource
@@ -7,7 +7,7 @@ class NestedResourcesController < ResourcesController
 
   protected
     def self.parent_resource
-      raise NotImplementedError, "NestedResourcesController.parent_resource must be an ActiveModel or ActiveRecord class"
+      raise NotImplementedError, "Resourcefully::NestedResourcesController.parent_resource must be an ActiveModel or ActiveRecord class"
     end
 
     def resources

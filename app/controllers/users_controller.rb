@@ -1,4 +1,4 @@
-class UsersController < ResourcesController
+class UsersController < Resourcefully::ResourcesController
   def self.resource
     User
   end

@@ -1,4 +1,4 @@
-class AccountsController < ResourcesController
+class AccountsController < Resourcefully::ResourcesController
   include AccountLayout
   after_action :add_current_user_to_members, only: :create
 

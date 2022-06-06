@@ -1,5 +1,5 @@
 module Movements
-  class ScansController < NestedWeakResourceController
+  class ScansController < Resourcefully::NestedWeakResourceController
     def self.parent_resource
       Movement
     end

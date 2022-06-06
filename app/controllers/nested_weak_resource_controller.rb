@@ -1,7 +1,7 @@
 # This controller is designed for a "Weak" resource entity, or the `parent_resource`
 # is the same as the `resource`. This is useful if you want to have complex view logic
 # in place to change a few parameters on a model.
-class NestedWeakResourceController < NestedResourcesController
+class Resourcefully::NestedWeakResourceController < Resourcefully::NestedResourcesController
   def self.resource
     parent_resource
   end

@@ -1,5 +1,5 @@
 module Items::Templates
-  class BaseController < ResourcesController
+  class BaseController < Resourcefully::ResourcesController
     include AccountLayout
 
     helper_method :icons

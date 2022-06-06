@@ -1,5 +1,5 @@
 module Accounts
-  class MemberRequestsController < NestedResourcesController
+  class MemberRequestsController < Resourcefully::NestedResourcesController
     after_action :deliver_email_notification, only: :create
     before_action :redirect_to_existing_request, only: :create
     skip_before_action :authorize_parent_resource

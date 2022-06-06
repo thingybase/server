@@ -1,5 +1,5 @@
 module Accounts
-  class LoanableListsController < NestedResourceController
+  class LoanableListsController < Resourcefully::NestedResourceController
     include AccountLayout
 
     def self.resource

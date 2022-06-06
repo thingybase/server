@@ -1,5 +1,5 @@
 module Accounts
-  class MembersController < NestedResourcesController
+  class MembersController < Resourcefully::NestedResourcesController
     include AccountLayout
 
     protected

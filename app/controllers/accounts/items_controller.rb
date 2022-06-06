@@ -1,5 +1,5 @@
 module Accounts
-  class ItemsController < NestedResourcesController
+  class ItemsController < Resourcefully::NestedResourcesController
     include AccountLayout
     before_action :assign_items, only: :new
 

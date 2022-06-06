@@ -1,4 +1,4 @@
-class MembersController < ResourcesController
+class MembersController < Resourcefully::ResourcesController
   include AccountLayout
 
   protected

@@ -1,5 +1,5 @@
 module Items
-  class MovementsController < NestedResourcesController
+  class MovementsController < Resourcefully::NestedResourcesController
     include AccountLayout
     before_action :redirect_to_existing_movement, only: :new
 

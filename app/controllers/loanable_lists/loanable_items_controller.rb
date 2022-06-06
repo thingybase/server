@@ -1,5 +1,5 @@
 module LoanableLists
-  class LoanableItemsController < NestedResourcesController
+  class LoanableItemsController < Resourcefully::NestedResourcesController
     include AccountLayout
 
     protected

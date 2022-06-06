@@ -1,5 +1,5 @@
 module Accounts
-  class PaymentsController < NestedWeakResourceController
+  class PaymentsController < Resourcefully::NestedWeakResourceController
     layout "body"
 
     def self.parent_resource

@@ -1,7 +1,7 @@
 # Controller for nesting a singular resource within a parent resource. This
 # should only be used for creating a new resource within the scope of the parent
 # resource, or to redirect to the un-nested resource location if it exists.
-class NestedResourceController < NestedResourcesController
+class Resourcefully::NestedResourceController < Resourcefully::NestedResourcesController
   def show
     # Disabled for show because show will only redirect to either
     # the new resource or to the existing resource, which both have

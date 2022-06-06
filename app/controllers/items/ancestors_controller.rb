@@ -1,5 +1,5 @@
 module Items
-  class AncestorsController < NestedWeakResourceController
+  class AncestorsController < Resourcefully::NestedWeakResourceController
     include AccountLayout
 
     def self.parent_resource
