@@ -126,4 +126,4 @@ end
 
 gem "stripe", "~> 5.38"
 
-gem "resourcefully", path: "../../resourcefully"
+gem "oxidizer", path: "../../oxidizer"

@@ -1,5 +1,5 @@
 module PhoneNumberClaims
-  class VerificationsController < Resourcefully::NestedResourcesController
+  class VerificationsController < Oxidizer::NestedResourcesController
     def self.resource
       PhoneNumberVerification
     end

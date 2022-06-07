@@ -1,5 +1,5 @@
 module Accounts
-  class MembersController < Resourcefully::NestedResourcesController
+  class MembersController < Oxidizer::NestedResourcesController
     include AccountLayout
 
     protected

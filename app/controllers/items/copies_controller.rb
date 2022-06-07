@@ -1,5 +1,5 @@
 module Items
-  class CopiesController < Resourcefully::NestedResourcesController
+  class CopiesController < Oxidizer::NestedResourcesController
     DEFAULT_NUMBER_OF_COPIES = 1
 
     include AccountLayout

@@ -1,5 +1,5 @@
 module Items
-  class LoanableItemsController < Resourcefully::NestedResourcesController
+  class LoanableItemsController < Oxidizer::NestedResourcesController
     include AccountLayout
     before_action :redirect_to_existing_loanable_item, only: :new
 

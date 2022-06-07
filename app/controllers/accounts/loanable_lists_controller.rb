@@ -1,5 +1,5 @@
 module Accounts
-  class LoanableListsController < Resourcefully::NestedResourceController
+  class LoanableListsController < Oxidizer::NestedResourceController
     include AccountLayout
 
     def self.resource

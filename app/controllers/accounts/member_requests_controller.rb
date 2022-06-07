@@ -1,5 +1,5 @@
 module Accounts
-  class MemberRequestsController < Resourcefully::NestedResourcesController
+  class MemberRequestsController < Oxidizer::NestedResourcesController
     after_action :deliver_email_notification, only: :create
     before_action :redirect_to_existing_request, only: :create
     skip_before_action :authorize_parent_resource

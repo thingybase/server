@@ -1,5 +1,5 @@
 module Invitations
-  class ResponsesController < Resourcefully::NestedResourcesController
+  class ResponsesController < Oxidizer::NestedResourcesController
     protected
       def self.resource
         InvitationResponse

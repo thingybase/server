@@ -1,5 +1,5 @@
 module Labels
-  class ItemsController < Resourcefully::NestedResourcesController
+  class ItemsController < Oxidizer::NestedResourcesController
     include AccountLayout
 
     def self.resource

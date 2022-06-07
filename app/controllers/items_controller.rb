@@ -1,4 +1,4 @@
-class ItemsController < Resourcefully::ResourcesController
+class ItemsController < Oxidizer::ResourcesController
   include AccountLayout
   include OpenGraphHelper
 

@@ -1,4 +1,4 @@
-class MemberRequestsController < Resourcefully::ResourcesController
+class MemberRequestsController < Oxidizer::ResourcesController
   def self.resource
     MemberRequest
   end

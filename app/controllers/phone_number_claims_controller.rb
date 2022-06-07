@@ -1,4 +1,4 @@
-class PhoneNumberClaimsController < Resourcefully::ResourcesController
+class PhoneNumberClaimsController < Oxidizer::ResourcesController
   after_action :send_claim_code, only: :create
 
   def self.resource

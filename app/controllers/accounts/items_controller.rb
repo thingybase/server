@@ -1,5 +1,5 @@
 module Accounts
-  class ItemsController < Resourcefully::NestedResourcesController
+  class ItemsController < Oxidizer::NestedResourcesController
     include AccountLayout
     before_action :assign_items, only: :new
 

@@ -1,4 +1,4 @@
-class ApiKeysController < Resourcefully::ResourcesController
+class ApiKeysController < Oxidizer::ResourcesController
   def self.resource
     ApiKey
   end

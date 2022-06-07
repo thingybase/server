@@ -1,4 +1,4 @@
-class LoanableItemsController < Resourcefully::ResourcesController
+class LoanableItemsController < Oxidizer::ResourcesController
   include AccountLayout
   def self.resource
     LoanableItem

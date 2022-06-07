@@ -1,4 +1,4 @@
-class UsersController < Resourcefully::ResourcesController
+class UsersController < Oxidizer::ResourcesController
   def self.resource
     User
   end

@@ -1,4 +1,4 @@
-class MembersController < Resourcefully::ResourcesController
+class MembersController < Oxidizer::ResourcesController
   include AccountLayout
 
   protected

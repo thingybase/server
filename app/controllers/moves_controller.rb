@@ -1,4 +1,4 @@
-class MovesController < Resourcefully::ResourcesController
+class MovesController < Oxidizer::ResourcesController
   include AccountLayout
 
   def self.resource

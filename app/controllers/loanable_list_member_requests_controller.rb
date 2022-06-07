@@ -1,4 +1,4 @@
-class LoanableListMemberRequestsController < Resourcefully::ResourcesController
+class LoanableListMemberRequestsController < Oxidizer::ResourcesController
   def self.resource
     LoanableListMemberRequest
   end

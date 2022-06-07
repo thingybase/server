@@ -1,5 +1,5 @@
 module Accounts::Templates
-  class BaseController < Resourcefully::ResourcesController
+  class BaseController < Oxidizer::ResourcesController
     # Object used for form validation for account in the template controller. Also builds
     # out the item object graph of the template.
     after_action :deliver_welcome_emails, only: :create

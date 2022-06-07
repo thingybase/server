@@ -1,5 +1,5 @@
 module Items
-  class BatchesController < Resourcefully::NestedResourcesController
+  class BatchesController < Oxidizer::NestedResourcesController
     include AccountLayout
     include ActionView::Helpers::TextHelper
 

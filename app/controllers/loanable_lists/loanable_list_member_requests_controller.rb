@@ -1,5 +1,5 @@
 module LoanableLists
-  class LoanableListMemberRequestsController < Resourcefully::NestedResourcesController
+  class LoanableListMemberRequestsController < Oxidizer::NestedResourcesController
     before_action :redirect_to_existing_request, only: :create
     layout "focused"
     skip_before_action :authorize_parent_resource

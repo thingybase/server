@@ -1,5 +1,5 @@
 module Items::Templates
-  class BaseController < Resourcefully::ResourcesController
+  class BaseController < Oxidizer::ResourcesController
     include AccountLayout
 
     helper_method :icons

@@ -1,5 +1,5 @@
 module Accounts
-  class InvitationsController < Resourcefully::NestedResourcesController
+  class InvitationsController < Oxidizer::NestedResourcesController
     include AccountLayout
 
     protected

@@ -1,5 +1,5 @@
 module LoanableListMemberRequests
-  class ReviewsController < Resourcefully::NestedResourcesController
+  class ReviewsController < Oxidizer::NestedResourcesController
     include AccountLayout
     after_action :deliver_email_notification, only: :create
 

@@ -1,5 +1,5 @@
 module Labels
-  class BaseController < Resourcefully::NestedWeakResourceController
+  class BaseController < Oxidizer::NestedWeakResourceController
     include AccountLayout
     include LabelsHelper
     include PreviewablePdf

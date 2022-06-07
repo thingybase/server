@@ -1,5 +1,5 @@
 module LoanableLists
-  class LoanableListMembersController < Resourcefully::NestedResourcesController
+  class LoanableListMembersController < Oxidizer::NestedResourcesController
     include AccountLayout
 
     protected

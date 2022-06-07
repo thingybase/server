@@ -1,4 +1,4 @@
-class AccountsController < Resourcefully::ResourcesController
+class AccountsController < Oxidizer::ResourcesController
   include AccountLayout
   after_action :add_current_user_to_members, only: :create
 

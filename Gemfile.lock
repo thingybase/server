@@ -12,9 +12,9 @@ GIT
       sprockets-rails (>= 2.0.0)
 
 PATH
-  remote: ../../resourcefully
+  remote: ../../oxidizer
   specs:
-    resourcefully (0.1.0)
+    oxidizer (0.1.0)
       rails (>= 7.0.3)
 
 GEM
@@ -437,6 +437,7 @@ DEPENDENCIES
   nilify_blanks (~> 1.4)
   omniauth
   omniauth-google-oauth2
+  oxidizer!
   pg (~> 1.2.0)
   pg_search (~> 2.3)
   phony_rails
@@ -448,7 +449,6 @@ DEPENDENCIES
   pundit-matchers (~> 1.7.0)
   rails (~> 7.0.0)
   redcarpet (~> 3.5.0)
-  resourcefully!
   rexml
   rollbar
   rspec-rails
