@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/rocketshipio/oxidizer.git
+  revision: f5f403dbdaf10736a8dc07fdd562d3b8b5e86b79
+  branch: main
+  specs:
+    oxidizer (0.1.0)
+      rails (>= 7.0.3)
+
+GIT
   remote: https://github.com/sitepress/sitepress.git
   revision: 6d27579a9da43bbdccf2286401ae65fd4b6239a8
   branch: main
@@ -10,12 +18,6 @@ GIT
       railties (>= 6.0)
       sitepress-core (= 3.0.1)
       sprockets-rails (>= 2.0.0)
-
-PATH
-  remote: ../../oxidizer
-  specs:
-    oxidizer (0.1.0)
-      rails (>= 7.0.3)
 
 GEM
   remote: https://rubygems.org/

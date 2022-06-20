@@ -126,4 +126,4 @@ end
 
 gem "stripe", "~> 5.38"
 
-gem "oxidizer", path: "../../oxidizer"
+gem "oxidizer", github: "rocketshipio/oxidizer", branch: "main"
