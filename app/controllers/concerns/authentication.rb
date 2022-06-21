@@ -14,20 +14,19 @@ module Authentication
 
     def access_denied
       respond_to do |format|
-        format.any do
-          render :unauthorized, layout: "application"
-        end
-        # We're going to load this anyway since its preview data.
-        format.opengraph do
-          assign_resource_instance_variable if member_request?
-
-          begin
-            render layout: "application"
-          rescue ActionView::MissingTemplate
-            render :unauthorized, layout: "application"
-          end
-        end
+        format.opengraph { deny_opengraph_format }
+        format.any { deny_any_format }
       end
+    end
+
+    # This is broken out so that it can be overridden by controllers
+    # that need to do something special for the badge.
+    def deny_opengraph_format
+      render :unauthorized, layout: "application"
+    end
+
+    def deny_any_format
+      render :unauthorized, layout: "application", status: :unauthorized
     end
 
   private

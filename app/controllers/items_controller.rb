@@ -1,7 +1,7 @@
 class ItemsController < Oxidizer::ResourcesController
   include AccountLayout
 
-  before_action :assign_open_graph_attributes, only: :show
+  before_action :assign_opengraph_attributes, only: :show
 
   def self.resource
     Item
@@ -14,9 +14,9 @@ class ItemsController < Oxidizer::ResourcesController
 
   private
     # We want to show these when access is denied for people who are not logged in.
-    def access_denied
-      assign_open_graph_attributes
-      super
+    def deny_opengraph_format
+      assign_resource_instance_variable if member_request?
+      render layout: "application"
     end
 
     def destroy_redirect_url
@@ -27,7 +27,7 @@ class ItemsController < Oxidizer::ResourcesController
       [:name, :account_id, :parent_id, :expires_at, :container, :icon_key]
     end
 
-    def assign_open_graph_attributes
+    def assign_opengraph_attributes
       opengraph.title = resource.name
     end
 end
