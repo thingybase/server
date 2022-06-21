@@ -131,3 +131,4 @@ gem "oxidizer", github: "rocketshipio/oxidizer", branch: "main"
 
 # No-password login flow
 gem "nopassword", github: "rocketshipio/nopassword", branch: "main"
+gem "matrix", "~> 0.4.2"
