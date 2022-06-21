@@ -1,6 +1,5 @@
 class ItemsController < Oxidizer::ResourcesController
   include AccountLayout
-  include OpenGraphHelper
 
   before_action :assign_open_graph_attributes, only: :show
 
@@ -29,7 +28,6 @@ class ItemsController < Oxidizer::ResourcesController
     end
 
     def assign_open_graph_attributes
-      self.open_graph_image_url = item_badge_url(resource, format: :png)
-      self.open_graph_title = resource.name
+      opengraph.title = resource.name
     end
 end

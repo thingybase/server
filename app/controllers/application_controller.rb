@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Imageomatic::Opengraph
+
   include Authentication
   include Pundit
 
@@ -39,10 +41,10 @@ class ApplicationController < ActionController::Base
     # Disables user authentication and authorization for controlls that opt-out
     # of security. The default is that everything is locked down so that developers
     # have to opt-out of these protections.
-    def self.skip_security!
-      skip_before_action :authenticate_user
-      skip_after_action :verify_authorized, except: [:index]
-      skip_after_action :verify_policy_scoped, only: :index
+    def self.skip_security!(**kwargs)
+      skip_before_action :authenticate_user, **kwargs
+      skip_after_action :verify_authorized, **kwargs.merge(except: :index)
+      skip_after_action :verify_policy_scoped, **kwargs.merge(only: :index)
     end
 
   private

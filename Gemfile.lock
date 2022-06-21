@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/imageomatic/ruby.git
+  revision: 1066efed80cf2c0e587cfd1e3449990a63a2d66d
+  specs:
+    imageomatic (0.1.1)
+      rails (>= 7.0.0)
+      thor (>= 1.0.0)
+
+GIT
   remote: https://github.com/rocketshipio/nopassword.git
   revision: 5cf4889d49e30d3e919887b07566bc2ae9577df6
   branch: main
@@ -427,6 +435,7 @@ DEPENDENCIES
   faker
   groupdate (~> 5.2)
   haml-rails
+  imageomatic (~> 0.1.1)!
   jbuilder (~> 2.10)
   jwt
   listen (>= 3.0.5, < 3.2)

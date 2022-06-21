@@ -13,7 +13,21 @@ module Authentication
     end
 
     def access_denied
-      render :unauthorized, layout: "application"
+      respond_to do |format|
+        format.any do
+          render :unauthorized, layout: "application"
+        end
+        # We're going to load this anyway since its preview data.
+        format.opengraph do
+          assign_resource_instance_variable if member_request?
+
+          begin
+            render layout: "application"
+          rescue ActionView::MissingTemplate
+            render :unauthorized, layout: "application"
+          end
+        end
+      end
     end
 
   private

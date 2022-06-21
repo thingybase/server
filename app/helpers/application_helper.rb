@@ -13,8 +13,8 @@ module ApplicationHelper
     link_to text, path, **opts
   end
 
-  def render_layout(layout, locals={}, &block)
-    render inline: capture(&block), layout: "layouts/#{layout}", locals: locals
+  def render_layout(layout, **kwargs, &block)
+    render inline: capture(&block), layout: "layouts/#{layout}", **kwargs
   end
 
   def phone_number(number)
