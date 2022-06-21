@@ -18,7 +18,7 @@ module Items
         parent_resource.account
       end
 
-      def set_new_resource
+      def assign_new_resource
         self.resource = ItemCopy.new item: parent_resource
       end
 
