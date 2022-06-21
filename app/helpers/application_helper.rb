@@ -37,6 +37,6 @@ module ApplicationHelper
 
   private
     def application_form_turbolinks_form_enabled?
-      not Rails.env.development?
+      false
     end
 end
