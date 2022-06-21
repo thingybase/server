@@ -1,4 +1,4 @@
-class MovementsController < Resourcefully::ResourcesController
+class MovementsController < Oxidizer::ResourcesController
   include AccountLayout
   include PreviewablePdf
 
