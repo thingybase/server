@@ -366,9 +366,6 @@ GEM
     ttfunk (1.7.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
-    turbolinks-form (0.1.5)
-      rails (>= 4.2)
-      turbolinks (~> 5.0)
     turbolinks-source (5.2.0)
     twilio-ruby (5.67.3)
       faraday (>= 0.9, < 3.0)
@@ -457,7 +454,6 @@ DEPENDENCIES
   stripe (~> 5.38)
   strong_password
   turbolinks (~> 5)
-  turbolinks-form (~> 0.1.5)
   twilio-ruby
   tzinfo-data
   view_component (~> 2.26)

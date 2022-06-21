@@ -59,9 +59,6 @@ gem "chronic", "~> 0.10.2"
 gem "pg_search", "~> 2.3"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.3'
-# Makes form submissions use turbolinks instead of POST/PUT methods. Makes
-# mobile development a tad easier.
-gem "turbolinks-form", "~> 0.1.5"
 # Blanks from forms are converted into nil instead of stored as "" in the database
 gem "nilify_blanks", "~> 1.4"
 # Does union queries in ActiveRecord.
