@@ -23,6 +23,10 @@ class User < ApplicationRecord
   has_many :owned_accounts, class_name: "Account"
   has_many :member_requests
 
+  # Internal analytics.
+  has_many :visits, class_name: "Ahoy::Visit"
+  has_many :events, class_name: "Ahoy::Event", through: :visits
+
   # Combination of accounts the user owns and belongs to; used heavily
   # by authorization logic to see if a user has access to an account or not.
   def accounts
