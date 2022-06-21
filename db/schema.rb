@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_20_070628) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_06_20_213354) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -95,8 +94,8 @@ ActiveRecord::Schema.define(version: 2021_08_20_070628) do
     t.bigint "account_id", null: false
     t.bigint "item_id", null: false
     t.uuid "uuid", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_loanable_items_on_account_id"
     t.index ["item_id"], name: "index_loanable_items_on_item_id"
     t.index ["loanable_list_id"], name: "index_loanable_items_on_loanable_list_id"
@@ -107,8 +106,8 @@ ActiveRecord::Schema.define(version: 2021_08_20_070628) do
   create_table "loanable_list_member_requests", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "loanable_list_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["loanable_list_id"], name: "index_loanable_list_member_requests_on_loanable_list_id"
     t.index ["user_id"], name: "index_loanable_list_member_requests_on_user_id"
   end
@@ -116,8 +115,8 @@ ActiveRecord::Schema.define(version: 2021_08_20_070628) do
   create_table "loanable_list_members", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "loanable_list_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["loanable_list_id"], name: "index_loanable_list_members_on_loanable_list_id"
     t.index ["user_id"], name: "index_loanable_list_members_on_user_id"
   end
@@ -127,8 +126,8 @@ ActiveRecord::Schema.define(version: 2021_08_20_070628) do
     t.bigint "user_id", null: false
     t.string "name", null: false
     t.uuid "uuid", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_loanable_lists_on_account_id"
     t.index ["user_id"], name: "index_loanable_lists_on_user_id"
     t.index ["uuid"], name: "index_loanable_lists_on_uuid", unique: true
@@ -137,8 +136,8 @@ ActiveRecord::Schema.define(version: 2021_08_20_070628) do
   create_table "member_requests", force: :cascade do |t|
     t.bigint "account_id"
     t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["account_id", "user_id"], name: "index_member_requests_on_account_id_and_user_id", unique: true
     t.index ["account_id"], name: "index_member_requests_on_account_id"
     t.index ["user_id"], name: "index_member_requests_on_user_id"
@@ -161,8 +160,8 @@ ActiveRecord::Schema.define(version: 2021_08_20_070628) do
     t.bigint "move_id", null: false
     t.bigint "origin_id", null: false
     t.bigint "destination_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_movements_on_account_id"
     t.index ["destination_id"], name: "index_movements_on_destination_id"
     t.index ["move_id"], name: "index_movements_on_move_id"
@@ -174,13 +173,23 @@ ActiveRecord::Schema.define(version: 2021_08_20_070628) do
     t.bigint "account_id", null: false
     t.bigint "user_id", null: false
     t.uuid "uuid", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "new_item_container_id"
     t.index ["account_id"], name: "index_moves_on_account_id"
     t.index ["new_item_container_id"], name: "index_moves_on_new_item_container_id"
     t.index ["user_id"], name: "index_moves_on_user_id"
     t.index ["uuid"], name: "index_moves_on_uuid", unique: true
+  end
+
+  create_table "nopassword_secrets", force: :cascade do |t|
+    t.string "data_digest", null: false
+    t.string "code_digest", null: false
+    t.datetime "expires_at", null: false
+    t.integer "remaining_attempts", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["data_digest"], name: "index_nopassword_secrets_on_data_digest", unique: true
   end
 
   create_table "phone_number_claims", force: :cascade do |t|

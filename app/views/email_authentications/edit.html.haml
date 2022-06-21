@@ -4,10 +4,12 @@
   Look for a
   %strong 6 digit code
   in the inbox or spam folder for
-  %strong=@email_code_verification.email
+  %strong=@verification.data
 
-= application_form @email_code_verification, url: email_code_verification_url do |f|
+= application_form @verification, url: url_for(action: :update) do |f|
   = f.input :code, autofocus: true, hint: "You have a few minutes to enter the code before it expires", pattern: '[0-9]*'
+  = f.input :data, as: :hidden
+  = f.input :salt, as: :hidden
   = f.button :submit, "Verify code →", class: 'is-primary'
 
 %hr

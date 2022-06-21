@@ -34,6 +34,6 @@ class SignupsController < ApplicationController
     end
 
     def ensure_authentic_email
-      redirect_to new_user_resolution_url if session_params[:email].blank?
+      redirect_to new_email_authentication_url if session_params[:email].blank?
     end
 end

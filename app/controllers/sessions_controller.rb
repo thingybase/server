@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
   end
 
   def new
-    redirect_to new_user_resolution_url
+    redirect_to new_email_authentication_url
   end
 
   def destroy

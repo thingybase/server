@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/rocketshipio/nopassword.git
+  revision: 5cf4889d49e30d3e919887b07566bc2ae9577df6
+  branch: main
+  specs:
+    nopassword (0.1.1)
+      rails (>= 7.0.1)
+
+GIT
   remote: https://github.com/rocketshipio/oxidizer.git
   revision: f5f403dbdaf10736a8dc07fdd562d3b8b5e86b79
   branch: main
@@ -437,6 +445,7 @@ DEPENDENCIES
   local_time
   mini_magick (~> 4.0.0)
   nilify_blanks (~> 1.4)
+  nopassword!
   omniauth
   omniauth-google-oauth2
   oxidizer!

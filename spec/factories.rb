@@ -47,14 +47,6 @@ FactoryBot.define do
     path { VectorAsset.find("icons/folder.svg").path }
   end
 
-  factory :user_resolution do
-    email { Faker::Internet.unique.email }
-  end
-
-  factory :email_code_verification do
-    email { Faker::Internet.unique.email }
-  end
-
   factory :item do
     name { Faker::Name.name }
     account

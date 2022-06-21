@@ -16,6 +16,7 @@ def template_resources(*templates)
 end
 
 Rails.application.routes.draw do
+  resource :email_authentication
   with_options to: "labels#scan", uuid: UuidField::GUID_REGEXP do |legacy_scan|
     # Labels printed before June 20, 2020 point to this route. When you decide to use `uuid` as the resource
     # key, instead of `id`, you will create a conflict where this route should redirect to the item for older
@@ -164,8 +165,6 @@ Rails.application.routes.draw do
     defaults: { h: 0, s: 0, l: 0, format: :svg }
 
   resources :users
-  resource :user_resolution, only: %i[create new]
-  resource :email_code_verification, only: %i[create new]
   resource :signup, only: %i[create new]
   resources :api_keys, except: %i[edit update]
 

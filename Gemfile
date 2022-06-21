@@ -126,4 +126,8 @@ end
 
 gem "stripe", "~> 5.38"
 
+# Resource-oriented rails controllers
 gem "oxidizer", github: "rocketshipio/oxidizer", branch: "main"
+
+# No-password login flow
+gem "nopassword", github: "rocketshipio/nopassword", branch: "main"
