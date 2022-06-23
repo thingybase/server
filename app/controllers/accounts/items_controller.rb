@@ -12,7 +12,8 @@ module Accounts
     end
 
     def templates
-      authorize :item, :new?
+      authorize @account.items.build, :new?
+    end
     end
 
     protected
