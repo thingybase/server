@@ -2,6 +2,13 @@
 Faker::Config.locale = 'en-US'
 
 FactoryBot.define do
+  factory :subscription do
+    account
+    user
+    expires_at { DateTime.current }
+    plan_type { "FreePlan" }
+  end
+
   factory :loanable_list_member_request do
     user
     loanable_list

@@ -10,6 +10,12 @@ module Accounts
       redirect_to checkout_session.url
     end
 
+    def show
+      session = Stripe::Checkout::Session.retrieve(params[:session_id])
+      subscription = Stripe::Subscription.retrieve(session.subscription)
+      @account.subscribe_from_stripe! subscription, user: current_user, plan: HomePlan
+    end
+
     private
       def find_account
         parent_resource
@@ -49,8 +55,15 @@ module Accounts
             account_id: @account.id,
             user_id: current_user.id
           },
-          success_url: account_payment_url(@account),
+          success_url: success_url,
           cancel_url: new_account_payment_url(@account))
+      end
+
+      def success_url
+        # Yuck! I have to do the append at the end because rails params escape the `{CHECKOUT_SESSION_ID}` values
+        # to `session_id=%7BCHECKOUT_SESSION_ID%7D`. This will work though, but its def not pretty and feels a tad
+        # dangerous.
+        account_payment_url(@account).concat("?session_id={CHECKOUT_SESSION_ID}")
       end
 
       def strip_price

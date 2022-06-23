@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include Imageomatic::Opengraph
-
+  include Featureomatic::Authorization
   include Authentication
   include Pundit
 
@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
 
     def request_not_found
       render "not_found", layout: "application", status: :not_found
+    end
+
+    def current_plan
+      @account&.plan
     end
 
     # Always carry over these session keys when rotated.

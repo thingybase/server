@@ -10,7 +10,7 @@ end
 gem 'rails', '~> 7.0.0'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
-# Use SCSS for stylesheets
+# Use SCSS Gor stylesheets
 gem 'sassc-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
@@ -133,3 +133,9 @@ gem "matrix", "~> 0.4.2"
 gem "ahoy_matey", "~> 4.1"
 
 gem "imageomatic", "~> 0.1.1", github: "imageomatic/ruby"
+
+if featureomatic_path = ENV["FEATUREOMATIC_GEM_PATH"]
+  gem "featureomatic", path: featureomatic_path
+else
+  gem "featureomatic", "~> 0.1.1", github: "rocketshipio/featureomatic"
+end

@@ -14,7 +14,6 @@ module Accounts
     def templates
       authorize @account.items.build, :new?
     end
-    end
 
     protected
       def navigation_key
