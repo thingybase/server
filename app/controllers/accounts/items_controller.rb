@@ -2,6 +2,7 @@ module Accounts
   class ItemsController < Oxidizer::NestedResourcesController
     include AccountLayout
     before_action :assign_items, only: :new
+    before_action :authorize_feature, only: [:new, :create]
 
     def self.resource
       Item
@@ -13,6 +14,10 @@ module Accounts
 
     def templates
       authorize @account.items.build, :new?
+    end
+
+    def authorize_feature
+      current_plan.items.exceeded?
     end
 
     protected

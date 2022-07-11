@@ -66,7 +66,7 @@ gem "active_record_union"
 # Converts GUIDs in the URLs into shorter ids
 gem "anybase", "~> 0.0.15"
 # Pull this out when Rails 6.1 is a thing
-gem "view_component", "~> 2.26"
+gem "view_component", "~> 2.0"
 # View template for CSV files
 gem "csv_builder", "~> 2.1"
 # Content management
@@ -121,6 +121,16 @@ group :test do
   gem 'rexml'
 end
 
+if featureomatic_path = ENV["FEATUREOMATIC_GEM_PATH"]
+  gem "featureomatic", path: featureomatic_path
+else
+  gem "featureomatic", "~> 0.1.1", github: "rocketshipio/featureomatic"
+end
+
+gem "imageomatic", "~> 0.1.1", github: "imageomatic/ruby"
+
+gem "mailto", "~> 0.1.1"
+
 gem "stripe", "~> 5.38"
 
 # Resource-oriented rails controllers
@@ -131,11 +141,3 @@ gem "nopassword", github: "rocketshipio/nopassword", branch: "main"
 gem "matrix", "~> 0.4.2"
 
 gem "ahoy_matey", "~> 4.1"
-
-gem "imageomatic", "~> 0.1.1", github: "imageomatic/ruby"
-
-if featureomatic_path = ENV["FEATUREOMATIC_GEM_PATH"]
-  gem "featureomatic", path: featureomatic_path
-else
-  gem "featureomatic", "~> 0.1.1", github: "rocketshipio/featureomatic"
-end

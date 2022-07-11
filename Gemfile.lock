@@ -7,13 +7,6 @@ GIT
       thor (>= 1.0.0)
 
 GIT
-  remote: https://github.com/rocketshipio/featureomatic.git
-  revision: 7fa529d4ffc81ada407a5158680e20f2f459a063
-  specs:
-    featureomatic (0.1.1)
-      rails (>= 7.0.3)
-
-GIT
   remote: https://github.com/rocketshipio/nopassword.git
   revision: 5cf4889d49e30d3e919887b07566bc2ae9577df6
   branch: main
@@ -41,6 +34,12 @@ GIT
       railties (>= 6.0)
       sitepress-core (= 3.0.1)
       sprockets-rails (>= 2.0.0)
+
+PATH
+  remote: ../../featureomatic
+  specs:
+    featureomatic (0.1.1)
+      rails (>= 7.0.3)
 
 GEM
   remote: https://rubygems.org/
@@ -183,7 +182,7 @@ GEM
       haml (>= 4.0, < 6)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
-    i18n (1.10.0)
+    i18n (1.11.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -198,6 +197,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    mailto (0.1.1)
+      rails (>= 7.0.3)
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
@@ -207,7 +208,7 @@ GEM
     mini_magick (4.0.4)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.16.1)
+    minitest (5.16.2)
     msgpack (1.5.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -440,7 +441,7 @@ DEPENDENCIES
   csv_builder (~> 2.1)
   factory_bot_rails
   faker
-  featureomatic (~> 0.1.1)!
+  featureomatic!
   groupdate (~> 5.2)
   haml-rails
   imageomatic (~> 0.1.1)!
@@ -448,6 +449,7 @@ DEPENDENCIES
   jwt
   listen (>= 3.0.5, < 3.2)
   local_time
+  mailto (~> 0.1.1)
   matrix (~> 0.4.2)
   mini_magick (~> 4.0.0)
   nilify_blanks (~> 1.4)
@@ -482,7 +484,7 @@ DEPENDENCIES
   turbolinks (~> 5)
   twilio-ruby
   tzinfo-data
-  view_component (~> 2.26)
+  view_component (~> 2.0)
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 5.3)
