@@ -1,9 +1,0 @@
-%section.hero.is-medium
-  .hero-body
-    .container
-      = title "Join account", subtitle: "We'll email the account owner and ask them to add you to their account"
-
-      = application_form resource, url: url_for(action: :create) do |f|
-        = f.input :account, as: :hidden
-        = f.input :user, as: :hidden
-        = f.button :submit, "Request to join account", class: "is-primary"

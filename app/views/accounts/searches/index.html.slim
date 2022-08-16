@@ -1,0 +1,16 @@
+h1.title Search # @account.name 
+h2.subtitle Find items, containers, and other things
+
+.is-hidden-tablet
+  =search_field autofocus: true
+
+.list-card
+  -if @search.phrase.blank?
+    .list-card--item
+      .list-card--title
+  -elsif @search.empty?
+    .list-card--item
+      .list-card--title
+        | Could not find anything matching "#{@search.phrase}" in #{@account.name}.
+  -else
+    = components :item_list_card, @search.items, is_parent_visible: true

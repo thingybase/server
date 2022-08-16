@@ -1,0 +1,5 @@
+= render_layout "page-with-header" do
+  section.section
+    .container= notice_message class: "mb-4"
+    .container= yield
+  footer.section

@@ -1,0 +1,43 @@
+= title "Moving", subtitle: "Track stuff as its packed, moved, and unpacked into a new place", icon: "dolly-cart"
+
+/
+  .notification
+    .level.has-text-centered.is-uppercase
+      .level-item
+        =link_to move_movements_path(@move), class: "has-no-text-decoration" do
+          .header="Total item".pluralize(@account.members.count)
+          .title=@move.movements.count
+      .level-item
+        =link_to account_items_path(@account), class: "has-no-text-decoration" do
+          .header="Packed item".pluralize(@account.items.count)
+          .title=@account.items.count
+      .level-item
+        =link_to account_labels_path(@account), class: "has-no-text-decoration" do
+          .header="Unpacked item".pluralize(@account.labels.count)
+          .title=@account.labels.count
+
+.buttons
+  = link_to "+ Create moving label", new_move_movement_builder_path(@move), class: "button is-primary"
+
+- if @move.movements.empty?
+  .empty-box
+    .title.is-5 Create a moving label
+    .subtitle.is-6 Get started with your move by creating labels that you can put on your box.
+    = link_to "+ Create moving label", new_move_movement_builder_path(@move), class: 'button'
+
+- else
+  .list-cards
+    - @move.movements.each do |movement|
+      -with movement.origin do |item|
+        = render ListCardComponent.new(item.name, movement, icon: item.icon) do |c|
+          = c.slot(:detail) do
+            | Move to
+            = link_to movement.destination.name, movement.destination
+          = c.slot(:detail) do
+            | Created
+            = local_time_ago movement.created_at
+
+
+.buttons
+  = link_to "Edit", edit_move_path(@move), class: "button is-text"
+  = link_to "Delete move", move_path(@move), class: "button is-text", method: :delete, data: { confirm: "Are you sure?" }

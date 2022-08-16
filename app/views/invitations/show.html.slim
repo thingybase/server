@@ -1,0 +1,18 @@
+=title "Preview invitation email", subtitle: "If everything looks good, send it and the person can join the account", icon: "mailer"
+
+- with InvitationMailer.account_invitation_email(@invitation) do |email|
+  .box
+    p
+      strong To:
+      =email.to.join(", ")
+    p
+      strong From:
+      =email.from.join(", ")
+    hr
+    p
+      .content.mb-0= render_email_body email
+
+.buttons
+  = link_to "Send invitation", email_invitation_path(@invitation), method: :put, class: 'button is-primary'
+  = link_to "Edit", edit_invitation_path(@invitation), class: 'button'
+  = link_to "Delete", invitation_path(@invitation), method: "delete", data: { confirm: 'Are you sure?' }, class: 'button is-text'

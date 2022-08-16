@@ -1,0 +1,14 @@
+= title "Add to #{@container.name}", subtitle: item_breadcrumb(@container), icon: @container.icon
+
+.list-cards
+  =component :list_card, "Container", new_item_templates_containers_path, icon: "folder" do |card|
+    - card.slot(:detail) do
+      | Shelves, boxes, folders, or anything you put items into
+
+  =component :list_card, "Item", new_item_templates_items_path, icon: "object" do |card|
+    - card.slot(:detail) do
+      | Add a basic item to this folder
+
+  =component :list_card, "Perishable", new_item_templates_perishables_path, icon: "tag" do |card|
+    - card.slot(:detail) do
+      | Food or anything that expires

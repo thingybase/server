@@ -1,0 +1,20 @@
+---
+title: Help
+subtitle: Dive in a little deeper and figure it out
+icon: open-book
+---
+
+section.hero
+  .hero-body
+    .container
+      .columns
+        .column
+          = title current_page.data.fetch("title"), subtitle: current_page.data["subtitle"], icon: current_page.data["icon"]
+section.section
+  .container
+    .columns.is-multiline
+      - current_page.children.each do |page|
+        .column.is-one-third
+          h3.title.is-5= link_to page.data.fetch("title"), page.request_path
+          p.subtitle.is-6= page.data.fetch("subtitle")
+

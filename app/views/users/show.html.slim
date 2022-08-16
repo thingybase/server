@@ -1,0 +1,42 @@
+=title resource.name, subtitle: "Edit personal information and settings"
+
+.tile.is-ancestor
+  .tile.is-8
+    .tile.is-parent
+      .tile.is-child.notification
+        .content
+          h3.title.is-4 Profile
+          p.subtitle.is-5 How you appear in Thingybase
+          p
+            strong= resource_class.human_attribute_name(:name) + ':'
+            br
+            = @user.name
+          p
+            strong= resource_class.human_attribute_name(:email) + ':'
+            br
+            = @user.email
+
+          p= link_to "Edit profile", edit_user_path(@user), class: 'button is-default'
+  .tile
+    .tile.is-parent.is-vertical
+      .tile.is-child.notification
+        .content
+          h3.title.is-4 API Keys
+          p.subtitle.is-5 Connect to other apps
+          p Integrate Thingybase with other applications and services with API keys.
+          p=link_to "Manage API keys", api_keys_path, class: 'button is-default'
+
+      .tile.is-child.notification
+        .content
+          h3.title.is-4 Phone number
+          p.subtitle.is-5 Used for verification & notifications
+          p We only use this phone number text you if you opt-in
+          p
+            strong= resource_class.human_attribute_name(:phone_number) + ':'
+            br
+              -if phone_number = @user.phone_number
+                =phone_number
+              -else
+                | None
+
+          p= link_to "#{@user.phone_number ? "Change" : "Add"} phone number", new_phone_number_claim_path, class: "button is-default"

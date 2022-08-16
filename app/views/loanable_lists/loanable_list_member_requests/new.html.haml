@@ -1,7 +1,0 @@
-%section.hero.is-medium
-  .hero-body
-    .container
-      = title "View #{parent_resource.name}", subtitle: "We'll email owner of this list and ask them if you can view it"
-
-      = application_form resource, url: url_for(action: :create) do |f|
-        = f.button :submit, "Request to view list", class: "is-primary"

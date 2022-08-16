@@ -1,0 +1,27 @@
+= title parent_resource.name, subtitle: breadcrumb(breadcrumb_link(parent_resource.name, parent_resource), breadcrumb_link("People", loanable_list_members_path(parent_resource)), leaf: "Invite"), icon: "heart"
+
+.content
+  p Share the invitation link so people can request to request to borrow the items on this list. We'll send you an email when they make the request and you can decide whether or not you want to add them to the list.
+
+hr
+
+.field
+  = label_tag "invitation_link", "Invitation link", class: "label"
+  .field.has-addons "data-controller": "clipboard" 
+    .control.is-expanded
+      = text_field_tag "invitation_link", new_loanable_list_member_request_url(@loanable_list), class: "input", readonly: true, data: { target: "clipboard.source" }
+      .help
+        | People can only request to see this list from the invitation link. If their request is approved they can access the account.
+    .control
+      = button_tag "Copy link", class: "button is-primary", data: { action: "clipboard#copy" }
+
+/
+  .fields "data-controller": "clipboard" 
+    .field
+      = label_tag "email_template", "Email template", class: "label"
+      = text_area_tag "email_template", account_invitation_email_body, class: "textarea", readonly: true, data: { target: "clipboard.source" }, rows: 7
+      .help
+        | Copy and paste this into your email app and send to people so they can request to join this account.
+    .field
+      = mail_to "", "Send email", subject: "Join my account on Thingybase", body: account_invitation_email_body, class: "button"
+      = button_tag "Copy template", class: "button is-text", data: { action: "clipboard#copy" }

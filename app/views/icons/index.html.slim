@@ -1,0 +1,11 @@
+= title "Icons", subtitle: "Custom icons available in Thingybase"
+
+.grid.is-4
+  -@icons.each do |icon|
+    .box.mb-0
+      figure= component :icon, icon.key, class: "image is-4by3 mb-4"
+      strong= icon.name
+      p= icon.key
+      p
+        | Updated at
+        =local_time_ago icon.updated_at
