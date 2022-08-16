@@ -141,3 +141,5 @@ gem "nopassword", github: "rocketshipio/nopassword", branch: "main"
 gem "matrix", "~> 0.4.2"
 
 gem "ahoy_matey", "~> 4.1"
+
+gem "slim-rails", "~> 3.5"
