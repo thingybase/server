@@ -7,6 +7,13 @@ GIT
       thor (>= 1.0.0)
 
 GIT
+  remote: https://github.com/rocketshipio/featureomatic.git
+  revision: 7fa529d4ffc81ada407a5158680e20f2f459a063
+  specs:
+    featureomatic (0.1.1)
+      rails (>= 7.0.3)
+
+GIT
   remote: https://github.com/rocketshipio/nopassword.git
   revision: 5cf4889d49e30d3e919887b07566bc2ae9577df6
   branch: main
@@ -34,12 +41,6 @@ GIT
       railties (>= 6.0)
       sitepress-core (= 3.0.1)
       sprockets-rails (>= 2.0.0)
-
-PATH
-  remote: ../../featureomatic
-  specs:
-    featureomatic (0.1.1)
-      rails (>= 7.0.3)
 
 GEM
   remote: https://rubygems.org/
@@ -441,7 +442,7 @@ DEPENDENCIES
   csv_builder (~> 2.1)
   factory_bot_rails
   faker
-  featureomatic!
+  featureomatic (~> 0.1.1)!
   groupdate (~> 5.2)
   haml-rails
   imageomatic (~> 0.1.1)!
