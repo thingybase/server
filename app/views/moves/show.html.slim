@@ -31,11 +31,9 @@
       -with movement.origin do |item|
         = render ListCardComponent.new(item.name, movement, icon: item.icon) do |c|
           = c.slot(:detail) do
-            | Move to
-            = link_to movement.destination.name, movement.destination
+            | Move to #{link_to movement.destination.name, movement.destination}
           = c.slot(:detail) do
-            | Created
-            = local_time_ago movement.created_at
+            | Created #{local_time_ago movement.created_at}
 
 
 .buttons

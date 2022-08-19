@@ -7,7 +7,7 @@ hr
 
 .field
   = label_tag "invitation_link", "Invitation link", class: "label"
-  .field.has-addons "data-controller": "clipboard" 
+  .field.has-addons data-controller="clipboard"
     .control.is-expanded
       = text_field_tag "invitation_link", new_loanable_list_member_request_url(@loanable_list), class: "input", readonly: true, data: { target: "clipboard.source" }
       .help
@@ -16,7 +16,7 @@ hr
       = button_tag "Copy link", class: "button is-primary", data: { action: "clipboard#copy" }
 
 /
-  .fields "data-controller": "clipboard" 
+  .fields data-controller="clipboard"
     .field
       = label_tag "email_template", "Email template", class: "label"
       = text_area_tag "email_template", account_invitation_email_body, class: "textarea", readonly: true, data: { target: "clipboard.source" }, rows: 7
