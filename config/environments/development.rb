@@ -11,7 +11,7 @@ Rails.application.configure do
 
   # Access via all ngrok sub-domains for development
   config.hosts << ".ngrok.io"
-  config.hosts << "brads-mbp.local"
+  config.hosts << ".local"
 
   # Show full error reports.
   config.consider_all_requests_local = true
