@@ -16,6 +16,11 @@ def template_resources(*templates)
 end
 
 Rails.application.routes.draw do
+  # Analytics
+  constraints subdomain: "blazer" do
+    mount Blazer::Engine, at: "/"
+  end
+
   resource :email_authentication
   with_options to: "labels#scan", uuid: UuidField::GUID_REGEXP do |legacy_scan|
     # Labels printed before June 20, 2020 point to this route. When you decide to use `uuid` as the resource

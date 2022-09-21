@@ -143,3 +143,5 @@ gem "matrix", "~> 0.4.2"
 gem "ahoy_matey", "~> 4.1"
 
 gem "slim-rails", "~> 3.5"
+
+gem "blazer", "~> 2.6"

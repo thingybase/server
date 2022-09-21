@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_23_205508) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_21_090709) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.uuid "uuid"
     t.index ["user_id"], name: "index_accounts_on_user_id"
     t.index ["uuid"], name: "index_accounts_on_uuid", unique: true
@@ -70,9 +71,65 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_23_205508) do
     t.string "name"
     t.string "secret"
     t.bigint "user_id"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["user_id"], name: "index_api_keys_on_user_id"
+  end
+
+  create_table "blazer_audits", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "query_id"
+    t.text "statement"
+    t.string "data_source"
+    t.datetime "created_at"
+    t.index ["query_id"], name: "index_blazer_audits_on_query_id"
+    t.index ["user_id"], name: "index_blazer_audits_on_user_id"
+  end
+
+  create_table "blazer_checks", force: :cascade do |t|
+    t.bigint "creator_id"
+    t.bigint "query_id"
+    t.string "state"
+    t.string "schedule"
+    t.text "emails"
+    t.text "slack_channels"
+    t.string "check_type"
+    t.text "message"
+    t.datetime "last_run_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_api_keys_on_user_id"
+    t.index ["creator_id"], name: "index_blazer_checks_on_creator_id"
+    t.index ["query_id"], name: "index_blazer_checks_on_query_id"
+  end
+
+  create_table "blazer_dashboard_queries", force: :cascade do |t|
+    t.bigint "dashboard_id"
+    t.bigint "query_id"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dashboard_id"], name: "index_blazer_dashboard_queries_on_dashboard_id"
+    t.index ["query_id"], name: "index_blazer_dashboard_queries_on_query_id"
+  end
+
+  create_table "blazer_dashboards", force: :cascade do |t|
+    t.bigint "creator_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_blazer_dashboards_on_creator_id"
+  end
+
+  create_table "blazer_queries", force: :cascade do |t|
+    t.bigint "creator_id"
+    t.string "name"
+    t.text "description"
+    t.text "statement"
+    t.string "data_source"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_blazer_queries_on_creator_id"
   end
 
   create_table "invitations", force: :cascade do |t|
@@ -81,8 +138,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_23_205508) do
     t.string "name"
     t.bigint "account_id"
     t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["account_id"], name: "index_invitations_on_account_id"
     t.index ["user_id"], name: "index_invitations_on_user_id"
   end
@@ -99,13 +156,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_23_205508) do
     t.string "name", null: false
     t.bigint "account_id"
     t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "container", default: false, null: false
     t.bigint "parent_id"
     t.string "icon_key"
     t.uuid "uuid", null: false
-    t.datetime "expires_at"
+    t.datetime "expires_at", precision: nil
     t.integer "items_count", default: 0, null: false
     t.integer "containers_count", default: 0, null: false
     t.index ["account_id"], name: "index_items_on_account_id"
@@ -121,8 +178,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_23_205508) do
     t.uuid "uuid", null: false
     t.bigint "user_id"
     t.bigint "account_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "item_id"
     t.index ["account_id"], name: "index_labels_on_account_id"
     t.index ["item_id"], name: "index_labels_on_item_id"
@@ -188,8 +245,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_23_205508) do
   create_table "members", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "account_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["account_id"], name: "index_members_on_account_id"
     t.index ["user_id", "account_id"], name: "index_members_on_user_id_and_account_id", unique: true
     t.index ["user_id"], name: "index_members_on_user_id"
@@ -238,8 +295,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_23_205508) do
     t.string "phone_number", null: false
     t.string "code", null: false
     t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["user_id"], name: "index_phone_number_claims_on_user_id"
   end
 
@@ -247,7 +304,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_23_205508) do
     t.bigint "account_id", null: false
     t.bigint "user_id", null: false
     t.string "plan_type", null: false
-    t.datetime "expires_at"
+    t.datetime "expires_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_subscriptions_on_account_id"
@@ -258,8 +315,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_23_205508) do
     t.string "name", null: false
     t.string "email", null: false
     t.string "phone_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["phone_number"], name: "index_users_on_phone_number", unique: true
   end
