@@ -29,7 +29,11 @@ module Items::Templates
       end
 
       def create_redirect_url
-        new_item_child_path(@item.parent)
+        if parent = @item.parent
+          new_item_child_path(parent)
+        else
+          @item
+        end
       end
 
     private
