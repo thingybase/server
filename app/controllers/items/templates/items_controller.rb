@@ -1,5 +1,7 @@
 module Items::Templates
   class ItemsController < BaseController
+    include ResourceAnalytics
+
     protected
       def icons
         Icon.all keys: %w[

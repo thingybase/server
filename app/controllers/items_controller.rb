@@ -1,5 +1,6 @@
 class ItemsController < Oxidizer::ResourcesController
   include AccountLayout
+  include ResourceAnalytics
 
   before_action :assign_opengraph_attributes, only: :show
 

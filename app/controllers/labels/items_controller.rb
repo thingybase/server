@@ -1,6 +1,7 @@
 module Labels
   class ItemsController < Oxidizer::NestedResourcesController
     include AccountLayout
+    include ResourceAnalytics
 
     def self.resource
       Item
