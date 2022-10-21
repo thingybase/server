@@ -134,7 +134,11 @@ gem "mailto", "~> 0.1.1"
 gem "stripe", "~> 5.38"
 
 # Resource-oriented rails controllers
-gem "oxidizer", github: "rocketshipio/oxidizer", branch: "main"
+if oxidizer_peth = ENV["OXIDIZER_GEM_PATH"]
+  gem "oxidizer", path: oxidizer_peth
+else
+  gem "oxidizer", github: "rocketshipio/oxidizer", branch: "main"
+end
 
 # No-password login flow
 gem "nopassword", github: "rocketshipio/nopassword", branch: "main"

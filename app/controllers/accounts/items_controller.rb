@@ -40,6 +40,10 @@ module Accounts
       end
 
     private
+      def permitted_order_params
+        [:created_at, :updated_at]
+      end
+
       def permitted_params
         [:name, :account_id, :container]
       end
