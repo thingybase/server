@@ -103,8 +103,12 @@ module Items
         self.public_send action_name
       end
 
+      def permitted_order_params
+        [:name, :created_at, :updated_at]
+      end
+
       def items_scope
-        parent_resource.children
+        order_resource_scope parent_resource.children
       end
   end
 end

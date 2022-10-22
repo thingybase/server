@@ -37,6 +37,10 @@ module Items
         [:name, :account_id, :parent_id, :container]
       end
 
+      def permitted_order_params
+        [:name, :created_at, :updated_at]
+      end
+
       def parent_resource_name
         "container"
       end

@@ -41,7 +41,7 @@ module Accounts
 
     private
       def permitted_order_params
-        [:created_at, :updated_at]
+        [:name, :created_at, :updated_at]
       end
 
       def permitted_params

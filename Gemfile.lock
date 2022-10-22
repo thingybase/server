@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/rocketshipio/oxidizer.git
-  revision: f5f403dbdaf10736a8dc07fdd562d3b8b5e86b79
+  revision: 58b952a34414f7d50efa08b4ad2d80de411901bf
   branch: main
   specs:
     oxidizer (0.1.0)

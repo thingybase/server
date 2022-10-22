@@ -41,6 +41,10 @@ class LabelsController < Oxidizer::ResourcesController
       policy_scope.joins(:user)
     end
 
+    def permitted_order_params
+      [:name, :created_at, :updated_at]
+    end
+
     def permitted_params
       [:user_id, :account_id, :text, :uuid, :item_id]
     end
