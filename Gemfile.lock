@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/imageomatic/ruby.git
-  revision: abe9d1b49167ee040a3cd03d27d918573a9112f9
+  revision: 98ac4064970cc2d67a788060e47dd7a462d05ff1
   specs:
-    imageomatic (0.1.3)
+    imageomatic (0.1.4)
       rails (>= 7.0.0)
       thor (>= 1.0.0)
 

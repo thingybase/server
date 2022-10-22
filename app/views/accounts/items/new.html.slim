@@ -13,6 +13,7 @@
     span.ml-1
       =link_to "View", item, class: "mx-1"
       =link_to "Edit", edit_item_path(item), class: "mx-1"
+      =link_to "Copy", new_item_copy_path(item), class: "mx-1"
 
 .list-cards.mt-5
   - if @items.empty?
