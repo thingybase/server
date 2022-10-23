@@ -3,7 +3,7 @@ module Accounts
     include AccountLayout
     include ResourceAnalytics
 
-    before_action :assign_items, only: :new
+    before_action :assign_items, only: [:new, :create]
     before_action :authorize_feature, only: [:new, :create]
 
     def self.resource

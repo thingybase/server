@@ -1,7 +1,7 @@
 module Items
   class ChildrenController < Oxidizer::NestedResourcesController
     include AccountLayout
-    before_action :assign_items, only: :new
+    before_action :assign_items, only: [:new, :create]
 
     def self.resource
       Item
