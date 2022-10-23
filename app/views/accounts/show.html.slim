@@ -3,8 +3,7 @@
 - if upgrade = current_plan.upgrade
   .box.my-6
     h3.title.is-5=link_to "Upgrade to Thingybase Home Plus", new_account_payment_path(@account)
-    p
-      | You'll be able to manage #{feature_maximum upgrade.items, "items"} (currently you have a maximum of #{feature_maximum current_plan.items, "items"}) and get to support the development and sustainability of Thingybase.
+    p You'll be able to manage #{feature_maximum upgrade.items, "items"} (currently you have a maximum of #{feature_maximum current_plan.items, "items"}) and get to support the development and sustainability of Thingybase.
     .mt-5=link_to "Upgrade now →", new_account_payment_path(@account), class: "button is-primary "
 
 .notification.is-primary
@@ -24,20 +23,14 @@
       .tile.is-child.notification
         h3.title.is-4 Items
         p.subtitle.is-5 Organize stuff into rooms, shelves, and containers so you can find it all later
-        p
-          | You have a total of
-          =pluralize @account.items.count, "item"
-          | in your account.
+        p You have a total of #{pluralize @account.items.count, "item"} in your account.
         p=link_to "View items", account_items_path(@account)
     .tile
       .tile.is-parent
         .tile.is-child.notification
           h3.title.is-4 People
           p.subtitle.is-5 Organize better with a team
-          p
-            | You have a total of
-            =pluralize @account.members.count, "person"
-            | in your account.
+          p You have a total of #{pluralize @account.members.count, "person"} in your account.
           p=link_to "Manage people", account_people_path(@account)
       .tile.is-parent
         .tile.is-child.notification
