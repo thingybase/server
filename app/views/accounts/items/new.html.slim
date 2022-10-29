@@ -18,9 +18,7 @@
 .list-cards.mt-5
   - if @items.empty?
     .empty-box
-      .title.is-5
-        = @container.name
-        | is empty
+      .title.is-5 #{(@container || @account).name} is empty
       .subtitle.is-6 Items will appear here after they are added above
   - else
     = components :item_list_card, @items.roots.container_then_item
