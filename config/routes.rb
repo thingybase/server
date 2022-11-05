@@ -15,6 +15,36 @@ def template_resources(*templates)
   end
 end
 
+def create(name, *args, **kwargs, &)
+  resources name, *args, **kwargs.merge(only: %i[new create]), &
+end
+
+def update(name, *args, **kwargs, &)
+  resources name, *args, **kwargs.merge(only: %i[edit update]), &
+end
+
+def show(name, *args, **kwargs, &)
+  resources name, *args, **kwargs.merge(only: :show), &
+end
+
+def destroy(name, *args, **kwargs, &)
+  resources name, *args, **kwargs.merge(only: :destroy), &
+end
+
+def list(name, *args, **kwargs, &)
+  resources name, *args, **kwargs.merge(only: :index), &
+end
+
+def nest(name = nil, *args, only: %i[create new index], **kwargs, &block)
+  if name.nil?
+    scope module: parent_resource.name, &block
+  else
+    scope module: parent_resource.name do
+      resources(name, *args, **kwargs.merge(only: only), &block)
+    end
+  end
+end
+
 Rails.application.routes.draw do
   # Analytics
   constraints subdomain: "blazer" do
@@ -34,16 +64,16 @@ Rails.application.routes.draw do
 
   resources :items do
     get :search, to: "items/searches#index"
-    scope module: :items do
+    nest do
       resources :children, only: %i[index new create] do
         collection do
           get :templates
         end
       end
-      resources :ancestors, only: %i[index]
+      list :ancestors
       resources :labels, only: %i[create]
-      resources :copies, only: %i[create new]
-      resources :batches, only: %i[new create]
+      create :copies
+      create :batches
       resource :icon, only: %i[edit update]
       resource :movement, only: %i[new create]
       resource :loanable, only: %i[new create], controller: "loanable_items"
@@ -73,9 +103,11 @@ Rails.application.routes.draw do
     member do
       get :scan
     end
-    resource :standard, controller: "labels/standard"
-    resource :jumbo, controller: "labels/jumbo"
-    resource :code, controller: "labels/code"
+    nest do
+      resource :standard
+      resource :jumbo
+      resource :code
+    end
   end
 
   resources :phone_number_claims do
@@ -89,7 +121,7 @@ Rails.application.routes.draw do
 
   resources :accounts do
     get :search, to: "accounts/searches#index"
-    scope module: :accounts do
+    nest do
       resources :members
       resource :loanable_list, only: [:new, :create, :show]
       resources :member_requests, only: [:new, :create]
@@ -103,7 +135,7 @@ Rails.application.routes.draw do
       resource :plan
       resource :payment
       namespace :items do
-        resources :batches, only: %i[new create]
+        create :batches#, only: %i[new create]
       end
       resources :people, only: %i[index new], format: :html
       template_resources :containers, :items, :perishables, :rooms

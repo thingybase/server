@@ -1,5 +1,5 @@
 module Labels
-  class CodeController < BaseController
+  class CodesController < BaseController
     private
       def prawn_document
         layout = LabelGenerator::SMALL_LAYOUT
