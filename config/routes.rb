@@ -1,20 +1,3 @@
-def batch_resources(resources_name, **kwargs)
-  resources resources_name,
-    param: :ids,
-    ids: /(\w+,)+\w+/,
-    controller: "#{resources_name}/batches",
-    as: "#{resources_name}_batch",
-    **kwargs
-end
-
-def template_resources(*templates)
-  namespace :templates do
-    templates.each do |template|
-      resource template, only: %i[new create], controller: "/items/templates/#{template}"
-    end
-  end
-end
-
 def is_singular_resource_name?(name)
   name_string = name.to_s
   name_string.singularize == name_string
@@ -29,23 +12,23 @@ def inflect_resource_plurality(name, *args, **kwargs, &)
 end
 
 def create(name, *args, **kwargs, &)
-  inflect_resource_plurality name, *args, **kwargs, &
+  nest { inflect_resource_plurality name, *args, **kwargs, & }
 end
 
 def edit(name, *args, only: %i[edit update], **kwargs, &block)
-  inflect_resource_plurality name, *args, **kwargs, &block
+  nest { inflect_resource_plurality name, *args, **kwargs, &block }
 end
 
 def show(name, *args, only: :show, **kwargs, &block)
-  inflect_resource_plurality name, *args, **kwargs, &block
+  nest { inflect_resource_plurality name, *args, **kwargs, &block }
 end
 
 def destroy(name, *args, only: :destroy, **kwargs, &block)
-  inflect_resource_plurality name, *args, **kwargs, &block
+  nest { inflect_resource_plurality name, *args, **kwargs, &block }
 end
 
 def list(name, *args, only: :index, **kwargs, &block)
-  inflect_resource_plurality name, *args, **kwargs, &block
+  nest { inflect_resource_plurality name, *args, **kwargs, &block }
 end
 
 def nest(name = nil, *args, except: %i[show edit update destroy], **kwargs, &block)
@@ -54,6 +37,27 @@ def nest(name = nil, *args, except: %i[show edit update destroy], **kwargs, &blo
   else
     scope module: parent_resource.name do
       inflect_resource_plurality name, *args, except: except, **kwargs, &block
+    end
+  end
+end
+
+def namespace(name=parent_resource.name, ...)
+  super(...)
+end
+
+def batch_resources(resources_name, **kwargs)
+  resources resources_name,
+    param: :ids,
+    ids: /(\w+,)+\w+/,
+    controller: "#{resources_name}/batches",
+    as: "#{resources_name}_batch",
+    **kwargs
+end
+
+def template_resources(*templates)
+  namespace :templates do
+    templates.each do |template|
+      resource template, only: %i[new create], controller: "/items/templates/#{template}"
     end
   end
 end
@@ -82,16 +86,14 @@ Rails.application.routes.draw do
         get :templates
       end
     end
-    nest do
-      list :ancestors
-      resources :labels, only: %i[create]
-      create :copies
-      create :batches
-      edit :icon
-      create :movement
-      create :loanable, controller: "loanable_items"
-      template_resources :containers, :items, :perishables
-    end
+    list :ancestors
+    create :labels
+    create :copies
+    create :batches
+    create :movement
+    create :loanable, controller: "loanable_items"
+    edit :icon
+    template_resources :containers, :items, :perishables
   end
 
   resources :loanable_items
@@ -99,16 +101,12 @@ Rails.application.routes.draw do
   resources :members
 
   resources :moves, only: %i[show edit destroy update] do
-    scope module: :moves do
-      resources :movements, only: %i[index new create]
-      resource :movement_builder, only: %i[new create]
-    end
+    nest :movements
+    create :movement_builder
   end
 
   resources :movements, only: %i[edit show update destroy] do
-    scope module: :movements do
-      resource :scan, only: :show
-    end
+    show :scan
   end
 
   batch_resources :labels, only: :show
@@ -134,26 +132,27 @@ Rails.application.routes.draw do
 
   resources :accounts do
     get :search, to: "accounts/searches#index"
+    create :people, format: :html
+    create :loanable_list
+    create :member_requests
+    nest :plan
+    nest :payment
+    nest :move
+    nest :members
+    nest :invitations
+    nest :items do
+      collection do
+        get :templates
+      end
+    end
     nest do
-      resources :members
-      resource :loanable_list, only: [:new, :create, :show]
-      resources :member_requests, only: [:new, :create]
-      resources :invitations
-      resource :move, only: [:new, :create, :show]
-      resources :items do
-        collection do
-          get :templates
-        end
-      end
-      resource :plan
-      resource :payment
       namespace :items do
-        create :batches#, only: %i[new create]
+        resources :batches, only: %i[new create]
       end
-      resources :people, only: %i[index new], format: :html
       template_resources :containers, :items, :perishables, :rooms
     end
   end
+
   namespace :accounts do
     namespace :templates do
       resource :home
@@ -163,9 +162,7 @@ Rails.application.routes.draw do
   end
 
   resources :member_requests, only: :show do
-    scope module: :member_requests do
-      resource :review, only: [:new, :create]
-    end
+    create :review
   end
 
   resource :launch do
@@ -177,12 +174,7 @@ Rails.application.routes.draw do
   end
 
   resources :invitations do
-    scope module: :invitations do
-      # No ID ; should this really be an
-      # `interaction` resource? e.g.
-      # `interaction :acknowledgements`
-      resource :response
-    end
+    nest :response
     member do
       put :email
     end
