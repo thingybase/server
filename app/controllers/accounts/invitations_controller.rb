@@ -12,14 +12,6 @@ module Accounts
         nil
       end
 
-      def self.resource
-        Invitation
-      end
-
-      def self.parent_resource
-        Account
-      end
-
       def resource_scope
         policy_scope.joins(:user)
       end

@@ -2,14 +2,6 @@ module Items
   class LabelsController < Oxidizer::NestedResourcesController
     include AccountLayout
 
-    def self.resource
-      Label
-    end
-
-    def self.parent_resource
-      Item
-    end
-
     def permitted_params
       [:text, :account_id, :item_id]
     end

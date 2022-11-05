@@ -5,10 +5,6 @@ module Items
     include AccountLayout
     include ActionView::Helpers::TextHelper
 
-    def self.parent_resource
-      Item
-    end
-
     def self.resource
       ItemCopy
     end

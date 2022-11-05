@@ -5,14 +5,6 @@ module Items
 
     BATCH_ACTIONS = [:delete, :label]
 
-    def self.resource
-      Batch
-    end
-
-    def self.parent_resource
-      Item
-    end
-
     def delete
       selected_models_count = @batch.selected_models.count
       Batch.transaction do

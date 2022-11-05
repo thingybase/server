@@ -3,14 +3,6 @@ module Moves
     include AccountLayout
 
     protected
-      def self.resource
-        Movement
-      end
-
-      def self.parent_resource
-        Move
-      end
-
       def navigation_key
         "Moving"
       end

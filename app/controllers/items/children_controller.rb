@@ -7,10 +7,6 @@ module Items
       Item
     end
 
-    def self.parent_resource
-      Item
-    end
-
     def templates
       authorize parent_resource, :new?
     end

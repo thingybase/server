@@ -4,10 +4,6 @@ module Labels
     include LabelsHelper
     include PreviewablePdf
 
-    def self.parent_resource
-      Label
-    end
-
     protected
       def uids
         params.fetch(:ids).split(",")

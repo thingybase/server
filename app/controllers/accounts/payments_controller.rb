@@ -2,10 +2,6 @@ module Accounts
   class PaymentsController < Oxidizer::NestedWeakResourceController
     layout "body"
 
-    def self.parent_resource
-      Account
-    end
-
     def create
       redirect_to checkout_session.url
     end

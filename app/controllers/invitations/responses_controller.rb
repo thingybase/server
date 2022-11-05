@@ -5,10 +5,6 @@ module Invitations
         InvitationResponse
       end
 
-      def self.parent_resource
-        Invitation
-      end
-
       def permitted_params
         [:status, :token]
       end

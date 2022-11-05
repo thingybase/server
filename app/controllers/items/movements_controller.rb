@@ -3,14 +3,6 @@ module Items
     include AccountLayout
     before_action :redirect_to_existing_movement, only: :new
 
-    def self.parent_resource
-      Item
-    end
-
-    def self.resource
-      Movement
-    end
-
     private
       def create_redirect_url
         movement_url @movement

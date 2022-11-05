@@ -8,14 +8,6 @@ module Accounts
       end
 
     private
-      def self.resource
-        Member
-      end
-
-      def self.parent_resource
-        Account
-      end
-
       def permitted_params
         [:user_id, :account_id]
       end

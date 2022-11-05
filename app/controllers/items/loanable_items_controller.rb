@@ -4,14 +4,6 @@ module Items
     before_action :redirect_to_existing_loanable_item, only: :new
 
     protected
-      def self.resource
-        LoanableItem
-      end
-
-      def self.parent_resource
-        Item
-      end
-
       def navigation_key
         "Items"
       end

@@ -3,14 +3,6 @@ module Labels
     include AccountLayout
     include ResourceAnalytics
 
-    def self.resource
-      Item
-    end
-
-    def self.parent_resource
-      Label
-    end
-
     def permitted_params
       [:name, :account_id, :item_global]
     end

@@ -4,10 +4,6 @@ class ItemsController < Oxidizer::ResourcesController
 
   before_action :assign_opengraph_attributes, only: :show
 
-  def self.resource
-    Item
-  end
-
   protected
     def navigation_key
       "Items"

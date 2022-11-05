@@ -2,10 +2,6 @@ module Items
   class IconsController < Oxidizer::NestedWeakResourceController
     include AccountLayout
 
-    def self.parent_resource
-      Item
-    end
-
     def edit
       @icons = Icon.all
     end

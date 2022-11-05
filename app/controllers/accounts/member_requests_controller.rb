@@ -4,14 +4,6 @@ module Accounts
     before_action :redirect_to_existing_request, only: :create
     skip_before_action :authorize_parent_resource
 
-    def self.resource
-      MemberRequest
-    end
-
-    def self.parent_resource
-      Account
-    end
-
     protected
       def deliver_email_notification
         return unless resource.persisted?

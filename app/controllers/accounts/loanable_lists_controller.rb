@@ -2,14 +2,6 @@ module Accounts
   class LoanableListsController < Oxidizer::NestedResourceController
     include AccountLayout
 
-    def self.resource
-      LoanableList
-    end
-
-    def self.parent_resource
-      Account
-    end
-
     def show
       redirect_to resource || url_for(action: :new)
     end

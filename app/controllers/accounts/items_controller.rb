@@ -6,14 +6,6 @@ module Accounts
     before_action :assign_items, only: [:new, :create]
     before_action :authorize_feature, only: [:new, :create]
 
-    def self.resource
-      Item
-    end
-
-    def self.parent_resource
-      Account
-    end
-
     def templates
       authorize @account.items.build, :new?
     end
