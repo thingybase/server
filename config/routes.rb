@@ -15,32 +15,45 @@ def template_resources(*templates)
   end
 end
 
+def is_singular_resource_name?(name)
+  name_string = name.to_s
+  name_string.singularize == name_string
+end
+
+def resource_plurality(name)
+  is_singular_resource_name?(name) ? :resource : :resources
+end
+
+def inflect_resource_plurality(name, *args, **kwargs, &)
+  self.method(resource_plurality(name)).call(name, *args, **kwargs, &)
+end
+
 def create(name, *args, **kwargs, &)
-  resources name, *args, **kwargs.merge(only: %i[new create]), &
+  inflect_resource_plurality name, *args, **kwargs, &
 end
 
-def update(name, *args, **kwargs, &)
-  resources name, *args, **kwargs.merge(only: %i[edit update]), &
+def edit(name, *args, only: %i[edit update], **kwargs, &block)
+  inflect_resource_plurality name, *args, **kwargs, &block
 end
 
-def show(name, *args, **kwargs, &)
-  resources name, *args, **kwargs.merge(only: :show), &
+def show(name, *args, only: :show, **kwargs, &block)
+  inflect_resource_plurality name, *args, **kwargs, &block
 end
 
-def destroy(name, *args, **kwargs, &)
-  resources name, *args, **kwargs.merge(only: :destroy), &
+def destroy(name, *args, only: :destroy, **kwargs, &block)
+  inflect_resource_plurality name, *args, **kwargs, &block
 end
 
-def list(name, *args, **kwargs, &)
-  resources name, *args, **kwargs.merge(only: :index), &
+def list(name, *args, only: :index, **kwargs, &block)
+  inflect_resource_plurality name, *args, **kwargs, &block
 end
 
-def nest(name = nil, *args, only: %i[create new index], **kwargs, &block)
+def nest(name = nil, *args, except: %i[show edit update destroy], **kwargs, &block)
   if name.nil?
     scope module: parent_resource.name, &block
   else
     scope module: parent_resource.name do
-      resources(name, *args, **kwargs.merge(only: only), &block)
+      inflect_resource_plurality name, *args, except: except, **kwargs, &block
     end
   end
 end
@@ -64,19 +77,19 @@ Rails.application.routes.draw do
 
   resources :items do
     get :search, to: "items/searches#index"
-    nest do
-      resources :children, only: %i[index new create] do
-        collection do
-          get :templates
-        end
+    nest :children do
+      collection do
+        get :templates
       end
+    end
+    nest do
       list :ancestors
       resources :labels, only: %i[create]
       create :copies
       create :batches
-      resource :icon, only: %i[edit update]
-      resource :movement, only: %i[new create]
-      resource :loanable, only: %i[new create], controller: "loanable_items"
+      edit :icon
+      create :movement
+      create :loanable, controller: "loanable_items"
       template_resources :containers, :items, :perishables
     end
   end
