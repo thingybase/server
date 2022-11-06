@@ -31,18 +31,20 @@ def list(name, *args, only: :index, **kwargs, &block)
   nest { inflect_resource_plurality name, *args, **kwargs, &block }
 end
 
-def nest(name = nil, *args, except: %i[show edit update destroy], **kwargs, &block)
+def nest(name = nil, *args, except: nil, **kwargs, &block)
   if name.nil?
     scope module: parent_resource.name, &block
+  elsif is_singular_resource_name? name
+    scope module: parent_resource.name do
+      except ||= %i[index edit update destroy]
+      resource name, *args, except: except, **kwargs, &block
+    end
   else
     scope module: parent_resource.name do
-      inflect_resource_plurality name, *args, except: except, **kwargs, &block
+      except ||= %i[show edit update destroy]
+      resources name, *args, except: except, **kwargs, &block
     end
   end
-end
-
-def namespace(name=parent_resource.name, ...)
-  super(...)
 end
 
 def batch_resources(resources_name, **kwargs)
@@ -58,6 +60,14 @@ def template_resources(*templates)
   namespace :templates do
     templates.each do |template|
       resource template, only: %i[new create], controller: "/items/templates/#{template}"
+    end
+  end
+end
+
+def nested_namespace(*args, **kwargs, &block)
+  nest do
+    collection do
+      namespace(*args, **kwargs, &block)
     end
   end
 end
@@ -122,12 +132,7 @@ Rails.application.routes.draw do
   end
 
   resources :phone_number_claims do
-    scope module: :phone_number_claims do
-      # No ID ; should this really be an
-      # `interaction` resource? e.g.
-      # `interaction :acknowledgements`
-      resource :verification
-    end
+    nest :verification
   end
 
   resources :accounts do
@@ -135,7 +140,6 @@ Rails.application.routes.draw do
     create :people, format: :html
     create :loanable_list
     create :member_requests
-    nest :plan
     nest :payment
     nest :move
     nest :members
