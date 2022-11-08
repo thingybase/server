@@ -4,8 +4,7 @@
   - @accounts.each do |account|
     = component :list_card, account.name, account do |card|
       - card.slot(:detail) do
-        | Created
-        =local_time_ago account.created_at
+        | Created #{local_time_ago account.created_at}
       - card.slot(:detail) do
         =pluralize account.items.size, "item"
 

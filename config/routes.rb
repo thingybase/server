@@ -1,52 +1,3 @@
-def is_singular_resource_name?(name)
-  name_string = name.to_s
-  name_string.singularize == name_string
-end
-
-def resource_plurality(name)
-  is_singular_resource_name?(name) ? :resource : :resources
-end
-
-def inflect_resource_plurality(name, *args, **kwargs, &)
-  self.method(resource_plurality(name)).call(name, *args, **kwargs, &)
-end
-
-def create(name, *args, **kwargs, &)
-  nest { inflect_resource_plurality name, *args, **kwargs, & }
-end
-
-def edit(name, *args, only: %i[edit update], **kwargs, &block)
-  nest { inflect_resource_plurality name, *args, **kwargs, &block }
-end
-
-def show(name, *args, only: :show, **kwargs, &block)
-  nest { inflect_resource_plurality name, *args, **kwargs, &block }
-end
-
-def destroy(name, *args, only: :destroy, **kwargs, &block)
-  nest { inflect_resource_plurality name, *args, **kwargs, &block }
-end
-
-def list(name, *args, only: :index, **kwargs, &block)
-  nest { inflect_resource_plurality name, *args, **kwargs, &block }
-end
-
-def nest(name = nil, *args, except: nil, **kwargs, &block)
-  if name.nil?
-    scope module: parent_resource.name, &block
-  elsif is_singular_resource_name? name
-    scope module: parent_resource.name do
-      except ||= %i[index edit update destroy]
-      resource name, *args, except: except, **kwargs, &block
-    end
-  else
-    scope module: parent_resource.name do
-      except ||= %i[show edit update destroy]
-      resources name, *args, except: except, **kwargs, &block
-    end
-  end
-end
-
 def batch_resources(resources_name, **kwargs)
   resources resources_name,
     param: :ids,
@@ -60,14 +11,6 @@ def template_resources(*templates)
   namespace :templates do
     templates.each do |template|
       resource template, only: %i[new create], controller: "/items/templates/#{template}"
-    end
-  end
-end
-
-def nested_namespace(*args, **kwargs, &block)
-  nest do
-    collection do
-      namespace(*args, **kwargs, &block)
     end
   end
 end
@@ -96,13 +39,15 @@ Rails.application.routes.draw do
         get :templates
       end
     end
-    list :ancestors
-    create :labels
-    create :copies
-    create :batches
-    create :movement
-    create :loanable, controller: "loanable_items"
-    edit :icon
+    nest do
+      list :ancestors
+      create :labels
+      create :copies
+      create :batches
+      create :movement
+      create :loanable, controller: "loanable_items"
+      edit :icon
+    end
     template_resources :containers, :items, :perishables
   end
 
@@ -112,11 +57,15 @@ Rails.application.routes.draw do
 
   resources :moves, only: %i[show edit destroy update] do
     nest :movements
-    create :movement_builder
+    nest do
+      create :movement_builder
+    end
   end
 
   resources :movements, only: %i[edit show update destroy] do
-    show :scan
+    nest do
+      show :scan
+    end
   end
 
   batch_resources :labels, only: :show
@@ -137,9 +86,6 @@ Rails.application.routes.draw do
 
   resources :accounts do
     get :search, to: "accounts/searches#index"
-    create :people, format: :html
-    create :loanable_list
-    create :member_requests
     nest :payment
     nest :move
     nest :members
@@ -150,8 +96,11 @@ Rails.application.routes.draw do
       end
     end
     nest do
+      create :people, format: :html
+      create :loanable_list
+      create :member_requests
       namespace :items do
-        resources :batches, only: %i[new create]
+        create :batches
       end
       template_resources :containers, :items, :perishables, :rooms
     end
@@ -166,7 +115,9 @@ Rails.application.routes.draw do
   end
 
   resources :member_requests, only: :show do
-    create :review
+    nest do
+      create :review
+    end
   end
 
   resource :launch do

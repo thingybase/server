@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/rocketshipio/oxidizer.git
-  revision: 5b41c86bd5138f0e8e2eba78d700c453b6aaa301
+  revision: d05fe25cfc267a3608aa20e9531cdf342c5ac24f
   branch: main
   specs:
     oxidizer (0.1.0)
@@ -424,7 +424,7 @@ GEM
       activerecord (>= 4.2)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.4)
+    zeitwerk (2.6.5)
 
 PLATFORMS
   ruby
