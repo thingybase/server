@@ -1,10 +1,6 @@
 = title "Verify login code"
 
-h2.subtitle
-  | Look for a
-  strong 6 digit code
-  | in the inbox or spam folder for
-  strong=@verification.data
+h2.subtitle Look for a <strong>6 digit code</strong> in the inbox or spam folder for <strong>#{@verification.data}</strong>
 
 = application_form @verification, url: url_for(action: :update) do |f|
   = f.input :code, autofocus: true, hint: "You have a few minutes to enter the code before it expires", pattern: '[0-9]*'
@@ -14,10 +10,4 @@ h2.subtitle
 
 hr
 
-p
-  | Launch
-  =link_to "Gmail", "https://gmail.com/", target: "_blank"
-  | \|
-  =link_to "Outlook", "https://outlook.live.com/", target: "_blank"
-  | \|
-  =link_to "Yahoo Mail", "https://mail.yahoo.com/", target: "_blank"
+p Launch #{link_to "Gmail", "https://gmail.com/", target: "_blank"} | #{link_to "Outlook", "https://outlook.live.com/", target: "_blank"} | #{link_to "Yahoo Mail", "https://mail.yahoo.com/", target: "_blank"}

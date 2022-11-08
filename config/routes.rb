@@ -135,7 +135,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :icons, only: :index
+  list :icons
 
   resources :loanable_lists, only: %i[show edit destroy update] do
     scope module: :loanable_lists do
@@ -161,7 +161,7 @@ Rails.application.routes.draw do
     defaults: { h: 0, s: 0, l: 0, format: :svg }
 
   resources :users
-  resource :signup, only: %i[create new]
+  create :signup
   resources :api_keys, except: %i[edit update]
 
   resource :session

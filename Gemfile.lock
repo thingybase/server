@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/rocketshipio/oxidizer.git
-  revision: d05fe25cfc267a3608aa20e9531cdf342c5ac24f
+  revision: c2eeeb87d720efb6454249af64918444d66fb4f1
   branch: main
   specs:
     oxidizer (0.1.0)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/sitepress/sitepress.git
-  revision: 505aacad25a070504314064f1ffd89d647992958
+  revision: 07a4e20c51724fd68b75f9218b2a43e3b666be24
   branch: main
   specs:
     sitepress-core (3.1.4)
@@ -172,7 +172,7 @@ GEM
       activesupport (>= 5.0)
     groupdate (5.2.4)
       activesupport (>= 5)
-    haml (6.0.8)
+    haml (6.0.9)
       temple (>= 0.8.2)
       thor
       tilt
