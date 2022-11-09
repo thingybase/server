@@ -7,14 +7,6 @@ def batch_resources(resources_name, **kwargs)
     **kwargs
 end
 
-def template_resources(*templates)
-  namespace :templates do
-    templates.each do |template|
-      resource template, only: %i[new create], controller: "/items/templates/#{template}"
-    end
-  end
-end
-
 Rails.application.routes.draw do
   # Analytics
   constraints subdomain: "blazer" do
@@ -47,8 +39,10 @@ Rails.application.routes.draw do
       create :movement
       create :loanable, controller: "loanable_items"
       edit :icon
+      namespace :templates do
+        create :container, :item, :perishable
+      end
     end
-    template_resources :containers, :items, :perishables
   end
 
   resources :loanable_items
@@ -102,7 +96,9 @@ Rails.application.routes.draw do
       namespace :items do
         create :batches
       end
-      template_resources :containers, :items, :perishables, :rooms
+      namespace :templates do
+        create :containers, :items, :perishables, :rooms
+      end
     end
   end
 
