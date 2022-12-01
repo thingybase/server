@@ -2,7 +2,11 @@ class Item < ApplicationRecord
   include PgSearch::Model
   include UuidField
 
-  pg_search_scope :search_by_name, against: :name
+  pg_search_scope :search_by_name, against: :name, using: {
+    trigram: {
+      word_similarity: true
+    }
+  }
 
   has_closure_tree dependent: :destroy
 
