@@ -66,6 +66,7 @@ RSpec.describe Item, type: :model do
       end
     end
   end
+
   describe "#parent" do
     let(:root) { build(:item) }
     context "root" do
@@ -87,6 +88,38 @@ RSpec.describe Item, type: :model do
         it { is_expected.to_not be_root }
         it { is_expected.to_not be_valid }
       end
+    end
+  end
+
+  describe "#search_by_name" do
+    let!(:hood) { create(:item, name: "Hood - 48-58mm") }
+    let!(:nikon) { create(:item, name: "Nikon HB-35 lens hood") }
+    let!(:ew) { create(:item, name: "EW-63C lens hood") }
+    let!(:hook) { create(:item, name: "Ook Hooks") }
+    let(:results) { Item.search_by_name(term) }
+    subject { results }
+
+    context "hoo" do
+      let(:term) { "hoo" }
+      it { is_expected.to include(hood, nikon, ew, hook) }
+    end
+
+    context "hook" do
+      let(:term) { "hook" }
+      it { is_expected.to include(hook) }
+      it { is_expected.to_not include(hood, nikon, ew) }
+    end
+
+    context "hood" do
+      let(:term) { "hood" }
+      it { is_expected.to include(hood, nikon, ew) }
+      it { is_expected.to_not include(hook) }
+    end
+
+    context "hoods" do
+      let(:term) { "hoods" }
+      it { is_expected.to be_empty }
+      it { is_expected.to_not include(hood, nikon, ew, hook) }
     end
   end
 end

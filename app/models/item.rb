@@ -2,11 +2,18 @@ class Item < ApplicationRecord
   include PgSearch::Model
   include UuidField
 
-  pg_search_scope :search_by_name, against: :name, using: {
-    trigram: {
-      word_similarity: true
-    }
-  }
+  # pg_search_scope :search_by_name,
+  #   against: :name,
+  #   using: {
+  #     trigram: {
+  #       threshold: 1.0,
+  #       word_similarity: true
+  #     },
+  #   }
+
+  def self.search_by_name(term)
+    where("name ILIKE ?", "%#{term}%")
+  end
 
   has_closure_tree dependent: :destroy
 
