@@ -11,5 +11,7 @@ html(lang="en")
     = csrf_meta_tags
     = stylesheet_pack_tag "application", media: "screen,app"
     = javascript_pack_tag "application"
+    -if Rails.env.production?
+      script(defer data-domain="thingybase.com" src="https://plausible.io/js/script.js")
   body
     = yield
