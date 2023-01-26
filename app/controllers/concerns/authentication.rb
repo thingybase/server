@@ -26,7 +26,7 @@ module Authentication
     end
 
     def deny_any_format
-      render :unauthorized, layout: "application", status: :unauthorized
+      render :unauthorized, layout: "application", status: :unauthorized, formats: :html
     end
 
   private
