@@ -9,7 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.0.0'
 # Use Puma as the app server
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 6.0'
 # Use SCSS Gor stylesheets
 gem 'sassc-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -87,8 +87,6 @@ gem "groupdate", "~> 5.2"
 # Render PDF file as an image to get around really annoying problems
 # embedding PDFs in webpages or trying to embed them via PDF.js
 gem "mini_magick", "~> 4.0.0"
-# Use pry for all interactive rails shells
-gem 'pry-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
