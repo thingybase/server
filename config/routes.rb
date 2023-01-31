@@ -90,7 +90,7 @@ Rails.application.routes.draw do
       end
     end
     nest do
-      create :people, format: :html
+      resources :people, only: %i[index new]
       create :loanable_list
       create :member_requests
       namespace :items do
