@@ -38,7 +38,7 @@ gem 'strong_password'
 # Display times locally
 gem 'local_time'
 # Run Postgres in production
-gem 'pg', '~> 1.2.0'
+gem 'pg', '~> 1.4'
 # Application error alerts
 gem 'rollbar'
 # Reduces boot times through caching; required in config/boot.rb

@@ -250,7 +250,7 @@ GEM
       oauth2 (>= 1.4, < 3)
       omniauth (~> 2.0)
     pdf-core (0.9.0)
-    pg (1.2.3)
+    pg (1.4.5)
     pg_search (2.3.6)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
@@ -461,7 +461,7 @@ DEPENDENCIES
   omniauth
   omniauth-google-oauth2
   oxidizer!
-  pg (~> 1.2.0)
+  pg (~> 1.4)
   pg_search (~> 2.3)
   phony_rails
   prawn (~> 2.0)
@@ -495,7 +495,7 @@ DEPENDENCIES
   webpacker (~> 5.3)
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 3.2.0p0
 
 BUNDLED WITH
    2.3.16
