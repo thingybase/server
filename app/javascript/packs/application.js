@@ -17,12 +17,12 @@
 
 import "../stylesheets/application.sass"
 
+import "@hotwired/turbo-rails"
+
 require("@rails/ujs").start()
-require("turbolinks").start()
 require("@rails/activestorage").start()
 require("local-time").start()
 
 import "../javascripts/bulma.js"
-import "../javascripts/turbolinks-form-core.js"
 
 import "controllers"

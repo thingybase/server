@@ -12,12 +12,10 @@ gem 'rails', '~> 7.0.0'
 gem 'puma', '~> 5.0'
 # Use SCSS Gor stylesheets
 gem 'sassc-rails'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.10'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
+gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.13'
 # HAML templates yo
@@ -149,3 +147,5 @@ gem "ahoy_matey", "~> 4.1"
 gem "slim-rails", "~> 3.5"
 
 gem "blazer", "~> 2.6"
+
+gem "turbo-rails", "~> 1.3"

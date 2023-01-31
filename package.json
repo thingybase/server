@@ -1,10 +1,8 @@
 {
   "name": "thingybase",
-  "engines": {
-    "node": "16.x"
-  },
   "private": true,
   "dependencies": {
+    "@hotwired/turbo-rails": "^7.2.4",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
