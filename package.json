@@ -1,7 +1,7 @@
 {
   "name": "thingybase",
   "engines": {
-    "node": "16.x"
+    "node": "19.x"
   },
   "private": true,
   "dependencies": {
