@@ -1,8 +1,5 @@
 {
   "name": "thingybase",
-  "engines": {
-    "node": "19.x"
-  },
   "private": true,
   "dependencies": {
     "@hotwired/turbo-rails": "^7.2.4",
