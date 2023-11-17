@@ -1,12 +1,4 @@
 GIT
-  remote: https://github.com/imageomatic/ruby.git
-  revision: 451aee190b9c427fa202e140b2b2eae3862022aa
-  specs:
-    imageomatic (0.1.4)
-      rails (>= 7.0.0)
-      thor (>= 1.0.0)
-
-GIT
   remote: https://github.com/rocketshipio/featureomatic.git
   revision: 7fa529d4ffc81ada407a5158680e20f2f459a063
   specs:
@@ -41,6 +33,15 @@ GIT
       railties (>= 6.0)
       sitepress-core (= 3.2.1)
       sprockets-rails (>= 2.0.0)
+
+GIT
+  remote: https://github.com/tinyzap/ruby.git
+  revision: 5a2e1110ca7fb99836ab88935c23d1be1dc0ef6f
+  specs:
+    tinyzap (0.1.4)
+      rails (>= 7.0.0)
+      thor (>= 1.0.0)
+      zeitwerk (~> 2.5)
 
 GEM
   remote: https://rubygems.org/
@@ -446,7 +447,6 @@ DEPENDENCIES
   featureomatic (~> 0.1.1)!
   groupdate (~> 5.2)
   haml-rails
-  imageomatic (~> 0.1.1)!
   jbuilder (~> 2.10)
   jwt
   listen (>= 3.0.5, < 3.2)
@@ -484,6 +484,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   stripe (~> 5.38)
   strong_password
+  tinyzap!
   turbo-rails (~> 1.3)
   twilio-ruby
   tzinfo-data

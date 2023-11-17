@@ -123,7 +123,7 @@ else
   gem "featureomatic", "~> 0.1.1", github: "rocketshipio/featureomatic"
 end
 
-gem "imageomatic", "~> 0.1.1", github: "imageomatic/ruby"
+gem "tinyzap", github: "tinyzap/ruby"
 
 gem "mailto", "~> 0.1.1"
 
