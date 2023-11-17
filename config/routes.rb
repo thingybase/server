@@ -149,7 +149,7 @@ Rails.application.routes.draw do
   end
 
   namespace :webhooks do
-    resource :stripe, only: :create
+    resource :stripe_webhook, only: :create
   end
 
   get "/vectors/hsl-:h,:s,:l/*id", to: "vectors#hsl",

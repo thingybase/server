@@ -1,6 +1,6 @@
 module Webhooks
   # Recieve webhook callbacks from Stripe and process.
-  class StripesController < ApplicationController
+  class StripeWebhooksController < ApplicationController
     rescue_from JSON::ParserError, with: :invalid_payload
     rescue_from Stripe::SignatureVerificationError, with: :signature_verification_failure
 
