@@ -147,3 +147,5 @@ gem "slim-rails", "~> 3.5"
 gem "blazer", "~> 2.6"
 
 gem "turbo-rails", "~> 1.3"
+
+gem "imageomatic", "~> 0.1.4"
