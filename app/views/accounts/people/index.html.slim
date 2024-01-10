@@ -1,7 +1,7 @@
 = title "People", subtitle: "Control who can help organize or find stuff in the #{@account.name} account", icon: "basketball-jersey"
 
 .buttons
-  = link_to "+ Add people", new_account_person_path(@account), class: "button is-primary"
+  = link_to "+ Add people", new_account_person_path(@account), class: "btn btn-primary"
 
 .list-cards
   -with @account.user do |owner|

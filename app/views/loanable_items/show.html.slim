@@ -2,4 +2,4 @@
 
 p #{resource.user.name} made #{resource.item.name} available to be borrowed #{local_time_ago resource.created_at}
 
-.control= link_to "Remove from borrowing list", resource, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-text"
+.control= link_to "Remove from borrowing list", resource, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline"

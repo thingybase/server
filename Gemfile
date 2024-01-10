@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+
 ruby File.read(".ruby-version").chomp
 
 git_source(:github) do |repo_name|
@@ -10,8 +11,6 @@ end
 gem 'rails', '~> 7.0.0'
 # Use Puma as the app server
 gem 'puma', '~> 6.0'
-# Use SCSS Gor stylesheets
-gem 'sassc-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.10'
 # Use Redis adapter to run Action Cable in production

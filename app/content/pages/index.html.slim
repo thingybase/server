@@ -91,7 +91,6 @@ section.hero.is-medium
       h2.title Projects
       h3.subtitle See all of the things you can do with Thingybase once you get it up and running
     .container.mt-6
-      .columns
+      .grid.grid-cols-3.gap-8
         - site.get("projects").children.take(3).each do |page|
-          .column.is-one-third
-            = page_card page
+          = page_card page

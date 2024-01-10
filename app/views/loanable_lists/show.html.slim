@@ -1,7 +1,7 @@
 = title resource.name, subtitle: "Stuff that you can loan to your friends, family, and people you trust", icon: "heart"
 
 .buttons
-  =link_to "+ Add items people can borrow", new_loanable_list_item_path(@loanable_list), class: "button is-primary"
+  =link_to "+ Add items people can borrow", new_loanable_list_item_path(@loanable_list), class: "btn btn-primary"
   =link_to "Manage sharing", loanable_list_members_path(@loanable_list), class: "button"
   .field.has-addons
 
@@ -16,5 +16,5 @@
         = local_time_ago loanable.created_at
 
 .buttons
-  .control= link_to "Edit", url_for(action: :edit), class: "button is-text"
-  .control= link_to "Delete", resource, method: :delete, class: "button is-text", data: { confirm: 'Are you sure?' }
+  .control= link_to "Edit", url_for(action: :edit), class: "btn btn-outline"
+  .control= link_to "Delete", resource, method: :delete, class: "btn btn-outline", data: { confirm: 'Are you sure?' }

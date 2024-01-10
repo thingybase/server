@@ -17,7 +17,7 @@
           .title=@account.labels.count
 
 .buttons
-  = link_to "+ Create moving label", new_move_movement_builder_path(@move), class: "button is-primary"
+  = link_to "+ Create moving label", new_move_movement_builder_path(@move), class: "btn btn-primary"
 
 - if @move.movements.empty?
   .empty-box
@@ -37,5 +37,5 @@
 
 
 .buttons
-  = link_to "Edit", edit_move_path(@move), class: "button is-text"
-  = link_to "Delete move", move_path(@move), class: "button is-text", method: :delete, data: { confirm: "Are you sure?" }
+  = link_to "Edit", edit_move_path(@move), class: "btn btn-outline"
+  = link_to "Delete move", move_path(@move), class: "btn btn-outline", method: :delete, data: { confirm: "Are you sure?" }

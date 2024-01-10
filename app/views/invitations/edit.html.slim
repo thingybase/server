@@ -5,5 +5,5 @@ h1.title Edit # resource_name
   = f.input :name
   = f.association :account, as: :hidden
   = f.button :submit, class: 'is-primary'
-  = link_to "Delete", invitation_path(@invitation), method: "delete", data: { confirm: 'Are you sure?' }, class: 'button is-text'
+  = link_to "Delete", invitation_path(@invitation), method: "delete", data: { confirm: 'Are you sure?' }, class: 'btn btn-outline'
 

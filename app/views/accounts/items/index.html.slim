@@ -1,10 +1,10 @@
 = title @account.name, subtitle: "All the items you want to track", icon: "chest-open"
 
-.buttons
-  = link_to "+ Add items", new_account_item_path(@account), class: 'button is-primary'
-  = link_to "Select...", new_account_items_batch_path(@account), class: 'button'
+.flex.flex-row.gap-2
+  = link_to "+ Add items", new_account_item_path(@account), class: 'btn btn-primary'
+  = link_to "Select...", new_account_items_batch_path(@account), class: 'btn'
   .is-hidden-tablet
-    =link_to "Search", account_search_path(@account), class: "button"
+    =link_to "Search", account_search_path(@account), class: "btn"
 
 .list-cards
   = components :item_list_card, @items.roots.container_then_item

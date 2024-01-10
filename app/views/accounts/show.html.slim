@@ -4,7 +4,7 @@
   .box.my-6
     h3.title.is-5=link_to "Upgrade to Thingybase Home Plus", new_account_payment_path(@account)
     p You'll be able to manage #{feature_maximum upgrade.items, "items"} (currently you have a maximum of #{feature_maximum current_plan.items, "items"}) and get to support the development and sustainability of Thingybase.
-    .mt-5=link_to "Upgrade now →", new_account_payment_path(@account), class: "button is-primary "
+    .mt-5=link_to "Upgrade now →", new_account_payment_path(@account), class: "btn btn-primary "
 
 .notification.is-primary
   .level.has-text-centered.is-uppercase

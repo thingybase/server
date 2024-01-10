@@ -11,9 +11,6 @@ section.hero
         .column
           = title current_page.data.fetch("title"), subtitle: current_page.data["subtitle"], icon: current_page.data["icon"]
 
-section.section
-  .container
-    .columns.is-multiline
-      - current_page.children.each do |page|
-        .column.is-one-third
-          = page_card page
+section.grid.grid-cols-3.gap-4
+  - current_page.children.each do |page|
+      = page_card page

@@ -13,6 +13,6 @@
       .content.mb-0= render_email_body email
 
 .buttons
-  = link_to "Send invitation", email_invitation_path(@invitation), method: :put, class: 'button is-primary'
+  = link_to "Send invitation", email_invitation_path(@invitation), method: :put, class: 'btn btn-primary'
   = link_to "Edit", edit_invitation_path(@invitation), class: 'button'
-  = link_to "Delete", invitation_path(@invitation), method: "delete", data: { confirm: 'Are you sure?' }, class: 'button is-text'
+  = link_to "Delete", invitation_path(@invitation), method: "delete", data: { confirm: 'Are you sure?' }, class: 'btn btn-outline'

@@ -1,22 +1,20 @@
-.buttons
-  = link_to "+ Add items", new_item_child_path(@item), class: "button is-primary"
-  .field.has-addons
-    .control= link_to "Edit", edit_item_path(@item), class: "button"
-    .control= link_to "Select", new_item_batch_path(item), class: 'button'
-    .control= link_to "Label", label_path(resource.label), class: "button"
-    .control
-      = component :menu, title: "More..." do |menu|
-        = menu.slot(:item) do
-          = link_to "Change icon", edit_item_icon_path(@item)
-        = menu.slot(:item) do
-          = link_to "Copy", new_item_copy_path(@item)
-        - if @account.move
-          = menu.slot(:item) do
-            = link_to "Move", @item.movement ? movement_path(@item.movement) : new_item_movement_path(@item)
-        = menu.slot(:item) do
-          = link_to "Delete", item_path(@item), method: :delete, data: { confirm: 'Are you sure?' }
-        = menu.slot(:item) do
-          = link_to "Search", item_search_path(item)
+.flex.flex-row.gap-2
+  = link_to "+ Add items", new_item_child_path(@item), class: "btn btn-primary"
+  = link_to "Edit", edit_item_path(@item), class: "btn"
+  = link_to "Select", new_item_batch_path(item), class: 'btn'
+  = link_to "Label", label_path(resource.label), class: "btn"
+  = component :menu, title: "More..." do |menu|
+    = menu.slot(:item) do
+      = link_to "Change icon", edit_item_icon_path(@item)
+    = menu.slot(:item) do
+      = link_to "Copy", new_item_copy_path(@item)
+    - if @account.move
+      = menu.slot(:item) do
+        = link_to "Move", @item.movement ? movement_path(@item.movement) : new_item_movement_path(@item)
+    = menu.slot(:item) do
+      = link_to "Delete", item_path(@item), method: :delete, data: { confirm: 'Are you sure?' }
+    = menu.slot(:item) do
+      = link_to "Search", item_search_path(item)
 
 .list-card
   - if @item.children.empty?
@@ -25,6 +23,6 @@
         = @item.name
         | is empty
       .subtitle.is-6 Items will appear here after they are added
-      = link_to "+ Add items", new_item_child_path(@item), class: 'button'
+      = link_to "+ Add items", new_item_child_path(@item), class: 'btn'
   - else
     = components :item_list_card, @item.children.container_then_item

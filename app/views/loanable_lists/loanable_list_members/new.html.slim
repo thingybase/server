@@ -13,7 +13,7 @@ hr
       .help
         | People can only request to see this list from the invitation link. If their request is approved they can access the account.
     .control
-      = button_tag "Copy link", class: "button is-primary", data: { action: "clipboard#copy" }
+      = button_tag "Copy link", class: "btn btn-primary", data: { action: "clipboard#copy" }
 
 /
   .fields data-controller="clipboard"
@@ -24,4 +24,4 @@ hr
         | Copy and paste this into your email app and send to people so they can request to join this account.
     .field
       = mail_to "", "Send email", subject: "Join my account on Thingybase", body: account_invitation_email_body, class: "button"
-      = button_tag "Copy template", class: "button is-text", data: { action: "clipboard#copy" }
+      = button_tag "Copy template", class: "btn btn-outline", data: { action: "clipboard#copy" }

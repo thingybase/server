@@ -1,7 +1,7 @@
 = title parent_resource.name, subtitle: breadcrumb(breadcrumb_link(parent_resource.name, parent_resource), breadcrumb_link("People", loanable_list_members_path(parent_resource))), icon: "heart"
 
 .buttons
-  =link_to "+ Invite people", new_loanable_list_member_path(@loanable_list), class: "button is-primary"
+  =link_to "+ Invite people", new_loanable_list_member_path(@loanable_list), class: "btn btn-primary"
   .field.has-addons
 
 - @loanable_list.members.each do |member|
