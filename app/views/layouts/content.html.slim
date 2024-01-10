@@ -6,7 +6,7 @@
           = title current_page.data.fetch("title"), subtitle: current_page.data["subtitle"], icon: current_page.data["icon"]
       .columns
         .column.is-offset-2.is-6
-          .content
+          .prose
             = yield
           p
             - with current_page.parent do |root_page|

@@ -1,45 +1,40 @@
 = render_layout "body" do
-  .account-layout
-    .account-layout--sidecar.is-hidden-mobile
-      =electron_drag_region
-      .account-layout--sidecar--navigation
-        .account-layout--sidecar--navigation--top
-          .my-4
-            =search_field autofocus: true, url: navigation_search_path, button: false, autofocus: false, placeholder: navigation_search_placeholder
-          - is_active_navigation_key "Dashboard", active: "is-selected" do |active|
-            =link_to account_path(@account), class: ["button is-text", active].join(" ") do
-              = component :icon, "dashboard-gauge", class: "w-4"
-              span.ml-2
-                | Dashboard
-          - is_active_navigation_key "Items", active: "is-selected" do |active|
-            =link_to account_items_path(@account), class: ["button is-text", active].join(" ") do
-              = component :icon, active ? "chest-open" : "chest", class: "w-4"
-              span.ml-2
-                | Items
-          - is_active_navigation_key "People", active: "is-selected" do |active|
-            =link_to account_people_path(@account), class: ["button is-text", active].join(" ") do
-              = component :icon, "basketball-jersey", class: "w-4"
-              span.ml-2
-                | People
-          - with @account.loanable_list do |loanable_list|
-            - is_active_navigation_key "Borrowing", active: "is-selected" do |active|
-              =link_to account_loanable_list_path(@account), class: ["button is-text", active].join(" ") do
-                = component :icon, "heart", class: "w-4"
-                span.ml-2
-                  | Borrowing
-          - with @account.move do |move|
-            - is_active_navigation_key "Moving", active: "is-selected" do |active|
-              =link_to account_move_path(@account), class: ["button is-text", active].join(" ") do
-                = component :icon, "dolly-cart", class: "w-4"
-                span.ml-2
-                  | Moving
-        .account-layout--sidecar--navigation--top
-          =link_to user_path(current_user), class: "button is-text" do
-            = component :icon, "gears", class: "w-4"
+  .flex.flex-row
+    .flex.flex-col.gap-4.m-4
+      =search_field autofocus: true, url: navigation_search_path, button: false, autofocus: false, placeholder: navigation_search_placeholder
+      - is_active_navigation_key "Dashboard", active: "is-selected" do |active|
+        =link_to account_path(@account), class: ["button is-text", active].join(" ") do
+          = component :icon, "dashboard-gauge", class: "w-4"
+          span.ml-2
+            | Dashboard
+      - is_active_navigation_key "Items", active: "is-selected" do |active|
+        =link_to account_items_path(@account), class: ["button is-text", active].join(" ") do
+          = component :icon, active ? "chest-open" : "chest", class: "w-4"
+          span.ml-2
+            | Items
+      - is_active_navigation_key "People", active: "is-selected" do |active|
+        =link_to account_people_path(@account), class: ["button is-text", active].join(" ") do
+          = component :icon, "basketball-jersey", class: "w-4"
+          span.ml-2
+            | People
+      - with @account.loanable_list do |loanable_list|
+        - is_active_navigation_key "Borrowing", active: "is-selected" do |active|
+          =link_to account_loanable_list_path(@account), class: ["button is-text", active].join(" ") do
+            = component :icon, "heart", class: "w-4"
             span.ml-2
-              | Profile
-    .account-layout--main
-      =electron_drag_region(margin_bottom: "-2rem")
+              | Borrowing
+      - with @account.move do |move|
+        - is_active_navigation_key "Moving", active: "is-selected" do |active|
+          =link_to account_move_path(@account), class: ["button is-text", active].join(" ") do
+            = component :icon, "dolly-cart", class: "w-4"
+            span.ml-2
+              | Moving
+      =link_to user_path(current_user), class: "button is-text" do
+        = component :icon, "gears", class: "w-4"
+        span.ml-2
+          | Profile
+
+    .m-4
       section.section
         -if notice_message
           .container

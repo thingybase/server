@@ -4,7 +4,7 @@ class IconComponent < ViewComponent::Base
   def initialize(key, mode: nil, **locals)
     @mode = mode
     @icon = Icon.find(key) || Icon.find(NOT_FOUND_ICON)
-    @css_class = locals.fetch(:class, "w-4")
+    @css_class = locals.fetch(:class, "w-4 ")
   end
 
   def call
