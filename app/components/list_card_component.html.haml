@@ -1,12 +1,12 @@
-.list-card--item
-  .list-card--item--title.has-inline-icon
+.mt-4.flex-col.gap-2
+  .font-bold
     - if @icon
-      = render IconComponent.new(@icon, class: "icon mr-2 is-small")
+      = render IconComponent.new(@icon, class: "w-4 mr-2")
     - if @link
       = link_to @title, @link
     - else
       = @title
-  .list-card--item--details
+  .flex.flex-row.gap-2
     - if details.any?
       - details.each do |detail|
         .list-card--item--detail

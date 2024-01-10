@@ -160,3 +160,5 @@ gem "tailwindcss-rails"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
+
+gem "phlex-rails", "~> 1.1"

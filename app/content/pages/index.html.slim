@@ -3,16 +3,15 @@ title: Organize, track, and treasure your stuff
 layout: page-with-footer
 ---
 
-section.hero.is-fullheight
-  .hero-body
-    .container
-      .columns.is-vcentered
-        .column.is-4.has-text-right
-          h1.title.is-2 Thingybase
-          h2.subtitle.is-5 Organize, track, and treasure your stuff
-          =link_to "Start organizing →", launch_path, class: "button is-primary is-medium is-primary", role: "button"
-        .column
-          = component :vector, key: "illustrations/organizational-pride.svg"
+section.hero.min-h-screen.bg-base-200
+  .hero-content
+    .flex-col.lg:flex-row
+      div
+        h1.font-bold Thingybase
+        h2 Organize, track, and treasure your stuff
+        =link_to "Start organizing →", launch_path, class: "btn btn-primary", role: "button"
+      div
+        = component :vector, key: "illustrations/organizational-pride.svg"
 
 section.hero.is-medium.is-warning
   .hero-body

@@ -8,34 +8,34 @@
             =search_field autofocus: true, url: navigation_search_path, button: false, autofocus: false, placeholder: navigation_search_placeholder
           - is_active_navigation_key "Dashboard", active: "is-selected" do |active|
             =link_to account_path(@account), class: ["button is-text", active].join(" ") do
-              = component :icon, "dashboard-gauge", class: "icon"
+              = component :icon, "dashboard-gauge", class: "w-4"
               span.ml-2
                 | Dashboard
           - is_active_navigation_key "Items", active: "is-selected" do |active|
             =link_to account_items_path(@account), class: ["button is-text", active].join(" ") do
-              = component :icon, active ? "chest-open" : "chest", class: "icon"
+              = component :icon, active ? "chest-open" : "chest", class: "w-4"
               span.ml-2
                 | Items
           - is_active_navigation_key "People", active: "is-selected" do |active|
             =link_to account_people_path(@account), class: ["button is-text", active].join(" ") do
-              = component :icon, "basketball-jersey", class: "icon"
+              = component :icon, "basketball-jersey", class: "w-4"
               span.ml-2
                 | People
           - with @account.loanable_list do |loanable_list|
             - is_active_navigation_key "Borrowing", active: "is-selected" do |active|
               =link_to account_loanable_list_path(@account), class: ["button is-text", active].join(" ") do
-                = component :icon, "heart", class: "icon"
+                = component :icon, "heart", class: "w-4"
                 span.ml-2
                   | Borrowing
           - with @account.move do |move|
             - is_active_navigation_key "Moving", active: "is-selected" do |active|
               =link_to account_move_path(@account), class: ["button is-text", active].join(" ") do
-                = component :icon, "dolly-cart", class: "icon"
+                = component :icon, "dolly-cart", class: "w-4"
                 span.ml-2
                   | Moving
         .account-layout--sidecar--navigation--top
           =link_to user_path(current_user), class: "button is-text" do
-            = component :icon, "gears", class: "icon"
+            = component :icon, "gears", class: "w-4"
             span.ml-2
               | Profile
     .account-layout--main
