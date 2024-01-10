@@ -55,8 +55,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "chronic", "~> 0.10.2"
 # Search Postgres records
 gem "pg_search", "~> 2.3"
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.3'
 # Blanks from forms are converted into nil instead of stored as "" in the database
 gem "nilify_blanks", "~> 1.4"
 # Does union queries in ActiveRecord.
@@ -146,6 +144,19 @@ gem "slim-rails", "~> 3.5"
 
 gem "blazer", "~> 2.6"
 
-gem "turbo-rails", "~> 1.3"
-
 gem "imageomatic", "~> 0.1.4"
+
+# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+gem "importmap-rails"
+
+# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+gem "turbo-rails"
+
+# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+gem "stimulus-rails"
+
+# Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
+gem "tailwindcss-rails"
+
+# The modern asset pipeline for Rails [https://github.com/rails/propshaft]
+gem "propshaft"
