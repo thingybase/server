@@ -1,7 +1,7 @@
 = render_layout "body" do
   .flex.flex-row
     .flex.flex-col.m-4
-      =search_field autofocus: true, url: navigation_search_path, button: false, autofocus: false, placeholder: navigation_search_placeholder
+      .mb-4=search_field autofocus: true, url: navigation_search_path, button: false, autofocus: false, placeholder: navigation_search_placeholder
       - is_active_navigation_key "Dashboard", active: "is-selected" do |active|
         =link_to account_path(@account), class: ["p-2 rounded hover:bg-neutral-200", active].join(" ") do
           = component :icon, "dashboard-gauge", class: "w-4"
@@ -42,4 +42,4 @@
         .container
           = yield
       footer.account-layout--footer.is-hidden-tablet.has-text-centered.py-6
-        =link_to "Manage #{@account.name}", account_path(@account), class: "p-2 rounded hover:bg-neutral-200"
+        =link_to "Manage #{@account.name}", account_path(@account), class: "btn btn-outline"

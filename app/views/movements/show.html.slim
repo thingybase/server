@@ -2,9 +2,9 @@
 
 .field.has-addons
   .control
-    = link_to "Edit", edit_movement_path(@movement), class: "button"
+    = link_to "Edit", edit_movement_path(@movement), class: "btn"
   .control
-    = link_to "Print", url_for(format: :pdf), class: "button"
+    = link_to "Print", url_for(format: :pdf), class: "btn"
 
 .label-preview
   img.label-preview--embed src=url_for(format: :png)

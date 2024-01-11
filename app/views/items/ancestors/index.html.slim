@@ -1,7 +1,7 @@
 = title resource.name, icon: @item.icon, subtitle: "Navigate to the container"
 
 .buttons
-  = link_to "← Back", :back, class: "button", "data-turbolinks-action": "replace"
+  = link_to "← Back", :back, class: "btn", "data-turbolinks-action": "replace"
 
 .list-card
 = component :item_list_card, item: @item

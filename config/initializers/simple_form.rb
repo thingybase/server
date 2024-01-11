@@ -28,7 +28,7 @@ SimpleForm.setup do |config|
 
   bulma_wrapper :default, config do |b|
     b.wrapper tag: :div, class: "control" do |component|
-      component.use :input, class: "input", error_class: "is-danger"
+      component.use :input, class: "input input-bordered", error_class: "input-error"
     end
   end
 
@@ -36,7 +36,7 @@ SimpleForm.setup do |config|
   bulma_wrapper :select, config do |b|
     b.wrapper tag: :div, class: "select" do |s|
       s.wrapper tag: :div, class: "control" do |c|
-        c.use :input, class: "input", error_class: "is-danger"
+        c.use :input, class: "input input-bordered", error_class: "is-danger"
       end
     end
   end
@@ -72,7 +72,7 @@ SimpleForm.setup do |config|
   config.boolean_style = :nested
 
   # Default class for buttons
-  config.button_class = "button"
+  config.button_class = "btn"
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.

@@ -23,5 +23,5 @@ hr
       .help
         | Copy and paste this into your email app and send to people so they can request to join this account.
     .field
-      = mail_to "", "Send email", subject: "Join my account on Thingybase", body: account_invitation_email_body, class: "button"
+      = mail_to "", "Send email", subject: "Join my account on Thingybase", body: account_invitation_email_body, class: "btn"
       = button_tag "Copy template", class: "btn btn-outline", data: { action: "clipboard#copy" }
