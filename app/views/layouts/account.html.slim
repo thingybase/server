@@ -35,11 +35,9 @@
           | Profile
 
     .m-4
-      section.section
+      section.flex.flex-col.gap-8.p-8
         -if notice_message
-          .container
-            = notice_message class: "mb-4"
-        .container
-          = yield
+          = notice_message class: "mb-4"
+        = yield
       footer.account-layout--footer.is-hidden-tablet.has-text-centered.py-6
         =link_to "Manage #{@account.name}", account_path(@account), class: "btn btn-outline"

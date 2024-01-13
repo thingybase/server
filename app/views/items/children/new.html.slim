@@ -1,11 +1,10 @@
 = title @container.name, subtitle: item_breadcrumb(@container, leaf: "Add items"), icon: @container.icon
 
 = application_form @item, url: url_for(action: :create) do |f|
-  .field.has-addons
-    .control.is-hidden-mobile
-      span.select= f.input_field :container, as: :select, include_blank: false, collection: [["Item", false], ["Container", true]]
-    .control.is-expanded= f.input_field :name, autofocus: true, class: "input", placeholder: "Name"
-    .control= f.button :submit, "Create", class: 'is-primary'
+  .join
+    = f.input_field :container, class: "join-item input input-bordered", as: :select, include_blank: false, collection: [["Item", false], ["Container", true]]
+    = f.input_field :name, autofocus: true, class: "input input-bordered join-item", placeholder: "Name"
+    = f.button :submit, "Create", class: 'btn btn-primary join-item'
 
 -with created_resource do |item|
   p.mt-2.mb-4

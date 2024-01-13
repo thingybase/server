@@ -1,7 +1,7 @@
 .join
-  = link_to "Edit", edit_item_path(@item), class: "btn"
-  = link_to "Change icon", edit_item_icon_path(@item), class: "btn"
-  = link_to "Label", label_path(resource.label), class: "btn"
+  = link_to "Edit", edit_item_path(@item), class: "btn join-item"
+  = link_to "Change icon", edit_item_icon_path(@item), class: "btn join-item"
+  = link_to "Label", label_path(resource.label), class: "btn join-item"
   = component :menu, title: "More..." do |menu|
     = menu.slot(:item) do
       = link_to "Copy", new_item_copy_path(@item)
