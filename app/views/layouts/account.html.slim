@@ -1,6 +1,6 @@
 = render_layout "body" do
   .flex.flex-row
-    .flex.flex-col.m-4
+    .flex.flex-col.p-4.bg-neutral-100.sticky.top-0.h-screen
       .mb-4=search_field autofocus: true, url: navigation_search_path, button: false, autofocus: false, placeholder: navigation_search_placeholder
       - is_active_navigation_key "Dashboard", active: "is-selected" do |active|
         =link_to account_path(@account), class: ["p-2 rounded hover:bg-neutral-200", active].join(" ") do
