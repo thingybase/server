@@ -1,26 +1,14 @@
 = render_layout "page" do
-  .hero.is-large style=background_image_style
-    .hero-body
-      .container
-        h1.title
-          .is-slab-text= current_page.data.fetch("title")
-        - if subtitle = current_page.data.fetch("subtitle", nil)
-          h2.subtitle
-            .is-slab-text= subtitle
-  section.section
-    .container
-      .columns
-        .column.is-6.is-offset-3
-          .prose
-            = yield
+  .flex.flex-col.justify-center class="min-h-[75vh]" style=background_image_style
+    .flex.flex-col.gap-2.align-left.p-24
+      h1.text-5xl.font-bold.px-2.py-1.bg-base-100.bg-opacity-90.max-w-fit= current_page.data.fetch("title")
+      - if subtitle = current_page.data.fetch("subtitle", nil)
+        h2.text-lg.px-2.py-1.bg-base-100.bg-opacity-90.max-w-fit= subtitle
+  section.prose.mx-auto.my-8= yield
   hr
-  section.hero
-    .hero-body
-      .container.has-text-centered
-        h2.title More projects
-        h3.subtitle If you feeling like conquering the world, these other projects will help you get even more organized
-      .container.my-6
-        .columns
-          - current_page.siblings.excluding(current_page).take(3).each do |page|
-            .column.is-one-third
-              = page_card page
+  section.flex.flex-col.gap-4.my-8.mx-auto
+    h2.text-2xl.font-bold More projects
+    h3.text-lg If you feeling like conquering the world, these other projects will help you get even more organized
+    .grid.grid-cols-3
+      - current_page.siblings.excluding(current_page).take(3).each do |page|
+        = page_card page

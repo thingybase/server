@@ -1,25 +1,18 @@
 =electron_drag_region
-section.hero.is-fullheight
-  .hero-body
-    .container
-      .columns.is-vcentered
-        .column.is-6.is-offset-2
-          = title "Get Thingybase Home Plus", subtitle: "$4.99 per month billed annually"
+section.hero
+  .hero-content
+    .flex.flex-col.gap-8
+      = title "Get Thingybase Home Plus", subtitle: "$4.99 per month billed annually"
+      .flex.flex-col.gap-4
+        =link_to "Upgrade now →", account_payment_path(@account), method: :post, class: "btn btn-primary is-medium"
+        p Stripe will processes your payment information and complete the upgrade.
 
-          .my-4
-            =link_to "Upgrade now →", account_payment_path(@account), method: :post, class: "btn btn-primary is-medium"
+      .prose
+        p Get these superpowers in just a few minutes:
 
-          p.my-2 Get these superpowers in just a few minutes:
-
-          ul.is-checklist
-            li Add up to 6 family members to find stuff and stay organized
-            li Keep track of an unlimited number of items
-            li Waste less by tracking expiration dates on items
-            li Print magic labels that you can scan with your phone
-
-          hr
-
-          p Stripe will processes your payment information and complete the upgrade.
-
-        .column.is-3
-          = component :vector, key: "illustrations/save-earth.svg"
+        ul
+          li Add up to 6 family members to find stuff and stay organized
+          li Keep track of an unlimited number of items
+          li Waste less by tracking expiration dates on items
+          li Print magic labels that you can scan with your phone
+    = component :vector, key: "illustrations/save-earth.svg", class: "object-contain"
