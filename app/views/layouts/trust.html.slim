@@ -1,13 +1,4 @@
 = render_layout "page" do
-  section.hero
-    .hero-body
-      .container
-        .columns
-          .column
-            = title current_page.data.fetch("title"), subtitle: current_page.data["subtitle"], icon: current_page.data["icon"]
-  section.section
-    .container
-      .columns
-        .column
-          .content
-            = yield
+  section.flex.flex-col.gap-16.my-16.mx-auto.max-w-prose
+    = title current_page.data.fetch("title"), subtitle: current_page.data["subtitle"], icon: current_page.data["icon"]
+    .prose= yield

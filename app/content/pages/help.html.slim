@@ -4,11 +4,11 @@ subtitle: Dive in a little deeper and figure it out
 icon: open-book
 ---
 
-.hero
-  .hero-content
-    = title current_page.data.fetch("title"), subtitle: current_page.data["subtitle"], icon: current_page.data["icon"]
-.grid.grid-columns-3
-- current_page.children.each do |page|
-  .flex.flex-col.gap-4
-    h3.text-lg.font-bold= link_to page.data.fetch("title"), page.request_path
-    p= page.data.fetch("subtitle")
+.flex.flex-col.gap-16.max-w-prose.mx-auto.my-16
+  = title current_page.data.fetch("title"), subtitle: current_page.data["subtitle"], icon: current_page.data["icon"]
+
+  .grid.grid-cols-2.gap-4
+    - current_page.children.each do |page|
+      .flex.flex-col
+        h3.text-lg.font-bold= link_to page.data.fetch("title"), page.request_path
+        p= page.data.fetch("subtitle")

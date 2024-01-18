@@ -1,12 +1,12 @@
-= title "Pick an account", subtitle: "Switch into a different account or create a new account"
+.flex.flex-col.gap-8
+  = title "Pick an account", subtitle: "Switch into a different account or create a new account"
 
-.list-cards.flex.flex-col.gap-4
-  - @accounts.each do |account|
-    = component :list_card, account.name, account do |card|
-      - card.slot(:detail) do
-        | Created #{local_time_ago account.created_at}
-      - card.slot(:detail) do
-        =pluralize account.items.size, "item"
+  .flex.flex-col
+    - @accounts.each do |account|
+      = component :list_card, account.name, account do |card|
+        - card.slot(:detail) do
+          | Created #{local_time_ago account.created_at}
+        - card.slot(:detail) do
+          =pluralize account.items.size, "item"
 
-.buttons
   = link_to "+ Create new account", new_account_path, class: 'btn'

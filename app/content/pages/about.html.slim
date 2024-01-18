@@ -4,49 +4,46 @@ subtitle: How and why Thingybase got started
 image_url: https://objects.bradgessler.com/Sup00xiEjl9InLhZqZ135muBZ7Vau9gDV67OXhcxHZxFrkzmkh9OtHis0fNT9VeqsHb5D06bIm5LFWYs4gB6gZAredxSJoPBK95y.jpeg
 ---
 
-.hero.is-medium style=background_image_style
-  .hero-body
-    .container
-      .columns
-        .column.is-offset-3.is-6
-          .box.px-6.py-6.is-radiusless.is-rotated-1-deg
-            .has-text-centered.mb-6
-              h2.title= current_page.data.fetch("title")
-              h3.subtitle= current_page.data.fetch("subtitle", nil)
-            .content
-              p
-                | It all started in 2018 a few weeks before our second daughter was born. Our family loves to cook, and we were cooking like mad to stock up a bunch of freezer meals for the first few weeks of our second child's life. As I was labeling all of our food to put into the freezer, I found myself thinking, "there has to be a better way to do this!"
+.hero style=background_image_style
+  .bg-base-100.shadow.rotate-1.m-32.p-16
+    .prose
+      hgroup
+        h2.title= current_page.data.fetch("title")
+        h3.subtitle= current_page.data.fetch("subtitle", nil)
 
-              h2.title.is-5 Label makers suck
+      p
+        | It all started in 2018 a few weeks before our second daughter was born. Our family loves to cook, and we were cooking like mad to stock up a bunch of freezer meals for the first few weeks of our second child's life. As I was labeling all of our food to put into the freezer, I found myself thinking, "there has to be a better way to do this!"
 
-              p
-                | I should be able to use my phone to make labels instead of a junky little stand-alone label maker with a weird keyboard and even weirder cartridges. I knew about <%= link_to "wireless thermal label printers", page_path("help/printers") %> and thought, "wouldn't it be cool if I could easily make labels with one of those?"
+      h2.title.is-5 Label makers suck
 
-              h2.title.is-5 I should have a search engine for my stuff
+      p
+        | I should be able to use my phone to make labels instead of a junky little stand-alone label maker with a weird keyboard and even weirder cartridges. I knew about <%= link_to "wireless thermal label printers", page_path("help/printers") %> and thought, "wouldn't it be cool if I could easily make labels with one of those?"
 
-              p
-                | If I'm going through the trouble of printing a label from my phone, why can't I store that fact somewhere electronically so I can search it later to see what I've got? There's so many amazing things that I can do by simply storing this stuff in a database that I can access from home or on the go.
+      h2.title.is-5 I should have a search engine for my stuff
 
-              h2.title.is-5 My family should be able to search through our stuff
+      p
+        | If I'm going through the trouble of printing a label from my phone, why can't I store that fact somewhere electronically so I can search it later to see what I've got? There's so many amazing things that I can do by simply storing this stuff in a database that I can access from home or on the go.
 
-              p
-                | If I've got all of my stuff in a database, wouldn't it be handy if I could securely share it with the rest of the family so they can search it too without always asking me where something is located?
+      h2.title.is-5 My family should be able to search through our stuff
 
-              h2.title.is-5 I just love building stuff
+      p
+        | If I've got all of my stuff in a database, wouldn't it be handy if I could securely share it with the rest of the family so they can search it too without always asking me where something is located?
 
-              p
-                | Unhappy with the status quo, I started to build out Thingybase to what it is today. I found it so useful and the use cases so compelling that I decided to open it up to the world so I could share it with my family and friends.
+      h2.title.is-5 I just love building stuff
 
-              p
-                | I don't just work on Thingybase because it makes my life better—I get to share the fun! See the stick figures all over? Those were inspired by my eldest daughter's preschool artwork. If they don't make you smile, even just a little bit, then I don't know what will.
+      p
+        | Unhappy with the status quo, I started to build out Thingybase to what it is today. I found it so useful and the use cases so compelling that I decided to open it up to the world so I could share it with my family and friends.
 
-              .my-4= component :vector, key: "illustrations/save-earth.svg"
+      p
+        | I don't just work on Thingybase because it makes my life better—I get to share the fun! See the stick figures all over? Those were inspired by my eldest daughter's preschool artwork. If they don't make you smile, even just a little bit, then I don't know what will.
 
-              p
-                | You'll find other little touches all over. Dark mode works great, even for illustrations. It's fast. It's private. Each time I make an improvement and deploy, it feels like I'm chipping away at this problem and making peoples' lives just a tiny bit more manageable and less stressful.
+      .my-4= component :vector, key: "illustrations/save-earth.svg"
 
-              p Cheers,
-              p= component :vector, key: "illustrations/signature.svg"
+      p
+        | You'll find other little touches all over. Dark mode works great, even for illustrations. It's fast. It's private. Each time I make an improvement and deploy, it feels like I'm chipping away at this problem and making peoples' lives just a tiny bit more manageable and less stressful.
+
+      p Cheers,
+      p= component :vector, key: "illustrations/signature.svg"
 section.hero.is-medium
   .hero-body
     .container.has-text-centered
