@@ -6,11 +6,11 @@ image_url: https://objects.bradgessler.com/Sup00xiEjl9InLhZqZ135muBZ7Vau9gDV67OX
 
 .hero style=background_image_style
   .bg-base-100.shadow.rotate-1.m-32.p-16
-    .prose
-      hgroup
-        h2.title= current_page.data.fetch("title")
-        h3.subtitle= current_page.data.fetch("subtitle", nil)
+    hgroup.mb-16.text-center
+      h2.text-4xl.font-bold= current_page.data.fetch("title")
+      h3.text-2xl= current_page.data.fetch("subtitle", nil)
 
+    .prose
       p
         | It all started in 2018 a few weeks before our second daughter was born. Our family loves to cook, and we were cooking like mad to stock up a bunch of freezer meals for the first few weeks of our second child's life. As I was labeling all of our food to put into the freezer, I found myself thinking, "there has to be a better way to do this!"
 
@@ -37,20 +37,20 @@ image_url: https://objects.bradgessler.com/Sup00xiEjl9InLhZqZ135muBZ7Vau9gDV67OX
       p
         | I don't just work on Thingybase because it makes my life better—I get to share the fun! See the stick figures all over? Those were inspired by my eldest daughter's preschool artwork. If they don't make you smile, even just a little bit, then I don't know what will.
 
-      .my-4= component :vector, key: "illustrations/save-earth.svg"
+      .text-center= component :vector, key: "illustrations/save-earth.svg"
 
       p
         | You'll find other little touches all over. Dark mode works great, even for illustrations. It's fast. It's private. Each time I make an improvement and deploy, it feels like I'm chipping away at this problem and making peoples' lives just a tiny bit more manageable and less stressful.
 
       p Cheers,
       p= component :vector, key: "illustrations/signature.svg"
-section.hero.is-medium
-  .hero-body
-    .container.has-text-centered
-      h2.title I use it daily
-      h3.subtitle This is how I actually use Thingybase to make my life a little more organized
+
+section
+  .flex.flex-col.my-24.gap-8.items-center
+    hgroup.text-centered
+      h2.text-4xl.font-bold I use it daily
+      h3.text-2xl This is how I actually use Thingybase to make my life a little more organized
     .container.mt-6
-      .columns
+      .grid.grid-cols-3.gap-8
         - site.get("projects").children.take(3).each do |page|
-          .column.is-one-third
-            = page_card page
+          = page_card page

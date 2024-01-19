@@ -4,11 +4,12 @@
       h1.text-5xl.font-bold.px-2.py-1.bg-base-100.bg-opacity-90.max-w-fit= current_page.data.fetch("title")
       - if subtitle = current_page.data.fetch("subtitle", nil)
         h2.text-lg.px-2.py-1.bg-base-100.bg-opacity-90.max-w-fit= subtitle
-  section.prose.mx-auto.my-8= yield
-  hr
-  section.flex.flex-col.gap-4.my-8.mx-auto
-    h2.text-2xl.font-bold More projects
-    h3.text-lg If you feeling like conquering the world, these other projects will help you get even more organized
-    .grid.grid-cols-3
-      - current_page.siblings.excluding(current_page).take(3).each do |page|
-        = page_card page
+  section.prose.mx-auto.my-24= yield
+  section.bg-base-200.py-24
+    .flex.flex-col.gap-8.items-center
+      hgroup.mb-8.text-center
+        h2.text-4xl.font-bold More projects
+        h3.text-2xl If you feeling like conquering the world, these other projects will help you get even more organized
+      .grid.grid-cols-3.gap-8
+        - site.get("projects").children.take(3).each do |page|
+          = page_card page
