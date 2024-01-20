@@ -4,13 +4,10 @@ subtitle: Get ideas for how you can become more organized
 icon: open-book
 ---
 
-section.hero
-  .hero-body
-    .container
-      .columns
-        .column
-          = title current_page.data.fetch("title"), subtitle: current_page.data["subtitle"], icon: current_page.data["icon"]
+section
+  .container.my-12.mx-auto
+    .mb-12= title current_page.data.fetch("title"), subtitle: current_page.data["subtitle"], icon: current_page.data["icon"]
 
-section.grid.grid-cols-3.gap-4
-  - current_page.children.each do |page|
-      = page_card page
+    .grid.grid-cols-3.gap-8
+      - current_page.children.each do |page|
+          = page_card page

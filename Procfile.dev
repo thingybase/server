@@ -1,3 +1,4 @@
 web: bin/rails server -p $PORT --binding=0.0.0.0
 # css: bin/rails tailwindcss:watch
+css: ~/.rbenv/versions/3.3.0/lib/ruby/gems/3.3.0/gems/tailwindcss-rails-2.2.1-arm64-darwin/exe/arm64-darwin/tailwindcss -i app/assets/stylesheets/application.tailwind.css -o app/assets/builds/tailwind.css -c config/tailwind.config.js --minify -w
 stripe: stripe listen --forward-to localhost:5000/webhooks/stripe --latest
