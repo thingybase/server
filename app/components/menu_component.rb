@@ -1,9 +1,23 @@
-class MenuComponent < ViewComponent::Base
-  include ViewComponent::Slotable
-
-  with_slot :item, collection: true
+class MenuComponent < ApplicationComponent
+  include Phlex::DeferredRender
 
   def initialize(title:)
     @title = title
+    @items = []
+  end
+
+  def item(&item)
+    @items << item
+  end
+
+  def template
+    details(class: "dropdown") do
+      summary(class: "btn") { @title }
+      ul(class: "p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52 z-[1]") do
+        @items.each do |item|
+          li(class: "dropdown-item", &item)
+        end
+      end
+    end
   end
 end
