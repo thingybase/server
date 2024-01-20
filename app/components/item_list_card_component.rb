@@ -8,7 +8,7 @@ class ItemListCardComponent < ListCardComponent
     @_context.target << helpers.local_time_ago(...)
   end
 
-  def initialize(item, is_parent_visible: false, link: nil)
+  def initialize(item:, is_parent_visible: false, link: nil)
     @item = item
     @is_parent_visible = is_parent_visible
     @link = link.nil? ? @item : link

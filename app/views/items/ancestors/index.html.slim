@@ -5,7 +5,8 @@
 
 .list-card
 = component :item_list_card, item: @item
-= components :item_list_card, @item.ancestors.reverse
+- @item.ancestors.reverse.each do
+  = component :item_list_card, item: _1
 = component :list_card, @account.name, account_items_path(@account), icon: "chest-open" do |card|
   - card.detail do
     | Created

@@ -13,4 +13,5 @@
       .list-card--title
         | Could not find anything matching "#{@search.phrase}" in #{@account.name}.
   -else
-    = components :item_list_card, @search.items, is_parent_visible: true
+    - @search.items.each do
+      =component :item_list_card, item: _1, is_parent_visible: true

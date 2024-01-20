@@ -26,4 +26,5 @@
       .subtitle.is-6 Items will appear here after they are added
       = link_to "+ Add items", new_item_child_path(@item), class: 'btn'
   - else
-    = components :item_list_card, @item.children.container_then_item
+    - @item.children.container_then_item.each do
+      = component :item_list_card, item: _1

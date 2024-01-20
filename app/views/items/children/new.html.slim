@@ -22,6 +22,7 @@
         | is empty
       .subtitle.is-6 Items will appear here after they are added above
   - else
-    = components :item_list_card, @items.container_then_item
+    - @items.container_then_item.each do
+      = component :item_list_card, item: _1
 
 =link_to "Create item from a template...", templates_item_children_path(@container), class: "btn btn-outline"
