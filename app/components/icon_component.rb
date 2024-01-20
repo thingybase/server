@@ -1,4 +1,4 @@
-class IconComponent < ViewComponent::Base
+class IconComponent < ApplicationComponent
   NOT_FOUND_ICON = "objects".freeze
 
   def initialize(key, mode: nil, **locals)
@@ -7,7 +7,7 @@ class IconComponent < ViewComponent::Base
     @css_class = locals.fetch(:class, "w-4 ")
   end
 
-  def call
+  def template
     render VectorComponent.new(asset: @icon.asset, mode: @mode, class: @css_class)
   end
 end
