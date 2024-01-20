@@ -60,8 +60,6 @@ gem "nilify_blanks", "~> 1.4"
 gem "active_record_union"
 # Converts GUIDs in the URLs into shorter ids
 gem "anybase", "~> 0.0.15"
-# Pull this out when Rails 6.1 is a thing
-gem "view_component", "~> 2.0"
 # View template for CSV files
 gem "csv_builder", "~> 2.1"
 # Content management

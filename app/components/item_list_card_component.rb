@@ -1,17 +1,44 @@
-class ItemListCardComponent < ViewComponent::Base
-  include ViewComponent::Slotable
-
-  with_collection_parameter :item
-  with_slot :detail, collection: true
-
+class ItemListCardComponent < ListCardComponent
   attr_accessor :item
 
   delegate :containers_count, :items_count, to: :item
 
-  def initialize(item:, is_parent_visible: false, link: nil)
+  # TODO: Add a register helper method .... ask Joel about how to hook this up.
+  def local_time_ago(...)
+    @_context.target << helpers.local_time_ago(...)
+  end
+
+  def initialize(item, is_parent_visible: false, link: nil)
     @item = item
     @is_parent_visible = is_parent_visible
     @link = link.nil? ? @item : link
+    super(@item.name, @link, icon: @item.icon)
+
+    detail do
+      plain contents
+    end
+
+    detail do
+      plain "Created"
+      whitespace
+      local_time_ago @item.created_at
+    end
+
+    if expires?
+      detail do
+        plain expiration_tense
+        whitespace
+        local_time_ago @item.expires_at
+      end
+    end
+
+    if is_parent_visible?
+      detail do
+        plain "In"
+        whitespace
+        link_to @item.parent.name, @item.parent
+      end
+    end
   end
 
   def expires?

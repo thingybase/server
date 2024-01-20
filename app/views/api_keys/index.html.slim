@@ -6,6 +6,6 @@ h2.subtitle Connect to other applications and services with API keys
 .list-cards
   - @api_keys.each do |api_key|
     = component :list_card, api_key.name, api_key_path(api_key) do |card|
-      - card.slot(:detail) do
+      - card.detail do
         | Created
         =local_time api_key.created_at

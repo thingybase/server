@@ -2,13 +2,13 @@
 
 .list-cards
   = component :list_card, "Home", new_accounts_templates_home_path, icon: "home" do |card|
-    - card.slot(:detail) do
+    - card.detail do
       | Setup all the rooms in your house to start organizing your stuff
 
   = component :list_card, "Office snacks & supplies", new_accounts_templates_office_path, icon: "home-office" do |card|
-    - card.slot(:detail) do
+    - card.detail do
       | Inventory all of your snack and supply rooms so employees can find it themselves
 
   = component :list_card, "Blank", new_accounts_templates_blank_path, icon: "sheets" do |card|
-    - card.slot(:detail) do
+    - card.detail do
       | Got something else in mind? Start with an empty account and set it all up yourself

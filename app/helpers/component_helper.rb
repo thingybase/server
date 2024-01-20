@@ -3,8 +3,10 @@ module ComponentHelper
     render componentize(name).new(*args, **kwargs), &block
   end
 
-  def components(name, *args, **kwargs, &block)
-    render componentize(name).with_collection(*args, **kwargs), &block
+  def components(name, collection, *args, **kwargs, &block)
+    collection.map do |item|
+      capture { render componentize(name).new(item, *args, **kwargs), &block }
+    end.join("\n").html_safe
   end
 
   private

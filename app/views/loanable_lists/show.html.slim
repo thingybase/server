@@ -11,7 +11,7 @@
 -else
   - resource.loanable_items.each do |loanable|
     = component :list_card, loanable.item.name, loanable, icon: loanable.item.icon do |card|
-      - card.slot(:detail) do
+      - card.detail do
         | Created
         = local_time_ago loanable.created_at
 

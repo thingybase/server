@@ -416,10 +416,6 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     version_gem (1.1.1)
-    view_component (2.82.0)
-      activesupport (>= 5.2.0, < 8.0)
-      concurrent-ruby (~> 1.0)
-      method_source (~> 1.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -506,7 +502,6 @@ DEPENDENCIES
   turbo-rails
   twilio-ruby
   tzinfo-data
-  view_component (~> 2.0)
   web-console (>= 3.3.0)
   webdrivers
 

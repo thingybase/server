@@ -6,9 +6,9 @@
 
 - @loanable_list.members.each do |member|
   = component :list_card, member.user.name, icon: "mailer" do |card|
-    - card.slot(:detail) do
+    - card.detail do
       | Member
-    - card.slot(:detail) do
+    - card.detail do
       | Approved
       = local_time_ago member.created_at
 
@@ -20,8 +20,8 @@
 
   - @loanable_list.member_requests.each do |request|
     = component :list_card, request.user.name, new_loanable_list_member_request_review_path(request), icon: "mailer" do |card|
-      - card.slot(:detail) do
+      - card.detail do
         | Pending request
-      - card.slot(:detail) do
+      - card.detail do
         | Invited
         = local_time_ago request.created_at
