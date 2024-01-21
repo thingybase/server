@@ -29,27 +29,10 @@ class ListCardComponent < ApplicationComponent
       if @details.any?
         div class: "flex flex-row gap-2" do
           @details.each do |detail|
-            span { render detail }
+            span(class: "after:ml-2 after:content-['•'] last:after:content-none") { render detail }
           end
         end
       end
     end
   end
 end
-
-__END__
-
-.py-4.flex-col.gap-2
-  .font-bold
-    - if @icon
-      = render IconComponent.new(@icon, class: "w-4 mr-2")
-    - if @link
-      = link_to @title, @link
-    - else
-      = @title
-  .flex.flex-row.gap-2
-    - if details.any?
-      - details.each do |detail|
-        .list-card--item--detail
-          = detail.content
-

@@ -9,29 +9,25 @@
       - card.detail do
         | Owner
       - card.detail do
-        | Account created
-        = local_time_ago @account.created_at
+        | Account created #{local_time_ago @account.created_at}
 
   - @members.each do |member|
     = component :list_card, member.name, member_path(member), icon: "basketball-jersey" do |card|
       - card.detail do
         | Member
       - card.detail do
-        | Added
-        = local_time_ago member.created_at
+        | Added #{local_time_ago member.created_at}
 
   - @invitations.each do |invitation|
     = component :list_card, (invitation.name || invitation.email), invitation_path(invitation), icon: "mailer" do |card|
       - card.detail do
         | Pending invitation
       - card.detail do
-        | Invited
-        = local_time_ago invitation.created_at
+        | Invited #{local_time_ago invitation.created_at}
 
   - @member_requests.each do |request|
     = component :list_card, request.user.name, new_member_request_review_path(request), icon: "mailer" do |card|
       - card.detail do
         | Pending request
       - card.detail do
-        | Invited to account
-        = local_time_ago request.created_at
+        | Invited to account #{local_time_ago request.created_at}
