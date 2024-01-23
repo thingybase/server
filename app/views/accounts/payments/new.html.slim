@@ -4,7 +4,7 @@ section.hero
     .flex.flex-col.gap-8
       = title "Get Thingybase Home Plus", subtitle: "$4.99 per month billed annually"
       .flex.flex-col.gap-4
-        =link_to "Upgrade now →", account_payment_path(@account), method: :post, class: "btn btn-primary is-medium"
+        =link_to "Upgrade now →", account_payment_path(@account), "data-turbo-method": :post, class: "btn btn-primary is-medium"
         p Stripe will processes your payment information and complete the upgrade.
 
       .prose

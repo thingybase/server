@@ -13,7 +13,7 @@
       -menu.item do
         = link_to "Move", @item.movement ? movement_path(@item.movement) : new_item_movement_path(@item)
     -menu.item do
-      = link_to "Delete", item_path(@item), method: :delete, data: { confirm: 'Are you sure?' }
+      = link_to "Delete", item_path(@item), "data-turbo-method": :delete, data: { confirm: 'Are you sure?' }
     -menu.item do
       = link_to "Search", item_search_path(item)
 

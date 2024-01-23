@@ -14,7 +14,7 @@
       - menu.item do
         = link_to "Move", new_item_movement_path(@item)
     - menu.item do
-      = link_to "Delete", item_path(@item), method: :delete, data: { confirm: 'Are you sure?' }
+      = link_to "Delete", item_path(@item), "data-turbo-method": :delete, data: { confirm: 'Are you sure?' }
 
 =resource_field :created_at do
   =local_time item.created_at

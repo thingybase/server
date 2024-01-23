@@ -11,7 +11,7 @@ header.px-12.py-2
       -if logged_in?
         = active_link_to "Accounts", accounts_path, class: "navbar-item"
         = active_link_to "Profile", user_path(current_user), class: "navbar-item"
-        = active_link_to "Sign out", session_path, method: :delete, class: "navbar-item"
+        = active_link_to "Sign out", session_path, "data-turbo-method": :delete, class: "navbar-item"
       -else
         = active_link_to "Signup", new_session_path, class: "navbar-item"
         = active_link_to "Log in", launch_path, class: "navbar-item"

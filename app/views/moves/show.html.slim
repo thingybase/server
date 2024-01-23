@@ -38,4 +38,4 @@
 
 .join
   = link_to "Edit", edit_move_path(@move), class: "btn btn-outline join-item"
-  = link_to "Delete move", move_path(@move), class: "btn btn-outline join-item", method: :delete, data: { confirm: "Are you sure?" }
+  = link_to "Delete move", move_path(@move), class: "btn btn-outline join-item", "data-turbo-method": :delete, data: { confirm: "Are you sure?" }

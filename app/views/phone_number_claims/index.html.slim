@@ -14,6 +14,6 @@ table.table.is-fullwidth.is-striped
         td= local_time phone_number_claim.created_at
         td
           = link_to t('.show', default: t("helpers.links.show")), phone_number_claim_path(phone_number_claim), class: 'button is-default is-xs'
-          = link_to t('.destroy', default: t("helpers.links.destroy")), phone_number_claim_path(phone_number_claim), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-xs is-danger'
+          = link_to t('.destroy', default: t("helpers.links.destroy")), phone_number_claim_path(phone_number_claim), "data-turbo-method": :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-xs is-danger'
 
 = link_to t('.new', default: t("helpers.links.new")), new_phone_number_claim_path, class: 'btn btn-primary'

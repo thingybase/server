@@ -17,4 +17,4 @@
 
 .buttons
   .control= link_to "Edit", url_for(action: :edit), class: "btn btn-outline"
-  .control= link_to "Delete", resource, method: :delete, class: "btn btn-outline", data: { confirm: 'Are you sure?' }
+  .control= link_to "Delete", resource, "data-turbo-method": :delete, class: "btn btn-outline", data: { confirm: 'Are you sure?' }
