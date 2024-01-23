@@ -7,58 +7,56 @@
         .card-body
           h3.card-title=link_to "Upgrade to Thingybase Home Plus", new_account_payment_path(@account)
           p You'll be able to manage #{feature_maximum upgrade.items, "items"} (currently you have a maximum of #{feature_maximum current_plan.items, "items"}) and get to support the development and sustainability of Thingybase.
-          .mt-5=link_to "Upgrade now →", new_account_payment_path(@account), class: "btn btn-primary "
+          p=link_to "Upgrade now →", new_account_payment_path(@account), class: "btn btn-primary "
 
-  .card.bg-base-200.col-span-3
-    .card-body.flex.flex-row
-      =link_to account_items_path(@account), class: "has-no-text-decoration" do
-        .card-title="Item".pluralize(@account.items.count)
-        .title=@account.items.count
-      =link_to account_people_path(@account), class: "has-no-text-decoration" do
-        .card-title="People".pluralize(@account.members.count)
-        .title=@account.members.count
+  .stats.bg-base-200.col-span-3
+    =link_to account_items_path(@account), class: "stat" do
+      .stat-title="Item".pluralize(@account.items.count)
+      .stat-value=@account.items.count
+    =link_to account_people_path(@account), class: "stat" do
+      .stat-title="People".pluralize(@account.members.count)
+      .stat-value=@account.members.count
 
   .card.bg-base-200.col-span-2
     .card-body
       h3.card-title Items
       p.subtitle.is-5 Organize stuff into rooms, shelves, and containers so you can find it all later
       p You have a total of #{pluralize @account.items.count, "item"} in your account.
-      p=link_to "View items", account_items_path(@account)
+      =link_to "View items", account_items_path(@account), class: "link"
 
   .card.bg-base-200.col-span-1.row-span-2
     .card-body
       h3.card-title Settings
       p.subtitle.is-6 Configure your profile and accounts
 
-      p=link_to "Personal settings", user_path(current_user)
-      p=link_to "Account settings", edit_account_path(@account)
-      p=link_to "Switch accounts", accounts_path
-      p=link_to "Sign out", session_path, method: :delete
+      =link_to "Personal settings", user_path(current_user), class: "link"
+      =link_to "Account settings", edit_account_path(@account), class: "link"
+      =link_to "Switch accounts", accounts_path, class: "link"
+      =link_to "Sign out", session_path, method: :delete, class: "link"
 
-      h3.title.is-5.mt-6 Export
-      p.subtitle.is-6 Save everything for safe keeping
+      h3.card-title Export
+      p Save everything for safe keeping
 
-      p=link_to "Export items to spreadsheet", account_items_path(@account, format: :csv)
+      =link_to "Export items to spreadsheet", account_items_path(@account, format: :csv), class: "link"
 
   .card.bg-base-200.col-span-1
     .card-body
       h3.card-title People
       p.subtitle.is-5 Organize better with a team
       p You have a total of #{pluralize @account.members.count, "person"} in your account.
-      p=link_to "Manage people", account_people_path(@account)
+      =link_to "Manage people", account_people_path(@account), class: "link"
 
   .card.bg-base-200.col-span-1
     .card-body
       h3.card-title Preview features
       p.subtitle Try features before they're fully baked
-      p
-        - if move = @account.move
-          p=link_to "View move", move
-        -else
-          p=link_to "Start a move", account_move_path(@account)
+      - if move = @account.move
+        =link_to "View move", move, class: "link"
+      -else
+        =link_to "Start a move", account_move_path(@account), class: "link"
 
-        - if loanable_list = @account.loanable_list
-          p=link_to "View borrowing list", loanable_list
-        -else
-          p=link_to "Create a borrowing list", account_loanable_list_path(@account)
+      - if loanable_list = @account.loanable_list
+        =link_to "View borrowing list", loanable_list, class: "link"
+      -else
+        =link_to "Create a borrowing list", account_loanable_list_path(@account), class: "link"
 
