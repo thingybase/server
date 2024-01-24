@@ -17,8 +17,6 @@ gem 'jbuilder', '~> 2.10'
 gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.13'
-# HAML templates yo
-gem 'haml-rails'
 # Authorization libraries
 gem 'omniauth'
 gem 'omniauth-google-oauth2'

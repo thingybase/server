@@ -175,15 +175,6 @@ GEM
       activesupport (>= 5.0)
     groupdate (5.2.4)
       activesupport (>= 5)
-    haml (6.1.1)
-      temple (>= 0.8.2)
-      thor
-      tilt
-    haml-rails (2.1.0)
-      actionpack (>= 5.1)
-      activesupport (>= 5.1)
-      haml (>= 4.0.6)
-      railties (>= 5.1)
     hashie (5.0.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
@@ -455,7 +446,6 @@ DEPENDENCIES
   faker
   featureomatic (~> 0.1.1)!
   groupdate (~> 5.2)
-  haml-rails
   imageomatic (~> 0.1.4)
   importmap-rails
   jbuilder (~> 2.10)

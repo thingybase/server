@@ -1,8 +1,0 @@
-= application_form(@<%= singular_table_name %>) do |f|
-
-  .form-inputs
-  <%- attributes.each do |attribute| -%>
-    = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>
-  <%- end -%>
-
-  = f.button :submit
