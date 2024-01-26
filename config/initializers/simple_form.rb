@@ -27,18 +27,12 @@ SimpleForm.setup do |config|
   end
 
   bulma_wrapper :default, config do |b|
-    b.wrapper tag: :div, class: "control" do |component|
-      component.use :input, class: "input input-bordered", error_class: "input-error"
-    end
+    b.use :input, class: "input input-bordered", error_class: "input-error"
   end
 
   # Selects require a wrapper class around the control.
   bulma_wrapper :select, config do |b|
-    b.wrapper tag: :div, class: "select" do |s|
-      s.wrapper tag: :div, class: "control" do |c|
-        c.use :input, class: "input input-bordered", error_class: "is-danger"
-      end
-    end
+    b.use :input, class: "select select-bordered", error_class: "select-error"
   end
 
   config.wrappers :boolean, class: "field", error_class: "is-danger" do |b|

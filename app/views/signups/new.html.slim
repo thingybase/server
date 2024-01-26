@@ -1,5 +1,6 @@
-= title "Welcome!", subtitle: "Looks like its your first time here so lets setup your profile"
+section.container-lg
+  = title "Welcome!", subtitle: "Looks like its your first time here so lets setup your profile"
 
-= application_form @user, url: signup_url do |f|
-  = f.input :name, autofocus: true, hint: "People you add to your account will see you by this name."
-  = f.button :submit, "Continue →", class: 'is-primary'
+  = application_form @user, url: signup_url do |f|
+    = f.input :name, autofocus: true, hint: "People you add to your account will see you by this name."
+    = f.button :submit, "Continue →", class: 'is-primary'

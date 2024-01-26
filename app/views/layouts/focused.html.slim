@@ -1,9 +1,12 @@
 = render_layout "body" do
-  header.is-hidden-app
-    nav.navbar(role="navigation" aria-label="main navigation")
-      .container
-        .navbar-brand
-          = active_link_to "Thingybase", root_path, class: "navbar-item has-text-weight-bold"
-  section.max-w-prose.mx-auto.my-8
+  header.px-12.py-2
+    nav.navbar.bg-base-100(role="navigation" aria-label="main navigation")
+      .flex-1
+        = active_link_to "Thingybase", root_path, class: "font-bold"
+        a.navbar-burger.burger(aria-expanded="false" aria-label="menu" data-target="navbar-application-navigation" role="button")
+          span(aria-hidden="true")
+          span(aria-hidden="true")
+          span(aria-hidden="true")
+  section.container-lg
     = notice_message class: "mb-4"
     = yield

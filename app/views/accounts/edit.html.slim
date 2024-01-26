@@ -6,10 +6,10 @@
 
 hr
 
-.notification.is-danger.is-light
-  .content
-    h3.title.is-4 Danger Zone™
+.card.bg-error
+  .card-body
+    h3.card-title Danger Zone™
     h4.subtitle.is-5 Be careful, this will destroy all of your account data
     p Deleting this account will permanently delete all the labels, items, and memberships for this account. Your profile and other accounts won't be affected.
-    = link_to "Permanently delete account, items, labels, and memberships", account_path(@account), method: "delete", data: { confirm: "Are you sure?" }, class: 'btn'
+    = link_to "Permanently delete account, items, labels, and memberships", account_path(@account), method: "delete", data: { confirm: "Are you sure?" }, class: 'btn btn-outline'
 

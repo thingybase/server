@@ -1,4 +1,4 @@
 = render_layout "page" do
-  section.flex.flex-col.gap-16.my-16.mx-auto.max-w-prose
+  section.container-lg
     = title current_page.data.fetch("title"), subtitle: current_page.data["subtitle"], icon: current_page.data["icon"]
     .prose= yield

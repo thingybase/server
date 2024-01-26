@@ -1,6 +1,7 @@
-h1.title What is your phone number?
-p This is the mobile phone number that we'll call and text to deliver your critical labels. In the next step you'll enter an SMS verification code to verify the phone number belongs to you.
+section.container-lg
+  =title "What is your phone number?"
+  p This is the mobile phone number that we'll call and text to deliver your critical labels. In the next step you'll enter an SMS verification code to verify the phone number belongs to you.
 
-= application_form @phone_number_claim, html: { class: 'form-horizontal' } do |f|
-  = f.input :phone_number, autofocus: true
-  = f.button :submit, "Next →", class: 'is-primary'
+  = application_form @phone_number_claim, html: { class: 'form-horizontal' } do |f|
+    = f.input :phone_number, autofocus: true
+    = f.button :submit, "Next →", class: 'is-primary'

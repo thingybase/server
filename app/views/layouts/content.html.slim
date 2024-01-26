@@ -1,22 +1,18 @@
 = render_layout "page" do
-  section.section
-    .container
-      .columns.mb-6
-        .column.is-offset-2.is-8
-          = title current_page.data.fetch("title"), subtitle: current_page.data["subtitle"], icon: current_page.data["icon"]
-      .columns
-        .column.is-offset-2.is-6
-          .prose
-            = yield
-          p
-            - with current_page.parent do |root_page|
-              =link_to "← Go back to #{root_page.data.fetch("title")}", root_page.request_path
-        .column.is-2
-          aside.menu
-            - with current_page.parent do |root_page|
-              p.menu-label
-                = root_page.data.fetch("title")
-              ul.menu-list
-                - root_page.children.each do |page|
-                  li
-                    = link_to_page page, active_class: "is-active"
+  section.container-lg
+    = title current_page.data.fetch("title"), subtitle: current_page.data["subtitle"], icon: current_page.data["icon"]
+    .flex.flex-row.gap-8
+      .prose
+        = yield
+        p
+          - with current_page.parent do |root_page|
+            =link_to "← Go back to #{root_page.data.fetch("title")}", root_page.request_path
+      .w-24
+        aside.menu
+          - with current_page.parent do |root_page|
+            p.menu-label
+              = root_page.data.fetch("title")
+            ul.menu-list
+              - root_page.children.each do |page|
+                li
+                  = link_to_page page, active_class: "is-active"
