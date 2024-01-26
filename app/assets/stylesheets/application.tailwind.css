@@ -11,3 +11,9 @@
 }
 
 */
+
+@layer components {
+  .hero-lg {
+    @apply flex flex-col md:flex-row justify-center items-center min-h-screen gap-12 p-12 mx-auto;
+  }
+}

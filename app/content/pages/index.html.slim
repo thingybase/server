@@ -3,34 +3,31 @@ title: Organize, track, and treasure your stuff
 layout: page-with-footer
 ---
 
-section.hero.min-h-screen
-  .hero-content.my-24
-    .flex.flex-col.gap-4
-      h1.text-5xl.font-bold Thingybase
-      h2.text-2xl Organize, track, and treasure your stuff
-      =link_to "Start organizing →", launch_path, class: "btn btn-primary btn-lg", role: "button"
-    = component :vector, key: "illustrations/organizational-pride.svg", class: "max-w-fit"
+section.hero-lg
+  .flex.flex-col.gap-2
+    h1.text-5xl.font-bold Thingybase
+    h2.text-2xl Organize, track, and treasure your stuff
+    =link_to "Start organizing →", launch_path, class: "btn btn-primary btn-lg", role: "button"
+  = component :vector, key: "illustrations/organizational-pride.svg", class: "max-w-fit"
 
-section.hero.bg-yellow-400.text-neutral-800
-  .hero-content.my-24
-    div
-      hgroup.mb-8
-        h2.text-4xl.font-bold Find stuff instantly
-        h3.text-2xl "Thingybase, where are the ice skates?"
-      .prose.text-neutral-800
-        p Next time you're looking for something, don't bother getting up to dig around, just bust out your phone, punch in a few keywords, and we'll tell you where it is. You can even add family members to your account so they can search too and help keep things organized.
-    = component :vector, key: "illustrations/search-sketch.svg", mode: :light
+section.hero-lg.bg-yellow-400.text-neutral-800
+  .flex.flex-col.gap-2
+    hgroup.mb-4
+      h2.text-4xl.font-bold Find stuff instantly
+      h3.text-2xl "Thingybase, where are the ice skates?"
+    .prose.text-neutral-800
+      p Next time you're looking for something, don't bother getting up to dig around, just bust out your phone, punch in a few keywords, and we'll tell you where it is. You can even add family members to your account so they can search too and help keep things organized.
+  = component :vector, key: "illustrations/search-sketch.svg", mode: :light
 
-section.hero
-  .hero-content.my-24
-    = component :vector, key: "illustrations/magic-labels.svg"
-    div
-      hgroup.mb-8
-        h2.text-4xl.font-bold Magic labels
-        h3.text-2xl Look inside boxes without opening them
-      .prose
-        p See what’s in a box without opening it—just scan it with your phone and see what’s inside.
-        p If you cook a lot of food ahead of time and store it in a deep freezer, slap a magic label on it with an expiration date and you’ll be notified before it expires.
+section.hero-lg
+  = component :vector, key: "illustrations/magic-labels.svg"
+  .flex.flex-col.gap-2
+    hgroup.mb-4
+      h2.text-4xl.font-bold Magic labels
+      h3.text-2xl Look inside boxes without opening them
+    .prose
+      p See what’s in a box without opening it—just scan it with your phone and see what’s inside.
+      p If you cook a lot of food ahead of time and store it in a deep freezer, slap a magic label on it with an expiration date and you’ll be notified before it expires.
 
 / TODO: Implement this feature! This will help Tb spread.
   section.hero
@@ -47,18 +44,17 @@ section.hero
 
               p If you have things you share with a regular group of friends, you can even create private sharing lists that only the group can search to borrow the items.
 
-section.hero.bg-blue-500.text-neutral-50
-  .hero-content.my-24
-    .flex.flex-col.gap-2.max-w-lg
-      hgroup.mb-8
-        h2.text-4xl.font-bold Take it easy on the Earth
-        h3.text-2xl Use less stuff. Waste less stuff.
-      .prose.text-neutral-50
-        p Track food in your freezer with expiration dates and get an email reminder before it goes bad. Never purchase something twice that you already own because you couldn't remember if you already had it while you were shopping at the store. The more you know about your stuff, the less wasteful you'll be.
-    = component :vector, key: "illustrations/save-earth.svg", mode: :dark
+section.hero-lg.bg-blue-500.text-neutral-50
+  .flex.flex-col.gap-2.max-w-lg
+    hgroup.mb-4
+      h2.text-4xl.font-bold Take it easy on the Earth
+      h3.text-2xl Use less stuff. Waste less stuff.
+    .prose.text-neutral-50
+      p Track food in your freezer with expiration dates and get an email reminder before it goes bad. Never purchase something twice that you already own because you couldn't remember if you already had it while you were shopping at the store. The more you know about your stuff, the less wasteful you'll be.
+  = component :vector, key: "illustrations/save-earth.svg", mode: :dark
 
-section.hero.bg-base-200
-  .hero-body.flex.flex-col.my-24.gap-8
+section.hero-lg.bg-base-200
+  .flex.flex-col.my-24.gap-8
     hgroup.text-center
       h2.text-4xl.font-bold Manifesto
       h3.text-2xl How the universe will be dented
