@@ -14,7 +14,7 @@ class ListCardComponent < ApplicationComponent
 
   def template
     div class: "py-4 flex-col gap-2" do
-      div class: "font-bold" do
+      div class: "font-semibold" do
         if @icon
           render IconComponent.new(@icon, class: "w-4 mr-2")
         end
@@ -27,9 +27,9 @@ class ListCardComponent < ApplicationComponent
       end
 
       if @details.any?
-        div class: "flex flex-row gap-2" do
+        div do
           @details.each do |detail|
-            span(class: "after:ml-2 after:content-['•'] last:after:content-none base-content-300") { render detail }
+            span(class: "after:mx-2 after:content-['•'] last:after:content-none base-content-300") { render detail }
           end
         end
       end

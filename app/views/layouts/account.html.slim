@@ -35,9 +35,9 @@
           | Profile
 
     .m-4
-      section.flex.flex-col.gap-8.p-8
+      section.flex.flex-col.gap-4.p-4.md:gap-8.md:p-8
         -if notice_message
           = notice_message class: "mb-4"
         = yield
-      footer.py-6.sm:hidden
-        =link_to "Manage #{@account.name}", account_path(@account), class: "btn btn-outline"
+      footer.my-6.mx-auto.sm:hidden.text-center
+        =link_to "Manage #{@account.name}", account_path(@account), class: "btn btn-ghost"
