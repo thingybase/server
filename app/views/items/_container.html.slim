@@ -19,12 +19,10 @@
 
 .list-card
   - if @item.children.empty?
-    .empty-box
-      .title.is-5
-        = @item.name
-        | is empty
-      .subtitle.is-6 Items will appear here after they are added
-      = link_to "+ Add items", new_item_child_path(@item), class: 'btn'
+    = component :empty_list do |it|
+      = it.title { "#{@item.name} is empty" }
+      = it.message { "Items will appear here after they are added" }
+      = it.action(new_item_child_path(@item)) { "+ Add items" }
   - else
     - @item.children.container_then_item.each do
       = component :item_list_card, item: _1

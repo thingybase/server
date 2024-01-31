@@ -4,10 +4,10 @@
   = link_to "+ Create moving label", new_move_movement_builder_path(@move), class: "btn btn-primary"
 
 - if @movements.empty?
-  .empty-box
-    .title.is-5 Create a moving label
-    .subtitle.is-6 Get started with your move by creating labels that you can put on your box.
-    = link_to "+ Create moving label", new_move_movement_builder_path(@move), class: 'button'
+  = component :empty_list do |it|
+    = it.title { "Create a moving label" }
+    = it.message { "Get started with your move by creating labels that you can put on your box." }
+    = it.action(new_move_movement_builder_path(@move)) { "+ Create moving label" }
 
 - else
   .list-cards

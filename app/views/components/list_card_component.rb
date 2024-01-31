@@ -20,7 +20,7 @@ class ListCardComponent < ApplicationComponent
         end
 
         if @link
-          link_to @title, @link
+          link_to @title, @link, class: "link"
         else
           plain @title
         end
@@ -29,7 +29,7 @@ class ListCardComponent < ApplicationComponent
       if @details.any?
         div class: "flex flex-row gap-2" do
           @details.each do |detail|
-            span(class: "after:ml-2 after:content-['•'] last:after:content-none") { render detail }
+            span(class: "after:ml-2 after:content-['•'] last:after:content-none base-content-300") { render detail }
           end
         end
       end

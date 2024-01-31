@@ -16,11 +16,9 @@
 
 .list-cards.mt-5
   - if @items.empty?
-    .empty-box
-      .title.is-5
-        = @container.name
-        | is empty
-      .subtitle.is-6 Items will appear here after they are added above
+    = component :empty_list do |it|
+      = it.title { "#{@container.name} is empty" }
+      = it.message { "Items will appear here after they are added" }
   - else
     - @items.container_then_item.each do
       = component :item_list_card, item: _1

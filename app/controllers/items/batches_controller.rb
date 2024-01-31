@@ -3,9 +3,13 @@ module Items
     include AccountLayout
     include ActionView::Helpers::TextHelper
 
-    BATCH_ACTIONS = [:delete, :label]
+    BATCH_ACTIONS = []
 
-    def delete
+    def self.batch(action)
+      BATCH_ACTIONS << action
+    end
+
+    batch def delete
       selected_models_count = @batch.selected_models.count
       Batch.transaction do
         @batch.selected_models.each do |model|
@@ -21,7 +25,7 @@ module Items
       end
     end
 
-    def label
+    batch def label
       labels = @batch.selected_models.map(&:find_or_create_label)
 
       respond_to do |format|

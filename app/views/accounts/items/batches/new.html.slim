@@ -1,6 +1,6 @@
 = title @account.name, subtitle: breadcrumb(account_breadcrumb_links(@account), leaf: "Selecting items"), icon: "chest-open"
 
-=form_for [:account, :items, @batch] do |f|
+=form_for [:account, :items, @batch], data: { turbo: false } do |f|
   .flex.flex-col.gap-8
     =f.hidden_field :account_id
     .flex.flex-row.gap-4
