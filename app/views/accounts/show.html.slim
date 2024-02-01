@@ -1,30 +1,30 @@
 =title @account.name, subtitle: "Settings, configuration, and more for your account", icon: "dashboard-gauge"
 
-.grid.gap-4.grid-col-3
-  .col-span-3
+.grid.gap-4.grid-col-1.md:grid-col-3
+  .md:col-span-3
     - if upgrade = current_plan.upgrade
-      .card.bg-base-200
+      .card.shadow-lg.border.border-base-200
         .card-body
           h3.card-title=link_to "Upgrade to Thingybase Home Plus", new_account_payment_path(@account)
           p You'll be able to manage #{feature_maximum upgrade.items, "items"} (currently you have a maximum of #{feature_maximum current_plan.items, "items"}) and get to support the development and sustainability of Thingybase.
           p=link_to "Upgrade now →", new_account_payment_path(@account), class: "btn btn-primary "
 
-  .stats.bg-base-200.col-span-3
+  .stats.bg-primary.text-primary-content.md:col-span-3
     =link_to account_items_path(@account), class: "stat" do
-      .stat-title="Item".pluralize(@account.items.count)
+      .stat-title.text-primary-content="Item".pluralize(@account.items.count)
       .stat-value=@account.items.count
     =link_to account_people_path(@account), class: "stat" do
-      .stat-title="People".pluralize(@account.members.count)
+      .stat-title.text-primary-content="People".pluralize(@account.members.count)
       .stat-value=@account.members.count
 
-  .card.bg-base-200.col-span-2
+  .card.bg-base-200.md:col-span-2
     .card-body
       h3.card-title Items
       p.subtitle.is-5 Organize stuff into rooms, shelves, and containers so you can find it all later
       p You have a total of #{pluralize @account.items.count, "item"} in your account.
       =link_to "View items", account_items_path(@account), class: "link"
 
-  .card.bg-base-200.col-span-1.row-span-2
+  .card.bg-base-200.md:col-span-1.row-span-2
     .card-body
       h3.card-title Settings
       p.subtitle.is-6 Configure your profile and accounts
@@ -39,14 +39,14 @@
 
       =link_to "Export items to spreadsheet", account_items_path(@account, format: :csv), class: "link"
 
-  .card.bg-base-200.col-span-1
+  .card.bg-base-200.md:col-span-1
     .card-body
       h3.card-title People
       p.subtitle.is-5 Organize better with a team
       p You have a total of #{pluralize @account.members.count, "person"} in your account.
       =link_to "Manage people", account_people_path(@account), class: "link"
 
-  .card.bg-base-200.col-span-1
+  .card.bg-base-200.md:col-span-1
     .card-body
       h3.card-title Preview features
       p.subtitle Try features before they're fully baked

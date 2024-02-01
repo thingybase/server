@@ -11,7 +11,7 @@ class MenuComponent < ApplicationComponent
   end
 
   def template
-    details(class: "dropdown") do
+    details(class: "dropdown dropdown-end") do
       summary(class: "btn") { @title }
       ul(class: "p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52 z-[1]") do
         @items.each do |item|

@@ -5,7 +5,7 @@ image_url: https://objects.bradgessler.com/Sup00xiEjl9InLhZqZ135muBZ7Vau9gDV67OX
 ---
 
 .hero style=background_image_style
-  .bg-base-100.shadow.rotate-1.m-32.p-16
+  .bg-base-100.shadow.md:rotate-1.m-4.md:m-32.p-6.md:p-16
     hgroup.mb-16.text-center
       h2.text-4xl.font-bold= current_page.data.fetch("title")
       h3.text-2xl= current_page.data.fetch("subtitle", nil)
@@ -45,12 +45,11 @@ image_url: https://objects.bradgessler.com/Sup00xiEjl9InLhZqZ135muBZ7Vau9gDV67OX
       p Cheers,
       p= component :vector, key: "illustrations/signature.svg"
 
-section
-  .flex.flex-col.my-24.gap-8.items-center
-    hgroup.text-centered
+section.bg-base-200.p-container
+  .my-container.gap-container.flex.flex-col
+    hgroup.text-center
       h2.text-4xl.font-bold I use it daily
       h3.text-2xl This is how I actually use Thingybase to make my life a little more organized
-    .container.mt-6
-      .grid.grid-cols-3.gap-8
-        - site.get("projects").children.take(3).each do |page|
-          = page_card page
+    .cards
+      - site.get("projects").children.take(3).each do |page|
+        = page_card page

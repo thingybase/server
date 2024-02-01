@@ -4,11 +4,12 @@ layout: page-with-footer
 ---
 
 section.hero-lg
-  .flex.flex-col.gap-2
-    h1.text-5xl.font-bold Thingybase
-    h2.text-2xl Organize, track, and treasure your stuff
+  .flex.flex-col.gap-4
+    hgroup.gap-2
+      h1.text-6xl.font-bold Thingybase
+      h2.text-2xl.md:whitespace-nowrap Organize, track, and treasure your stuff
     =link_to "Start organizing →", launch_path, class: "btn btn-primary btn-lg", role: "button"
-  = component :vector, key: "illustrations/organizational-pride.svg", class: "max-w-fit"
+  = component :vector, key: "illustrations/organizational-pride.svg"
 
 section.hero-lg.bg-yellow-400.text-neutral-800
   .flex.flex-col.gap-2
@@ -58,7 +59,7 @@ section.hero-lg.bg-base-200
     hgroup.text-center
       h2.text-4xl.font-bold Manifesto
       h3.text-2xl How the universe will be dented
-    .prose.rotate-1.hover:rotate-0.transition.m-4.p-8.shadow-xl.bg-base-100
+    .prose.md:rotate-1.hover:rotate-0.transition.m-0.md:m-4.p-4.md:p-8.shadow-xl.bg-base-100
       p Hey there—
 
       p Let’s face it, people have lots of stuff. We've come up with countless ways to deal with it all: The KonMari Method™, minimalism, getting rid of stuff … the list goes on, but it’s always about having less stuff and sometimes makes us feel bad about the things we already have.
@@ -71,12 +72,10 @@ section.hero-lg.bg-base-200
 
       p= component :vector, key: "illustrations/signature.svg"
 
-section
-  .flex.flex-col.my-24.gap-8.items-center
-    .container
-      h2.text-4xl.font-bold Projects
-      h3.text-2xl See all of the things you can do with Thingybase once you get it up and running
-    .container.mt-6
-      .grid.grid-cols-3.gap-8
-        - site.get("projects").children.take(3).each do |page|
-          = page_card page
+section.container-lg.max-w-fit.mx-auto
+  hgroup
+    h2.text-4xl.font-bold Projects
+    h3.text-2xl See all of the things you can do with Thingybase once you get it up and running
+  .cards
+    - site.get("projects").children.take(3).each do |page|
+      = page_card page

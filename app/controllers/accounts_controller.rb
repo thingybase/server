@@ -30,7 +30,7 @@ class AccountsController < Oxidizer::ResourcesController
 
     def set_account_layout
       case action_name
-      when "new", "index"
+      when "new"
         "focused"
       when "show", "edit"
         "account"

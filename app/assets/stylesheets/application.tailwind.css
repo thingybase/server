@@ -3,11 +3,43 @@
 @tailwind utilities;
 
 @layer components {
-  .hero-lg {
-    @apply flex flex-col md:flex-row justify-center items-center min-h-screen gap-12 p-12 mx-auto;
+  .gap-container {
+    @apply gap-12;
+  }
+
+  .px-container {
+    @apply px-6 md:px-8;
+  }
+
+  .py-container {
+    @apply py-6 md:py-8;
+  }
+
+  .p-container {
+    @apply px-container py-container;
+  }
+
+  .my-container {
+    @apply my-8 md:my-12;
+  }
+
+  .mx-container {
+    @apply mx-auto;
+  }
+
+  .m-container {
+    @apply mx-container my-container;
   }
 
   .container-lg {
-    @apply flex flex-col max-w-2xl mx-auto my-12 gap-12 min-h-[70vh];
+    @apply flex flex-col max-w-2xl min-h-[70vh] gap-container m-container p-container;
+  }
+
+  .cards {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8 max-w-fit mx-auto;
+  }
+
+  .hero-lg {
+    @apply flex flex-col md:flex-row justify-center items-center min-h-screen gap-container p-container mx-auto;
   }
 }

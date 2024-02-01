@@ -1,11 +1,11 @@
-footer.footer.p-12.bg-neutral.text-neutral-content
-  .flex.flex-row.gap-8
-    .flex.flex-col.gap-4
-      hgroup
-        h4.text-lg.font-bold Create an account in a few minutes
-        h2.text-md You'll get everything organized in no time
-      = link_to "Sign up →", launch_path, class: "btn is-medium is-primary", role: "button"
-    .flex.flex-col.gap-2.ml-24
+footer.footer.bg-neutral.text-neutral-content.flex.flex-col.md:flex-row.gap-8.md:gap-24.p-container
+  .flex.flex-col.gap-4
+    hgroup
+      h4.text-lg.font-bold Create an account in a few minutes
+      h2.text-md You'll get everything organized in no time
+    = link_to "Sign up →", launch_path, class: "btn is-medium is-primary", role: "button"
+  .flex.flex-col.md:flex-row.gap-8
+    .flex.flex-col.gap-2
       h4.font-bold Learn
       ul
         li= link_to "About", page_path("about")

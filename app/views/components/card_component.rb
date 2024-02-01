@@ -15,7 +15,7 @@ class CardComponent < ApplicationComponent
         h3(class: "font-bold text-xl") { @title }
         p { @subtitle }
         div(class: "card-actions justify-end") do
-          button(class: "btn") { "Read more →" }
+          button(class: "btn btn-ghost") { "Read more →" }
         end
       end
     end
