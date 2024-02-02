@@ -5,4 +5,4 @@
   = f.association :origin, collection: origin_select_items(move: @movement.move), include_blank: false, hint: "What is being moved?", label: "Item"
   = f.association :destination, collection: destination_select_items, include_blank: false, hint: "Where will it be moved?"
   .buttons
-    = f.button :submit, class: 'is-primary'
+    = f.button :submit, class: 'btn btn-primary'

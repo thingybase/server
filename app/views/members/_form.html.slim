@@ -1,4 +1,4 @@
 = application_form @member do |f|
   = f.association :user, include_blank: false
   = f.association :account, collection: policy_scope(Account), include_blank: false
-  = f.button :submit, class: 'is-primary'
+  = f.button :submit, class: 'btn btn-primary'

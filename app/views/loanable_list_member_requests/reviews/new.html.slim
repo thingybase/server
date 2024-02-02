@@ -8,7 +8,7 @@
 .is-inline-block
   = application_form resource.tap{ |r| r.status = "accept" }, url: url_for(action: :create) do |f|
     = f.input :status, as: :hidden
-    = f.button :submit, "Accept", class: "is-primary"
+    = f.button :submit, "Accept", class: "btn btn-primary"
 
 .is-inline-block
   = application_form resource.tap{ |r| r.status = "decline" }, url: url_for(action: :create) do |f|

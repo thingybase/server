@@ -6,4 +6,4 @@
   = f.association :parent, label: "Contained in", collection: item_select_values(account_policy_scope(Item.container)), include_blank: true
   = f.input :expires_at, as: :string, hint: %[Dates like "6 months from now", "next week", "Feb 2021" all work]
   = f.input :container, hint: "Allow items to be contained within this item. For boxes, shelves, folders, or anything used to organize items.", optional: true
-  = f.button :submit, class: 'is-primary'
+  = f.button :submit, class: 'btn btn-primary'

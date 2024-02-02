@@ -5,6 +5,6 @@ section.container-lg
       = application_form @member_request, url: account_member_requests_path(@member_request.account) do |f|
         = f.association :account, as: :hidden
         = f.association :user, as: :hidden
-        = f.button :submit, "Request to join account", class: "is-primary"
+        = f.button :submit, "Request to join account", class: "btn btn-primary"
   -else
     = link_to "← Go back", :back, class: "btn"
