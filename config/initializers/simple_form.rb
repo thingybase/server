@@ -8,7 +8,7 @@ SimpleForm.setup do |config|
 
   # DRY up settings for Bulma form helpers
   def bulma_wrapper(name, config)
-    config.wrappers name, class: "field", error_class: "is-danger" do |b|
+    config.wrappers name, class: "flex flex-col gap-1 mb-6", error_class: "" do |b|
       b.use :html5
       b.use :placeholder
       b.optional :maxlength
@@ -17,12 +17,12 @@ SimpleForm.setup do |config|
       b.optional :min_max
       b.optional :readonly
 
-      b.use :label, class: "label"
+      b.use :label, class: "font-bold"
 
       yield b
 
-      b.use :full_error, wrap_with: { tag: :p, class: "help is-danger" }
-      b.use :hint, wrap_with: { tag: :p, class: "help" }
+      b.use :full_error, wrap_with: { tag: :p, class: "text-error" }
+      b.use :hint, wrap_with: { tag: :p, class: "text-content-100 opacity-75" }
     end
   end
 
@@ -35,18 +35,18 @@ SimpleForm.setup do |config|
     b.use :input, class: "select select-bordered", error_class: "select-error"
   end
 
-  config.wrappers :boolean, class: "field", error_class: "is-danger" do |b|
+  config.wrappers :boolean, class: "flex flex-col gap-1 mb-6", error_class: "" do |b|
     b.use :html5
     b.optional :readonly
 
-    b.use :label, class: "label"
+    b.use :label, class: "font-semibold my-2"
 
-    b.wrapper tag: :label, class: "control" do |label|
-      label.use :input, class: "checkbox", error_class: "is-danger"
-      label.use :hint, wrap_with: { tag: :span, class: "is-inline ml-2" }
+    b.wrapper tag: :label, class: "flex flex-row gap-2" do |label|
+      label.use :input, class: "checkbox", error_class: "text-error"
+      label.use :hint, wrap_with: { tag: :span, class: "inline ml-2" }
     end
 
-    b.use :full_error, wrap_with: { tag: :p, class: "help is-danger" }
+    b.use :full_error, wrap_with: { tag: :p, class: "my-2 text-sm text-error" }
   end
 
   # Custom wrappers for input types. This should be a hash containing an input
@@ -77,7 +77,7 @@ SimpleForm.setup do |config|
   config.error_notification_tag = :div
 
   # CSS class to add for error label helper.
-  config.error_notification_class = "is-danger"
+  config.error_notification_class = "text-error"
 
   # ID to add for error label helper.
   # config.error_label_id = nil
@@ -155,7 +155,7 @@ SimpleForm.setup do |config|
   # config.input_class = nil
 
   # Define the default class of the input wrapper of the boolean input.
-  config.boolean_label_class = "checkbox"
+  # config.boolean_label_class = "checkbox"
 
   # Defines if the default input wrapper class should be included in radio
   # collection wrappers.

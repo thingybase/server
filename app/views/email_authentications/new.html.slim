@@ -3,7 +3,7 @@ section.container-lg
 
   = application_form @email_authentication, url: url_for(action: :create) do |f|
     = f.input :email, autofocus: true, hint: "We only use this address to send you a login code and do not store your email"
-    = f.button :submit, "Email login code →", class: 'is-primary'
+    = f.button :submit, "Email login code →", class: 'btn btn-primary'
 
   hr
 

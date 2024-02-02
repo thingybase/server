@@ -12,5 +12,5 @@
         h2.text-4xl.font-bold More projects
         h3.text-2xl If you feeling like conquering the world, these other projects will help you get even more organized
       .cards
-        - site.get("projects").children.take(3).each do |page|
+        - site.get("projects").children.reject{ _1 == current_page }.sample(3).each do |page|
           = page_card page

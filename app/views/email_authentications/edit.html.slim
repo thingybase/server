@@ -5,7 +5,7 @@ section.container-lg
     = f.input :code, autofocus: true, hint: "You have a few minutes to enter the code before it expires", pattern: '[0-9]*'
     = f.input :data, as: :hidden
     = f.input :salt, as: :hidden
-    = f.button :submit, "Verify code →", class: 'is-primary'
+    = f.button :submit, "Verify code →", class: 'btn btn-primary'
 
   hr
 

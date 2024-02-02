@@ -77,5 +77,5 @@ section.container-lg.max-w-fit.mx-auto
     h2.text-4xl.font-bold Projects
     h3.text-2xl See all of the things you can do with Thingybase once you get it up and running
   .cards
-    - site.get("projects").children.take(3).each do |page|
+    - site.get("projects").children.sample(3).each do |page|
       = page_card page
