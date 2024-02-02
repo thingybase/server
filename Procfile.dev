@@ -1,3 +1,4 @@
 web: bin/rails server -p $PORT --binding=0.0.0.0
-css: npx tailwindcss -i app/assets/stylesheets/application.tailwind.css -o app/assets/builds/tailwind.css -c config/tailwind.config.js --minify -w
+#css: npx tailwindcss -i app/assets/stylesheets/application.tailwind.css -o app/assets/builds/tailwind.css -c config/tailwind.config.js --minify -w
+css: bin/rails tailwindcss:watch # This KILLS laptop batteries
 stripe: stripe listen --forward-to localhost:5000/webhooks/stripe --latest
