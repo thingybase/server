@@ -1,5 +1,3 @@
-section.hero.is-fullheight-with-navbar.is-bold
-  .hero-body
-    .container
-      =title "Not found", icon: "open-cardboard-box"
-      p The resource #{request.url} was not found. Make sure the URL is correct or start over from the #{link_to "homepage", root_path}.
+section.container-lg
+  =title "Not found", icon: "open-cardboard-box"
+  p The resource #{request.url} was not found. Make sure the URL is correct or start over from the #{link_to "homepage", root_path, class: "link"}.

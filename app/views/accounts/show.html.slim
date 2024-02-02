@@ -9,7 +9,7 @@
           p You'll be able to manage #{feature_maximum upgrade.items, "items"} (currently you have a maximum of #{feature_maximum current_plan.items, "items"}) and get to support the development and sustainability of Thingybase.
           p=link_to "Upgrade now →", new_account_payment_path(@account), class: "btn btn-primary "
 
-  .stats.bg-primary.text-primary-content.md:col-span-3
+  .stats.bg-primary.text-primary-content.md:col-span-3.text-center
     =link_to account_items_path(@account), class: "stat" do
       .stat-title.text-primary-content="Item".pluralize(@account.items.count)
       .stat-value=@account.items.count

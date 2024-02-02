@@ -11,4 +11,4 @@
       .prose
         p Be careful, this will destroy all of your data
         p Deleting your profile will permanently delete all the accounts, labels, items, and data you own. The data will not be recoverable after you delete everything.
-        = link_to "Permanently delete my profile and all accounts, items, and labels I own", user_path(@user), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-outline w-full'
+        = link_to "Permanently delete my profile and all accounts, items, and labels I own", user_path(@user), data: { turbo_confirm: 'Are you sure you want to permanently obliterate your data?', turbo_method: :delete }, class: 'btn btn-outline w-full'
