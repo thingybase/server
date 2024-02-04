@@ -158,3 +158,5 @@ gem "propshaft"
 
 # Components!
 gem "phlex-rails", "~> 1.1"
+
+gem "superview", "~> 0.1.0"

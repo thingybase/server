@@ -6,11 +6,7 @@ module PageTitleHelper
 
   def title(title, subtitle: nil, icon: nil)
     provide :title, title
-    render partial: "page_title_helper/page_header_title", locals: {
-      title: title,
-      subtitle: subtitle,
-      icon: icon
-    }
+    render PageTitleComponent.new(title: title, subtitle: subtitle, icon: icon)
   end
 
   def render_page_title

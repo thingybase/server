@@ -5,6 +5,7 @@ class ApplicationComponent < Phlex::HTML
 	include Phlex::Rails::Helpers::LinkTo
 	include Phlex::Rails::Helpers::ImageTag
 	include Phlex::Rails::Helpers::Pluralize
+	include Phlex::Rails::Helpers::URLFor
 
 	if Rails.env.development?
 		def before_template
