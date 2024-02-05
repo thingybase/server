@@ -18,10 +18,8 @@ module AccountLayout
     end
 
     def around_template
-      render ApplicationLayout.new(title: title) do
-        render AccountComponent.new(account: @account, user: @user, notice: @notice) do
-          yield
-        end
+      render AccountComponent.new(account: @account, user: @user, notice: @notice) do
+        yield
       end
     end
   end

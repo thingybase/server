@@ -2,26 +2,23 @@ class AccountComponent < ApplicationComponent
   def initialize(key: "Items", account:, user:, notice: nil)
     @account = account
     @user = user
-
     @key = key
     @notice = notice
   end
 
   def around_template(&)
-    render ApplicationLayout.new(title: title, &)
-  end
+    render ApplicationLayout.new(title: title) do
+      div(class: "flex flex-row") do
+        sidebar_template
 
-  def template
-    div(class: "flex flex-row") do
-      sidebar_template
-
-      div(class: "m-4") do
-        section(class: "flex flex-col gap-4 p-4 md:gap-8 md:p-8") do
-          div(class: "mb-4") { @notice } if @notice
-          yield
-        end
-        footer class: "my-6 mx-auto sm:hidden text-center" do
-          a(href: account_path(@account), class: "btn btn-ghost") { "Manage #{@account.name}" }
+        div(class: "m-4") do
+          section(class: "flex flex-col gap-4 p-4 md:gap-8 md:p-8") do
+            div(class: "mb-4") { @notice } if @notice
+            yield
+          end
+          footer class: "my-6 mx-auto sm:hidden text-center" do
+            a(href: account_path(@account), class: "btn btn-ghost") { "Manage #{@account.name}" }
+          end
         end
       end
     end
