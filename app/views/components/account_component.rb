@@ -7,6 +7,10 @@ class AccountComponent < ApplicationComponent
     @notice = notice
   end
 
+  def around_template(&)
+    render ApplicationLayout.new(title: title, &)
+  end
+
   def template
     div(class: "flex flex-row") do
       sidebar_template

@@ -22,7 +22,7 @@ class ApplicationLayout < ApplicationView
 				csrf_meta_tags
 				stylesheet_link_tag "tailwind", data_turbo_track: "reload"
 				javascript_importmap_tags
-				helpers.opengraph_meta_tags
+				unsafe_raw helpers.opengraph_meta_tags
 			end
 
 			body do
