@@ -11,15 +11,26 @@ module AccountLayout
     helper_method :navigation_key, :navigation_search_path, :navigation_search_placeholder
   end
 
-  class View < ApplicationComponent
-    def initialize(account:, user:)
-      @account = account
-      @user = user
+  class Component < AccountComponent
+    attr_reader :title, :subtitle, :icon
+
+    def title_template
+      render PageTitleComponent.new(title: title, subtitle: subtitle, icon: icon) if title
     end
 
     def around_template
-      render AccountComponent.new(account: @account, user: @user, notice: @notice) do
-        yield
+      super do
+        title_template
+
+        if respond_to? :action_template
+          div(class: "flex flex-row gap-2") do
+            action_template
+          end
+        end
+
+        div do
+          yield
+        end
       end
     end
   end

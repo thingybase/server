@@ -1,5 +1,7 @@
 class AccountComponent < ApplicationComponent
-  def initialize(key: "Items", account:, user:, notice: nil)
+  attr_writer :user, :account
+
+  def initialize(key: "Items", account: nil, user: nil, notice: nil)
     @account = account
     @user = user
     @key = key
