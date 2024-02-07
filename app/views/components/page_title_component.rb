@@ -12,7 +12,7 @@ class PageTitleComponent < ApplicationComponent
         plain @title
       end
       if @subtitle
-        h2(class: "text-xl my-2 opacity-75") { @subtitle }
+        h2(class: "text-xl my-2 opacity-75") { render @subtitle }
       end
     end
   end

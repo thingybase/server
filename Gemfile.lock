@@ -25,6 +25,16 @@ GIT
       rails (>= 7.0.3)
 
 GIT
+  remote: https://github.com/rubymonolith/phlex-rails.git
+  revision: 32e6aeea2b64a374141f3a1df8e6051a10ac6057
+  branch: version-1-9
+  specs:
+    phlex-rails (1.1.1)
+      phlex (~> 1.9)
+      railties (>= 6.1, < 8)
+      zeitwerk (~> 2.6)
+
+GIT
   remote: https://github.com/rubymonolith/superview.git
   revision: 85cf470c5a749619d369862fd02a6d71a5eb1bc9
   specs:
@@ -239,7 +249,7 @@ GEM
     mini_magick (4.0.4)
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
-    minitest (5.22.1)
+    minitest (5.22.2)
     msgpack (1.7.2)
     multi_xml (0.6.0)
     net-http (0.4.1)
@@ -287,10 +297,6 @@ GEM
     phlex (1.9.0)
       concurrent-ruby (~> 1.2)
       erb (>= 4)
-      zeitwerk (~> 2.6)
-    phlex-rails (1.1.1)
-      phlex (~> 1.9)
-      railties (>= 6.1, < 8)
       zeitwerk (~> 2.6)
     phony (2.20.12)
     phony_rails (0.15.0)
@@ -496,7 +502,7 @@ DEPENDENCIES
   oxidizer!
   pg (~> 1.4)
   pg_search (~> 2.3)
-  phlex-rails
+  phlex-rails!
   phony_rails
   prawn (~> 2.0)
   prawn-qrcode (~> 0.5.0)

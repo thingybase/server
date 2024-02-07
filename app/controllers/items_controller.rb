@@ -12,6 +12,27 @@ class ItemsController < Oxidizer::ResourcesController
     end
   end
 
+  class DataViewComponent < ApplicationComponent
+    def initialize(model)
+      @model = model
+    end
+
+    def template
+      div(class: "grid grid-cols-2 gap-4") do
+        yield
+      end
+    end
+
+    def field(key, &content)
+      div(class: "font-bold") { key.to_s.humanize }
+      if content
+        render content
+      else
+        div(class: "w-max") { @model.send(key).to_s }
+      end
+    end
+  end
+
   class Show < AccountLayout::Component
     attr_writer :item
 
@@ -20,17 +41,33 @@ class ItemsController < Oxidizer::ResourcesController
     def subtitle
       div(class: "breadcrumbs") do
         ul do
-          @item.parent do |item|
+          li { show(@account, :name) }
+          @item.ancestors.each do |item|
             li { show(item, :name) }
           end
-          li { show(@account, :name) }
+          li { show(@item, :name) }
         end
       end
     end
   end
 
-  class Contanier < Show
+  class Container < Show
     def template
+      render DataViewComponent.new(@item) do |it|
+        it.field(:created_at)
+        it.field(:updated_at)
+        it.field(:user) { @item.user.name }
+      end
+    end
+
+    def action_template
+      LinkButton(new_item_child_path(@item), :primary) { "+ Add items" }
+
+      div(class: "join") do
+        LinkButton(edit_item_path(@item), class: "join-item") { "Edit" }
+        LinkButton(new_item_batch_path(@item), class: "join-item") { "Select" }
+        LinkButton(label_path(@item.label), class: "join-item") { "Label" }
+      end
     end
   end
 

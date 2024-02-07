@@ -6,8 +6,8 @@ class AccountComponent < ApplicationComponent
       render Form.new(...)
     end
 
-    def LinkButton(url, *modifiers, &)
-      a(href: url, class: tokens("btn", modifiers.map{ "btn-#{_1}" }), &)
+    def LinkButton(url, *modifiers, **attributes, &)
+      a(href: url, class: tokens("btn", modifiers.map{ "btn-#{_1}" }, attributes[:class]), &)
     end
   end
 

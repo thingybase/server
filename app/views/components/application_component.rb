@@ -6,6 +6,7 @@ class ApplicationComponent < Phlex::HTML
 	include Phlex::Rails::Helpers::ImageTag
 	include Phlex::Rails::Helpers::Pluralize
 	include Phlex::Rails::Helpers::URLFor
+
 	include Superview::Helpers::Links
 
 	if Rails.env.development?

@@ -160,4 +160,4 @@ gem "propshaft"
 gem "superview", "~> 0.1.0", github: "rubymonolith/superview"
 
 gem "superform", "~> 0.4.3"
-gem "phlex-rails"
+gem "phlex-rails", github: "rubymonolith/phlex-rails", branch: "version-1-9"
