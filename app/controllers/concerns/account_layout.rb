@@ -28,9 +28,7 @@ module AccountLayout
           end
         end
 
-        div do
-          yield
-        end
+        yield
       end
     end
   end

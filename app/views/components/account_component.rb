@@ -1,6 +1,18 @@
 class AccountComponent < ApplicationComponent
   attr_writer :user, :account
 
+  module Aliases
+    def Form(...)
+      render Form.new(...)
+    end
+
+    def LinkButton(url, *modifiers, &)
+      a(href: url, class: tokens("btn", modifiers.map{ "btn-#{_1}" }), &)
+    end
+  end
+
+  include Aliases
+
   def initialize(key: "Items", account: nil, user: nil, notice: nil)
     @account = account
     @user = user

@@ -1,8 +1,51 @@
 class ItemsController < Oxidizer::ResourcesController
   include AccountLayout
   include ResourceAnalytics
+  include Superview::Actions
 
   before_action :assign_opengraph_attributes, only: :show
+
+  def phlex
+    super.tap do |view|
+      view.account = @account
+      view.user = current_user
+    end
+  end
+
+  class Show < AccountLayout::Component
+    attr_writer :item
+
+    def title = @item.name
+    def icon = @item.icon
+    def subtitle
+      div(class: "breadcrumbs") do
+        ul do
+          @item.parent do |item|
+            li { show(item, :name) }
+          end
+          li { show(@account, :name) }
+        end
+      end
+    end
+  end
+
+  class Contanier < Show
+    def template
+    end
+  end
+
+  class Item < Show
+    def template
+    end
+  end
+
+  def show
+    view_class = @item.container? ? Container : Item
+    view = assign_phlex_accessors(view_class.new)
+    view.user = current_user
+
+    render assign_phlex_accessors(view), layout: false
+  end
 
   protected
     def navigation_key
