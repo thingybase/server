@@ -1,11 +1,4 @@
 GIT
-  remote: https://github.com/rocketshipio/featureomatic.git
-  revision: 13d1117565f6da4ec0839fd3015019bacd27103d
-  specs:
-    featureomatic (0.1.1)
-      rails (>= 7.0.3)
-
-GIT
   remote: https://github.com/rocketshipio/nopassword.git
   revision: b807fe7af15ca89fd33c18099286a0ee4a8fc62b
   branch: main
@@ -22,6 +15,13 @@ GIT
   branch: main
   specs:
     oxidizer (0.1.0)
+      rails (>= 7.0.3)
+
+GIT
+  remote: https://github.com/rubymonolith/featureomatic.git
+  revision: 13d1117565f6da4ec0839fd3015019bacd27103d
+  specs:
+    featureomatic (0.1.1)
       rails (>= 7.0.3)
 
 GIT

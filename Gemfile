@@ -113,7 +113,7 @@ end
 if featureomatic_path = ENV["FEATUREOMATIC_GEM_PATH"]
   gem "featureomatic", path: featureomatic_path
 else
-  gem "featureomatic", "~> 0.1.1", github: "rocketshipio/featureomatic"
+  gem "featureomatic", "~> 0.1.1", github: "rubymonolith/featureomatic"
 end
 
 gem "tinyzap", github: "tinyzap/ruby"

@@ -20,7 +20,7 @@ class ListCardComponent < ApplicationComponent
         end
 
         if @link
-          link_to @title, @link, class: "link"
+          link_to(@link, class: "link") { @title }
         else
           plain @title
         end

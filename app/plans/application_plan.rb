@@ -1,4 +1,4 @@
-class ApplicationPlan < Featureomatic::BasePlan
+class ApplicationPlan < Featureomatic::Plan
   attr_reader :account, :iap
 
   def initialize(account:, iap: false)
