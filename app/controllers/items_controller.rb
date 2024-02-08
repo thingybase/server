@@ -12,34 +12,13 @@ class ItemsController < Oxidizer::ResourcesController
     end
   end
 
-  class DataViewComponent < ApplicationComponent
-    def initialize(model)
-      @model = model
-    end
-
-    def template
-      div(class: "grid grid-cols-2 gap-4") do
-        yield
-      end
-    end
-
-    def field(key, &content)
-      div(class: "font-bold") { key.to_s.humanize }
-      if content
-        render content
-      else
-        div(class: "w-max") { @model.send(key).to_s }
-      end
-    end
-  end
-
   class Show < AccountLayout::Component
     attr_writer :item
 
     def title = @item.name
     def icon = @item.icon
     def subtitle
-      div(class: "breadcrumbs") do
+      div(class: "breadcrumbs m-0 p-0") do
         ul do
           li { show(@account, :name) }
           @item.ancestors.each do |item|
@@ -53,11 +32,7 @@ class ItemsController < Oxidizer::ResourcesController
 
   class Container < Show
     def template
-      render DataViewComponent.new(@item) do |it|
-        it.field(:created_at)
-        it.field(:updated_at)
-        it.field(:user) { @item.user.name }
-      end
+      render ListItemsComponent.new(@item.children.container_then_item)
     end
 
     def action_template
@@ -67,12 +42,34 @@ class ItemsController < Oxidizer::ResourcesController
         LinkButton(edit_item_path(@item), class: "join-item") { "Edit" }
         LinkButton(new_item_batch_path(@item), class: "join-item") { "Select" }
         LinkButton(label_path(@item.label), class: "join-item") { "Label" }
+        LinkButton(edit_item_icon_path(@item), class: "join-item") { "Change icon" }
       end
     end
   end
 
   class Item < Show
     def template
+      render DataViewComponent.new(@item) do |it|
+        it.field(:created_at)
+        it.field(:updated_at)
+        it.field(:user) { @item.user.name }
+      end
+    end
+
+    def action_template
+      div(class: "join") do
+        LinkButton(edit_item_path(@item), class: "join-item") { "Edit" }
+        LinkButton(edit_item_icon_path(@item), class: "join-item") { "Change icon" }
+        LinkButton(label_path(@item.label), class: "join-item") { "Label" }
+      end
+
+      LinkButton(new_item_copy_path(@item)) { "Copy" }
+
+      if @account.move
+        link_to(@item.movement ? movement_path(@item.movement) : new_item_movement_path(@item)){ "Move" }
+      end
+
+      delete(@item, confirm: "Are you sure?", class: "btn") { "Delete" }
     end
   end
 

@@ -1,4 +1,14 @@
 GIT
+  remote: https://github.com/phlex-ruby/phlex-rails.git
+  revision: 3a046d7d0474297547c3325fd130a8aada85ebc2
+  branch: version-1-9
+  specs:
+    phlex-rails (1.1.1)
+      phlex (~> 1.9)
+      railties (>= 6.1, < 8)
+      zeitwerk (~> 2.6)
+
+GIT
   remote: https://github.com/rocketshipio/nopassword.git
   revision: b807fe7af15ca89fd33c18099286a0ee4a8fc62b
   branch: main
@@ -25,18 +35,8 @@ GIT
       rails (>= 7.0.3)
 
 GIT
-  remote: https://github.com/rubymonolith/phlex-rails.git
-  revision: 32e6aeea2b64a374141f3a1df8e6051a10ac6057
-  branch: version-1-9
-  specs:
-    phlex-rails (1.1.1)
-      phlex (~> 1.9)
-      railties (>= 6.1, < 8)
-      zeitwerk (~> 2.6)
-
-GIT
   remote: https://github.com/rubymonolith/superview.git
-  revision: 85cf470c5a749619d369862fd02a6d71a5eb1bc9
+  revision: 4b82b74ca0a072f6b165e3ce3ed3574e3f5150b0
   specs:
     superview (0.1.0)
       phlex-rails (~> 1.0)

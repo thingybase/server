@@ -20,24 +20,20 @@ module Accounts
       end
 
       def template
-        render ListComponent.new(@items.roots.container_then_item) do |it|
-          it.empty do |it|
-            it.title { "#{@account.name} is empty" }
-            it.message { "Containers or items will appear here after they are added" }
-          end
-          it.item do |it|
-            render ItemListCardComponent.new(item: it)
-          end
-        end
+        render ListItemsComponent.new(@items.roots.container_then_item)
       end
     end
 
     class Form < ApplicationForm
       def template
         div(class: "join") do
-          render field(:container).select [ true, "Container"], [false, "Item"], class: "join-item input input-bordered input-primary"
-          render field(:name).input(type: :text, class: "join-item input input-bordered input-primary")
-          input type: "submit", value: "Create", class: "join-item btn btn-primary"
+          Select :container,
+              [ false, "Item"],
+              [ true, "Container"],
+            class: "join-item input input-bordered input-primary"
+
+          Input :name, type: :text, autofocus: true, class: "join-item input input-bordered input-primary"
+          Submit value: "Create", class: "join-item btn btn-primary"
         end
       end
     end
@@ -52,13 +48,7 @@ module Accounts
       def template
         render Form.new(@item)
 
-        render ListComponent.new(@items.roots.container_then_item) do |it|
-          it.empty do |it|
-            it.title { "#{(@item.name || @account.name)} is empty" }
-            it.message { "Containers will appear here after they are added" }
-          end
-          it.item { render ItemListCardComponent.new(item: _1) }
-        end
+        render ListItemsComponent.new(@items.roots.container_then_item)
 
         a(href: templates_account_items_path(@account), class: "btn btn-outline" ){ "Create item from a template..." }
       end

@@ -1,4 +1,16 @@
 class ApplicationForm < Superform::Rails::Form
+  def Select(name, *, **, &)
+    render field(name).select(*, **, &)
+  end
+
+  def Input(name, *, **, &)
+    render field(name).input(*, **, &)
+  end
+
+  def Submit(*, **, &)
+    input(*, type: "submit", **, &)
+  end
+
   # include Phlex::Rails::Helpers::Pluralize
 
   # def row(component)
