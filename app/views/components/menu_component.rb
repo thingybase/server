@@ -6,8 +6,8 @@ class MenuComponent < ApplicationComponent
     @items = []
   end
 
-  def item(&item)
-    @items << item
+  def item(enabled: true, &item)
+    @items << item if enabled
   end
 
   def template

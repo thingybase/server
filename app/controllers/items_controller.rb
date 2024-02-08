@@ -53,16 +53,12 @@ class ItemsController < Oxidizer::ResourcesController
           link_to(new_item_copy_path(@item)) { "Copy" }
         end
 
-        if @account.loanable_list.present?
-          it.item do
-            link_to(new_item_loanable_path(@item)) { "Loan" }
-          end
+        it.item enabled: @account.loanable_list.present? do
+          link_to(new_item_loanable_path(@item)) { "Loan" }
         end
 
-        if @account.move
-          it.item do
-            link_to(@item.movement ? movement_path(@item.movement) : new_item_movement_path(@item)){ "Move" }
-          end
+        it.item enabled: @account.move.present? do
+          link_to(@item.movement ? movement_path(@item.movement) : new_item_movement_path(@item)){ "Move" }
         end
 
         it.item do
@@ -101,16 +97,12 @@ class ItemsController < Oxidizer::ResourcesController
           link_to(new_item_copy_path(@item)) { "Copy" }
         end
 
-        if @account.loanable_list.present?
-          it.item do
-            link_to(new_item_loanable_path(@item)) { "Loan" }
-          end
+        it.item enabled: @account.loanable_list.present? do
+          link_to(new_item_loanable_path(@item)) { "Loan" }
         end
 
-        if @account.move
-          it.item do
-            link_to(@item.movement ? movement_path(@item.movement) : new_item_movement_path(@item)){ "Move" }
-          end
+        it.item enabled: @account.move.present? do
+          link_to(@item.movement ? movement_path(@item.movement) : new_item_movement_path(@item)){ "Move" }
         end
 
         it.item do
