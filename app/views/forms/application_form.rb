@@ -11,6 +11,10 @@ class ApplicationForm < Superform::Rails::Form
     input(*, type: "submit", **, &)
   end
 
+  def Label(name, *, **, &)
+    render field(name).label(*, **, &)
+  end
+
   # include Phlex::Rails::Helpers::Pluralize
 
   # def row(component)

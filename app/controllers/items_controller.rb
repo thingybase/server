@@ -128,6 +128,36 @@ class ItemsController < Oxidizer::ResourcesController
     render assign_phlex_accessors(view), layout: false
   end
 
+  class Form < ApplicationForm
+    def template
+      div class: "flex flex-col" do
+        Label :name
+        Input :name
+
+        Label :container
+        Input :container, type: :checkbox
+
+        Label :parent
+        Select :parent_id, helpers.account_policy_scope(::Item.container).select(:id, :name)
+
+        Label "Expires at"
+        Input :expires_at
+
+        Submit { "Save" }
+      end
+    end
+  end
+
+  class Edit < Show
+    def template
+      render Form.new(@item)
+    end
+  end
+
+  def edit
+    render phlex, layout: false
+  end
+
   protected
     def navigation_key
       "Items"
