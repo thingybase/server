@@ -42,8 +42,38 @@ class ItemsController < Oxidizer::ResourcesController
         LinkButton(edit_item_path(@item), class: "join-item") { "Edit" }
         LinkButton(new_item_batch_path(@item), class: "join-item") { "Select" }
         LinkButton(label_path(@item.label), class: "join-item") { "Label" }
-        LinkButton(edit_item_icon_path(@item), class: "join-item") { "Change icon" }
       end
+
+      render MenuComponent.new(title: "More...") do |it|
+        it.item do
+          link_to(edit_item_icon_path(@item), class: "join-item") { "Change icon" }
+        end
+
+        it.item do
+          link_to(new_item_copy_path(@item)) { "Copy" }
+        end
+
+        if @account.loanable_list.present?
+          it.item do
+            link_to(new_item_loanable_path(@item)) { "Loan" }
+          end
+        end
+
+        if @account.move
+          it.item do
+            link_to(@item.movement ? movement_path(@item.movement) : new_item_movement_path(@item)){ "Move" }
+          end
+        end
+
+        it.item do
+          delete(@item, confirm: "Are you sure?") { "Delete" }
+        end
+
+        it.item do
+          link_to(item_search_path(@item)) { "Search" }
+        end
+      end
+
     end
   end
 
@@ -53,6 +83,9 @@ class ItemsController < Oxidizer::ResourcesController
         it.field(:created_at)
         it.field(:updated_at)
         it.field(:user) { @item.user.name }
+        if @item.expires_at
+          it.field(:expires_at)
+        end
       end
     end
 
@@ -63,13 +96,27 @@ class ItemsController < Oxidizer::ResourcesController
         LinkButton(label_path(@item.label), class: "join-item") { "Label" }
       end
 
-      LinkButton(new_item_copy_path(@item)) { "Copy" }
+      render MenuComponent.new(title: "More...") do |it|
+        it.item do
+          link_to(new_item_copy_path(@item)) { "Copy" }
+        end
 
-      if @account.move
-        link_to(@item.movement ? movement_path(@item.movement) : new_item_movement_path(@item)){ "Move" }
+        if @account.loanable_list.present?
+          it.item do
+            link_to(new_item_loanable_path(@item)) { "Loan" }
+          end
+        end
+
+        if @account.move
+          it.item do
+            link_to(@item.movement ? movement_path(@item.movement) : new_item_movement_path(@item)){ "Move" }
+          end
+        end
+
+        it.item do
+          delete(@item, confirm: "Are you sure?") { "Delete" }
+        end
       end
-
-      delete(@item, confirm: "Are you sure?", class: "btn") { "Delete" }
     end
   end
 
