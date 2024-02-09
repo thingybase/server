@@ -120,23 +120,25 @@ class ItemsController < Oxidizer::ResourcesController
     render assign_phlex_accessors(view), layout: false
   end
 
-  class Form < ApplicationForm
+  class Form < DataForm
     def template
-      div class: "flex flex-col" do
-        Label :name
-        Input :name
+      TextField :name
 
-        Label :container
-        Input :container, type: :checkbox
+      SelectField :parent, helpers.account_policy_scope(::Item.container).select(:id, :name),
+        label: "Contained In"
 
-        Label :parent
-        Select :parent_id, helpers.account_policy_scope(::Item.container).select(:id, :name)
+      TextField :expires_at,
+        hint: 'Dates like "6 months from now", "next week", "Feb 2021" all work'
 
-        Label "Expires at"
-        Input :expires_at
-
-        Submit { "Save" }
+      CheckboxField :container do |it|
+        it.label
+        it.field do |it|
+          it.checkbox
+          it.label { "Allow items to be contained within this item. For boxes, shelfs and other containers." }
+        end
       end
+
+      Submit { "Save" }
     end
   end
 
