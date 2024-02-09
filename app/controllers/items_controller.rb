@@ -124,7 +124,7 @@ class ItemsController < Oxidizer::ResourcesController
     def template
       TextField :name
 
-      SelectField :parent, helpers.account_policy_scope(::Item.container).select(:id, :name),
+      SelectField :parent, items.select(:id, :name),
         label: "Contained In"
 
       TextField :expires_at,
@@ -139,6 +139,10 @@ class ItemsController < Oxidizer::ResourcesController
       end
 
       Submit { "Save" }
+    end
+
+    def items
+      helpers.account_policy_scope(::Item.container)
     end
   end
 

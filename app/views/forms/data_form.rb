@@ -32,25 +32,29 @@ class DataForm < ApplicationForm
       end
     end
 
-    def label(&)
-      render @field.label(class: "label label-text font-bold", &)
+    def label(&content)
+      render @field.label(class: "label label-text font-bold") do
+        render @label || content || @field.key.to_s.titleize
+      end
     end
 
     def field(**)
       render @field.input(class: "input input-bordered", **)
     end
 
-    def hint(&)
-      div(class: "opacity-75", &)
+    def hint(&content)
+      div(class: "opacity-75") do
+        render @hint || content
+      end
     end
 
     def template
       if block_given?
         yield
       else
-        label { @label }
+        label
         field
-        hint { @hint }
+        hint
       end
     end
   end
