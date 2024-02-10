@@ -9,6 +9,10 @@ class AccountComponent < ApplicationComponent
     def LinkButton(url, *modifiers, **attributes, &)
       a(href: url, class: tokens("btn", modifiers.map{ "btn-#{_1}" }, attributes[:class]), &)
     end
+
+    def Menu(...)
+      render MenuComponent.new(...)
+    end
   end
 
   include Aliases

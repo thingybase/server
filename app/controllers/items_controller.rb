@@ -44,7 +44,7 @@ class ItemsController < Oxidizer::ResourcesController
         LinkButton(label_path(@item.label), class: "join-item") { "Label" }
       end
 
-      render MenuComponent.new(title: "More...") do |it|
+      Menu title: "More..." do |it|
         it.item do
           link_to(edit_item_icon_path(@item), class: "join-item") { "Change icon" }
         end
@@ -92,7 +92,7 @@ class ItemsController < Oxidizer::ResourcesController
         LinkButton(label_path(@item.label), class: "join-item") { "Label" }
       end
 
-      render MenuComponent.new(title: "More...") do |it|
+      Menu title: "More..." do |it|
         it.item do
           link_to(new_item_copy_path(@item)) { "Copy" }
         end
