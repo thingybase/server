@@ -17,6 +17,10 @@ class AccountComponent < ApplicationComponent
     def DataView(...)
       render DataViewComponent.new(...)
     end
+
+    def Breadcrumb(...)
+      render BreadcrumbComponent.new(...)
+    end
   end
 
   include Aliases

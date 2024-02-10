@@ -18,14 +18,12 @@ class ItemsController < Oxidizer::ResourcesController
     def title = @item.name
     def icon = @item.icon
     def subtitle
-      div(class: "breadcrumbs m-0 p-0") do
-        ul do
-          li { show(@account, :name) }
-          @item.ancestors.each do |item|
-            li { show(item, :name) }
-          end
-          li { show(@item, :name) }
+      Breadcrumb do |it|
+        it.crumb { show(@account, :name) }
+        @item.ancestors.each do |item|
+          it.crumb { show(item, :name) }
         end
+        it.crumb { show(@item, :name) }
       end
     end
   end
@@ -149,6 +147,17 @@ class ItemsController < Oxidizer::ResourcesController
   class Edit < Show
     def template
       render Form.new(@item)
+    end
+
+    def subtitle
+      Breadcrumb do |it|
+        it.crumb { show(@account, :name) }
+        @item.ancestors.each do |item|
+          it.crumb { show(item, :name) }
+        end
+        it.crumb { show(@item, :name) }
+        it.crumb { "Edit" }
+      end
     end
   end
 
