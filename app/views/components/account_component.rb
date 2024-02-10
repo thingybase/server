@@ -13,6 +13,10 @@ class AccountComponent < ApplicationComponent
     def Menu(...)
       render MenuComponent.new(...)
     end
+
+    def DataView(...)
+      render DataViewComponent.new(...)
+    end
   end
 
   include Aliases

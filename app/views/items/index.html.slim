@@ -1,7 +1,0 @@
-h1.title=t '.title', default: resource_class.model_name.human.pluralize.titleize
-
-= link_to "Add item", new_item_path, class: 'btn btn-primary'
-
-.list-cards
-  -@items.each do
-    = component :item_list_card, item: _1, is_parent_visible: true

@@ -75,7 +75,7 @@ class ItemsController < Oxidizer::ResourcesController
 
   class Item < Show
     def template
-      render DataViewComponent.new(@item) do |it|
+      DataView @item do |it|
         it.field(:created_at)
         it.field(:updated_at)
         it.field(:user) { @item.user.name }
