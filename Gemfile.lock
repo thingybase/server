@@ -424,7 +424,7 @@ GEM
       railties (>= 6.0.0)
     stripe (5.55.0)
     strong_password (0.0.10)
-    superform (0.4.3)
+    superform (0.4.5)
       phlex-rails (~> 1.0)
       zeitwerk (~> 2.6)
     tailwindcss-rails (2.3.0)
@@ -527,7 +527,7 @@ DEPENDENCIES
   stimulus-rails
   stripe (~> 5.38)
   strong_password
-  superform (~> 0.4.3)
+  superform (~> 0.4.5)
   superview (~> 0.1.0)!
   tailwindcss-rails
   tinyzap!

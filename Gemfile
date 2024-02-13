@@ -159,5 +159,5 @@ gem "propshaft"
 # Components!
 gem "superview", "~> 0.1.0", github: "rubymonolith/superview"
 
-gem "superform", "~> 0.4.3"
+gem "superform", "~> 0.4.5"# path: "~/Projects/rubymonolith/superform"
 gem "phlex-rails", github: "phlex-ruby/phlex-rails", branch: "version-1-9"

@@ -33,8 +33,9 @@ class DataForm < ApplicationForm
     end
 
     def label(&content)
-      render @field.label(class: "label label-text font-bold") do
-        render @label || content || @field.key.to_s.titleize
+      content ||= @label || @field.key.to_s.titleize
+      render @field.label(class: "label label-text font-bold text-base") do
+        render content
       end
     end
 
@@ -43,8 +44,11 @@ class DataForm < ApplicationForm
     end
 
     def hint(&content)
-      div(class: "opacity-75") do
-        render @hint || content
+      content ||= @hint
+      return unless content
+
+      render @field.label(class: "label label-text opacity-75") do
+        render content
       end
     end
 
@@ -83,7 +87,7 @@ class DataForm < ApplicationForm
       end
 
       def checkbox
-        render @field.input(type: :checkbox, class: "checkbox")
+        render @field.checkbox(class: "checkbox")
       end
 
       def label(&)
