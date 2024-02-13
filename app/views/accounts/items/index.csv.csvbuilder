@@ -1,4 +1,4 @@
-csv << [ "Name", "URL", "Created at", "Updated at", "Expires at" ]
-@items.each do |item|
-  csv << [ item.name, item_url(item), item.created_at, item.updated_at, item.expires_at ]
+csv << [ "Name", "URL", "Container", "Created at", "Updated at", "Expires at" ]
+@items.includes(:parent).each do |item|
+  csv << [ item.name, item_url(item), (item.parent&.name || @account.name), item.created_at, item.updated_at, item.expires_at ]
 end
