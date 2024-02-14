@@ -21,6 +21,10 @@ class AccountComponent < ApplicationComponent
     def Breadcrumb(...)
       render BreadcrumbComponent.new(...)
     end
+
+    def Tab(...)
+      render TabComponent.new(...)
+    end
   end
 
   include Aliases
