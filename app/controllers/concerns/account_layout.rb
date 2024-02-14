@@ -20,15 +20,25 @@ module AccountLayout
 
     def around_template
       super do
-        title_template
+        div(class: "m-4") do
+          section(class: "flex flex-col gap-4 p-4 md:gap-8 md:p-8") do
+            title_template
 
-        if respond_to? :action_template
-          div(class: "flex flex-row gap-2") do
-            action_template
+            if respond_to? :action_template
+              div(class: "flex flex-row gap-2") do
+                action_template
+              end
+            end
+
+            div(class: "mb-4") { @notice } if @notice
+
+            yield
+          end
+
+          footer class: "my-6 mx-auto sm:hidden text-center" do
+            a(href: account_path(@account), class: "btn btn-ghost") { "Manage #{@account.name}" }
           end
         end
-
-        yield
       end
     end
   end
