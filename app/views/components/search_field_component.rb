@@ -30,7 +30,7 @@ class SearchFieldComponent < ApplicationComponent
     #   .join
     #     = text_field_tag :search, value, class: "", autofocus: autofocus, placeholder: placeholder
     #     = hidden_field_tag :item_id, item_id if item_id
-    form(action: (@url || url_for), data: {turbo_method: :get}) do
+    form(action: (@url || url_for), method: :get) do
       div(class: "join") do
         input(type: :hidden, name: :item_id, value: @item_id) if @item_id
         input(type: :text, name: @search, value: @value, class: "input input-bordered join-item", autofocus: @autofocus, placeholder: placeholder_text)
