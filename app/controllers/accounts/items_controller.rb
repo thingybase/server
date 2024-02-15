@@ -33,7 +33,7 @@ module Accounts
             class: "join-item input input-bordered input-primary"
 
           Input :name, type: :text, autofocus: true, class: "join-item input input-bordered input-primary"
-          Submit value: "Create", class: "join-item btn btn-primary"
+          Submit(class: "join-item btn btn-primary") { "Create" }
         end
       end
     end

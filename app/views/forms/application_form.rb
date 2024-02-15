@@ -8,7 +8,7 @@ class ApplicationForm < Superform::Rails::Form
   end
 
   def Submit(*, **, &)
-    input(*, type: "submit", **, &)
+    button(*, type: "submit", **, &)
   end
 
   def Label(name, *, **, &)
