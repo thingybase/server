@@ -41,15 +41,17 @@ class AccountComponent < ApplicationComponent
       div(class: "flex flex-row") do
         sidebar_template
 
-        div(class: "m-4") do
+        div(class: "m-4 w-full") do
           section(class: "flex flex-col gap-4 p-4 md:gap-8 md:p-8") do
             div(class: "mb-4") { @notice } if @notice
             yield
           end
+
           footer class: "my-6 mx-auto sm:hidden text-center" do
             a(href: account_path(@account), class: "btn btn-ghost") { "Manage #{@account.name}" }
           end
         end
+
       end
     end
   end
