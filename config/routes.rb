@@ -164,7 +164,11 @@ Rails.application.routes.draw do
   post "/auth/:provider/callback", to: 'sessions#create'
   get "/auth/:provider/callback", to: 'sessions#create'
 
-  sitepress_pages controller: :pages, root: true
+  # sitepress MagesController, path: "./app/content/pages"
+
+  scope "mages" do
+    sitepress MagesController, path: "./app/content/pages"
+  end
 
   # Rick-roll security scanners and script kiddies.
   get "/wp-login.php", to: redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
