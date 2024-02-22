@@ -95,9 +95,9 @@ Rails.application.routes.draw do
       create :member_requests
       namespace :items do
         create :batches
-      end
-      namespace :templates do
-        create :containers, :items, :perishables, :rooms
+        namespace :templates do
+          create :containers, :items, :perishables, :rooms
+        end
       end
     end
   end
