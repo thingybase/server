@@ -46,7 +46,7 @@ class AccountComponent < ApplicationComponent
   end
 
   def template
-    div(class: "m-4 w-full") do
+    div(class: "m-4 flex flex-col") do
       section(class: "flex flex-col gap-4 p-4 md:gap-8 md:p-8") do
         div(class: "mb-4") { @notice } if @notice
         yield
@@ -60,7 +60,9 @@ class AccountComponent < ApplicationComponent
 
   def sidebar_template
     div(class: "hidden md:flex flex-col p-4 bg-base-200 sticky top-0 h-screen") do
-      render SearchFieldComponent.new
+      div class: "mb-2" do
+        search_template
+      end
 
       item "Dashboard", icon: "dashboard-gauge", url: account_path(@account)
       item "Items", icon: "chest", active_icon: "chest-open", url: account_items_path(@account)
@@ -82,18 +84,15 @@ class AccountComponent < ApplicationComponent
     render SearchFieldComponent.new
   end
 
-  def item(text, icon:, url:, active_icon: nil)
-    # Active sould be bg-base-300
-    active_icon ||= icon
-
+  def item(text, icon:, url:, active_icon: icon)
     if active = text == @key
       icon = active_icon
-      active_css = "bg-base-300"
+      active_css = nil
     end
 
-    a(href: url, class: tokens(active_css, "p-2 rounded hover:bg-base-300")) do
+    a(href: url, class: tokens(active_css, "p-2 flex flex-row items-center gap-2 rounded hover:bg-base-300 whitespace-nowrap")) do
       render IconComponent.new(icon, class: "w-4")
-      span(class: "ml-2") { text }
+      span { text }
     end
   end
 end

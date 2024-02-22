@@ -26,11 +26,9 @@ class SearchFieldComponent < ApplicationComponent
   end
 
   def template
-    # = form_tag url, "data-turbo-method": :get do
-    #   .join
-    #     = text_field_tag :search, value, class: "", autofocus: autofocus, placeholder: placeholder
-    #     = hidden_field_tag :item_id, item_id if item_id
-    form(action: (@url || url_for), method: :get) do
+    # The margins and padding are set to 0 because the browser is inexplicable
+    # adding `margin-block-end` to the end of a form.
+    form(action: (@url || url_for), method: :get, class: "m-0 p-0 flex flex-row") do
       div(class: "join") do
         input(type: :hidden, name: :item_id, value: @item_id) if @item_id
         input(type: :text, name: @search, value: @value, class: "input input-bordered join-item", autofocus: @autofocus, placeholder: placeholder_text)
