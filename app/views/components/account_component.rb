@@ -91,7 +91,7 @@ class AccountComponent < ApplicationComponent
     end
 
     a(href: url, class: tokens(active_css, "p-2 flex flex-row items-center gap-2 rounded hover:bg-base-300 whitespace-nowrap")) do
-      render IconComponent.new(icon, class: "w-4")
+      render IconComponent.new(icon)
       span { text }
     end
   end

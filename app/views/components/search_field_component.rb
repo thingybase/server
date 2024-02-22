@@ -4,21 +4,17 @@ class SearchFieldComponent < ApplicationComponent
     @value = value
     @autofocus = autofocus
     @item = item
+    @placeholder ||= placeholder_text
   end
 
   def before_template
     @url ||= url_for
     @value ||= helpers.request.params[:search]
     @autofocus ||= helpers.request.params[:search].present?
-    # url ||= url_for
-    # value ||= params[:search]
-    # autofocus ||= params[:search].present?
-    # item_id = params.fetch(:item_id, item&.id)
   end
 
   def placeholder_text
-    return unless @item
-    if @item.root?
+    if @item.nil? or @item.root?
       "Search"
     else
       "Search #{@item.name}"

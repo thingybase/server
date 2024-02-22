@@ -122,7 +122,7 @@ class ItemsController < Oxidizer::ResourcesController
     def template
       TextField :name
 
-      SelectField :parent, items.select(:id, :name),
+      SelectField :parent, [nil, items.select(:id, :name)],
         label: "Contained In"
 
       TextField :expires_at,

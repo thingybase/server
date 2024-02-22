@@ -72,11 +72,11 @@ class DataForm < ApplicationForm
   class SelectFieldComponent < FieldComponent
     def initialize(field, collection, *, **)
       super(field, *, **)
-      @collection = collection
+      @collection = Array(collection)
     end
 
     def field
-      render @field.select(@collection, class: "select select-bordered")
+      render @field.select(*@collection, class: "select select-bordered")
     end
   end
 
