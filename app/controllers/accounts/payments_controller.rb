@@ -3,7 +3,7 @@ module Accounts
     layout "body"
 
     def create
-      redirect_to checkout_session.url
+      redirect_to checkout_session.url, status: :see_other, allow_other_host: true
     end
 
     def show
