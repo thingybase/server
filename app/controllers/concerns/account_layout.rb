@@ -8,7 +8,7 @@ module AccountLayout
   included do
     before_action :set_account_instance_variable
     layout :set_account_layout
-    helper_method :navigation_key, :navigation_search_path, :navigation_search_placeholder
+    helper_method :navigation_key
   end
 
   class Component < AccountComponent
@@ -45,32 +45,6 @@ module AccountLayout
 
   protected
     def navigation_key
-    end
-
-    def navigation_search_path
-      if navigation_search_item
-        item_search_path(navigation_search_item)
-      else
-        account_search_path(@account)
-      end
-    end
-
-    def navigation_search_placeholder
-      if navigation_search_item
-        "Search #{navigation_search_item.name}"
-      else
-        "Search items"
-      end
-    end
-
-    def navigation_search_item
-      return unless @item
-
-      if @item.container? && @item.persisted?
-        @item
-      elsif @item.parent
-        @item.parent
-      end
     end
 
     def request_forbidden(exception)
