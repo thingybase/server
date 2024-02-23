@@ -33,6 +33,10 @@ class ItemsController < Oxidizer::ResourcesController
       render ListItemsComponent.new(@item.children.container_then_item)
     end
 
+    def search_template
+      render SearchFieldComponent.new(placeholder: "Search #{@item.name}", url: item_search_path(@item))
+    end
+
     def action_template
       LinkButton(new_item_child_path(@item), :primary) { "+ Add items" }
 

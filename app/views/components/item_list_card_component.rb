@@ -36,7 +36,7 @@ class ItemListCardComponent < ListCardComponent
       detail do
         plain "In"
         whitespace
-        link_to @item.parent.name, @item.parent
+        link_to(@item.parent) { @item.parent.name }
       end
     end
   end
