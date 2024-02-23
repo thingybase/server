@@ -81,7 +81,7 @@ class AccountComponent < ApplicationComponent
   end
 
   def search_template
-    render SearchFieldComponent.new
+    render SearchFieldComponent.new(placeholder: "Search #{@account.name}", url: account_search_path(@account))
   end
 
   def item(text, icon:, url:, active_icon: icon)
