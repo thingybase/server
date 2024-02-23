@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/rubymonolith/superview.git
-  revision: 4b82b74ca0a072f6b165e3ce3ed3574e3f5150b0
+  revision: b87e9f7aae7588893f434e9b9372a40860a10ede
   specs:
     superview (0.1.0)
       phlex-rails (~> 1.0)
@@ -321,7 +321,7 @@ GEM
     pundit-matchers (1.7.0)
       rspec-rails (>= 3.0.0)
     racc (1.7.3)
-    rack (2.2.8)
+    rack (2.2.8.1)
     rack-protection (3.2.0)
       base64 (>= 0.1.0)
       rack (~> 2.2, >= 2.2.4)
