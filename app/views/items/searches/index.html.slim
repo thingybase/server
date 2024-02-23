@@ -15,4 +15,5 @@
     -else
       - @search.items.each do
         = component :item_list_card, item: _1, is_parent_visible: true
-    =link_to "Search entire account", account_search_path(@account, search: @search.phrase), class: "btn btn-outline"
+
+=link_to "Search entire account", account_search_path(@account, search: @search.phrase), class: "btn btn-outline"
