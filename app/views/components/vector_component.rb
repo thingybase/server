@@ -6,7 +6,7 @@ class VectorComponent < ApplicationComponent
     @alt ||= @asset.name
   end
 
-  def template
+  def view_template
     picture(class: "inline-block") do
       case @mode
       when nil

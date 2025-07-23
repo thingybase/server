@@ -7,7 +7,7 @@ module Items
       Item
     end
 
-    def templates
+    def view_templates
       authorize parent_resource, :new?
     end
 

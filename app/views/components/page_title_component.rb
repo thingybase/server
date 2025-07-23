@@ -5,7 +5,7 @@ class PageTitleComponent < ApplicationComponent
     @icon = icon
   end
 
-  def template
+  def view_template
     div class: "flex flex-col" do
       h1(class: "font-semibold text-4xl flex flex-row items-center") do
         render IconComponent.new(@icon, class: "w-10 mr-3") if @icon

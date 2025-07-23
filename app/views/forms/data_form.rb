@@ -52,7 +52,7 @@ class DataForm < ApplicationForm
       end
     end
 
-    def template
+    def view_template
       if block_given?
         yield
       else
@@ -94,7 +94,7 @@ class DataForm < ApplicationForm
         span(&)
       end
 
-      def template
+      def view_template
         render @field.label class: "flex flex-row gap-2" do
           yield
         end

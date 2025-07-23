@@ -7,7 +7,7 @@ class ApplicationLayout < ApplicationView
 		@title = title
 	end
 
-	def template(&block)
+	def view_template(&block)
 		doctype
 
 		html do

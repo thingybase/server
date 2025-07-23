@@ -3,7 +3,7 @@ class DataViewComponent < ApplicationComponent
     @model = model
   end
 
-  def template
+  def view_template
     div(class: "grid grid-cols-2 gap-4") do
       yield
     end

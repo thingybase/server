@@ -10,7 +10,7 @@ class SearchFieldComponent < ApplicationComponent
     @value ||= helpers.request.params[:search]
   end
 
-  def template
+  def view_template
     # The margins and padding are set to 0 because the browser is inexplicable
     # adding `margin-block-end` to the end of a form.
     form(action: @url, method: :get, 'data-turbo-method': :get, class: "m-0 p-0 flex flex-row") do

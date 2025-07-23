@@ -5,6 +5,6 @@ class PagesController < Sitepress::SiteController
 
   private
     def assign_title
-      @page_title = requested_resource.data.fetch("title")
+      # @page_title = requested_resource.data.fetch("title")
     end
 end

@@ -4,7 +4,7 @@ class TabComponent < ApplicationComponent
     @attributes = attributes
   end
 
-  def template
+  def view_template
     ul(class: tokens("tabs", @attributes[:class])) do
       yield
     end
@@ -22,4 +22,3 @@ class TabComponent < ApplicationComponent
     @path || helpers.request.path
   end
 end
-

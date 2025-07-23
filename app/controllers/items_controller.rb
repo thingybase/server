@@ -29,7 +29,7 @@ class ItemsController < Oxidizer::ResourcesController
   end
 
   class Container < Show
-    def template
+    def view_template
       render ListItemsComponent.new(@item.children.container_then_item)
     end
 
@@ -76,7 +76,7 @@ class ItemsController < Oxidizer::ResourcesController
   end
 
   class Item < Show
-    def template
+    def view_template
       DataView @item do |it|
         it.field(:created_at)
         it.field(:updated_at)
@@ -123,7 +123,7 @@ class ItemsController < Oxidizer::ResourcesController
   end
 
   class Form < DataForm
-    def template
+    def view_template
       TextField :name
 
       SelectField :parent, [nil, items.select(:id, :name)],
@@ -149,7 +149,7 @@ class ItemsController < Oxidizer::ResourcesController
   end
 
   class Edit < Show
-    def template
+    def view_template
       render Form.new(@item)
     end
 

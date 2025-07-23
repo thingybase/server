@@ -1,5 +1,5 @@
 class NavigationMenuComponent < MenuComponent
-  def template
+  def view_template
     div(class: "flex md:hidden") do
       super
     end

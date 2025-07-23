@@ -13,7 +13,7 @@ class ListComponent < ApplicationComponent
     @empty = EmptyListComponent.new(...)
   end
 
-  def template
+  def view_template
     div do
       if @items.empty?
         render @empty

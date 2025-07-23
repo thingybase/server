@@ -7,7 +7,7 @@ class IconComponent < ApplicationComponent
     @css_class = locals.fetch(:class, "w-4")
   end
 
-  def template
+  def view_template
     render VectorComponent.new(asset: @icon.asset, mode: @mode, class: @css_class)
   end
 end

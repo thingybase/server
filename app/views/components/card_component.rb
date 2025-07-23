@@ -6,7 +6,7 @@ class CardComponent < ApplicationComponent
     @image_url = image_url
   end
 
-  def template
+  def view_template
     a(href: @url, class: "card shadow-xl max-w-96 transition hover:scale-105 hover:shadow-2xl") do
       figure(class: "max-h-64 rounded-t-2xl") do
         helpers.image_tag @image_url

@@ -22,7 +22,7 @@ module Labels
         end
       end
 
-      def template
+      def view_template
         div class: "w-full flex flex-col gap-8" do
           Tab class: "tabs-boxed" do |it|
             it.tab(label_standard_path(@label)) { "Standard" }

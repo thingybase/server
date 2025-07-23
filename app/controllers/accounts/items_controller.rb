@@ -19,13 +19,13 @@ module Accounts
         LinkButton(new_account_items_batch_path(@account)) { "Select..." }
       end
 
-      def template
+      def view_template
         render ListItemsComponent.new(@items.roots.container_then_item)
       end
     end
 
     class Form < ApplicationForm
-      def template
+      def view_template
         div(class: "join") do
           Select :container,
               [ false, "Item"],
@@ -45,7 +45,7 @@ module Accounts
       def subtitle = "Add an item or container"
       def icon = "chest-open"
 
-      def template
+      def view_template
         render Form.new(@item)
 
         render ListItemsComponent.new(@items.roots.container_then_item)
@@ -70,7 +70,7 @@ module Accounts
       end
     end
 
-    def templates
+    def view_templates
       authorize @account.items.build, :new?
     end
 

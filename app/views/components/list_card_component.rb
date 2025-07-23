@@ -12,7 +12,7 @@ class ListCardComponent < ApplicationComponent
     @details << content
   end
 
-  def template
+  def view_template
     div class: "py-4 flex-col gap-2" do
       div class: "font-semibold" do
         if @icon

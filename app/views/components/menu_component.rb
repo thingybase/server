@@ -10,7 +10,7 @@ class MenuComponent < ApplicationComponent
     @items << item if enabled
   end
 
-  def template
+  def view_template
     details(class: "dropdown dropdown-end") do
       summary(class: "btn") { @title }
       ul(class: "p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52 z-[1]") do
