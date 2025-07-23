@@ -3,10 +3,7 @@ class ItemListCardComponent < ListCardComponent
 
   delegate :containers_count, :items_count, to: :item
 
-  # TODO: Add a register helper method .... ask Joel about how to hook this up.
-  def local_time_ago(...)
-    @_context.target << helpers.local_time_ago(...)
-  end
+  register_output_helper :local_time_ago
 
   def initialize(item:, is_parent_visible: false, link: nil)
     @item = item

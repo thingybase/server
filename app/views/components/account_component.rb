@@ -7,7 +7,7 @@ class AccountComponent < ApplicationComponent
     end
 
     def LinkButton(url, *modifiers, **attributes, &)
-      a(href: url, class: tokens("btn", modifiers.map{ "btn-#{_1}" }, attributes[:class]), &)
+      a(href: url, class: ["btn", modifiers.map{ "btn-#{_1}" }, attributes[:class]], &)
     end
 
     def Menu(...)
@@ -90,7 +90,7 @@ class AccountComponent < ApplicationComponent
       active_css = nil
     end
 
-    a(href: url, class: tokens(active_css, "p-2 flex flex-row items-center gap-2 rounded hover:bg-base-300 whitespace-nowrap")) do
+    a(href: url, class: [active_css, "p-2 flex flex-row items-center gap-2 rounded hover:bg-base-300 whitespace-nowrap"]) do
       render IconComponent.new(icon)
       span { text }
     end
