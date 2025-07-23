@@ -1,6 +1,4 @@
 class ListCardComponent < ApplicationComponent
-  include Phlex::DeferredRender
-
   def initialize(title, link = nil, icon: nil)
     @icon = icon
     @link = link
@@ -12,7 +10,9 @@ class ListCardComponent < ApplicationComponent
     @details << content
   end
 
-  def view_template
+  def view_template(&)
+    vanish(&)
+
     div class: "py-4 flex-col gap-2" do
       div class: "font-semibold" do
         if @icon

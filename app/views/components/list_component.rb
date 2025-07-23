@@ -1,6 +1,4 @@
 class ListComponent < ApplicationComponent
-  include Phlex::DeferredRender
-
   def initialize(items)
     @items = items
   end
@@ -13,7 +11,9 @@ class ListComponent < ApplicationComponent
     @empty = EmptyListComponent.new(...)
   end
 
-  def view_template
+  def view_template(&)
+    vanish(&)
+
     div do
       if @items.empty?
         render @empty

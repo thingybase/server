@@ -1,6 +1,4 @@
 class MenuComponent < ApplicationComponent
-  include Phlex::DeferredRender
-
   def initialize(title:)
     @title = title
     @items = []
@@ -10,7 +8,9 @@ class MenuComponent < ApplicationComponent
     @items << item if enabled
   end
 
-  def view_template
+  def view_template(&)
+    vanish(&)
+
     details(class: "dropdown dropdown-end") do
       summary(class: "btn") { @title }
       ul(class: "p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52 z-[1]") do
