@@ -1,1 +1,0 @@
-Phlex::SGML.version 2
