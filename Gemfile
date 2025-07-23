@@ -8,7 +8,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.0.0'
+gem 'rails', '~> 8.0.0'
 # Use Puma as the app server
 gem 'puma', '~> 6.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -35,7 +35,7 @@ gem 'strong_password'
 # Display times locally
 gem 'local_time'
 # Run Postgres in production
-gem 'pg', '~> 1.4'
+gem 'pg', '~> 1.5'
 # Application error alerts
 gem 'rollbar'
 # Reduces boot times through caching; required in config/boot.rb
@@ -55,21 +55,25 @@ gem "pg_search", "~> 2.3"
 # Blanks from forms are converted into nil instead of stored as "" in the database
 gem "nilify_blanks", "~> 1.4"
 # Does union queries in ActiveRecord.
-gem "active_record_union"
+# Remove from Github when 1.3.1 is released. Issue at https://github.com/brianhempel/active_record_union/issues/36
+gem "active_record_union", "~> 1.3.0", github: "brianhempel/active_record_union"
 # Converts GUIDs in the URLs into shorter ids
 gem "anybase", "~> 0.0.15"
 # View template for CSV files
 gem "csv_builder", "~> 2.1"
+
 # Content management
-if sitepress_gem_path = ENV["SITEPRESS_GEM_PATH"]
-  gem "sitepress",        path: sitepress_gem_path
-  gem "sitepress-cli",    path: sitepress_gem_path
-  gem "sitepress-rails",  path: sitepress_gem_path
-  gem "sitepress-core",   path: sitepress_gem_path
-  gem "sitepress-server", path: sitepress_gem_path
-else
-  gem "sitepress-rails", github: "sitepress/sitepress", branch: "main"
-end
+# if sitepress_gem_path = ENV["SITEPRESS_GEM_PATH"]
+#   gem "sitepress",        path: sitepress_gem_path
+#   gem "sitepress-cli",    path: sitepress_gem_path
+#   gem "sitepress-rails",  path: sitepress_gem_path
+#   gem "sitepress-core",   path: sitepress_gem_path
+#   gem "sitepress-server", path: sitepress_gem_path
+# else
+#   gem "sitepress-rails", github: "sitepress/sitepress", branch: "main"
+# end
+#
+gem "sitepress-rails", "~> 4.0"
 
 # Markdown gem
 gem "redcarpet", "~> 3.5.0"
@@ -116,9 +120,9 @@ else
   gem "featureomatic", "~> 0.1.1", github: "rubymonolith/featureomatic"
 end
 
-gem "tinyzap", github: "tinyzap/ruby"
+# gem "tinyzap", github: "tinyzap/ruby"
 
-gem "mailto", "~> 0.1.1"
+gem "mailto", "~> 0.1"
 
 gem "stripe", "~> 5.38"
 
@@ -135,7 +139,7 @@ gem "matrix", "~> 0.4.2"
 
 gem "ahoy_matey", "~> 4.1"
 
-gem "slim-rails", "~> 3.5"
+gem "slim-rails", "~> 3.7"
 
 gem "blazer", "~> 2.6"
 
@@ -157,7 +161,8 @@ gem "tailwindcss-rails"
 gem "propshaft"
 
 # Components!
-gem "superview", "~> 0.1.0", github: "rubymonolith/superview"
+gem "superview", "~> 1.0.0", github: "rubymonolith/superview"
 
-gem "superform", "~> 0.4.5"# path: "~/Projects/rubymonolith/superform"
-gem "phlex-rails", github: "phlex-ruby/phlex-rails", branch: "version-1-9"
+gem "superform", "~> 0.4"# path: "~/Projects/rubymonolith/superform"
+gem "phlex-rails", "~> 2.0"
+gem "csv"
