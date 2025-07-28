@@ -6,14 +6,15 @@
 
 <div class="list-cards">
   <% with @account.user do |owner| %>
-    <%= component :list_card, owner.name, user_path(owner), icon: "star" do |card| %>
-      <% card.detail do %>
-        Owner
-      <% end %>
-      <% card.detail do %>
-        Account created <%= local_time_ago @account.created_at %>
-      <% end %>
-    <% end %>
+    <%= render partial: "helpers/list_card_helper/list_card", locals: {
+      title: owner.name,
+      link: user_path(owner),
+      icon: "star",
+      details: [
+        "Owner",
+        "Account created #{local_time_ago(@account.created_at)}"
+      ]
+    } %>
   <% end %>
 
   <% @members.each do |member| %>
@@ -39,13 +40,14 @@
   <% end %>
 
   <% @member_requests.each do |request| %>
-    <%= component :list_card, request.user.name, new_member_request_review_path(request), icon: "mailer" do |card| %>
-      <% card.detail do %>
-        Pending request
-      <% end %>
-      <% card.detail do %>
-        Invited to account <%= local_time_ago request.created_at %>
-      <% end %>
-    <% end %>
+    <%= list_card \
+        title: request.user.name,
+        link: new_member_request_review_path(request.user),
+        icon: "mailer",
+        details: [
+          "Pending request",
+          "Invited to account #{local_time_ago request.created_at}"
+        ]
+    %>
   <% end %>
 </div>

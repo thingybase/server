@@ -1,0 +1,14 @@
+<div class="py-4 flex-col gap-2">
+  <div class="font-semibold">
+    <%= render Components::IconComponent.new(icon, class: "w-4 mr-2") %>
+    <%= link_to title, link, class: "link" %>
+  </div>
+
+  <div>
+    <% details.each do |detail| %>
+      <span class="after:mx-2 after:content-['•'] last:after:content-none base-content-300">
+        <%= detail.html_safe %>
+      </span>
+    <% end %>
+  </div>
+</div>
