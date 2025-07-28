@@ -20,7 +20,7 @@ class ItemsController < Oxidizer::ResourcesController
     def subtitle
       Breadcrumb do |it|
         it.crumb { show(@account, :name) }
-        @item.ancestors.each do |item|
+        @item.ancestors.reverse.each do |item|
           it.crumb { show(item, :name) }
         end
         it.crumb { show(@item, :name) }
