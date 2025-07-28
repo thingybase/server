@@ -30,7 +30,7 @@ class ItemsController < Oxidizer::ResourcesController
 
   class Container < Show
     def view_template
-      render ListItemsComponent.new(@item.children.container_then_item)
+      render Components::ListItemsComponent.new(@item.children.container_then_item)
     end
 
     def search_template

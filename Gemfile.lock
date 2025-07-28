@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/beautifulruby/superform.git
+  revision: 987259569a2612138bfbb8cd77951eedbfc50c84
+  specs:
+    superform (0.5.1)
+      phlex-rails (>= 1.0, < 3.0)
+      zeitwerk (~> 2.6)
+
+GIT
   remote: https://github.com/brianhempel/active_record_union.git
   revision: 8ebe558709aabe039abd24e3e7dd4d4354a6de88
   specs:
@@ -463,9 +471,6 @@ GEM
     stringio (3.1.7)
     stripe (5.55.0)
     strong_password (0.0.10)
-    superform (0.5.1)
-      phlex-rails (>= 1.0, < 3.0)
-      zeitwerk (~> 2.6)
     superview (1.0.0)
       zeitwerk (~> 2.0)
     tailwindcss-rails (4.3.0)
@@ -586,7 +591,7 @@ DEPENDENCIES
   stimulus-rails
   stripe (~> 5.38)
   strong_password
-  superform (~> 0.5.1)
+  superform (~> 0.5.1)!
   superview (~> 1.0)
   tailwindcss-rails (~> 4.0)
   turbo-rails

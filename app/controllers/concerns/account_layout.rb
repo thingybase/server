@@ -11,7 +11,7 @@ module AccountLayout
     helper_method :navigation_key
   end
 
-  class Component < AccountComponent
+  class Component < Components::AccountComponent
     attr_reader :title, :subtitle, :icon
 
     def title_template

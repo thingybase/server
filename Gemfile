@@ -166,6 +166,6 @@ gem "csv"
 
 gem "phlex-rails", "~> 2.3"
 
-gem "superform", "~> 0.5.1"
+gem "superform", "~> 0.5.1", github: "beautifulruby/superform"
 
 gem "superview", "~> 1.0"

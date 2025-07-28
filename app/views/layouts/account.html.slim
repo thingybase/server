@@ -1,2 +1,2 @@
-= render AccountComponent.new(key: navigation_key, account: @account, user: current_user, notice: notice_message) do
+= render Components::AccountComponent.new(key: navigation_key, account: @account, user: current_user, notice: notice_message) do
   = yield
