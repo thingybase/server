@@ -1,3 +1,3 @@
 web: bin/rails server -p $PORT --binding=0.0.0.0
 css: bin/rails tailwindcss:watch
-stripe: bash -c 'stripe listen --forward-to localhost:5000/webhooks/stripe --latest || echo "⚠️ Stripe failed — ignoring" && sleep infinity'
+# stripe: bash -c 'stripe listen --forward-to localhost:5000/webhooks/stripe --latest || echo "⚠️ Stripe failed — ignoring" && sleep infinity'
