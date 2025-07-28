@@ -15,7 +15,7 @@ module AccountLayout
     attr_reader :title, :subtitle, :icon
 
     def title_template
-      render PageTitleComponent.new(title: title, subtitle: -> { subtitle }, icon: icon) if title
+      render Components::PageTitleComponent.new(title: title, subtitle: -> { subtitle }, icon: icon) if title
     end
 
     def around_template
