@@ -1,0 +1,51 @@
+<%= title "People", subtitle: "Control who can help organize or find stuff in the #{@account.name} account", icon: "basketball-jersey" %>
+
+<div class="buttons">
+  <%= link_to "+ Add people", new_account_person_path(@account), class: "btn btn-primary" %>
+</div>
+
+<div class="list-cards">
+  <% with @account.user do |owner| %>
+    <%= component :list_card, owner.name, user_path(owner), icon: "star" do |card| %>
+      <% card.detail do %>
+        Owner
+      <% end %>
+      <% card.detail do %>
+        Account created <%= local_time_ago @account.created_at %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% @members.each do |member| %>
+    <%= component :list_card, member.name, member_path(member), icon: "basketball-jersey" do |card| %>
+      <% card.detail do %>
+        Member
+      <% end %>
+      <% card.detail do %>
+        Added <%= local_time_ago member.created_at %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% @invitations.each do |invitation| %>
+    <%= component :list_card, (invitation.name || invitation.email), invitation_path(invitation), icon: "mailer" do |card| %>
+      <% card.detail do %>
+        Pending invitation
+      <% end %>
+      <% card.detail do %>
+        Invited <%= local_time_ago invitation.created_at %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% @member_requests.each do |request| %>
+    <%= component :list_card, request.user.name, new_member_request_review_path(request), icon: "mailer" do |card| %>
+      <% card.detail do %>
+        Pending request
+      <% end %>
+      <% card.detail do %>
+        Invited to account <%= local_time_ago request.created_at %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
