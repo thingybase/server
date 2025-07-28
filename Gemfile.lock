@@ -33,13 +33,6 @@ GIT
       rails (>= 7.0.3)
 
 GIT
-  remote: https://github.com/rubymonolith/superview.git
-  revision: 400cb7eef5b02a97f976b9d37817525b83282ea7
-  specs:
-    superview (1.0.0)
-      zeitwerk (~> 2.0)
-
-GIT
   remote: https://github.com/slim-template/slim-rails.git
   revision: a6ae6b27d625b3703d9447cb5737b7007ce7874e
   specs:
@@ -315,10 +308,12 @@ GEM
     pg_search (2.3.7)
       activerecord (>= 6.1)
       activesupport (>= 6.1)
-    phlex (1.11.0)
-    phlex-rails (1.2.2)
-      phlex (>= 1.10, < 2)
-      railties (>= 6.1, < 9)
+    phlex (2.3.1)
+      zeitwerk (~> 2.7)
+    phlex-rails (2.3.1)
+      phlex (~> 2.3.0)
+      railties (>= 7.1, < 9)
+      zeitwerk (~> 2.7)
     phony (2.22.3)
     phony_rails (0.15.0)
       activesupport (>= 3.0)
@@ -468,9 +463,6 @@ GEM
     stringio (3.1.7)
     stripe (5.55.0)
     strong_password (0.0.10)
-    superform (0.5.1)
-      phlex-rails (>= 1.0, < 3.0)
-      zeitwerk (~> 2.6)
     tailwindcss-rails (4.3.0)
       railties (>= 7.0.0)
       tailwindcss-ruby (~> 4.0)
@@ -564,7 +556,7 @@ DEPENDENCIES
   oxidizer!
   pg (~> 1.5)
   pg_search (~> 2.3)
-  phlex-rails (~> 1.0)
+  phlex-rails (~> 2.3)
   phony_rails
   prawn (~> 2.0)
   prawn-qrcode (~> 0.5.0)
@@ -589,8 +581,6 @@ DEPENDENCIES
   stimulus-rails
   stripe (~> 5.38)
   strong_password
-  superform (~> 0.4)
-  superview (~> 1.0.0)!
   tailwindcss-rails (~> 4.0)
   turbo-rails
   twilio-ruby

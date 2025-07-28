@@ -161,8 +161,8 @@ gem "tailwindcss-rails", "~> 4.0" # which transitively pins tailwindcss-ruby to 
 gem "propshaft"
 
 # Components!
-gem "superview", "~> 1.0.0", github: "rubymonolith/superview"
+# gem "superview", "~> 2.0.0", github: "rubymonolith/superview"
 
-gem "superform", "~> 0.4"# path: "~/Projects/rubymonolith/superform"
-gem "phlex-rails", "~> 1.0"
+# gem "superform", "~> 0.4"# path: "~/Projects/rubymonolith/superform"
+
 gem "csv"
