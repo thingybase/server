@@ -1,6 +1,4 @@
 class Components::ItemListCardComponent < Components::ListCardComponent
-  include Phlex::Rails::Helpers::LinkTo
-  include Phlex::Rails::Helpers::Pluralize
 
   attr_accessor :item
 
