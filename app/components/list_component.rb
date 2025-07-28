@@ -1,4 +1,4 @@
-class ListComponent < ApplicationComponent
+class Components::ListComponent < Components::Base
   def initialize(items)
     @items = items
   end

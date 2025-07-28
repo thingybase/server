@@ -1,4 +1,4 @@
-class AccountComponent < ApplicationComponent
+class Components::AccountComponent < Components::Base
   attr_writer :user, :account
 
   module Aliases

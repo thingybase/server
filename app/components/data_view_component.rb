@@ -1,4 +1,4 @@
-class DataViewComponent < ApplicationComponent
+class Components::DataViewComponent < Components::Base
   def initialize(model)
     @model = model
   end

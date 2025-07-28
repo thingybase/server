@@ -1,4 +1,4 @@
-class CardComponent < ApplicationComponent
+class Components::CardComponent < Components::Base
   def initialize(url:, title:, subtitle:, image_url:)
     @url = url
     @title = title

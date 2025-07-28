@@ -1,4 +1,4 @@
-class ListCardComponent < ApplicationComponent
+class Components::ListCardComponent < Components::Base
   def initialize(title, link = nil, icon: nil)
     @icon = icon
     @link = link

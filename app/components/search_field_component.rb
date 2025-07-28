@@ -1,4 +1,4 @@
-class SearchFieldComponent < ApplicationComponent
+class Components::SearchFieldComponent < Components::Base
   def initialize(url: nil, autofocus: nil, value: nil, button: "Search", placeholder: "Search")
     @url = url
     @value = value

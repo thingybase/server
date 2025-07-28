@@ -1,4 +1,4 @@
-class PageTitleComponent < ApplicationComponent
+class Components::PageTitleComponent < Components::Base
   def initialize(title:, subtitle: nil, icon: nil)
     @title = title
     @subtitle = subtitle

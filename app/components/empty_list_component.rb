@@ -1,4 +1,4 @@
-class EmptyListComponent < ApplicationComponent
+class Components::EmptyListComponent < Components::Base
   def view_template(&content)
     div(class: "my-24 flex flex-col gap-2", &content)
   end

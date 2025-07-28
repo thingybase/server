@@ -1,4 +1,4 @@
-class IconComponent < ApplicationComponent
+class Components::IconComponent < Components::Base
   NOT_FOUND_ICON = "objects".freeze
 
   def initialize(key, mode: nil, **locals)

@@ -463,6 +463,11 @@ GEM
     stringio (3.1.7)
     stripe (5.55.0)
     strong_password (0.0.10)
+    superform (0.5.1)
+      phlex-rails (>= 1.0, < 3.0)
+      zeitwerk (~> 2.6)
+    superview (1.0.0)
+      zeitwerk (~> 2.0)
     tailwindcss-rails (4.3.0)
       railties (>= 7.0.0)
       tailwindcss-ruby (~> 4.0)
@@ -581,6 +586,8 @@ DEPENDENCIES
   stimulus-rails
   stripe (~> 5.38)
   strong_password
+  superform (~> 0.5.1)
+  superview (~> 1.0)
   tailwindcss-rails (~> 4.0)
   turbo-rails
   twilio-ruby

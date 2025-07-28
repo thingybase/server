@@ -1,4 +1,4 @@
-class TabComponent < ApplicationComponent
+class Components::TabComponent < Components::Base
   def initialize(path: nil, **attributes)
     @path = path
     @attributes = attributes

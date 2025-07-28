@@ -1,4 +1,4 @@
-class VectorComponent < ApplicationComponent
+class Components::VectorComponent < Components::Base
   def initialize(key: nil, asset: nil, mode: nil, alt: nil, **locals)
     @mode = mode
     @asset = asset || VectorAsset.collection.find(key)

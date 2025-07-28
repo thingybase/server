@@ -1,4 +1,4 @@
-class MenuComponent < ApplicationComponent
+class Components::MenuComponent < Components::Base
   def initialize(title:)
     @title = title
     @items = []
