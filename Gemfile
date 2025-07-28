@@ -139,7 +139,7 @@ gem "matrix", "~> 0.4.2"
 
 gem "ahoy_matey", "~> 4.1"
 
-gem "slim-rails", "~> 3.7"
+gem "slim-rails", github: "slim-template/slim-rails"
 
 gem "blazer", "~> 2.6"
 
@@ -155,7 +155,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
-gem "tailwindcss-rails"
+gem "tailwindcss-rails", "~> 4.0" # which transitively pins tailwindcss-ruby to v4
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"

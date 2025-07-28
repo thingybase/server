@@ -116,10 +116,10 @@ class ItemsController < Oxidizer::ResourcesController
 
   def show
     view_class = @item.container? ? Container : Item
-    view = assign_phlex_accessors(view_class.new)
+    view = assign_component_accessors(view_class.new)
     view.user = current_user
 
-    render assign_phlex_accessors(view), layout: false
+    render assign_component_accessors(view), layout: false
   end
 
   class Form < DataForm
