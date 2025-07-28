@@ -164,5 +164,5 @@ gem "propshaft"
 gem "superview", "~> 1.0.0", github: "rubymonolith/superview"
 
 gem "superform", "~> 0.4"# path: "~/Projects/rubymonolith/superform"
-gem "phlex-rails", "~> 2.0"
+gem "phlex-rails", "~> 1.0"
 gem "csv"
