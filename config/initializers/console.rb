@@ -6,10 +6,9 @@ Rails.application.configure do
     # We're extending it with a new module to add custom methods
     TOPLEVEL_BINDING.eval('self').extend(
       Module.new do
-        def render(*args, layout: false, **kwargs)
+        def pc(component,*args, layout: false, **kwargs)
           Rails.logger.silence do
-            html = ApplicationController.renderer.render(*args, layout: layout, **kwargs)
-            Nokogiri::HTML.fragment(html).to_xhtml(indent: 2)
+            pp Nokogiri::HTML.fragment(component.call).to_xhtml(indent: 2)
           end
         end
       end

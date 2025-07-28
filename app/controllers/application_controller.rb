@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include Imageomatic::Opengraph
   include Featureomatic::Authorization
   include Authentication
-  include Pundit
+  include Pundit::Authorization
 
   before_action :authenticate_user
   after_action :verify_authorized, except: [:index]

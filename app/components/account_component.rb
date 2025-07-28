@@ -11,7 +11,7 @@ class Components::AccountComponent < Components::Base
     end
 
     def Menu(...)
-      render MenuComponent.new(...)
+      render Components::MenuComponent.new(...)
     end
 
     def DataView(...)
