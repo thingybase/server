@@ -166,3 +166,5 @@ gem "propshaft"
 # gem "superform", "~> 0.4"# path: "~/Projects/rubymonolith/superform"
 
 gem "csv"
+
+gem "phlex-rails", "~> 2.3"
