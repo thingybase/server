@@ -41,29 +41,30 @@ layout: page-with-footer
   </div>
 </section>
 
-<%# TODO: Implement this feature! This will help Tb spread. %>
-<%#
-  <section class="hero">
+<% capture do %>
+  <section class="hero-lg bg-success">
     <div class="hero-body">
       <div class="container">
-        <div class="columns">
-          <div class="column is-6 is-offset-1">
-            <%= component :vector, key: "illustrations/caring-sharing.svg" %>
-          </div>
-          <div class="column is-4">
-            <h2 class="text-4xl font-bold">Loan things to friends</h2>
-            <h3 class="text-2xl">We'll remind them to give it back</h3>
-            <div class="content">
+        <div class="flex flex-row gap-8 items-center">
+          <div class="is-4">
+            <hgroup class="mb-4">
+              <h2 class="text-4xl font-bold">Loan things to friends</h2>
+              <h3 class="text-2xl">We'll remind them to give it back</h3>
+            </hgroup>
+            <div class="content prose">
               <p>Camping stuff, tools—whatever stuff your friends borrow can be tracked so you don't forget about it. Just enter their email address and a due date and we'll mark the item as "out on loan". When the time comes to get it back, we'll email them a nice reminder so you don't have to.</p>
 
               <p>If you have things you share with a regular group of friends, you can even create private sharing lists that only the group can search to borrow the items.</p>
             </div>
           </div>
+          <div class="is-6 is-offset-1">
+            <%= component :vector, key: "illustrations/caring-sharing.svg" %>
+          </div>
         </div>
       </div>
     </div>
   </section>
-%>
+<% end %>
 
 <section class="hero-lg bg-blue-500 text-neutral-50">
   <div class="flex flex-col gap-2 max-w-lg">
