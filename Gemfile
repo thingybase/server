@@ -139,8 +139,6 @@ gem "matrix", "~> 0.4.2"
 
 gem "ahoy_matey", "~> 4.1"
 
-gem "slim-rails", github: "slim-template/slim-rails"
-
 gem "blazer", "~> 2.6"
 
 gem "imageomatic", "~> 0.1.4"
