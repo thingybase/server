@@ -1,0 +1,6 @@
+<%= render_layout "page" do %>
+  <section class="container-lg">
+    <%= title current_page.data.fetch("title"), subtitle: current_page.data["subtitle"], icon: current_page.data["icon"] %>
+    <div class="prose"><%= yield %></div>
+  </section>
+<% end %>

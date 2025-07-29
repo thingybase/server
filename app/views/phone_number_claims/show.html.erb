@@ -1,0 +1,15 @@
+<h1 class="title"><%= t '.title', default: resource_class.model_name.human.titleize %></h1>
+
+<p>
+  <strong><%= resource_class.human_attribute_name(:phone_number) %>:</strong>
+  <br>
+  <%= @phone_number_claim.phone_number %>
+</p>
+<p>
+  <strong><%= resource_class.human_attribute_name(:user_id) %>:</strong>
+  <br>
+  <%= @phone_number_claim.user.name %>
+</p>
+
+<%= link_to t('.back', default: t("helpers.links.back")), :back, class: 'button is-default' %>
+<%= link_to t('.destroy', default: t("helpers.links.destroy")), phone_number_claim_path(@phone_number_claim), method: "delete", data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-danger' %>

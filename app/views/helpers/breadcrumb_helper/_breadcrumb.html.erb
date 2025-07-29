@@ -1,0 +1,12 @@
+<div class="breadcrumbs p-0" aria-label="breadcrumbs">
+  <ul>
+    <li><%= link_to root.text, root.url %></li>
+    <% links.each do |link| %>
+      <li class="is-hidden-mobile"><%= link_to link.text, link.url %></li>
+    <% end %>
+    <% if link = ellipses_link || links.last %>
+      <li class="is-hidden-tablet"><%= link_to '..', link.url %></li>
+    <% end %>
+    <li class="is-active"><%= link_to active.text, active.url %></li>
+  </ul>
+</div>

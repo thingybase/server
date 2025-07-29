@@ -1,0 +1,113 @@
+---
+title: Organize, track, and treasure your stuff
+layout: page-with-footer
+---
+
+<section class="hero-lg gap-4 md:gap-1">
+  <div class="flex flex-col gap-6">
+    <hgroup class="flex flex-col gap-1">
+      <h1 class="text-6xl font-bold">Thingybase</h1>
+      <h2 class="text-2xl md:whitespace-nowrap">Organize, track, and treasure your stuff</h2>
+    </hgroup>
+    <%= link_to "Start organizing →", launch_path, class: "btn btn-primary btn-lg", role: "button" %>
+  </div>
+  <%= component :vector, key: "illustrations/organizational-pride.svg" %>
+</section>
+
+<section class="hero-lg bg-yellow-400 text-neutral-800">
+  <div class="flex flex-col gap-2">
+    <hgroup class="mb-4">
+      <h2 class="text-4xl font-bold">Find stuff instantly</h2>
+      <h3 class="text-2xl">"Thingybase, where are the ice skates?"</h3>
+    </hgroup>
+    <div class="prose text-neutral-800">
+      <p>Next time you're looking for something, don't bother getting up to dig around, just bust out your phone, punch in a few keywords, and we'll tell you where it is. You can even add family members to your account so they can search too and help keep things organized.</p>
+    </div>
+  </div>
+  <%= component :vector, key: "illustrations/search-sketch.svg", mode: :light %>
+</section>
+
+<section class="hero-lg">
+  <%= component :vector, key: "illustrations/magic-labels.svg" %>
+  <div class="flex flex-col gap-2">
+    <hgroup class="mb-4">
+      <h2 class="text-4xl font-bold">Magic labels</h2>
+      <h3 class="text-2xl">Look inside boxes without opening them</h3>
+    </hgroup>
+    <div class="prose">
+      <p>See what's in a box without opening it—just scan it with your phone and see what's inside.</p>
+      <p>If you cook a lot of food ahead of time and store it in a deep freezer, slap a magic label on it with an expiration date and you'll be notified before it expires.</p>
+    </div>
+  </div>
+</section>
+
+<%# TODO: Implement this feature! This will help Tb spread. %>
+<%#
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-6 is-offset-1">
+            <%= component :vector, key: "illustrations/caring-sharing.svg" %>
+          </div>
+          <div class="column is-4">
+            <h2 class="text-4xl font-bold">Loan things to friends</h2>
+            <h3 class="text-2xl">We'll remind them to give it back</h3>
+            <div class="content">
+              <p>Camping stuff, tools—whatever stuff your friends borrow can be tracked so you don't forget about it. Just enter their email address and a due date and we'll mark the item as "out on loan". When the time comes to get it back, we'll email them a nice reminder so you don't have to.</p>
+
+              <p>If you have things you share with a regular group of friends, you can even create private sharing lists that only the group can search to borrow the items.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+%>
+
+<section class="hero-lg bg-blue-500 text-neutral-50">
+  <div class="flex flex-col gap-2 max-w-lg">
+    <hgroup class="mb-4">
+      <h2 class="text-4xl font-bold">Take it easy on the Earth</h2>
+      <h3 class="text-2xl">Use less stuff. Waste less stuff.</h3>
+    </hgroup>
+    <div class="prose text-neutral-50">
+      <p>Track food in your freezer with expiration dates and get an email reminder before it goes bad. Never purchase something twice that you already own because you couldn't remember if you already had it while you were shopping at the store. The more you know about your stuff, the less wasteful you'll be.</p>
+    </div>
+  </div>
+  <%= component :vector, key: "illustrations/save-earth.svg", mode: :dark %>
+</section>
+
+<section class="hero-lg bg-base-200">
+  <div class="flex flex-col my-24 gap-8">
+    <hgroup class="text-center">
+      <h2 class="text-4xl font-bold">Manifesto</h2>
+      <h3 class="text-2xl">How the universe will be dented</h3>
+    </hgroup>
+    <div class="prose md:rotate-1 hover:rotate-0 transition m-0 md:m-4 p-4 md:p-8 shadow-xl bg-base-100">
+      <p>Hey there—</p>
+
+      <p>Let's face it, people have lots of stuff. We've come up with countless ways to deal with it all: The KonMari Method™, minimalism, getting rid of stuff … the list goes on, but it's always about having less stuff and sometimes makes us feel bad about the things we already have.</p>
+
+      <p>What if the opposite approach was taken, <span class="highlight">"how can I better manage all my stuff?"</span>. That's what Thingybase does. It gives you the same superpowers that huge companies have enjoyed for decades to track their vast inventories of stuff, but in a delightful way that's streamlined for use by the entire family at home.</p>
+
+      <p>The best part isn't how good you'll feel after getting things organized; its how you'll use things way more efficiently. If you add expiration dates to food labels, you'll get an email reminding you its about to expire, which cuts down on waste. When you loan items to your friends, its less stuff that had to be made in a factory and trucked around.</p>
+
+      <p>As long as Thingybase is around, there will always be a way to get a better handle on our stuff, be less wasteful, and worry less about our things.</p>
+
+      <p><%= component :vector, key: "illustrations/signature.svg" %></p>
+    </div>
+  </div>
+</section>
+
+<section class="container-lg max-w-fit mx-auto">
+  <hgroup>
+    <h2 class="text-4xl font-bold">Projects</h2>
+    <h3 class="text-2xl">See all of the things you can do with Thingybase once you get it up and running</h3>
+  </hgroup>
+  <div class="cards">
+    <% site.get("projects").children.sample(3).each do |page| %>
+      <%= page_card page %>
+    <% end %>
+  </div>
+</section>

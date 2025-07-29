@@ -1,0 +1,6 @@
+<%= title resource.name, subtitle: item_breadcrumb(leaf: "Change icon"), icon: item_edit_icon(@item) %>
+
+<%= application_form resource do |f| %>
+  <%= f.input :icon_key, label: "Icon", collection: Icon.all, as: :image_radio_buttons, label: false %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

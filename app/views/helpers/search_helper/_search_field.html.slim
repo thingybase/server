@@ -1,6 +1,0 @@
-= form_tag url, method: :get do
-  .join
-    = text_field_tag :search, value, class: "input input-bordered join-item", autofocus: autofocus, placeholder: placeholder
-    = hidden_field_tag :item_id, item_id if item_id
-    -if button
-      = submit_tag button, class: "btn join-item"

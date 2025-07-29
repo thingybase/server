@@ -1,0 +1,29 @@
+<h1 class="title"><%= t '.title', default: resource_class.model_name.human.pluralize.titleize %></h1>
+<table class="table is-fullwidth is-striped">
+  <thead>
+    <tr>
+      <th><%= resource_class.human_attribute_name(:name) %></th>
+      <th><%= resource_class.human_attribute_name(:email) %></th>
+      <th><%= resource_class.human_attribute_name(:phone_number) %></th>
+      <th><%= resource_class.human_attribute_name(:created_at) %></th>
+      <th><%= t '.actions', default: t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, user_path(user) %></td>
+        <td><%= user.email %></td>
+        <td><%= user.phone_number %></td>
+        <td><%= local_time user.created_at %></td>
+        <td>
+          <%= link_to t('.show', default: t("helpers.links.show")), user_path(user), class: 'button is-default is-xs' %>
+          <%= link_to t('.edit', default: t("helpers.links.edit")), edit_user_path(user), class: 'button is-default is-xs' %>
+          <%= link_to t('.destroy', default: t("helpers.links.destroy")), user_path(user), "data-turbo-method": :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-xs is-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', default: t("helpers.links.new")), new_user_path, class: 'btn btn-primary' %>

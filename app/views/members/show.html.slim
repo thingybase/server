@@ -1,8 +1,0 @@
-= title @member.name, subtitle: "#{@member.account.name} team member"
-
-= resource_field :name
-= resource_field :created_at do
-  = local_time @member.created_at
-
-.buttons.mt-4
-  = link_to "Remove member", member_path(@member), method: "delete", data: { confirm: 'Are you sure?' }, class: 'btn btn-outline'

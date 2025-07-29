@@ -1,0 +1,35 @@
+<%= title @container.name, subtitle: item_breadcrumb(@container, leaf: "Add items"), icon: @container.icon %>
+
+<%= application_form @item, url: url_for(action: :create) do |f| %>
+  <div class="join">
+    <%= f.input_field :container, class: "join-item input input-bordered", as: :select, include_blank: false, collection: [["Item", false], ["Container", true]] %>
+    <%= f.input_field :name, autofocus: true, class: "input input-bordered join-item", placeholder: "Name" %>
+    <%= f.button :submit, "Create", class: 'btn btn-primary join-item' %>
+  </div>
+<% end %>
+
+<% with created_resource do |item| %>
+  <p class="mt-2 mb-4">
+    <span><%= item.name %> created</span>
+    <span class="ml-1">
+      <%= link_to "View", item, class: "mx-1" %>
+      <%= link_to "Edit", edit_item_path(item), class: "mx-1" %>
+      <%= link_to "Copy", new_item_copy_path(item), class: "mx-1" %>
+    </span>
+  </p>
+<% end %>
+
+<div class="list-cards mt-5">
+  <% if @items.empty? %>
+    <%= component :empty_list do |it| %>
+      <%= it.title { "#{@container.name} is empty" } %>
+      <%= it.message { "Items will appear here after they are added" } %>
+    <% end %>
+  <% else %>
+    <% @items.container_then_item.each do %>
+      <%= component :item_list_card, item: _1 %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "Create item from a template...", templates_item_children_path(@container), class: "btn btn-outline" %>

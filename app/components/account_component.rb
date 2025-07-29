@@ -15,15 +15,15 @@ class Components::AccountComponent < Components::Base
     end
 
     def DataView(...)
-      render DataViewComponent.new(...)
+      render Components::DataViewComponent.new(...)
     end
 
     def Breadcrumb(...)
-      render BreadcrumbComponent.new(...)
+      render Components::BreadcrumbComponent.new(...)
     end
 
     def Tab(...)
-      render TabComponent.new(...)
+      render Components::TabComponent.new(...)
     end
   end
 

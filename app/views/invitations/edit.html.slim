@@ -1,9 +1,0 @@
-h1.title Edit # resource_name 
-
-= application_form @invitation do |f|
-  = f.input :email, autofocus: true
-  = f.input :name
-  = f.association :account, as: :hidden
-  = f.button :submit, class: 'btn btn-primary'
-  = link_to "Delete", invitation_path(@invitation), method: "delete", data: { confirm: 'Are you sure?' }, class: 'btn btn-outline'
-

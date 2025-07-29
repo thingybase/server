@@ -1,0 +1,14 @@
+<section class="container-lg">
+  <%= title "Get a login code", subtitle: "We'll email you a login code so we can securely get you to your account" %>
+
+  <%= application_form @email_authentication, url: url_for(action: :create) do |f| %>
+    <%= f.input :email, autofocus: true, hint: "We only use this address to send you a login code and do not store your email" %>
+    <%= f.button :submit, "Email login code →", class: 'btn btn-primary' %>
+  <% end %>
+
+  <hr>
+
+  <p>
+    Thingybase uses email login codes instead of passwords to keep your account safe. <%= link_to "Learn more", page_path("help/logging-in") %>.
+  </p>
+</section>

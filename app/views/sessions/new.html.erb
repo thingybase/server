@@ -1,0 +1,9 @@
+<h1 class="title">Enter your email address</h1>
+<h2 class="subtitle">We'll use it to find your account or create a new one if its your first time here</h2>
+
+<%= form_tag do %>
+  <div class="field has-addons">
+    <div class="control"><%= email_field_tag "email", "", class: "input", placeholder: "Email address", autofocus: true %></div>
+    <div class="control"><%= submit_tag "Continue →", class: "btn" %></div>
+  </div>
+<% end %>

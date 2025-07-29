@@ -1,0 +1,27 @@
+<footer class="footer bg-neutral text-neutral-content flex flex-col md:flex-row gap-8 md:gap-24 p-container">
+  <div class="flex flex-col gap-4">
+    <hgroup>
+      <h4 class="text-lg font-bold">Create an account in a few minutes</h4>
+      <h2 class="text-md">You'll get everything organized in no time</h2>
+    </hgroup>
+    <%= link_to "Sign up →", launch_path, class: "btn is-medium is-primary", role: "button" %>
+  </div>
+  <div class="flex flex-col md:flex-row gap-8">
+    <div class="flex flex-col gap-2">
+      <h4 class="font-bold">Learn</h4>
+      <ul>
+        <li><%= link_to "About", page_path("about") %></li>
+        <li><%= link_to "Projects", page_path("projects") %></li>
+        <li><%= link_to "Help", page_path("help") %></li>
+        <li><%= link_to "Twitter", "https://www.twitter.com/thingybase" %></li>
+      </ul>
+    </div>
+    <div class="flex flex-col gap-2">
+      <h4 class="font-bold">Trust</h4>
+      <ul>
+        <li><%= link_to "Privacy", page_path("trust/privacy") %></li>
+        <li><%= link_to "Terms", page_path("trust/terms") %></li>
+      </ul>
+    </div>
+  </div>
+</footer>

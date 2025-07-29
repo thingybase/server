@@ -1,0 +1,26 @@
+<h1 class="title"><%= t '.title', default: resource_class.model_name.human.pluralize.titleize %></h1>
+<table class="table is-fullwidth is-striped">
+  <thead>
+    <tr>
+      <th><%= resource_class.human_attribute_name(:text) %></th>
+      <th><%= resource_class.human_attribute_name(:created_at) %></th>
+      <th><%= t '.actions', default: t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @labels.each do |label| %>
+      <tr>
+        <td><%= link_to label.text, label %></td>
+        <td><%= local_time label.created_at %></td>
+        <td>
+          <%= link_to t('.show', default: t("helpers.links.show")), label, class: 'button is-default is-xs' %>
+          <%= link_to t('.print', default: t("helpers.links.print")), label_path(label, format: :pdf), class: 'button is-default is-xs' %>
+          <%= link_to t('.edit', default: t("helpers.links.edit")), edit_label_path(label), class: 'button is-default is-xs' %>
+          <%= link_to t('.destroy', default: t("helpers.links.destroy")), label_path(label), "data-turbo-method": :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'button is-xs is-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', default: t("helpers.links.new")), new_label_path, class: 'btn btn-primary' %>

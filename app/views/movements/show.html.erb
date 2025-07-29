@@ -1,0 +1,32 @@
+<%= title  @movement.origin.name, subtitle: breadcrumb(item_breadcrumb_links(@movement.origin), leaf: "Move"), icon: @movement.origin.icon %>
+
+<div class="join">
+  <%= link_to "Edit", edit_movement_path(@movement), class: "btn join-item" %>
+  <%= link_to "Print", url_for(format: :pdf), class: "btn join-item" %>
+</div>
+
+<div class="label-preview">
+  <img class="label-preview--embed" src="<%= url_for(format: :png) %>">
+</div>
+
+<div class="my-4">
+  <%= resource_field :created_at do %>
+    <%= local_time @movement.created_at %>
+  <% end %>
+  <%= resource_field :updated_at do %>
+    <%= local_time @movement.updated_at %>
+  <% end %>
+  <%= resource_field :created_by do %>
+    <%= @movement.user.name %>
+  <% end %>
+  <%= resource_field :origin do %>
+    <%= link_to @movement.origin.name, @movement.origin %>
+  <% end %>
+  <%= resource_field :destination do %>
+    <%= link_to @movement.destination.name, @movement.destination %>
+  <% end %>
+</div>
+
+<div class="buttons">
+  <%= link_to "Delete", movement_path(@movement), class: "btn btn-outline", "data-turbo-method": :delete, data: { confirm: "Are you sure?" } %>
+</div>

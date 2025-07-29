@@ -1,0 +1,24 @@
+<%= title "Preview invitation email", subtitle: "If everything looks good, send it and the person can join the account", icon: "mailer" %>
+
+<% with InvitationMailer.account_invitation_email(@invitation) do |email| %>
+  <div class="box">
+    <p>
+      <strong>To:</strong>
+      <%= email.to.join(", ") %>
+    </p>
+    <p>
+      <strong>From:</strong>
+      <%= email.from.join(", ") %>
+    </p>
+    <hr>
+    <p>
+      <div class="content mb-0"><%= render_email_body email %></div>
+    </p>
+  </div>
+<% end %>
+
+<div class="buttons">
+  <%= link_to "Send invitation", email_invitation_path(@invitation), "data-turbo-method": :put, class: 'btn btn-primary' %>
+  <%= link_to "Edit", edit_invitation_path(@invitation), class: 'button' %>
+  <%= link_to "Delete", invitation_path(@invitation), method: "delete", data: { confirm: 'Are you sure?' }, class: 'btn btn-outline' %>
+</div>

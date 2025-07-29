@@ -1,0 +1,10 @@
+<%= item_template_title "Add item", item: @item %>
+
+<%= application_form @item, url: url_for(action: :create) do |f| %>
+  <%= f.input :name, autofocus: true %>
+  <%= f.association :account, as: :hidden %>
+  <%= f.association :parent, as: :hidden %>
+  <%= f.input :container, as: :hidden %>
+  <%= f.input :icon_key, label: "Icon", collection: icons, as: :image_radio_buttons %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

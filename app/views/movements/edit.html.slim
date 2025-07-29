@@ -1,8 +1,0 @@
-= title  @movement.origin.name, subtitle: breadcrumb(item_breadcrumb_links(@movement.origin).push(breadcrumb_link("Move", movement_path(@movement))), leaf: "Edit"), icon: @movement.origin.icon
-
-= application_form @movement do |f|
-  = f.input :account, as: :hidden
-  = f.association :origin, collection: origin_select_items(move: @movement.move), include_blank: false, hint: "What is being moved?", label: "Item"
-  = f.association :destination, collection: destination_select_items, include_blank: false, hint: "Where will it be moved?"
-  .buttons
-    = f.button :submit, class: 'btn btn-primary'

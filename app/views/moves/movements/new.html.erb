@@ -1,0 +1,21 @@
+<%= title "New movement", subtitle: "Make a label for where you're going to move stuff", icon: "dolly-cart" %>
+
+<div class="tabs">
+  <ul>
+    <li>
+      <%= link_to "New", new_move_movement_builder_path(@move), "data-turbolinks-action": "replace" %>
+    </li>
+    <li class="is-active">
+      <%= link_to "Existing", new_move_movement_path(@move), "data-turbolinks-action": "replace" %>
+    </li>
+  </ul>
+</div>
+
+<%= application_form [@move, @movement] do |f| %>
+  <%= f.input :account, as: :hidden %>
+  <%= f.association :origin, collection: origin_select_items(move: @move), include_blank: false, hint: "What is being moved? #{link_to "Create new item", new_move_movement_builder_path(@move), "data-turbolinks-action": "replace"}.".html_safe, label: "Item" %>
+  <%= f.association :destination, collection: destination_select_items, include_blank: false, hint: "Where will the item be moved?" %>
+  <div class="buttons">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>

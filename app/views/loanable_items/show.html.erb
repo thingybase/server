@@ -1,0 +1,5 @@
+<%= title resource.item.name, subtitle: breadcrumb(breadcrumb_link(resource.loanable_list.name, resource.loanable_list), breadcrumb_link(resource.item.name, resource)), icon: resource.item.icon %>
+
+<p><%= resource.user.name %> made <%= resource.item.name %> available to be borrowed <%= local_time_ago resource.created_at %></p>
+
+<div class="control"><%= link_to "Remove from borrowing list", resource, "data-turbo-method": :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline" %></div>

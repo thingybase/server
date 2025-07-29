@@ -1,0 +1,31 @@
+<%= render_layout "page" do %>
+  <section class="container-lg">
+    <%= title current_page.data.fetch("title"), subtitle: current_page.data["subtitle"], icon: current_page.data["icon"] %>
+    <div class="flex flex-row gap-8">
+      <div class="prose">
+        <%= yield %>
+        <p>
+          <% with current_page.parent do |root_page| %>
+            <%= link_to "← Go back to #{root_page.data.fetch("title")}", root_page.request_path %>
+          <% end %>
+        </p>
+      </div>
+      <div class="w-24">
+        <aside class="menu">
+          <% with current_page.parent do |root_page| %>
+            <p class="menu-label">
+              <%= root_page.data.fetch("title") %>
+            </p>
+            <ul class="menu-list">
+              <% root_page.children.each do |page| %>
+                <li>
+                  <%= link_to_page page, active_class: "is-active" %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </aside>
+      </div>
+    </div>
+  </section>
+<% end %>

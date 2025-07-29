@@ -1,0 +1,26 @@
+<%= render_layout "page" do %>
+  <div class="flex flex-col justify-center min-h-[75vh]" style="<%= background_image_style %>">
+    <div class="flex flex-col gap-2 align-left p-4 md:p-24">
+      <h1 class="text-5xl font-bold px-2 py-1 bg-base-100 bg-opacity-90 max-w-fit"><%= current_page.data.fetch("title") %></h1>
+      <% if subtitle = current_page.data.fetch("subtitle", nil) %>
+        <h2 class="text-lg px-2 py-1 bg-base-100 bg-opacity-90 max-w-fit"><%= subtitle %></h2>
+      <% end %>
+    </div>
+  </div>
+  <section class="container-lg">
+    <div class="prose"><%= yield %></div>
+  </section>
+  <section class="bg-base-200 p-container">
+    <div class="my-container gap-container flex flex-col">
+      <hgroup class="text-center">
+        <h2 class="text-4xl font-bold">More projects</h2>
+        <h3 class="text-2xl">If you feeling like conquering the world, these other projects will help you get even more organized</h3>
+      </hgroup>
+      <div class="cards">
+        <% site.get("projects").children.reject{ _1 == current_page }.sample(3).each do |page| %>
+          <%= page_card page %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

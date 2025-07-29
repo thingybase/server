@@ -1,0 +1,79 @@
+<%= title @account.name, subtitle: "Settings, configuration, and more for your account", icon: "dashboard-gauge" %>
+
+<div class="grid gap-4 grid-col-1 md:grid-col-3">
+  <div class="md:col-span-3">
+    <% if upgrade = current_plan.upgrade %>
+      <div class="card shadow-lg border border-base-200">
+        <div class="card-body">
+          <h3 class="card-title"><%= link_to "Upgrade to Thingybase Home Plus", new_account_payment_path(@account) %></h3>
+          <p>You'll be able to manage <%= feature_maximum upgrade.items, "items" %> (currently you have a maximum of <%= feature_maximum current_plan.items, "items" %>) and get to support the development and sustainability of Thingybase.</p>
+          <p><%= link_to "Upgrade now →", new_account_payment_path(@account), class: "btn btn-primary " %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="stats bg-primary text-primary-content md:col-span-3 text-center">
+    <%= link_to account_items_path(@account), class: "stat" do %>
+      <div class="stat-title text-primary-content"><%= "Item".pluralize(@account.items.count) %></div>
+      <div class="stat-value"><%= @account.items.count %></div>
+    <% end %>
+    <%= link_to account_people_path(@account), class: "stat" do %>
+      <div class="stat-title text-primary-content"><%= "People".pluralize(@account.members.count) %></div>
+      <div class="stat-value"><%= @account.members.count %></div>
+    <% end %>
+  </div>
+
+  <div class="card bg-base-200 md:col-span-2">
+    <div class="card-body">
+      <h3 class="card-title">Items</h3>
+      <p class="subtitle is-5">Organize stuff into rooms, shelves, and containers so you can find it all later</p>
+      <p>You have a total of <%= pluralize @account.items.count, "item" %> in your account.</p>
+      <%= link_to "View items", account_items_path(@account), class: "link" %>
+    </div>
+  </div>
+
+  <div class="card bg-base-200 md:col-span-1 row-span-2">
+    <div class="card-body">
+      <h3 class="card-title">Settings</h3>
+      <p class="subtitle is-6">Configure your profile and accounts</p>
+
+      <%= link_to "Personal settings", user_path(current_user), class: "link" %>
+      <%= link_to "Account settings", edit_account_path(@account), class: "link" %>
+      <%= link_to "Switch accounts", accounts_path, class: "link" %>
+      <%= link_to "Sign out", session_path, "data-turbo-method": :delete, class: "link" %>
+
+      <h3 class="card-title">Export</h3>
+      <p>Save everything for safe keeping</p>
+
+      <%= link_to "Export items to spreadsheet", account_items_path(@account, format: :csv), class: "link" %>
+    </div>
+  </div>
+
+  <div class="card bg-base-200 md:col-span-1">
+    <div class="card-body">
+      <h3 class="card-title">People</h3>
+      <p class="subtitle is-5">Organize better with a team</p>
+      <p>You have a total of <%= pluralize @account.members.count, "person" %> in your account.</p>
+      <%= link_to "Manage people", account_people_path(@account), class: "link" %>
+    </div>
+  </div>
+
+  <div class="card bg-base-200 md:col-span-1">
+    <div class="card-body">
+      <h3 class="card-title">Preview features</h3>
+      <p class="subtitle">Try features before they're fully baked</p>
+      <% if move = @account.move %>
+        <%= link_to "View move", move, class: "link" %>
+      <% else %>
+        <%= link_to "Start a move", account_move_path(@account), class: "link" %>
+      <% end %>
+
+      <% if loanable_list = @account.loanable_list %>
+        <%= link_to "View borrowing list", loanable_list, class: "link" %>
+      <% else %>
+        <%= link_to "Create a borrowing list", account_loanable_list_path(@account), class: "link" %>
+      <% end %>
+    </div>
+  </div>
+</div>

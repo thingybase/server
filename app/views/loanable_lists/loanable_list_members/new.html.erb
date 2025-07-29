@@ -1,0 +1,38 @@
+<%= title parent_resource.name, subtitle: breadcrumb(breadcrumb_link(parent_resource.name, parent_resource), breadcrumb_link("People", loanable_list_members_path(parent_resource)), leaf: "Invite"), icon: "heart" %>
+
+<div class="content">
+  <p>Share the invitation link so people can request to request to borrow the items on this list. We'll send you an email when they make the request and you can decide whether or not you want to add them to the list.</p>
+</div>
+
+<hr>
+
+<div class="field">
+  <%= label_tag "invitation_link", "Invitation link", class: "label" %>
+  <div class="field has-addons" data-controller="clipboard">
+    <div class="control is-expanded">
+      <%= text_field_tag "invitation_link", new_loanable_list_member_request_url(@loanable_list), class: "input", readonly: true, data: { target: "clipboard.source" } %>
+      <div class="help">
+        People can only request to see this list from the invitation link. If their request is approved they can access the account.
+      </div>
+    </div>
+    <div class="control">
+      <%= button_tag "Copy link", class: "btn btn-primary", data: { action: "clipboard#copy" } %>
+    </div>
+  </div>
+</div>
+
+<%#
+  <div class="fields" data-controller="clipboard">
+    <div class="field">
+      <%= label_tag "email_template", "Email template", class: "label" %>
+      <%= text_area_tag "email_template", account_invitation_email_body, class: "textarea", readonly: true, data: { target: "clipboard.source" }, rows: 7 %>
+      <div class="help">
+        Copy and paste this into your email app and send to people so they can request to join this account.
+      </div>
+    </div>
+    <div class="field">
+      <%= mail_to "", "Send email", subject: "Join my account on Thingybase", body: account_invitation_email_body, class: "btn" %>
+      <%= button_tag "Copy template", class: "btn btn-outline", data: { action: "clipboard#copy" } %>
+    </div>
+  </div>
+%>

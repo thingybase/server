@@ -1,0 +1,20 @@
+<section class="hero-lg">
+  <%= component :vector, key: "illustrations/save-earth.svg" %>
+  <div class="flex flex-col gap-4">
+    <%= title "Thank you, thank you, thank you!", subtitle: "You successfully upgraded to Thingybase Home Plus" %>
+
+    <div class="prose">
+      <p>Start using all these goodies:</p>
+      <ul>
+        <li>Add up to 6 family members to find stuff and stay organized</li>
+        <li>Keep track of an unlimited number of items</li>
+        <li>Waste less by tracking expiration dates on items</li>
+        <li>Print magic labels that you can scan with your phone</li>
+      </ul>
+
+      <div class="mt-5">
+        <%= link_to "Start using these new features →", @account, class: "btn btn-primary is-medium" %>
+      </div>
+    </div>
+  </div>
+</section>

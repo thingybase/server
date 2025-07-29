@@ -1,0 +1,24 @@
+<%= title "Add to #{@account.name}" %>
+
+<div class="list-cards">
+  <%= component :list_card, "Container", new_account_items_templates_container_path(@account), icon: "folder" do |c| %>
+    <% c.detail do %>
+      Shelves, boxes, folders, or anything else that stuff is put into
+    <% end %>
+  <% end %>
+  <%= component :list_card, "Item", new_account_items_templates_item_path(@account), icon: "object" do |c| %>
+    <% c.detail do %>
+      All the important things to keep track of
+    <% end %>
+  <% end %>
+  <%= component :list_card, "Perishable", new_account_items_templates_perishable_path(@account), icon: "tag" do |c| %>
+    <% c.detail do %>
+      Food or anything that expires
+    <% end %>
+  <% end %>
+  <%= component :list_card, "Room", new_account_items_templates_room_path(@account), icon: "room" do |c| %>
+    <% c.detail do %>
+      Keep track of where things are located
+    <% end %>
+  <% end %>
+</div>

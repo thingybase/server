@@ -1,0 +1,16 @@
+<%= render_layout "body" do %>
+  <header class="px-container py-2">
+    <nav class="navbar bg-base-100" role="navigation" aria-label="main navigation">
+      <div class="flex-1">
+        <%= active_link_to "Thingybase", root_path, class: "font-bold" %>
+        <a class="navbar-burger burger" aria-expanded="false" aria-label="menu" data-target="navbar-application-navigation" role="button">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    </nav>
+  </header>
+  <%= notice_message class: "mb-4" %>
+  <%= yield %>
+<% end %>

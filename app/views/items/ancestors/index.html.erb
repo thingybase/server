@@ -1,0 +1,18 @@
+<%= title resource.name, icon: @item.icon, subtitle: "Navigate to the container" %>
+
+<div class="buttons">
+  <%= link_to "← Back", :back, class: "btn", "data-turbolinks-action": "replace" %>
+</div>
+
+<div class="list-card">
+<%= component :item_list_card, item: @item %>
+<% @item.ancestors.reverse.each do %>
+  <%= component :item_list_card, item: _1 %>
+<% end %>
+<%= component :list_card, @account.name, account_items_path(@account), icon: "chest-open" do |card| %>
+  <% card.detail do %>
+    Created
+    <%= local_time_ago @account.created_at %>
+  <% end %>
+<% end %>
+</div>

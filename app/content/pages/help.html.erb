@@ -1,0 +1,18 @@
+---
+title: Help
+subtitle: Dive in a little deeper and figure it out
+icon: open-book
+---
+
+<div class="container-lg">
+  <%= title current_page.data.fetch("title"), subtitle: current_page.data["subtitle"], icon: current_page.data["icon"] %>
+
+  <div class="grid grid-cols-2 gap-4">
+    <% current_page.children.each do |page| %>
+      <div class="flex flex-col">
+        <h3 class="text-lg font-bold"><%= link_to page.data.fetch("title"), page.request_path %></h3>
+        <p><%= page.data.fetch("subtitle") %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

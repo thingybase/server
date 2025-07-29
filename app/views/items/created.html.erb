@@ -1,0 +1,8 @@
+<%= title resource.name, subtitle: item_breadcrumb, icon: @item.icon %>
+
+<div class="notification">
+  <p class="mb-4">Item created</p>
+  <div class="field"><%= link_to "Copy", new_item_copy_path(@item), class: 'button is-fullwidth' %></div>
+  <div class="field"><%= link_to "Change icon", edit_item_icon_path(@item), class: 'button is-fullwidth' %></div>
+  <div class="field"><%= link_to "View label", label_path(resource.label), class: 'button is-fullwidth' %></div>
+</div>

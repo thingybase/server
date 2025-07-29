@@ -1,0 +1,8 @@
+<section class="container-lg">
+  <%= title "Create a new blank account", subtitle: "Give it a name and then customize it next", icon: "sheets" %>
+
+  <%= application_form resource, url: url_for(action: :create) do |f| %>
+    <%= f.input :name, autofocus: true %>
+    <%= f.button :submit, "Create account", class: 'btn btn-primary' %>
+  <% end %>
+</section>

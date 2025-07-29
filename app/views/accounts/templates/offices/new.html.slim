@@ -1,9 +1,0 @@
-section.container-lg
-  =title "Create a new office account", subtitle: "Tell us a few things, we'll setup the basics, then you can customize the rest.", icon: "home-office"
-
-  = application_form resource, url: url_for(action: :create) do |f|
-    = f.input :name, autofocus: true
-    = f.input :office_supply_closet, as: :boolean, hint: "Paper, pens, pencils, paperclips, and other supplies"
-    = f.input :storage_room, as: :boolean, hint: "The room where you keep all the bigger stuff"
-    = f.input :break_room_pantry, as: :boolean, hint: "Snacks, drinks, chips, candy, coffee, and more"
-    = f.button :submit, "Create account", class: 'btn btn-primary'

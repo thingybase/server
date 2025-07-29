@@ -1,0 +1,13 @@
+<%= title @loanable_list.name, subtitle: breadcrumb(breadcrumb_link(@loanable_list.name, @loanable_list), leaf: "Add items"), icon: "heart" %>
+
+<div class="content">
+  <p>To add items to the loan list:</p>
+
+  <ol>
+    <li>Navigate to <%= link_to '"Items"', account_items_url(@account) %></li>
+    <li>Find the item you'd like to loan</li>
+    <li>Select "More" from the item menu, then "Loan"</li>
+  </ol>
+
+  <%= link_to "Go to items →", account_items_path(@account), class: "btn btn-primary" %>
+</div>

@@ -1,0 +1,35 @@
+<%# = title @account.name, subtitle: breadcrumb(account_breadcrumb_links(@account), leaf: "Add items"), icon: "chest-open" %>
+
+<%# = application_form @item, url: url_for(action: :create) do |f| %>
+<%#   <div class="join"> %>
+<%#     <%= f.input_field :container, class: "join-item input input-bordered input-primary", as: :select, include_blank: false, collection: [["Item", false], ["Container", true]] %>
+<%#     <%= f.input_field :name, autofocus: true, class: "join-item input input-bordered input-primary", placeholder: "Name" %>
+<%#     <%= f.button :submit, "Create", class: 'join-item btn btn-primary' %>
+<%#   </div> %>
+<%# <% end %>
+
+<% with created_resource do |item| %>
+  <p class="mt-2 mb-4">
+    <span><%= item.name %> created</span>
+    <span class="ml-1">
+      <%= link_to "View", item, class: "mx-1" %>
+      <%= link_to "Edit", edit_item_path(item), class: "mx-1" %>
+      <%= link_to "Copy", new_item_copy_path(item), class: "mx-1" %>
+    </span>
+  </p>
+<% end %>
+
+<%# <div class="list-cards mt-5"> %>
+<%#   <% if @items.empty? %>
+<%#     <%= component :empty_list do |it| %>
+<%#       <%= it.title { "#{(@container || @account).name} is empty" } %>
+<%#       <%= it.message { "Items will appear here after they are added" } %>
+<%#     <% end %>
+<%#   <% else %>
+<%#     <% @items.roots.container_then_item.each do %>
+<%#       <%= component :item_list_card, item: _1 %>
+<%#     <% end %>
+<%#   <% end %>
+<%# </div> %>
+
+<%# <%= link_to "Create item from a template...", templates_account_items_path(@account), class: "btn btn-outline" %>

@@ -1,0 +1,28 @@
+<%= title "Search #{resource.name}", subtitle: item_breadcrumb %>
+
+<div class="is-hidden-tablet">
+  <%= search_field autofocus: true %>
+</div>
+
+<div class="list-card">
+  <% if @search.phrase.blank? %>
+    <div class="list-card--item">
+      <div class="list-card--title">
+      </div>
+    </div>
+  <% else %>
+    <% if @search.empty? %>
+      <div class="list-card--item">
+        <div class="list-card--title">
+          Could not find anything matching "<%= @search.phrase %>" in <%= resource.name %>.
+        </div>
+      </div>
+    <% else %>
+      <% @search.items.each do %>
+        <%= component :item_list_card, item: _1, is_parent_visible: true %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "Search entire account", account_search_path(@account, search: @search.phrase), class: "btn btn-outline" %>

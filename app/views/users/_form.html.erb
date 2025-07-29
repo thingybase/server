@@ -1,0 +1,5 @@
+<%= application_form @user do |f| %>
+  <%= f.input :name, autofocus: true %>
+  <%= f.input :email %>
+  <%= f.button :submit, "Save changes", class: 'btn btn-primary' %>
+<% end %>

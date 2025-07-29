@@ -1,0 +1,25 @@
+<%= title parent_resource.name, subtitle: item_breadcrumb(parent_resource, leaf: "Select items"), icon: item_edit_icon(@item) %>
+
+<%= form_for [:item, @batch], class: "flex flex-col gap-8", data: { turbo: false } do |f| %>
+  <%= f.hidden_field :account_id %>
+  <div class="flex flex-row gap-4">
+    <%= f.button "Print labels", value: "label", name: "batch[action]", class: "btn" %>
+    <%= f.button "Delete", value: "delete", name: "batch[action]", class: "btn btn-outline", data: { confirm: "Are you sure?" } %>
+  </div>
+  <% if f.object.errors[:base].any? %>
+    <div class="message is-danger">
+      <div class="message-body"><%= f.object.errors[:base].to_sentence %></div>
+    </div>
+  <% end %>
+  <div class="flex flex-col">
+    <%= f.fields_for :items, @batch.items, include_id: false do |s| %>
+      <%= s.label :selected, class: "flex flex-row gap-4 items-center" do %>
+        <%= s.hidden_field :uid %>
+        <%= s.check_box :selected, class: "checkbox list-card--selection--checkbox" %>
+        <% with s.object.model do |item| %>
+          <%= component :item_list_card, item: item, link: false %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

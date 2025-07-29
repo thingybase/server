@@ -19,7 +19,7 @@ class DataForm < ApplicationForm
     super(*, class: "btn btn-primary", **, &)
   end
 
-  class FieldComponent < ApplicationComponent
+  class FieldComponent < Components::Base
     def initialize(field, label: nil, hint: nil)
       @field = field
       @label = label
@@ -81,7 +81,7 @@ class DataForm < ApplicationForm
   end
 
   class CheckboxFieldComponent < FieldComponent
-    class Field < ApplicationComponent
+    class Field < Components::Base
       def initialize(field)
         @field = field
       end

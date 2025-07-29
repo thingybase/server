@@ -1,0 +1,7 @@
+<%= title "Invite person to #{@account.name}", subtitle: "We'll send them an email with a link to join the account", icon: "mailer" %>
+
+<%= application_form [@account, @invitation] do |f| %>
+  <%= f.input :email, autofocus: true %>
+  <%= f.input :name %>
+  <%= f.button :submit, "Preview invitation →", class: 'btn btn-primary' %>
+<% end %>

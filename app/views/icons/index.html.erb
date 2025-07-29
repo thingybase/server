@@ -1,0 +1,15 @@
+<%= title "Icons", subtitle: "Custom icons available in Thingybase" %>
+
+<div class="grid is-4">
+  <% @icons.each do |icon| %>
+    <div class="box mb-0">
+      <figure><%= component :icon, icon.key, class: "image is-4by3 mb-4" %></figure>
+      <strong><%= icon.name %></strong>
+      <p><%= icon.key %></p>
+      <p>
+        Updated at
+        <%= local_time_ago icon.updated_at %>
+      </p>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,14 @@
+<section class="container-lg">
+  <%= title "You do not have permission to #{@permission} this #{@forbidden_resource.model_name.human.downcase}", icon: "no-entry-badge", subtitle: "You're trying to access this as #{current_user.name} (#{current_user.email})" %>
+  <% if @member_request %>
+    <p>
+      <%= application_form @member_request, url: account_member_requests_path(@member_request.account) do |f| %>
+        <%= f.association :account, as: :hidden %>
+        <%= f.association :user, as: :hidden %>
+        <%= f.button :submit, "Request to join account", class: "btn btn-primary" %>
+      <% end %>
+    </p>
+  <% else %>
+    <%= link_to "← Go back", :back, class: "btn" %>
+  <% end %>
+</section>
