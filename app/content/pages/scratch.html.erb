@@ -1,0 +1,26 @@
+---
+title: Scratch Page
+subtitle: Let's render some Phlex templates
+icon: open-book
+---
+
+<div class="min-h-screen p-8 space-y-8">
+  <p>Let's play with some Phlex templates!</p>
+  <%= render Components::Card.new %>
+
+  <%= render Components::ContactCard.new(user: User.first) %>
+
+  <%= render Components::TitleCard.new do |card| %>
+    Hello
+
+    <% card.subtitle do %>
+      <p>This is a subtitle</p>
+    <% end %>
+    <% card.subtitle do %>
+      <p>This is another subtitle</p>
+    <% end %>
+    <% card.title do %>
+      <p><%= User.first.name %></p>
+    <% end %>
+  <% end %>
+</div>
