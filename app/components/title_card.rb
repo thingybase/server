@@ -1,6 +1,19 @@
 class Components::TitleCard < Components::Card
-  def initialize
-    super
+  class Large < self
+    def title_size_classes = "text-5xl"
+
+    class Green < self
+      def title_color_classes = "text-green-500"
+    end
+  end
+
+  def title_size_classes = "text-2xl"
+
+  attr_accessor :title_color_classes
+
+  def initialize(*, title_color_classes: "text-blue-500", **, &)
+    super(*, **, &)
+    @title_color_classes = title_color_classes
     @subtitles = []
   end
 
@@ -24,7 +37,7 @@ class Components::TitleCard < Components::Card
     h1(id: "card-id", class: [
       "font-bold",
       title_size_classes,
-      title_color_classes
+      @title_color_classes
     ], &@title)
 
     @subtitles.each do |subtitle|
@@ -33,7 +46,4 @@ class Components::TitleCard < Components::Card
 
     yield
   end
-
-  def title_size_classes = "text-2xl"
-  def title_color_classes = "text-blue-500"
 end

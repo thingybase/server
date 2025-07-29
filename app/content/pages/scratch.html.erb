@@ -23,4 +23,19 @@ icon: open-book
       <p><%= User.first.name %></p>
     <% end %>
   <% end %>
+
+  <%= render Components::TitleCard::Large.new(title_color_classes: "text-yellow-600") do |card| %>
+    <% card.title_color_classes = "text-blue-900" %>
+    Hello
+
+    <% card.subtitle do %>
+      <p>This is a subtitle</p>
+    <% end %>
+    <% card.subtitle do %>
+      <p>This is another subtitle</p>
+    <% end %>
+    <% card.title do %>
+      <p><%= User.first.name %></p>
+    <% end %>
+  <% end %>
 </div>

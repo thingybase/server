@@ -9,7 +9,6 @@ class Components::Card < Components::Base
 
   def view_template
     div do
-      h1 { "Hello, World!" }
       yield if block_given?
     end
   end
