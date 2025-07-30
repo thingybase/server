@@ -24,14 +24,15 @@
     <% end %>
   </div>
 
-  <div class="card bg-base-200 md:col-span-2">
-    <div class="card-body">
-      <h3 class="card-title">Items</h3>
-      <p class="subtitle is-5">Organize stuff into rooms, shelves, and containers so you can find it all later</p>
-      <p>You have a total of <%= pluralize @account.items.count, "item" %> in your account.</p>
-      <%= link_to "View items", account_items_path(@account), class: "link" %>
-    </div>
-  </div>
+  <%= render Components::Card::Text.new(class: "bg-base-200 md:col-span-2") do |card| %>
+    <% card.header do |h| %>
+      <% h.title do %>Items<% end %>
+      <% h.subtitle do %>Organize stuff into rooms, shelves, and containers so you can find it all later<% end %>
+    <% end %>
+
+    <p>You have a total of <%= pluralize @account.items.count, "item" %> in your account.</p>
+    <%= link_to "View items", account_items_path(@account), class: "link" %>
+  <% end %>
 
   <div class="card bg-base-200 md:col-span-1 row-span-2">
     <div class="card-body">
