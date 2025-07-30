@@ -6,7 +6,11 @@ icon: open-book
 
 <div class="min-h-screen p-8 space-y-8">
   <p>Let's play with some Phlex templates!</p>
-  <%= render Components::Card.new %>
+
+  <%= render Components::ContactInfo.new(User.first) do |list| %>
+    <% list.item "Name", &:name %>
+    <% list.item "Email", &:email %>
+  <% end %>
 
   <%= render Components::ContactCard.new(user: User.first) %>
 
