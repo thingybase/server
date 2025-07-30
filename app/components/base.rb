@@ -7,6 +7,8 @@ class Components::Base < Phlex::HTML
   include Phlex::Rails::Helpers::LinkTo
   include Phlex::Rails::Helpers::Pluralize
 
+  include Superview::Helpers::Links
+
   if Rails.env.development?
     def before_template
       comment { "Before #{self.class.name}" }
