@@ -1,0 +1,179 @@
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 100;
+  src: url("/assets/inter/web-hinted/Inter-Thin-BETA-96ce8c42.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-Thin-BETA-ad6e09e6.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 100;
+  src: url("/assets/inter/web-hinted/Inter-ThinItalic-BETA-50b400dd.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-ThinItalic-BETA-ed3355f2.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 200;
+  src: url("/assets/inter/web-hinted/Inter-ExtraLight-BETA-f4063bfc.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-ExtraLight-BETA-0e790331.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 200;
+  src: url("/assets/inter/web-hinted/Inter-ExtraLightItalic-BETA-d4280dec.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-ExtraLightItalic-BETA-2a2ab584.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 300;
+  src: url("/assets/inter/web-hinted/Inter-Light-BETA-363b3f9a.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-Light-BETA-ac493e1b.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 300;
+  src: url("/assets/inter/web-hinted/Inter-LightItalic-BETA-61c05719.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-LightItalic-BETA-447b3efd.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 400;
+  src: url("/assets/inter/web-hinted/Inter-Regular-1b48f52c.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-Regular-e96c42d7.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 400;
+  src: url("/assets/inter/web-hinted/Inter-Italic-939150cc.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-Italic-3141aef0.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 500;
+  src: url("/assets/inter/web-hinted/Inter-Medium-a0bd64ba.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-Medium-3530a778.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 500;
+  src: url("/assets/inter/web-hinted/Inter-MediumItalic-64ecd73e.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-MediumItalic-aa83f395.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 600;
+  src: url("/assets/inter/web-hinted/Inter-SemiBold-b2102a75.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-SemiBold-59cf5ce5.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 600;
+  src: url("/assets/inter/web-hinted/Inter-SemiBoldItalic-6a731147.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-SemiBoldItalic-93979da9.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 700;
+  src: url("/assets/inter/web-hinted/Inter-Bold-2a69c6e3.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-Bold-63e5a8f7.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 700;
+  src: url("/assets/inter/web-hinted/Inter-BoldItalic-07e0d112.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-BoldItalic-ae9515e1.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 800;
+  src: url("/assets/inter/web-hinted/Inter-ExtraBold-cfc843da.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-ExtraBold-dcba93f0.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 800;
+  src: url("/assets/inter/web-hinted/Inter-ExtraBoldItalic-27995b50.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-ExtraBoldItalic-4222a611.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 900;
+  src: url("/assets/inter/web-hinted/Inter-Black-e833ec4e.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-Black-952c39f1.woff") format("woff");
+}
+@font-face {
+  font-family: 'Inter';
+  font-style:  italic;
+  font-weight: 900;
+  src: url("/assets/inter/web-hinted/Inter-BlackItalic-bffdf7da.woff2") format("woff2"),
+       url("/assets/inter/web-hinted/Inter-BlackItalic-74ec9332.woff") format("woff");
+}
+
+/* -------------------------------------------------------
+Variable font.
+Usage:
+
+  html { font-family: 'Inter', sans-serif; }
+  @supports (font-variation-settings: normal) {
+    html { font-family: 'Inter var', sans-serif; }
+  }
+*/
+@font-face {
+  font-family: 'Inter var';
+  font-weight: 100 900;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url("Inter-upright.var.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Inter var';
+  font-weight: 100 900;
+  font-style: italic;
+  font-named-instance: 'Italic';
+  src: url("Inter-italic.var.woff2") format("woff2");
+}
+
+
+/* --------------------------------------------------------------------------
+[EXPERIMENTAL] Multi-axis, single variable font.
+
+Slant axis is not yet widely supported (as of February 2019) and thus this
+multi-axis single variable font is opt-in rather than the default.
+
+When using this, you will probably need to set font-variation-settings
+explicitly, e.g.
+
+  * { font-variation-settings: "slnt" 0deg }
+  .italic { font-variation-settings: "slnt" 10deg }
+
+*/
+@font-face {
+  font-family: 'Inter var experimental';
+  font-weight: 100 900;
+  font-style: oblique 0deg 10deg;
+  src: url("Inter.var.woff2") format("woff2");
+}

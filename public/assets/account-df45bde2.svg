@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>account</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Graphics" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="account" stroke="#979797" fill="#D8D8D8">
+            <circle id="Oval" cx="79.5" cy="49.5" r="22.5"></circle>
+            <circle id="Oval" cx="39.5" cy="94.5" r="22.5"></circle>
+            <circle id="Oval" cx="102.5" cy="107.5" r="22.5"></circle>
+            <circle id="Oval" cx="147.5" cy="47.5" r="22.5"></circle>
+            <circle id="Oval" cx="62.5" cy="152.5" r="22.5"></circle>
+            <circle id="Oval" cx="147.5" cy="152.5" r="22.5"></circle>
+            <circle id="Oval" cx="161.5" cy="98.5" r="22.5"></circle>
+        </g>
+    </g>
+</svg>
