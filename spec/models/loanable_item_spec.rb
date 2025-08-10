@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe LoanableItem, type: :model do
-  subject { build(:loanable_item) }
+  subject { create(:loanable_item) }
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:account) }
   it { is_expected.to belong_to(:loanable_list) }
