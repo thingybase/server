@@ -14,8 +14,12 @@ class SignupsController < ApplicationController
       redirect_url = access_denied_url || launch_url
       reset_session
       self.current_user = @user
+
       # Attribute ahoy visit to the person that just logged in.
-      ahoy.visit.update user: current_user
+      if visit = ahoy.visit
+        visit.update user: current_user
+      end
+
       redirect_to redirect_url
     else
       render :new, status: :unprocessable_entity
