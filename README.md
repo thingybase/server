@@ -14,7 +14,9 @@
 
 # README
 
-Server application for Thingybase.
+This repository has the Ruby on Rails server application source code for Thingybase, a proprietary web application you can use to organize, track, & treasure your stuff.
+
+[![Ruby](https://github.com/thingybase/server/actions/workflows/ruby.yml/badge.svg)](https://github.com/thingybase/server/actions/workflows/ruby.yml)
 
 ## Setup
 
