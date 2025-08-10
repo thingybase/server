@@ -1,3 +1,11 @@
+> [!WARNING]
+> **PROPRIETARY SOFTWARE – NO UNAUTHORIZED USE**
+> **Plain English:** This is the private property of **Rocketship, LLC (DBA “Thingybase.com”)**. You can look, but you can’t touch — no copying, modifying, or using this code without explicit permission.
+> **Legalese:** Unauthorized reproduction, distribution, modification, public display, or use of this software, in whole or in part, is strictly prohibited and constitutes a violation of U.S. and international intellectual property laws. Violators will be prosecuted to the maximum extent permitted under applicable law.
+>
+> 📧 For licensing inquiries, contact: [contact@thingybase.com](mailto:contact@thingybase.com)
+> 📜 Full license terms: [LICENSE.md](./LICENSE.md)
+
 # README
 
 Server application for Thingybase.
