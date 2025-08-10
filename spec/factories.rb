@@ -60,11 +60,7 @@ FactoryBot.define do
     user
   end
 
-  factory :api_key do
-    name { Faker::Name.name }
-    secret { ApiKey.generate_secret }
-    user
-  end
+
 
   factory :phone_number_claim do
     phone_number { Faker::PhoneNumber.unique.cell_phone }

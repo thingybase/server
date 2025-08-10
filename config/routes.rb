@@ -158,7 +158,6 @@ Rails.application.routes.draw do
 
   resources :users
   create :signup
-  resources :api_keys, except: %i[edit update]
 
   resource :session
   post "/auth/:provider/callback", to: 'sessions#create'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2022_12_01_055922) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_10_211417) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_trgm"
@@ -66,15 +66,6 @@ ActiveRecord::Schema[8.0].define(version: 2022_12_01_055922) do
     t.datetime "started_at"
     t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
     t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
-  end
-
-  create_table "api_keys", force: :cascade do |t|
-    t.string "name"
-    t.string "secret"
-    t.bigint "user_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["user_id"], name: "index_api_keys_on_user_id"
   end
 
   create_table "blazer_audits", force: :cascade do |t|
@@ -323,7 +314,6 @@ ActiveRecord::Schema[8.0].define(version: 2022_12_01_055922) do
   end
 
   add_foreign_key "accounts", "users"
-  add_foreign_key "api_keys", "users"
   add_foreign_key "invitations", "accounts"
   add_foreign_key "invitations", "users"
   add_foreign_key "items", "accounts"

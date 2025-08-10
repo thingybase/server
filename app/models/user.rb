@@ -10,7 +10,7 @@ class User < ApplicationRecord
     uniqueness: true,
     allow_nil: true
 
-  has_many :api_keys
+
   has_many :items
   has_many :members
   has_many :loanable_list_members
