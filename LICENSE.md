@@ -1,10 +1,13 @@
 # Proprietary License Agreement
 
-**Copyright © 2025 Rocketship, LLC (DBA “Thingybase”)** All rights reserved.
+**Copyright © 2025 Rocketship, LLC (DBA “Thingybase.com”)**
+All rights reserved.
 
-This License Agreement (“Agreement”) governs the use of the source code and related materials (the “Software”) made available by Rocketship, LLC (DBA “Thingybase”).
+This License Agreement (“Agreement”) governs the use of the source code and related materials (the “Software”) made available by Rocketship, LLC (DBA “Thingybase.com”).
 
 By accessing, viewing, or otherwise using the Software, you agree to be bound by the terms of this Agreement. If you do not agree, you must immediately cease all access to and use of the Software.
+
+Usage of Thingybase.com is also governed by our [Terms of Service](https://www.thingybase.com/trust/terms) and [Privacy Policy](https://www.thingybase.com/trust/privacy).
 
 ## 1. Grant of License
 
@@ -44,7 +47,11 @@ This Agreement shall be governed by and construed in accordance with the laws of
 
 This Agreement constitutes the entire agreement between you and Rocketship, LLC concerning the Software and supersedes all prior or contemporaneous understandings.
 
+## 9. Contributions
+
+All contributions to the Software are governed by the **Thingybase Contributor License Agreement (CLA) v1.0** set forth in `CONTRIBUTING.md`. By submitting a pull request or other contribution, you acknowledge and agree to the CLA terms, including intellectual property assignment or, where assignment is not possible, a perpetual, worldwide, exclusive, irrevocable license to Rocketship, LLC with the right to sublicense. You further represent that you have the authority to make such a contribution and that your contribution does not infringe on any third-party rights.
+
 **Contact Information:**
-Rocketship, LLC (DBA “Thingybase”)
+Rocketship, LLC (DBA “Thingybase.com”)
 Email: somebody@thingybase.com
 Website: https://thingybase.com
