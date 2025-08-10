@@ -14,11 +14,7 @@ module PagesHelper
   end
 
   def page_card(page = current_page)
-    component :card,
-      url: page.request_path,
-      image_url: page.data.fetch("image_url"),
-      title: page.data.fetch("title"),
-      subtitle: page.data.fetch("subtitle")
+    render Components::Card::Page.new(page:)
   end
 
   private

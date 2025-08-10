@@ -8,6 +8,6 @@ class Components::IconComponent < Components::Base
   end
 
   def view_template
-    render VectorComponent.new(asset: @icon.asset, mode: @mode, class: @css_class)
+    render Components::VectorComponent.new(asset: @icon.asset, mode: @mode, class: @css_class)
   end
 end
