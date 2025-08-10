@@ -4,11 +4,7 @@ class User < ApplicationRecord
     presence: true,
     uniqueness: true,
     format: { with: URI::MailTo::EMAIL_REGEXP }
-  phony_normalize :phone_number, default_country_code: 'US'
-  validates :phone_number,
-    phony_plausible: true,
-    uniqueness: true,
-    allow_nil: true
+
 
 
   has_many :items

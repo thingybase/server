@@ -17,9 +17,7 @@ module ApplicationHelper
     render inline: capture(&block), layout: "layouts/#{layout}", **kwargs
   end
 
-  def phone_number(number)
-    number.phony_formatted
-  end
+
 
   def account_policy_scope(klass)
     policy_scope(klass).where(account: @account)

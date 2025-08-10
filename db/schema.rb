@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_10_211417) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_10_215640) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_trgm"
@@ -283,15 +283,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_10_211417) do
     t.index ["data_digest"], name: "index_nopassword_secrets_on_data_digest", unique: true
   end
 
-  create_table "phone_number_claims", force: :cascade do |t|
-    t.string "phone_number", null: false
-    t.string "code", null: false
-    t.bigint "user_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["user_id"], name: "index_phone_number_claims_on_user_id"
-  end
-
   create_table "subscriptions", force: :cascade do |t|
     t.bigint "account_id", null: false
     t.bigint "user_id", null: false
@@ -306,11 +297,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_10_211417) do
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
-    t.string "phone_number"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["phone_number"], name: "index_users_on_phone_number", unique: true
   end
 
   add_foreign_key "accounts", "users"
@@ -341,7 +330,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_10_211417) do
   add_foreign_key "moves", "accounts"
   add_foreign_key "moves", "items", column: "new_item_container_id"
   add_foreign_key "moves", "users"
-  add_foreign_key "phone_number_claims", "users"
   add_foreign_key "subscriptions", "accounts"
   add_foreign_key "subscriptions", "users"
 end

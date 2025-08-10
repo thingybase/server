@@ -74,9 +74,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :phone_number_claims do
-    nest :verification
-  end
+
 
   resources :accounts do
     get :search, to: "accounts/searches#index"

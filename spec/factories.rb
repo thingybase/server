@@ -1,5 +1,4 @@
-# Set phone numbers to be US only, for now ...
-Faker::Config.locale = 'en-US'
+
 
 FactoryBot.define do
   factory :subscription do
@@ -62,11 +61,7 @@ FactoryBot.define do
 
 
 
-  factory :phone_number_claim do
-    phone_number { Faker::PhoneNumber.unique.cell_phone }
-    code { PhoneNumberClaim.random_code }
-    user
-  end
+
 
   factory :invitation do
     email { Faker::Internet.unique.email }
@@ -79,9 +74,6 @@ FactoryBot.define do
   factory :user do
     name { Faker::Name.name }
     email { Faker::Internet.unique.email }
-    factory :user_with_phone_number do
-      phone_number { Faker::PhoneNumber.unique.cell_phone }
-    end
   end
 
   factory :account do

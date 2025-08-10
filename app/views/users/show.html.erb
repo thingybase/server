@@ -22,22 +22,5 @@
 
 
 
-  <div class="card bg-base-200">
-    <div class="card-body">
-      <h3 class="text-xl font-bold">Phone number</h3>
-      <p class="text-lg">Used for verification & notifications</p>
-      <p>We only use this phone number text you if you opt-in</p>
-      <p>
-        <strong><%= resource_class.human_attribute_name(:phone_number) %>:</strong>
-        <br>
-        <% if phone_number = @user.phone_number %>
-          <%= phone_number %>
-        <% else %>
-          None
-        <% end %>
-      </p>
 
-      <p><%= link_to "#{@user.phone_number ? "Change" : "Add"} phone number", new_phone_number_claim_path, class: "btn-outline" %></p>
-    </div>
-  </div>
 </section>

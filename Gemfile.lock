@@ -313,10 +313,6 @@ GEM
       phlex (~> 2.3.0)
       railties (>= 7.1, < 9)
       zeitwerk (~> 2.7)
-    phony (2.22.3)
-    phony_rails (0.15.0)
-      activesupport (>= 3.0)
-      phony (>= 2.18.12)
     pp (0.6.2)
       prettyprint
     prawn (2.5.0)
@@ -478,10 +474,6 @@ GEM
     turbo-rails (2.0.16)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
-    twilio-ruby (7.6.5)
-      faraday (>= 0.9, < 3.0)
-      jwt (>= 1.5, < 3.0)
-      nokogiri (>= 1.6, < 2.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uri (1.0.3)
@@ -553,7 +545,6 @@ DEPENDENCIES
   pg (~> 1.5)
   pg_search (~> 2.3)
   phlex-rails (~> 2.3)
-  phony_rails
   prawn (~> 2.0)
   prawn-qrcode (~> 0.5.0)
   propshaft
@@ -580,7 +571,6 @@ DEPENDENCIES
   superview (~> 1.0)
   tailwindcss-rails (~> 4.0)
   turbo-rails
-  twilio-ruby
   tzinfo-data
   web-console
   webdrivers

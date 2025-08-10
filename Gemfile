@@ -24,11 +24,8 @@ gem 'omniauth-google-oauth2'
 gem 'pundit'
 # Form helper
 gem 'simple_form', '~> 5.0'
-# Communicate with Twilio
-gem 'twilio-ruby'
-# Handle phone numbers as a propper data type (and normalize)
-gem 'phony_rails'
-# For claims to create resources in a phone ack
+
+# JWT token handling for authentication
 gem 'jwt'
 # Validate password and token strengths based on entropy.
 gem 'strong_password'
