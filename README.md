@@ -1,20 +1,30 @@
 > [!WARNING]
 > **PROPRIETARY SOFTWARE – NO UNAUTHORIZED USE**
 >
-> **Plain English:** This is the private property of **Rocketship, LLC (DBA “Thingybase.com”)**. You can look, but you can’t touch — no copying, modifying, or using this code without explicit permission.
+> **Use:** This is the private property of **Rocketship, LLC (DBA “Thingybase.com”)**. You can look, but no copying, modifying, running in production, or using this code without explicit permission.
 >
-> **Legalese:** Unauthorized reproduction, distribution, modification, public display, or use of this software, in whole or in part, is strictly prohibited and constitutes a violation of U.S. and international intellectual property laws. Violators will be prosecuted to the maximum extent permitted under applicable law.
+> **Unauthorized use:** Unauthorized reproduction, distribution, modification, public display, or use of this software, in whole or in part, is strictly prohibited and constitutes a violation of U.S. and international intellectual property laws. Violators will be prosecuted to the maximum extent permitted under applicable law.
 >
 > **Contributions:** By submitting a pull request or other contribution to this repository, you agree to grant Rocketship, LLC a perpetual, worldwide, royalty-free, irrevocable license to use, modify, and distribute your contribution as part of this project under any terms we choose, without any obligation to you. You further represent that you have the right to grant this license and that your contribution does not infringe on any third-party rights.
 >
-> 📧 For licensing inquiries, contact: [somebody@thingybase.com](mailto:somebody@thingybase.com)
-> 📜 Full license terms: [LICENSE.md](./LICENSE.md)
-> 📄 Terms of Service: [thingybase.com/trust/terms](https://www.thingybase.com/trust/terms)
-> 🔒 Privacy Policy: [thingybase.com/trust/privacy](https://www.thingybase.com/trust/privacy)
+> * 📧 For licensing inquiries, contact: [somebody@thingybase.com](mailto:somebody@thingybase.com)
+> * 📜 Full license terms: [LICENSE.md](./LICENSE.md)
+> * 📄 Terms of Service: [thingybase.com/trust/terms](https://www.thingybase.com/trust/terms)
+> * 🔒 Privacy Policy: [thingybase.com/trust/privacy](https://www.thingybase.com/trust/privacy)
 
 # README
 
 Server application for Thingybase.
+
+## Setup
+
+Thingybase is a Ruby on Rails application. To setup and run locally, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/thingybase/server.git`
+2. Install dependencies: `bundle install`
+3. Create the database: `rails db:create`
+4. Run migrations: `rails db:migrate`
+5. Start the server: `rails server`
 
 ## Principles
 
