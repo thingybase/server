@@ -9,9 +9,6 @@ class ApplicationController < ActionController::Base
   after_action :verify_policy_scoped, only: :index
   after_action :extend_session_expiration
 
-  protect_from_forgery with: :exception, unless: :has_authentication_header?
-  protect_from_forgery with: :null_session, if: :has_authentication_header?
-
   rescue_from Pundit::NotAuthorizedError, with: :request_forbidden
   rescue_from ActiveRecord::RecordNotFound, with: :request_not_found
 
