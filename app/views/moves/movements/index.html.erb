@@ -15,7 +15,7 @@
   <div class="list-cards">
     <% @movements.each do |movement| %>
       <% with movement.origin do |item| %>
-        <%= render ListCardComponent.new(item.name, movement, icon: item.icon) do |c| %>
+        <%= render Components::List::CardComponent.new(item.name, movement, icon: item.icon) do |c| %>
           <%= c.slot(:detail) do %>
             Move to
             <%= link_to movement.destination.name, movement.destination %>

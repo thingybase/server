@@ -20,7 +20,7 @@ module Accounts
       end
 
       def view_template
-        render Components::ListItemsComponent.new(@items.roots.container_then_item)
+        render Components::List::ItemsComponent.new(@items.roots.container_then_item)
       end
     end
 
@@ -48,7 +48,7 @@ module Accounts
       def view_template
         render Form.new(@item)
 
-        render Components::ListItemsComponent.new(@items.roots.container_then_item)
+        render Components::List::ItemsComponent.new(@items.roots.container_then_item)
 
         a(href: templates_account_items_path(@account), class: "btn btn-outline" ){ "Create item from a template..." }
       end

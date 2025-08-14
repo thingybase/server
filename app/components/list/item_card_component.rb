@@ -1,4 +1,4 @@
-class Components::ItemListCardComponent < Components::ListCardComponent
+class Components::List::ItemCardComponent < Components::List::CardComponent
 
   attr_accessor :item
 
