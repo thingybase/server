@@ -7,7 +7,7 @@
 </div>
 
 <% @loanable_list.members.each do |member| %>
-  <%= component :list_card, member.user.name, icon: "mailer" do |card| %>
+  <%= render Components::List::CardComponent.new(member.user.name, icon: "mailer") do |card| %>
     <% card.detail do %>
       Member
     <% end %>
@@ -25,7 +25,7 @@
   <h3 class="title is-4">Pending requests</h3>
 
   <% @loanable_list.member_requests.each do |request| %>
-    <%= component :list_card, request.user.name, new_loanable_list_member_request_review_path(request), icon: "mailer" do |card| %>
+    <%= render Components::List::CardComponent.new(request.user.name, new_loanable_list_member_request_review_path(request), icon: "mailer") do |card| %>
       <% card.detail do %>
         Pending request
       <% end %>

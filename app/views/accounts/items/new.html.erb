@@ -21,13 +21,13 @@
 
 <%# <div class="list-cards mt-5"> %>
 <%#   <% if @items.empty? %>
-<%#     <%= component :empty_list do |it| %>
+<%#     <%= render Components::EmptyListComponent.new do |it| %>
 <%#       <%= it.title { "#{(@container || @account).name} is empty" } %>
 <%#       <%= it.message { "Items will appear here after they are added" } %>
 <%#     <% end %>
 <%#   <% else %>
 <%#     <% @items.roots.container_then_item.each do %>
-<%#       <%= component :item_list_card, item: _1 %>
+<%#       <%= render Components::List::ItemCardComponent.new(item: _1) %>
 <%#     <% end %>
 <%#   <% end %>
 <%# </div> %>

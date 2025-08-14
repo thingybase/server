@@ -5,7 +5,7 @@
 </div>
 
 <% if @movements.empty? %>
-  <%= component :empty_list do |it| %>
+  <%= render Components::EmptyListComponent.new do |it| %>
     <%= it.title { "Create a moving label" } %>
     <%= it.message { "Get started with your move by creating labels that you can put on your box." } %>
     <%= it.action(new_move_movement_builder_path(@move)) { "+ Create moving label" } %>
@@ -33,3 +33,4 @@
 <div class="buttons">
   <%= link_to "Delete move", move_path(@move), class: "btn btn-outline", "data-turbo-method": :delete, data: { confirm: "Are you sure?" } %>
 </div>
+

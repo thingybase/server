@@ -3,7 +3,7 @@
 
   <div class="flex flex-col">
     <% @accounts.each do |account| %>
-      <%= component :list_card, account.name, account do |card| %>
+      <%= render Components::List::CardComponent.new(account.name, account) do |card| %>
         <% card.detail do %>
           Created <%= local_time_ago account.created_at %>
         <% end %>

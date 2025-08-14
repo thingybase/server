@@ -18,7 +18,7 @@
           <%= s.hidden_field :uid %>
           <%= s.check_box :selected, class: "checkbox list-card--selection--checkbox" %>
           <% with s.object.model do |item| %>
-            <%= component :item_list_card, item: item, link: false %>
+            <%= render Components::List::ItemCardComponent.new(item: item, link: false) %>
           <% end %>
         <% end %>
       <% end %>

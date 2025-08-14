@@ -13,7 +13,7 @@
   </div>
 <% else %>
   <% resource.loanable_items.each do |loanable| %>
-    <%= component :list_card, loanable.item.name, loanable, icon: loanable.item.icon do |card| %>
+    <%= render Components::List::CardComponent.new(loanable.item.name, loanable, icon: loanable.item.icon) do |card| %>
       <% card.detail do %>
         Created
         <%= local_time_ago loanable.created_at %>
