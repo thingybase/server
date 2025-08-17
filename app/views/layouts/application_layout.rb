@@ -8,8 +8,22 @@ class Views::Layouts::ApplicationLayout < Views::Base
 
 	register_value_helper :opengraph_meta_tags
 
-	def initialize(title: "Thingybase")
+	def initialize(title: "Thingybase", opengraph: OpenGraph.new)
 		@title = title
+		@opengraph = opengraph
+
+	end
+
+	def opengraph(og) = og
+
+	class OpenGraph
+	  attr_accessor :title, :description, :image_url
+
+	  def initialize(title: nil, description: nil, image_url: nil)
+  		@title = title
+  		@description = description
+  		@image_url = image_url
+	  end
 	end
 
 	def view_template(&block)
