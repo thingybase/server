@@ -13,16 +13,16 @@
     <% end %>
   </div>
 
-  <div class="stats bg-primary text-primary-content md:col-span-3 text-center">
-    <%= link_to account_items_path(@account), class: "stat" do %>
-      <div class="stat-title text-primary-content"><%= "Item".pluralize(@account.items.count) %></div>
-      <div class="stat-value"><%= @account.items.count %></div>
-    <% end %>
-    <%= link_to account_people_path(@account), class: "stat" do %>
-      <div class="stat-title text-primary-content"><%= "People".pluralize(@account.members.count) %></div>
-      <div class="stat-value"><%= @account.members.count %></div>
-    <% end %>
-  </div>
+  <%= render Components::Stats.new do |stats|
+    stats.stat do
+      it.title { "Items" }
+      it.value { @account.items.count }
+    end
+    stats.stat do
+      it.title { "People" }
+      it.value { @account.members.count }
+    end
+ end %>
 
   <%= render Components::Card::Text.new(class: "bg-base-200 md:col-span-2") do |card| %>
     <% card.header do |h| %>
