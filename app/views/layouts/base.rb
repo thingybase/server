@@ -8,12 +8,14 @@ class Views::Layouts::Base < Components::Base
 
 	register_value_helper :opengraph_meta_tags
 
+	attr_accessor :opengraph
+
 	def initialize(title: "Thingybase", opengraph: OpenGraph.new)
 		@title = title
 		@opengraph = opengraph
 	end
 
-	class OpenGraph
+	class OpenGraph < Components::Base
 	  attr_accessor :title, :description, :image_url
 
 	  def initialize(title: nil, description: nil, image_url: nil)
@@ -21,9 +23,18 @@ class Views::Layouts::Base < Components::Base
   		@description = description
   		@image_url = image_url
 	  end
+
+		def view_template
+			meta property: "og:title", content: @title
+			meta property: "og:description", content: @description
+			meta property: "og:image", content: @image_url
+			meta property: "twitter:title", content: @title
+			meta property: "twitter:description", content: @description
+			meta property: "twitter:image", content: @image_url
+		end
 	end
 
-	def view_template(&block)
+	def view_template(&content)
 		doctype
 
 		html do
@@ -37,12 +48,12 @@ class Views::Layouts::Base < Components::Base
 				csrf_meta_tags
 				stylesheet_link_tag "tailwind", data_turbo_track: "reload"
 				javascript_importmap_tags
-				opengraph_meta_tags
+				render @opengraph
 			end
 
 			body do
 			  license_notice_template if unlicensed_use?
-				main(&block)
+				main(&content)
 			end
 		end
 	end
