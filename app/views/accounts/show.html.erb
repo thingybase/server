@@ -16,7 +16,7 @@
   <%= render Components::Stats.new do |stats|
     stats.stat do
       it.title { "Items" }
-      it.value { @account.items.count }
+      it.cached_value(@account, :items, :count, expires_in: 1.hour) { @account.items.count }
     end
     stats.stat do
       it.title { "People" }

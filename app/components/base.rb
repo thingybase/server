@@ -15,4 +15,6 @@ class Components::Base < Phlex::HTML
       super
     end
   end
+
+  def cache_store = Rails.cache
 end

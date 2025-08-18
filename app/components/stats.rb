@@ -15,6 +15,12 @@ class Components::Stats < Components::Base
     def value(&)
       div(class: "stat-value", &)
     end
+
+    def cached_value(*, **, &)
+      # @account, :count
+      # ** expires_in: 1.hour
+      cache(*, **) { value(&) }
+    end
   end
 
   def view_template
