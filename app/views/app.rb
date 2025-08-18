@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::App < Views::Base
+class Views::App < Views::Layouts::Base
   def around_template(&)
     super do
       render Views::Layouts::App.new(title:) do

@@ -37,7 +37,7 @@ class Components::AccountComponent < Components::Base
   end
 
   def around_template(&)
-    render Views::Layouts::ApplicationLayout.new(title: title) do
+    render Views::Layouts::Base.new(title: title) do
       div(class: "flex flex-row") do
         sidebar_template
         yield

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Layouts::ApplicationLayout < Views::Base
+class Views::Layouts::Base < Components::Base
   AUTHORIZED_HOSTS = %w[www.thingybase.com thingybase.com].freeze
 
 	include Phlex::Rails::Layout
@@ -11,10 +11,7 @@ class Views::Layouts::ApplicationLayout < Views::Base
 	def initialize(title: "Thingybase", opengraph: OpenGraph.new)
 		@title = title
 		@opengraph = opengraph
-
 	end
-
-	def opengraph(og) = og
 
 	class OpenGraph
 	  attr_accessor :title, :description, :image_url
