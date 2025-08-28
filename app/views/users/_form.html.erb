@@ -1,3 +1,12 @@
+<%= render Components::Form.new(@user) do |it|
+  it.row it.field(:name).input(class: "input input-bordered")
+  it.row it.field(:email).input(class: "input input-bordered")
+
+  it.submit "Save changes", class: "btn btn-primary"
+end %>
+
+<hr>
+
 <%= application_form @user do |f| %>
   <%= f.input :name, autofocus: true %>
   <%= f.input :email %>
