@@ -2,7 +2,9 @@ class Views::Mailers::Layouts::Base < Views::Base
   def view_template
     html do
       body do
+
         yield
+
         p do
           div { "Cheers," }
           div { "Thingybase" }

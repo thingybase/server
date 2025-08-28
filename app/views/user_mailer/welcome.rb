@@ -4,6 +4,8 @@ class Views::UserMailer::Welcome < Views::Mailers::Base
   end
 
   def view_template
-    p { "Hi! #{@user.name}" }
+    p { "Hi! #{@user.name}," }
+
+    p { "Welcome to Thingybase!" }
   end
 end

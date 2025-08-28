@@ -1,16 +1,10 @@
 class UserMailer < ApplicationMailer
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.welcome.subject
-  #
-  #
   layout false
 
   def welcome
-    @greeting = "Hi"
+    @user = User.first
 
-    mailer Views::UserMailer::Welcome.new(User.first),
-      to: "to@example.org"
+    mailer Views::UserMailer::Welcome.new(@user),
+      to: @user.email
   end
 end

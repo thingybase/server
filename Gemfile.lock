@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/beautifulruby/superform.git
-  revision: 987259569a2612138bfbb8cd77951eedbfc50c84
+  revision: 2efc1c6383d48af1e4681a716d2d2aec21e1c879
   specs:
     superform (0.5.1)
-      phlex-rails (>= 1.0, < 3.0)
+      phlex-rails (~> 2.0)
       zeitwerk (~> 2.6)
 
 GIT
