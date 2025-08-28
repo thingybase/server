@@ -3,7 +3,7 @@ class UsersController < Oxidizer::ResourcesController
 
   def self.resource = User
 
-  # layout -> { Views::Layouts::App.new(title: @user.name) }
+  layout -> { Views::Layouts::App.new(title: @user.name) }
 
   def show
     render Views::Users::Show.new(@user)

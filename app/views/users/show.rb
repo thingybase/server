@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Views::Users::Show < Views::App
+class Views::Users::Show < Views::Base
   # register_output_helper :title
 
   def initialize(user)
