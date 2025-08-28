@@ -1,7 +1,6 @@
 <%= render Components::Form.new(@user) do |it|
-  it.row it.field(:name).input(class: "input input-bordered")
-  it.row it.field(:email).input(class: "input input-bordered")
-
+  it.row it.field(:name).input
+  it.row it.field(:email).email
   it.submit "Save changes", class: "btn btn-primary"
 end %>
 
