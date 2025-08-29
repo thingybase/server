@@ -5,8 +5,20 @@ class UsersController < Oxidizer::ResourcesController
 
   layout -> { Views::Layouts::App.new(title: @user.name) }
 
+  include Superform::Rails::StrongParameters
+
+  helper_method :form
+
   def show
     render Views::Users::Show.new(@user)
+  end
+
+  def update
+    if save form
+      redirect_to action: :show
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def permitted_params
@@ -14,6 +26,8 @@ class UsersController < Oxidizer::ResourcesController
   end
 
   protected
+
+  def form = Views::Users::Form.new(@user)
 
   def resource_scope
     policy_scope
