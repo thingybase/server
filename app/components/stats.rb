@@ -23,8 +23,13 @@ class Components::Stats < Components::Base
     end
   end
 
+  def initialize(*, **attributes, &)
+    super(*, &)
+    @attributes = attributes
+  end
+
   def view_template
-    div(class: "stats bg-primary text-primary-content md:col-span-3 text-center"){
+    div(class: "stats bg-primary text-primary-content md:col-span-3 text-center", **@attributes){
       yield
     }
   end
