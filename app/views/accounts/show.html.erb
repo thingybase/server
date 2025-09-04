@@ -13,7 +13,9 @@
     <% end %>
   </div>
 
-  <%= render Components::Account::Stats.new(@account) %>
+  <%= turbo_frame_tag @stats.dom_id, src: url_for(format: :turbo_stream) do %>
+    "Loading..."
+  <% end %>
 
   <%= render Components::Card::Text.new(class: "bg-base-200 md:col-span-2") do |card| %>
     <% card.header do |h| %>

@@ -2,6 +2,19 @@ class AccountsController < Oxidizer::ResourcesController
   include AccountLayout
   after_action :add_current_user_to_members, only: :create
 
+  before_action { @stats = Components::Account::Stats.new(@account) }
+
+  def show
+    respond_to do |format|
+      format.html
+      format.turbo_stream { replace(@stats) }
+    end
+  end
+
+  protected def replace(component)
+    render turbo_stream: turbo_stream.replace(component.dom_id, component)
+  end
+
   def self.resource
     Account
   end
