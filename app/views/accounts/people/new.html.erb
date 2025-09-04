@@ -8,10 +8,12 @@
 
 <div class="flex flex-col gap-2">
   <%= label_tag "invitation_link", "Invitation link", class: "text-lg font-bold" %>
-  <div class="join w-full" data-controller="clipboard">
-    <%= text_field_tag "invitation_link", new_account_member_request_url(@account), class: "input input-bordered input-primary w-full join-item", readonly: true, data: { target: "clipboard.source" } %>
-    <%= button_tag "Copy link", class: "btn btn-primary join-item", data: { action: "clipboard#copy" } %>
-  </div>
+  <%= render Components::Stimulus::Clipboard.new do |clipboard| %>
+    <div class="join w-full">
+      <%= clipboard.input(type: "text", id: "invitation_link",class: "input input-bordered input-primary w-full join-item", readonly: true, value: new_account_member_request_url(@account)) %>
+      <%= clipboard.button(class: "btn btn-primary join-item") { "Copy link" } %>
+    </div>
+  <% end %>
   <div class="help">
     People can only request to join your account from the invitation link. If their request is approved they can access the account.
   </div>

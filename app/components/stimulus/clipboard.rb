@@ -23,5 +23,9 @@ module Components
     def button(**attributes, &)
       super(**attributes.merge(copy_data), &)
     end
+
+    def input(**attributes, &)
+      super(**attributes.merge(source_data), &)
+    end
   end
 end
