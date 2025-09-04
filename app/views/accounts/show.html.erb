@@ -13,16 +13,7 @@
     <% end %>
   </div>
 
-  <%= render Components::Stats.new do |stats|
-    stats.stat do
-      it.title { "Items" }
-      it.value { @account.items.count }
-    end
-    stats.stat do
-      it.title { "People" }
-      it.value { @account.members.count }
-    end
- end %>
+  <%= render Components::Account::Stats.new(@account) %>
 
   <%= render Components::Card::Text.new(class: "bg-base-200 md:col-span-2") do |card| %>
     <% card.header do |h| %>

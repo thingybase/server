@@ -16,5 +16,9 @@ class Components::Base < Phlex::HTML
     end
   end
 
+  def dom_id(*keys)
+    self.class.name.downcase.split("::").append(*keys).join("_")
+  end
+
   def cache_store = Rails.cache
 end
