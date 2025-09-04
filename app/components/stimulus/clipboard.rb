@@ -1,19 +1,11 @@
 module Components
-  class Stimulus::Clipboard < Components::Base
-    def around_template
-      super do
-        div(data: { controller: "clipboard" }) do
-          yield
-        end
-      end
-    end
-
+  class Stimulus::Clipboard < Stimulus::Base
     def source_data
-      { data: { target: "clipboard.source" } }
+      target_data("source")
     end
 
     def copy_data
-      { data: { action: "clipboard#copy" } }
+      action_data("copy")
     end
 
     def textarea(**attributes, &)
