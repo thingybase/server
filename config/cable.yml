@@ -1,5 +1,6 @@
 development:
-  adapter: async
+  adapter: postgresql
+  url: <%= ENV.fetch("DATABASE_URL") { "postgresql://localhost:5432/thingybase_development" } %>
 
 test:
   adapter: async
