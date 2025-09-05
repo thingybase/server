@@ -2,6 +2,10 @@ class Item < ApplicationRecord
   include PgSearch::Model
   include UuidField
 
+  after_commit on: [:create, :destroy] do
+    Components::Account::Stats.new(account).broadcast_replace
+  end
+
   # pg_search_scope :search_by_name,
   #   against: :name,
   #   using: {

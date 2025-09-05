@@ -6,6 +6,7 @@ class Components::Base < Phlex::HTML
   include Phlex::Rails::Helpers::ImageTag
   include Phlex::Rails::Helpers::LinkTo
   include Phlex::Rails::Helpers::Pluralize
+  include Phlex::Rails::Helpers::TurboStreamFrom
 
   include Superview::Helpers::Links
 
@@ -18,6 +19,14 @@ class Components::Base < Phlex::HTML
 
   def dom_id(*keys)
     self.class.name.downcase.split("::").append(*keys).join("_")
+  end
+
+  def subscribe
+    turbo_stream_from dom_id if context.any?
+  end
+
+  def broadcast_replace(streamable = dom_id, target: dom_id)
+    Turbo::StreamsChannel.broadcast_replace_to(streamable, target:, content: call)
   end
 
   def cache_store = Rails.cache
