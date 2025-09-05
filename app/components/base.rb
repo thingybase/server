@@ -17,16 +17,16 @@ class Components::Base < Phlex::HTML
     end
   end
 
-  def dom_id(*keys)
-    self.class.name.downcase.split("::").append(*keys).join("_")
-  end
-
   def subscribe
     turbo_stream_from dom_id if context.any?
   end
 
   def broadcast_replace(streamable = dom_id, target: dom_id)
     Turbo::StreamsChannel.broadcast_replace_to(streamable, target:, content: call)
+  end
+
+  def dom_id(*keys)
+    self.class.name.downcase.split("::").append(*keys).join("_")
   end
 
   def cache_store = Rails.cache
