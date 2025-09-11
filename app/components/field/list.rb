@@ -1,20 +1,19 @@
 class Components::Field::List < Components::Base
+  def block_name = "field"
+
   def initialize(model)
     @model = model
   end
-
-  def vertical_space = "my-1"
-  def horizontal_space = "mx-0"
 
   def view_template
     yield
   end
 
   def field(attritube)
-    div(class: [vertical_space, horizontal_space]) {
+    div(class: block_name) {
       render Components::Field.new do
-        it.label { @model.class.human_attribute_name(attritube) }
-        it.value { @model.send(attritube) }
+        it.label(class: bem("label", "success")) { @model.class.human_attribute_name(attritube) }
+        it.value(class: bem("value", "success")) { @model.send(attritube) }
       end
     }
   end

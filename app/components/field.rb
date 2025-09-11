@@ -7,8 +7,8 @@ class Components::Field < Components::Base
     }
   end
 
-  def value(&)
-    div(class: "font-italic", &)
+  def value(class: "font-italic", **, &)
+    div(class:, &)
   end
 
   def label(class: "font-bold", **)

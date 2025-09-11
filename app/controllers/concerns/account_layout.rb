@@ -13,9 +13,10 @@ module AccountLayout
 
   class Component < Components::AccountComponent
     attr_reader :title, :subtitle, :icon
+    include Phlex::Rails::Layout
 
     def title_template
-      render Components::PageTitleComponent.new(title: title, subtitle: -> { subtitle }, icon: icon) if title
+      render Components::PageTitleComponent.new(title:, subtitle:, icon:) if title
     end
 
     def around_template

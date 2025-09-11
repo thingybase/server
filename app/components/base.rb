@@ -17,6 +17,13 @@ class Components::Base < Phlex::HTML
     end
   end
 
+  def block_name = nil
+
+  def bem(element, modifier = nil)
+    element = [block_name, element].join("__")
+    modifier ? "#{element}--#{modifier}" : element
+  end
+
   def subscribe
     turbo_stream_from dom_id if context.any?
   end

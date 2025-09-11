@@ -2,8 +2,14 @@
 @plugin "daisyui";
 @plugin "@tailwindcss/typography";
 
+@source "app/content/**/*";
 @source "app/pages/**/*";
+@source "app/helpers/**/*";
+@source "app/javascript/**/*";
+@source "app/controllers/**/*";
+@source "app/models/**/*";
 @source "app/components/**/*";
+@source "app/views/**/*";
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
@@ -61,4 +67,9 @@
 
 @utility hero-lg {
   @apply flex flex-col md:flex-row justify-center items-center min-h-screen gap-container p-container mx-auto;
+}
+
+@theme {
+  /* Define a blue-400 token so Tailwind can generate color utilities for it */
+  --color-blue-400: var(--color-blue-500);
 }
