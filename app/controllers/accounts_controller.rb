@@ -2,6 +2,17 @@ class AccountsController < Oxidizer::ResourcesController
   include AccountLayout
   after_action :add_current_user_to_members, only: :create
 
+  layout -> {
+    case action_name
+    when "new"
+      "focused"
+    when "show", "edit"
+      account_layout
+    else
+      "application"
+    end
+  }
+
   before_action { @stats = Components::Account::Stats.new(@account) }
 
   def show
@@ -41,14 +52,4 @@ class AccountsController < Oxidizer::ResourcesController
       @account
     end
 
-    def set_account_layout
-      case action_name
-      when "new"
-        "focused"
-      when "show", "edit"
-        "account"
-      else
-        "application"
-      end
-    end
 end

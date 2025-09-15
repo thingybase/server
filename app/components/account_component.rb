@@ -1,6 +1,8 @@
 class Components::AccountComponent < Components::Base
   attr_writer :user, :account
 
+  include Phlex::Rails::Layout
+
   module Aliases
     def Form(...)
       render Form.new(...)

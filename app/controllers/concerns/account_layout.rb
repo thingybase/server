@@ -7,7 +7,7 @@ module AccountLayout
 
   included do
     before_action :set_account_instance_variable
-    layout :set_account_layout
+    layout -> { @account&.persisted? ? account_layout : "application" }
     helper_method :navigation_key
   end
 
@@ -57,7 +57,7 @@ module AccountLayout
       @account = find_account
     end
 
-    def set_account_layout
-      @account&.persisted? ? "account" : "application"
+    def account_layout
+      Components::AccountComponent.new(key: navigation_key, account: @account, user: current_user, notice: nil)
     end
 end
