@@ -9,7 +9,7 @@ class Components::PageTitleComponent < Components::Base
     div class: "flex flex-col" do
       h1(class: "font-semibold text-4xl flex flex-row items-center") do
         render IconComponent.new(@icon, class: "w-10 mr-3") if @icon
-        plain @title
+        render @title
       end
       if @subtitle
         h2(class: "text-xl my-2 opacity-75") { render @subtitle }
