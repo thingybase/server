@@ -14,6 +14,8 @@ class Account < ApplicationRecord
   validates :user, presence: true
   validates :name, presence: true
 
+  broadcasts_refreshes
+
   def add_user(user)
     members.create!(user: user).user
   end

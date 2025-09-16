@@ -49,6 +49,10 @@ class Views::Layouts::Base < Components::Base
 				stylesheet_link_tag "tailwind", data_turbo_track: "reload"
 				javascript_importmap_tags
 				render @opengraph
+				# yield :head
+				# I think this might be a bug in Phlex. When its resolved, use `yield :head`
+				# and remove the `view_context.view_flow.get(:head)` below.
+				raw view_context.view_flow.get(:head)
 			end
 
 			body do

@@ -5,8 +5,6 @@ class User < ApplicationRecord
     uniqueness: true,
     format: { with: URI::MailTo::EMAIL_REGEXP }
 
-
-
   has_many :items
   has_many :members
   has_many :loanable_list_members

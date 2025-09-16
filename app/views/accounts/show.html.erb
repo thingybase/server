@@ -13,9 +13,10 @@
     <% end %>
   </div>
 
-  <%= turbo_frame_tag @stats.dom_id, src: url_for(format: :turbo_stream) do %>
-    "Loading..."
-  <% end %>
+  <%= turbo_refreshes_with method: :morph, scroll: :preserve  %>
+  <%= turbo_stream_from @account %>
+
+  <%= render Components::Account::Stats.new(@account) %>
 
   <%= render Components::Card::Text.new(class: "bg-base-200 md:col-span-2") do |card| %>
     <% card.header do |h| %>

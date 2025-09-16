@@ -13,19 +13,6 @@ class AccountsController < Oxidizer::ResourcesController
     end
   }
 
-  before_action { @stats = Components::Account::Stats.new(@account) }
-
-  def show
-    respond_to do |format|
-      format.html
-      format.turbo_stream { replace(@stats) }
-    end
-  end
-
-  protected def replace(component)
-    render turbo_stream: turbo_stream.replace(component.dom_id, component)
-  end
-
   def self.resource
     Account
   end
