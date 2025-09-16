@@ -149,9 +149,6 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
-# Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
-gem "tailwindcss-rails", "~> 4.0" # which transitively pins tailwindcss-ruby to v4
-
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 
@@ -164,3 +161,5 @@ gem "phlex-rails", "~> 2.3"
 gem "superview", "~> 1.0"
 
 gem "superform", "~> 0.6.0"
+
+gem "tailwindcss-rails", "~> 4.3"

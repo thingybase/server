@@ -3,7 +3,9 @@
   "private": true,
   "dependencies": {
     "@hotwired/turbo-rails": "^7.2.4",
-    "daisyui": "^5.1.12",
     "local-time": "^2.1.0"
+  },
+  "devDependencies": {
+    "daisyui": "^5.1.12"
   }
 }

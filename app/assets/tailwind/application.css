@@ -2,7 +2,7 @@
 @plugin "daisyui";
 @plugin "@tailwindcss/typography";
 
-@source "app/pages/**/*";
+@source "app/content/pages/**/*";
 @source "app/components/**/*";
 
 /*

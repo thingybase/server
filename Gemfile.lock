@@ -580,7 +580,7 @@ DEPENDENCIES
   strong_password
   superform (~> 0.6.0)
   superview (~> 1.0)
-  tailwindcss-rails (~> 4.0)
+  tailwindcss-rails (~> 4.3)
   turbo-rails
   tzinfo-data
   web-console
