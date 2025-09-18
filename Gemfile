@@ -158,8 +158,8 @@ gem "csv"
 
 gem "phlex-rails", "~> 2.3"
 
-gem "superview", "~> 1.0"
-
 gem "superform", "~> 0.6.0"
 
 gem "tailwindcss-rails", "~> 4.3"
+
+gem "superview", "~> 1.0", github: "beautifulruby/superview"

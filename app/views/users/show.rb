@@ -16,7 +16,7 @@ class Views::Users::Show < Views::Base
       h1(class: "font-bold text-3xl") { title }
 
       div(class: "card bg-base-200") do
-        div(class: "card-body") do
+        div(cilass: "card-body") do
           h3(class: "text-xl font-bold") { "Profile" }
           p(class: "text-lg") { "How you appear in Thingybase" }
 

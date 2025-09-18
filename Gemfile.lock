@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/beautifulruby/superview.git
+  revision: 966e4bffd2aab5c665d3013a5e72cd73c2f9c899
+  specs:
+    superview (1.0.0)
+      zeitwerk (~> 2.0)
+
+GIT
   remote: https://github.com/brianhempel/active_record_union.git
   revision: 8ebe558709aabe039abd24e3e7dd4d4354a6de88
   specs:
@@ -466,8 +473,6 @@ GEM
     superform (0.6.1)
       phlex-rails (~> 2.0)
       zeitwerk (~> 2.6)
-    superview (1.0.0)
-      zeitwerk (~> 2.0)
     tailwindcss-rails (4.3.0)
       railties (>= 7.0.0)
       tailwindcss-ruby (~> 4.0)
@@ -579,7 +584,7 @@ DEPENDENCIES
   stripe (~> 5.38)
   strong_password
   superform (~> 0.6.0)
-  superview (~> 1.0)
+  superview (~> 1.0)!
   tailwindcss-rails (~> 4.3)
   turbo-rails
   tzinfo-data

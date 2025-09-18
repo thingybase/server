@@ -1,7 +1,12 @@
-class UsersController < Oxidizer::ResourcesController
+class UsersController < ApplicationController
   layout false
 
-  def self.resource = User
+  include Superview::Actions
+
+  before_action do
+    @user = User.find(params[:id])
+    authorize @user
+  end
 
   layout -> { Views::Layouts::App.new(title: @user.name) }
 
@@ -9,8 +14,62 @@ class UsersController < Oxidizer::ResourcesController
 
   helper_method :form
 
-  def show
-    render Views::Users::Show.new(@user)
+  class View < Views::Base
+    attr_writer :user
+
+    def title = @user.name
+
+    def around_template
+      super do
+        section(class: "container-lg") do
+          # title @user.name, subtitle: "Edit personal information and settings"
+          #
+          h1(class: "font-bold text-3xl") { title }
+
+          div(class: "card bg-base-200") do
+            div(class: "card-body") do
+              yield
+            end
+          end
+        end
+      end
+    end
+  end
+
+  class Form < Components::Form
+    def view_template
+      row field(:name).text
+      row field(:email).email
+
+      div(class: "flex flex-row gap-4"){
+        submit "Save profile", class: "btn btn-primary"
+        a(href: url_for(@user)) { "Back to profile" }
+      }
+    end
+  end
+
+  class Show < View
+    def view_template
+      h3(class: "text-xl font-bold") { "Profile" }
+      p(class: "text-lg") { "How you appear in Thingybase" }
+
+      render Components::Field::List.new @user do
+        it.field :name
+        it.field :email
+      end
+
+      p do
+        link_to(edit_user_path(@user), class: 'btn btn-outline'){ "Edit profile" }
+      end
+    end
+  end
+
+  class Edit < View
+    def title = "Editing #{@user.name}"
+
+    def view_template
+      render Form.new(@user)
+    end
   end
 
   def update
