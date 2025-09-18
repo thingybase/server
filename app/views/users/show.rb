@@ -1,34 +1,16 @@
-# frozen_string_literal: true
+module Views::Users
+  class Show < View
+    def view_template
+      h3(class: "text-xl font-bold") { "Profile" }
+      p(class: "text-lg") { "How you appear in Thingybase" }
 
-class Views::Users::Show < Views::Base
-  # register_output_helper :title
+      render Components::Field::List.new @user do
+        it.field :name
+        it.field :email
+      end
 
-  def initialize(user)
-    @user = user
-  end
-
-  def title = @user.name
-
-  def view_template
-    section(class: "container-lg") do
-      # title @user.name, subtitle: "Edit personal information and settings"
-      #
-      h1(class: "font-bold text-3xl") { title }
-
-      div(class: "card bg-base-200") do
-        div(cilass: "card-body") do
-          h3(class: "text-xl font-bold") { "Profile" }
-          p(class: "text-lg") { "How you appear in Thingybase" }
-
-          render Components::Field::List.new @user do
-            it.field :name
-            it.field :email
-          end
-
-          p do
-            link_to(edit_user_path(@user), class: 'btn btn-outline'){ "Edit profile" }
-          end
-        end
+      p do
+        link_to(edit_user_path(@user), class: 'btn btn-outline'){ "Edit profile" }
       end
     end
   end
