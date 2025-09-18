@@ -2,17 +2,12 @@ class UsersController < ApplicationController
   layout false
 
   include Superview::Actions
+  include Superform::Rails::StrongParameters
 
   before_action do
     @user = User.find(params[:id])
     authorize @user
   end
-
-  layout -> { Views::Layouts::App.new(title: @user.name) }
-
-  include Superform::Rails::StrongParameters
-
-  helper_method :form
 
   class View < Views::Base
     attr_writer :user
@@ -21,14 +16,16 @@ class UsersController < ApplicationController
 
     def around_template
       super do
-        section(class: "container-lg") do
-          # title @user.name, subtitle: "Edit personal information and settings"
-          #
-          h1(class: "font-bold text-3xl") { title }
+        render Views::Layouts::App.new(title: @user.name) do
+          section(class: "container-lg") do
+            # title @user.name, subtitle: "Edit personal information and settings"
+            #
+            h1(class: "font-bold text-3xl") { title }
 
-          div(class: "card bg-base-200") do
-            div(class: "card-body") do
-              yield
+            div(class: "card bg-base-200") do
+              div(class: "card-body") do
+                yield
+              end
             end
           end
         end
@@ -41,9 +38,9 @@ class UsersController < ApplicationController
       row field(:name).text
       row field(:email).email
 
-      div(class: "flex flex-row gap-4"){
+      div(class: "flex flex-row items-center gap-4"){
         submit "Save profile", class: "btn btn-primary"
-        a(href: url_for(@user)) { "Back to profile" }
+        a(href: url_for(action: :show)) { "Back to profile" }
       }
     end
   end
@@ -73,22 +70,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    if save form
+    if save Form.new(@user)
       redirect_to action: :show
     else
-      render :edit, status: :unprocessable_entity
+      render component(:edit), status: :unprocessable_entity
     end
-  end
-
-  def permitted_params
-    [:name, :email]
-  end
-
-  protected
-
-  def form = Views::Users::Form.new(@user)
-
-  def resource_scope
-    policy_scope
   end
 end
