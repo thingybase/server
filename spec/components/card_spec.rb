@@ -17,6 +17,7 @@ RSpec.describe Components::Card, type: :view do
       end
     end
 
+    dom = Nokogiri::HTML5.fragment(html)
     expect(dom.css(".card-title").text).to eq("HI")
   end
 end
