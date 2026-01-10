@@ -19,14 +19,12 @@ module Authentication
       end
     end
 
-    # This is broken out so that it can be overridden by controllers
-    # that need to do something special for the badge.
-    def deny_opengraph_format
-      render :unauthorized, layout: "application"
-    end
-
     def deny_any_format
       render :unauthorized, layout: "application", status: :unauthorized, formats: :html
+    end
+
+    def deny_opengraph_format
+      render :unauthorized, layout: "application"
     end
 
   private

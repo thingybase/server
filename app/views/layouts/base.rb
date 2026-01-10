@@ -6,32 +6,10 @@ class Views::Layouts::Base < Components::Base
 	include Phlex::Rails::Layout
 	include Phlex::Rails::Helpers::Request
 
-	register_value_helper :opengraph_meta_tags
+	register_value_helper :open_graph_meta_tags
 
-	attr_accessor :opengraph
-
-	def initialize(title: "Thingybase", opengraph: OpenGraph.new)
+	def initialize(title: "Thingybase")
 		@title = title
-		@opengraph = opengraph
-	end
-
-	class OpenGraph < Components::Base
-	  attr_accessor :title, :description, :image_url
-
-	  def initialize(title: nil, description: nil, image_url: nil)
-  		@title = title
-  		@description = description
-  		@image_url = image_url
-	  end
-
-		def view_template
-			meta property: "og:title", content: @title
-			meta property: "og:description", content: @description
-			meta property: "og:image", content: @image_url
-			meta property: "twitter:title", content: @title
-			meta property: "twitter:description", content: @description
-			meta property: "twitter:image", content: @image_url
-		end
 	end
 
 	def view_template(&content)
@@ -48,7 +26,7 @@ class Views::Layouts::Base < Components::Base
 				csrf_meta_tags
 				stylesheet_link_tag "tailwind", data_turbo_track: "reload"
 				javascript_importmap_tags
-				render @opengraph
+				raw open_graph_meta_tags
 				# yield :head
 				# I think this might be a bug in Phlex. When its resolved, use `yield :head`
 				# and remove the `view_context.view_flow.get(:head)` below.

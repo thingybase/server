@@ -138,7 +138,7 @@ gem "ahoy_matey", "~> 5.4"
 
 gem "blazer", "~> 2.6"
 
-gem "imageomatic", "~> 0.1.4"
+gem "opengraphplus"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"

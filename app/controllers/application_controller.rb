@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  include Imageomatic::Opengraph
   include Featureomatic::Authorization
   include Authentication
   include Pundit::Authorization

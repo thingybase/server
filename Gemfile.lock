@@ -153,8 +153,8 @@ GEM
     anybase (0.0.15)
     base64 (0.3.0)
     bcrypt (3.1.20)
-    benchmark (0.4.1)
-    bigdecimal (3.2.3)
+    benchmark (0.5.0)
+    bigdecimal (3.3.1)
     bindex (0.8.1)
     blazer (2.6.5)
       activerecord (>= 5)
@@ -182,8 +182,8 @@ GEM
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
     color (1.8)
-    concurrent-ruby (1.3.5)
-    connection_pool (2.5.4)
+    concurrent-ruby (1.3.6)
+    connection_pool (3.0.2)
     crass (1.0.6)
     csv (3.3.5)
     csv_builder (2.1.3)
@@ -232,11 +232,8 @@ GEM
     http-cookie (1.0.8)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    i18n (1.14.7)
+    i18n (1.14.8)
       concurrent-ruby (~> 1.0)
-    imageomatic (0.1.4)
-      rails (>= 7.0.0)
-      thor (>= 1.0.0)
     importmap-rails (2.2.2)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -278,7 +275,8 @@ GEM
     mime-types-data (3.2025.0909)
     mini_magick (4.0.4)
     mini_mime (1.1.5)
-    minitest (5.25.5)
+    minitest (6.0.1)
+      prism (~> 1.5)
     msgpack (1.8.0)
     multi_xml (0.7.2)
       bigdecimal (~> 3.1)
@@ -333,6 +331,8 @@ GEM
     omniauth-oauth2 (1.8.0)
       oauth2 (>= 1.4, < 3)
       omniauth (~> 2.0)
+    opengraphplus (0.1.9)
+      activesupport (>= 7.0)
     pdf-core (0.10.0)
     pg (1.6.2)
     pg (1.6.2-aarch64-linux)
@@ -360,6 +360,7 @@ GEM
       prawn (>= 1)
       rqrcode (>= 1.0.0)
     prettyprint (0.2.0)
+    prism (1.7.0)
     propshaft (1.2.1)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -493,7 +494,7 @@ GEM
       railties (>= 7.1.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uri (1.0.3)
+    uri (1.1.1)
     uri-builder (0.1.13)
     useragent (0.16.11)
     version_gem (1.1.9)
@@ -545,7 +546,6 @@ DEPENDENCIES
   faker
   featureomatic (~> 0.1.1)!
   groupdate (~> 5.2)
-  imageomatic (~> 0.1.4)
   importmap-rails
   jbuilder (~> 2.10)
   jwt
@@ -557,6 +557,7 @@ DEPENDENCIES
   nopassword!
   omniauth
   omniauth-google-oauth2
+  opengraphplus
   oxidizer!
   pg (~> 1.5)
   pg_search (~> 2.3)

@@ -175,12 +175,6 @@ class ItemsController < Oxidizer::ResourcesController
     end
 
   private
-    # We want to show these when access is denied for people who are not logged in.
-    def deny_opengraph_format
-      assign_resource_instance_variable if member_request?
-      render layout: "application"
-    end
-
     def destroy_redirect_url
       @item.parent || account_items_url(@item.account)
     end
@@ -194,6 +188,21 @@ class ItemsController < Oxidizer::ResourcesController
     end
 
     def assign_opengraph_attributes
-      opengraph.title = resource.name
+      open_graph do |og|
+        og.title = resource.name
+        og.image.url = open_graph_plus_image_url item_url(resource, format: :opengraph)
+      end
+    end
+
+    def deny_opengraph_format
+      assign_resource_instance_variable if member_request?
+      assign_opengraph_attributes
+      render layout: "application"
+    end
+
+    def deny_any_format
+      assign_resource_instance_variable if member_request?
+      assign_opengraph_attributes
+      super
     end
 end
