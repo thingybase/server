@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     mount Blazer::Engine, at: "/"
   end
 
-  resource :email_authentication
+  nopassword EmailAuthenticationsController
   with_options to: "labels#scan", uuid: UuidField::GUID_REGEXP do |legacy_scan|
     # Labels printed before June 20, 2020 point to this route. When you decide to use `uuid` as the resource
     # key, instead of `id`, you will create a conflict where this route should redirect to the item for older

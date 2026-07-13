@@ -1,14 +1,28 @@
 module Accounts
   class PaymentsController < Oxidizer::NestedWeakResourceController
+    include NoCheckout::Stripe::CheckoutSession
+
     layout "body"
 
+    # The upgrade page renders from ERB and posts to #create, so skip the
+    # concern's behavior of creating a checkout session on #new.
+    skip_before_action :assign_created_checkout_session
+
+    def new
+      # Renders app/views/accounts/payments/new.html.erb
+    end
+
     def create
-      redirect_to checkout_session.url, status: :see_other, allow_other_host: true
+      @checkout_session = create_checkout_session
+      redirect_to @checkout_session.url, status: :see_other, allow_other_host: true
     end
 
     def show
-      session = Stripe::Checkout::Session.retrieve(params[:session_id])
-      subscription = Stripe::Subscription.retrieve(session.subscription)
+      unless @checkout_session&.subscription
+        return redirect_to new_account_payment_url(@account), alert: "Payment was not completed"
+      end
+
+      subscription = Stripe::Subscription.retrieve(@checkout_session.subscription)
       @account.subscribe_from_stripe! subscription, user: current_user, plan: HomePlan
     end
 
@@ -38,31 +52,22 @@ module Accounts
         end
       end
 
-      def checkout_session
-        Stripe::Checkout::Session.create(
+      def create_checkout_session
+        super(
           customer: stripe_customer,
           mode: "subscription",
           payment_method_types: ["card"],
           line_items: [{
-            price: strip_price,
+            price: stripe_price,
             quantity: 1
           }],
           metadata: {
             account_id: @account.id,
             user_id: current_user.id
-          },
-          success_url: success_url,
-          cancel_url: new_account_payment_url(@account))
+          })
       end
 
-      def success_url
-        # Yuck! I have to do the append at the end because rails params escape the `{CHECKOUT_SESSION_ID}` values
-        # to `session_id=%7BCHECKOUT_SESSION_ID%7D`. This will work though, but its def not pretty and feels a tad
-        # dangerous.
-        account_payment_url(@account).concat("?session_id={CHECKOUT_SESSION_ID}")
-      end
-
-      def strip_price
+      def stripe_price
         ENV.fetch("STRIPE_ACCOUNT_PRICE")
       end
 
