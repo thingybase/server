@@ -1,0 +1,19 @@
+# Rails omakase style — intentionally lenient, formatting-focused.
+# Existing offenses are grandfathered in .rubocop_todo.yml; new and edited
+# code must be clean. Regenerate the todo with:
+#   bundle exec rubocop --regenerate-todo
+inherit_gem:
+  rubocop-rails-omakase: rubocop.yml
+
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 3.4
+  SuggestExtensions: false
+  Exclude:
+    - "db/schema.rb"
+    - "db/migrate/**/*"
+    - "bin/**/*"
+    - "node_modules/**/*"
+    - "vendor/**/*"
+    - "tmp/**/*"
