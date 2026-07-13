@@ -1,4 +1,4 @@
-class Components::List::Component < Components::Base
+class Components::List::Base < Components::Base
   def initialize(items)
     @items = items
   end
@@ -8,7 +8,7 @@ class Components::List::Component < Components::Base
   end
 
   def empty(...)
-    @empty = Components::EmptyListComponent.new(...)
+    @empty = Components::EmptyList.new(...)
   end
 
   def view_template(&)

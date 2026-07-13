@@ -1,4 +1,4 @@
-class Components::AccountComponent < Components::Base
+class Components::Account::Layout < Components::Base
   attr_writer :user, :account
 
   include Phlex::Rails::Layout
@@ -13,19 +13,19 @@ class Components::AccountComponent < Components::Base
     end
 
     def Menu(...)
-      render Components::MenuComponent.new(...)
+      render Components::Menu.new(...)
     end
 
     def DataView(...)
-      render Components::DataViewComponent.new(...)
+      render Components::DataView.new(...)
     end
 
     def Breadcrumb(...)
-      render Components::BreadcrumbComponent.new(...)
+      render Components::Breadcrumb.new(...)
     end
 
     def Tab(...)
-      render Components::TabComponent.new(...)
+      render Components::Tab.new(...)
     end
   end
 
@@ -83,7 +83,7 @@ class Components::AccountComponent < Components::Base
   end
 
   def search_template
-    render SearchFieldComponent.new(placeholder: "Search #{@account.name}", url: account_search_path(@account))
+    render SearchField.new(placeholder: "Search #{@account.name}", url: account_search_path(@account))
   end
 
   def item(text, icon:, url:, active_icon: icon)
@@ -93,7 +93,7 @@ class Components::AccountComponent < Components::Base
     end
 
     a(href: url, class: [active_css, "p-2 flex flex-row items-center gap-2 rounded hover:bg-base-300 whitespace-nowrap"]) do
-      render IconComponent.new(icon)
+      render Icon.new(icon)
       span { text }
     end
   end

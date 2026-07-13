@@ -11,11 +11,11 @@ module AccountLayout
     helper_method :navigation_key
   end
 
-  class Component < Components::AccountComponent
+  class Component < Components::Account::Layout
     attr_reader :title, :subtitle, :icon
 
     def title_template
-      render Components::PageTitleComponent.new(title: method(:title), subtitle:, icon:)
+      render Components::PageTitle.new(title: method(:title), subtitle:, icon:)
     end
 
     def around_template
@@ -58,6 +58,6 @@ module AccountLayout
     end
 
     def account_layout
-      Components::AccountComponent.new(key: navigation_key, account: @account, user: current_user, notice: nil)
+      Components::Account::Layout.new(key: navigation_key, account: @account, user: current_user, notice: nil)
     end
 end

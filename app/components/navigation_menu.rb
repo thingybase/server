@@ -1,4 +1,4 @@
-class Components::NavigationMenuComponent < Components::MenuComponent
+class Components::NavigationMenu < Components::Menu
   def view_template
     div(class: "flex md:hidden") do
       super

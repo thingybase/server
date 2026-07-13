@@ -1,19 +1,19 @@
 <%= title "Add to #{@container.name}", subtitle: item_breadcrumb(@container), icon: @container.icon %>
 
 <div class="list-cards">
-  <%= render Components::List::CardComponent.new("Container", new_item_templates_container_path, icon: "folder") do |card| %>
+  <%= render Components::List::Card.new("Container", new_item_templates_container_path, icon: "folder") do |card| %>
     <% card.detail do %>
       Shelves, boxes, folders, or anything you put items into
     <% end %>
   <% end %>
 
-  <%= render Components::List::CardComponent.new("Item", new_item_templates_item_path, icon: "object") do |card| %>
+  <%= render Components::List::Card.new("Item", new_item_templates_item_path, icon: "object") do |card| %>
     <% card.detail do %>
       Add a basic item to this folder
     <% end %>
   <% end %>
 
-  <%= render Components::List::CardComponent.new("Perishable", new_item_templates_perishable_path, icon: "tag") do |card| %>
+  <%= render Components::List::Card.new("Perishable", new_item_templates_perishable_path, icon: "tag") do |card| %>
     <% card.detail do %>
       Add something that expires
     <% end %>

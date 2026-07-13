@@ -30,11 +30,11 @@ class ItemsController < Oxidizer::ResourcesController
 
   class Container < Show
     def view_template
-      render Components::List::ItemsComponent.new(@item.children.container_then_item)
+      render Components::List::Items.new(@item.children.container_then_item)
     end
 
     def search_template
-      render SearchFieldComponent.new(placeholder: "Search #{@item.name}", url: item_search_path(@item))
+      render SearchField.new(placeholder: "Search #{@item.name}", url: item_search_path(@item))
     end
 
     def action_template
@@ -188,6 +188,8 @@ class ItemsController < Oxidizer::ResourcesController
     end
 
     def assign_opengraph_attributes
+      return unless resource
+
       open_graph do |og|
         og.title = resource.name
         og.image.url = open_graph_plus_image_url item_url(resource, format: :opengraph)
@@ -197,7 +199,7 @@ class ItemsController < Oxidizer::ResourcesController
     def deny_opengraph_format
       assign_resource_instance_variable if member_request?
       assign_opengraph_attributes
-      render layout: "application"
+      show
     end
 
     def deny_any_format

@@ -18,7 +18,7 @@
   <% end %>
 
   <% @members.each do |member| %>
-    <%= render Components::List::CardComponent.new(member.name, member_path(member), icon: "basketball-jersey") do |card| %>
+    <%= render Components::List::Card.new(member.name, member_path(member), icon: "basketball-jersey") do |card| %>
       <% card.detail do %>
         Member
       <% end %>
@@ -29,7 +29,7 @@
   <% end %>
 
   <% @invitations.each do |invitation| %>
-    <%= render Components::List::CardComponent.new((invitation.name || invitation.email), invitation_path(invitation), icon: "mailer") do |card| %>
+    <%= render Components::List::Card.new((invitation.name || invitation.email), invitation_path(invitation), icon: "mailer") do |card| %>
       <% card.detail do %>
         Pending invitation
       <% end %>

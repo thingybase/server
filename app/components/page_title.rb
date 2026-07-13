@@ -1,4 +1,4 @@
-class Components::PageTitleComponent < Components::Base
+class Components::PageTitle < Components::Base
   def initialize(title:, subtitle: nil, icon: nil)
     @title = title
     @subtitle = subtitle
@@ -8,7 +8,7 @@ class Components::PageTitleComponent < Components::Base
   def view_template
     div class: "flex flex-col" do
       h1(class: "font-semibold text-4xl flex flex-row items-center") do
-        render IconComponent.new(@icon, class: "w-10 mr-3") if @icon
+        render Icon.new(@icon, class: "w-10 mr-3") if @icon
         render @title
       end
       if @subtitle

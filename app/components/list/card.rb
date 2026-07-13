@@ -1,4 +1,4 @@
-class Components::List::CardComponent < Components::Base
+class Components::List::Card < Components::Base
   def initialize(title, link = nil, icon: nil)
     @icon = icon
     @link = link
@@ -16,7 +16,7 @@ class Components::List::CardComponent < Components::Base
     div class: "py-4 flex-col gap-2" do
       div class: "font-semibold" do
         if @icon
-          render IconComponent.new(@icon, class: "w-4 mr-2")
+          render Icon.new(@icon, class: "w-4 mr-2")
         end
 
         if @link

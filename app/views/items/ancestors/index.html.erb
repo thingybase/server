@@ -5,11 +5,11 @@
 </div>
 
 <div class="list-card">
-<%= render Components::List::ItemCardComponent.new(item: @item) %>
+<%= render Components::List::ItemCard.new(item: @item) %>
 <% @item.ancestors.reverse.each do %>
-  <%= render Components::List::ItemCardComponent.new(item: _1) %>
+  <%= render Components::List::ItemCard.new(item: _1) %>
 <% end %>
-<%= render Components::List::CardComponent.new(@account.name, account_items_path(@account), icon: "chest-open") do |card| %>
+<%= render Components::List::Card.new(@account.name, account_items_path(@account), icon: "chest-open") do |card| %>
   <% card.detail do %>
     Created
     <%= local_time_ago @account.created_at %>

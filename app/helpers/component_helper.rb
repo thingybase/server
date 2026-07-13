@@ -5,6 +5,6 @@ module ComponentHelper
 
   private
     def componentize(name)
-      "Components::#{name.to_s.classify}Component".constantize
+      "Components::#{name.to_s.classify}".constantize
     end
 end

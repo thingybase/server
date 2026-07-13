@@ -5,7 +5,7 @@
 </div>
 
 <% if @movements.empty? %>
-  <%= render Components::EmptyListComponent.new do |it| %>
+  <%= render Components::EmptyList.new do |it| %>
     <%= it.title { "Create a moving label" } %>
     <%= it.message { "Get started with your move by creating labels that you can put on your box." } %>
     <%= it.action(new_move_movement_builder_path(@move)) { "+ Create moving label" } %>
@@ -15,7 +15,7 @@
   <div class="list-cards">
     <% @movements.each do |movement| %>
       <% with movement.origin do |item| %>
-        <%= render Components::List::CardComponent.new(item.name, movement, icon: item.icon) do |c| %>
+        <%= render Components::List::Card.new(item.name, movement, icon: item.icon) do |c| %>
           <%= c.slot(:detail) do %>
             Move to
             <%= link_to movement.destination.name, movement.destination %>

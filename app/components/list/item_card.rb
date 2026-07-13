@@ -1,5 +1,4 @@
-class Components::List::ItemCardComponent < Components::List::CardComponent
-
+class Components::List::ItemCard < Components::List::Card
   attr_accessor :item
 
   delegate :containers_count, :items_count, to: :item
