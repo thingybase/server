@@ -11,7 +11,7 @@ RSpec.describe Components::Card, type: :view do
   end
 
   it "renders a card-title" do
-    html = render Components::Card::Text.new do |card|
+    dom = render_fragment Components::Card::Text.new do |card|
       card.header do
         it.title { "HI" }
       end

@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if save Form.new(@user)
       redirect_to action: :show
     else
-      render component(:edit), status: :unprocessable_entity
+      render assign_component_accessors(Edit.new), status: :unprocessable_entity
     end
   end
 end

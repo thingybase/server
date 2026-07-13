@@ -69,11 +69,6 @@ class LabelsController < Oxidizer::ResourcesController
       resource_id = params[:uuid] || params[:id]
 
       case resource_id
-      when /^.\d+$/ # Integer ID
-        # This will be safe to remove by Jan 2021. There's only a few labels that Brad
-        # has that have the integer ID. This should all be moved into a ScansController.
-        raise "Remove this code path" if Time.now > Chronic.parse("Jan 1, 2021")
-        resource_scope.find_by! id: resource_id
       when UuidField::GUID_REGEXP # Long GUID ID
         resource_scope.find_by! uuid: resource_id
       else # Assum its a short uid

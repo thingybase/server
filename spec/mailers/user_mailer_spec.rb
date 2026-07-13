@@ -2,17 +2,23 @@ require "rails_helper"
 
 RSpec.describe UserMailer, type: :mailer do
   describe "welcome" do
-    let(:mail) { UserMailer.welcome }
+    let(:user) { create(:user) }
+    let(:mail) { UserMailer.welcome(user) }
 
-    it "renders the headers" do
+    it "renders the subject" do
       expect(mail.subject).to eq("Welcome")
-      expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+    end
+
+    it "is sent to the user" do
+      expect(mail.to).to eq([user.email])
+    end
+
+    it "is sent from Thingybase" do
+      expect(mail.from).to eq(["website@thingybase.com"])
     end
 
     it "renders the body" do
-      expect(mail.body.encoded).to match("Hi")
+      expect(mail.body.encoded).to match("Welcome to Thingybase")
     end
   end
-
 end
