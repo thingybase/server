@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bin/rails routes:*)",
+      "Bash(bin/rails runner:*)",
+      "Bash(bin/rails generate:*)",
+      "Bash(bin/rails db:migrate:*)",
+      "Bash(bin/rails db:rollback:*)",
+      "Bash(bin/rails db:migrate:status:*)",
+      "Bash(bin/rails db:test:prepare:*)",
+      "Bash(bin/rspec:*)",
+      "Bash(bundle exec rspec:*)",
+      "Bash(RAILS_ENV=test bin/rails:*)",
+      "Bash(RAILS_ENV=test bundle exec rspec:*)",
+      "Bash(RAILS_ENV=test bundle exec rails runner:*)",
+      "Bash(bundle install:*)",
+      "Bash(bundle check:*)",
+      "Bash(bundle show:*)",
+      "Bash(bundle info:*)",
+      "Bash(gem which:*)",
+      "Bash(ruby -e:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git reset:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(wc:*)",
+      "WebFetch(domain:daisyui.com)",
+      "WebFetch(domain:tailwindcss.com)",
+      "WebFetch(domain:api.rubyonrails.org)",
+      "WebFetch(domain:guides.rubyonrails.org)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ]
+  }
+}
