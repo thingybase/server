@@ -8,13 +8,13 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', github: 'rails/rails'
+gem 'rails', '~> 8.1.2'
 # Use Puma as the app server
-gem 'puma', '~> 6.0'
+gem 'puma', '~> 7.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.10'
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 3.0'
+gem 'redis', '~> 5.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.13'
 # Authorization libraries
@@ -25,8 +25,6 @@ gem 'pundit'
 # Form helper
 gem 'simple_form', '~> 5.0'
 
-# JWT token handling for authentication
-gem 'jwt'
 # Validate password and token strengths based on entropy.
 gem 'strong_password'
 # Display times locally
@@ -73,14 +71,12 @@ gem "csv_builder", "~> 2.1"
 gem "sitepress-rails", "~> 4.0"
 
 # Markdown gem
-gem "redcarpet", "~> 3.5.0"
+gem "redcarpet", "~> 3.6"
 # Parses SVG vector files and inverts them for darkmode.
 gem "color", "~> 1.8"
-# Used for reporting from the shell so I can see who signed up within a day/week
-gem "groupdate", "~> 5.2"
 # Render PDF file as an image to get around really annoying problems
 # embedding PDFs in webpages or trying to embed them via PDF.js
-gem "mini_magick", "~> 4.0.0"
+gem "mini_magick", "~> 4.13"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -88,6 +84,12 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'faker'
   gem 'factory_bot_rails'
+  # Static analysis for security vulnerabilities, runs in CI
+  gem 'brakeman', require: false
+  # Checks the Gemfile.lock against known CVEs, runs in CI
+  gem 'bundler-audit', require: false
+  # Rails omakase code style, enforced in CI
+  gem 'rubocop-rails-omakase', require: false
 end
 
 group :development do
@@ -102,13 +104,9 @@ end
 
 group :test do
   gem 'pundit-matchers', '~> 1.7.0'
-  gem 'shoulda-matchers', '~> 4.5.0'
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
-  gem 'rexml'
+  # Test coverage reporting
+  gem 'simplecov', require: false
+  gem 'shoulda-matchers', '~> 6.0'
 end
 
 if featureomatic_path = ENV["FEATUREOMATIC_GEM_PATH"]
@@ -119,9 +117,7 @@ end
 
 # gem "tinyzap", github: "tinyzap/ruby"
 
-gem "mailto", "~> 0.1"
-
-gem "stripe", "~> 5.38"
+gem "stripe", "~> 19.3"
 
 # Resource-oriented rails controllers
 if oxidizer_peth = ENV["OXIDIZER_GEM_PATH"]
@@ -131,8 +127,12 @@ else
 end
 
 # No-password login flow
-gem "nopassword", github: "rocketshipio/nopassword", branch: "main"
+gem "nopassword", github: "rubymonolith/nopassword"
+# Stripe checkout sessions and webhooks
+gem "nocheckout", github: "rubymonolith/nocheckout"
 gem "matrix", "~> 0.4.2"
+# Bundled stdlib gems that will no longer ship with Ruby by default
+gem "benchmark"
 
 gem "ahoy_matey", "~> 5.4"
 

@@ -25,7 +25,16 @@ class Account < ApplicationRecord
   end
 
   def subscribe_from_stripe!(stripe, **kwargs)
-    subscriptions.create! **kwargs.merge(expires_at: Time.at(stripe.current_period_end))
+    # Stripe API versions after 2025-03 moved `current_period_end` off the
+    # subscription onto its items; handle both shapes since webhook payloads
+    # arrive in the endpoint's configured API version.
+    period_end = if stripe.respond_to?(:current_period_end) && stripe.current_period_end
+      stripe.current_period_end
+    else
+      stripe.items.data.map(&:current_period_end).max
+    end
+
+    subscriptions.create! **kwargs.merge(expires_at: Time.at(period_end))
   end
 
   def plan
