@@ -12,9 +12,6 @@ module Server
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.1
 
-    # Read legacy Marshal-serialized cookies, write JSON going forward.
-    config.action_dispatch.cookies_serializer = :hybrid
-
     # The 7.0+ default variant processor is vips, which isn't installed;
     # mini_magick is already a dependency for label rendering.
     config.active_storage.variant_processor = :mini_magick
