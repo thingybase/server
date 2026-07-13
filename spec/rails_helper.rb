@@ -1,6 +1,13 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
+
+# Track test coverage of everything we ship. Must start before the app loads.
+require 'simplecov'
+SimpleCov.start 'rails' do
+  enable_coverage :branch
+end
+
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
@@ -64,6 +71,9 @@ require 'config/factory_bot'
 
 # Configure BCrypt
 require 'config/bcrypt'
+
+# OmniAuth test mode and the `sign_in` helper for request specs.
+require 'config/authentication'
 
 # Pundit test helpers from https://github.com/chrisalley/pundit-matchers
 require 'pundit/matchers'
