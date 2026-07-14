@@ -96,4 +96,4 @@ Run all three locally before handing work over: `bundle exec rubocop && bundle e
 ## Dev environment
 - `bin/setup` to bootstrap; `docker compose up -d` for Postgres; `bin/dev` runs the server (port 5000) + `tailwindcss:watch`.
 - `bin/rails runner` for quick console checks; Blazer lives on the `blazer` subdomain.
-- Deploys: Heroku (`git push heroku master`) — never deploy without being asked.
+- Deploys: Heroku app `thingybase` on the heroku-24 stack (`git push heroku main`) — never deploy without being asked. CI must be green on `main` first. ActionCable uses the `postgresql` adapter (no Redis addon).
